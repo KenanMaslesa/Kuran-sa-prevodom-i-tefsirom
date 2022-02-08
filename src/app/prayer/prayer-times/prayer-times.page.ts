@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NativeGeocoderResult } from '@awesome-cordova-plugins/native-geocoder/ngx';
 
 const adhan = require('adhan'); //https://npm.io/package/adhan
 const countdown = require('countdown'); //https://www.npmjs.com/package/countdown
@@ -20,6 +21,7 @@ export class PrayerTimesPage implements OnInit {
   contdown: any;
   geolocation: any;
   nextPrayerTime: Date;
+  online: boolean;
   calcuationMethods = [
     {
       name: 'NorthAmerica',
@@ -66,13 +68,24 @@ export class PrayerTimesPage implements OnInit {
       selected: false,
     },
   ];
+  locationData: {
+    locality: string;
+    countryName: string;
+    subAdministrativeArea: string;
+  };
 
-  constructor(private nativePluginsService: NativePluginsService) {}
+  constructor(private nativePluginsService: NativePluginsService) {
+    this.online = navigator.onLine;
+  }
 
   ngOnInit() {
     if (this.nativePluginsService.geolocationData == null) {
       this.getCurrentPosition();
     } else {
+      this.getLocationNameByCoordinate(
+        this.nativePluginsService.geolocationData.latitude,
+        this.nativePluginsService.geolocationData.longitude
+      );
       this.getPrayerTimes(
         this.nativePluginsService.geolocationData.latitude,
         this.nativePluginsService.geolocationData.longitude
@@ -81,11 +94,19 @@ export class PrayerTimesPage implements OnInit {
   }
 
   getCurrentPosition() {
+    this.locationData = null;
     this.nativePluginsService.getCurrentLocation();
-    this.getPrayerTimes(
-      this.nativePluginsService.geolocationData.latitude,
-      this.nativePluginsService.geolocationData.longitude
-    );
+    setTimeout(()=> {
+      this.getLocationNameByCoordinate(
+        this.nativePluginsService.geolocationData.latitude,
+        this.nativePluginsService.geolocationData.longitude
+      );
+
+      this.getPrayerTimes(
+        this.nativePluginsService.geolocationData.latitude,
+        this.nativePluginsService.geolocationData.longitude
+      );
+    }, 2000);
   }
 
   getPrayerTimes(latitude, longitude, calculationMethod = 'NorthAmerica') {
@@ -210,5 +231,26 @@ export class PrayerTimesPage implements OnInit {
       this.nativePluginsService.geolocationData.longitude,
       method
     );
+  }
+
+  getLocationNameByCoordinate(latitude, longitude) {
+    this.nativePluginsService
+      .getLocationNameByCoordinate(latitude, longitude)
+      .then((result: NativeGeocoderResult[]) => {
+        let data;
+        if (result) {
+          result.forEach((item) => {
+            if (item.locality) {
+              this.locationData = {
+                locality: item.locality,
+                countryName: item.countryName,
+                subAdministrativeArea: item.subAdministrativeArea,
+              };
+            }
+          });
+        }
+        return data;
+      })
+      .catch((error: any) => console.log(error));
   }
 }

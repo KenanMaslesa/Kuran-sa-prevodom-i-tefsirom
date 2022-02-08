@@ -6,6 +6,11 @@ import {
 } from '@awesome-cordova-plugins/local-notifications/ngx';
 import { Geolocation } from '@awesome-cordova-plugins/geolocation/ngx';
 import { Vibration } from '@awesome-cordova-plugins/vibration/ngx';
+import {
+  NativeGeocoder,
+  NativeGeocoderOptions,
+  NativeGeocoderResult,
+} from '@awesome-cordova-plugins/native-geocoder/ngx';
 @Injectable({
   providedIn: 'root',
 })
@@ -15,7 +20,8 @@ export class NativePluginsService {
   constructor(
     private localNotifications: LocalNotifications,
     private geolocation: Geolocation,
-    private vibration: Vibration
+    private vibration: Vibration,
+    private nativeGeocoder: NativeGeocoder
   ) {
     const geolocationFromStorage = localStorage.getItem('geolocation');
     if (geolocationFromStorage != null) {
@@ -29,7 +35,13 @@ export class NativePluginsService {
       .then((resp) => {
         console.log(resp.coords.latitude + ' ' + resp.coords.longitude);
         this.geolocationData = resp.coords;
-        localStorage.setItem('geolocation', JSON.stringify({latitude:resp.coords.latitude, longitude: resp.coords.longitude}));
+        localStorage.setItem(
+          'geolocation',
+          JSON.stringify({
+            latitude: resp.coords.latitude,
+            longitude: resp.coords.longitude,
+          })
+        );
       })
       .catch((error) => {
         alert('Error getting location: ' + JSON.stringify(error));
@@ -95,5 +107,35 @@ export class NativePluginsService {
 
   vibrate(duration: number) {
     this.vibration.vibrate(duration);
+  }
+
+  getLocationNameByCoordinate(latitude, longitude) {
+    const options: NativeGeocoderOptions = {
+      useLocale: true,
+      maxResults: 5,
+    };
+    return this.nativeGeocoder
+      .reverseGeocode(latitude, longitude, options);
+  }
+
+  getLocationCoordinatesByCityName(city) {
+    const options: NativeGeocoderOptions = {
+      useLocale: true,
+      maxResults: 5,
+    };
+
+    this.nativeGeocoder
+      .forwardGeocode(city, options)
+      .then((result: NativeGeocoderResult[]) =>
+        alert(
+          'The coordinates of ' +
+            city +
+            ' are latitude=' +
+            result[0].latitude +
+            ' and longitude=' +
+            result[0].longitude
+        )
+      )
+      .catch((error: any) => console.log(error));
   }
 }

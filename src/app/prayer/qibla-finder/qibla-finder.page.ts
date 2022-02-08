@@ -6,10 +6,9 @@ import {
   DeviceOrientationCompassHeading,
 } from '@ionic-native/device-orientation/ngx';
 import {
-  NativeGeocoder,
   NativeGeocoderResult,
-  NativeGeocoderOptions,
 } from '@awesome-cordova-plugins/native-geocoder/ngx';
+import { Subscription } from 'rxjs';
 @Component({
   selector: 'app-qibla-finder',
   templateUrl: './qibla-finder.page.html',
@@ -17,7 +16,7 @@ import {
 })
 export class QiblaFinderPage implements OnInit {
   public data: DeviceOrientationCompassHeading = null;
-  subscription: any;
+  subscription = new Subscription();
   public currentLocation: {
     latitude: number;
     longitude: number;
@@ -30,18 +29,17 @@ export class QiblaFinderPage implements OnInit {
   // Initial Qibla Location
   public qiblaLocation = 0;
   public locationData: {
+    locality: string;
     countryName: string;
     subAdministrativeArea: string;
-    locality: string;
   };
 
   constructor(
     private deviceOrientation: DeviceOrientation,
-    private nativeGeocoder: NativeGeocoder,
     private nativePluginsService: NativePluginsService
   ) {
     // Watch the device compass heading change
-     this.subscription = this.deviceOrientation
+    this.subscription.add(this.deviceOrientation
       .watchHeading()
       .subscribe((res: DeviceOrientationCompassHeading) => {
         this.data = res;
@@ -51,7 +49,7 @@ export class QiblaFinderPage implements OnInit {
           this.qiblaLocation =
             currentQibla > 360 ? currentQibla % 360 : currentQibla;
         }
-      });
+      }));
   }
 
   ngOnInit(): void {
@@ -62,20 +60,24 @@ export class QiblaFinderPage implements OnInit {
         longitude: this.nativePluginsService.geolocationData.longitude,
         latitude: this.nativePluginsService.geolocationData.latitude,
       };
-      this.getLocationNameByCoordinate();
+      this.getLocationNameByCoordinate(
+        this.nativePluginsService.geolocationData.latitude,
+        this.nativePluginsService.geolocationData.longitude
+      );
     }
   }
 
   ionViewDidLeave() {
     this.subscription.unsubscribe();
+    console.log('unsubscribe: ', JSON.stringify(this.subscription));
   }
 
   getCurrentPosition() {
-      this.nativePluginsService.getCurrentLocation();
-      this.currentLocation = {
-        longitude: this.nativePluginsService.geolocationData.longitude,
-        latitude: this.nativePluginsService.geolocationData.latitude,
-      };
+    this.nativePluginsService.getCurrentLocation();
+    this.currentLocation = {
+      longitude: this.nativePluginsService.geolocationData.longitude,
+      latitude: this.nativePluginsService.geolocationData.latitude,
+    };
   }
 
   getQiblaPosition() {
@@ -100,19 +102,11 @@ export class QiblaFinderPage implements OnInit {
     );
   }
 
-  getLocationNameByCoordinate() {
-    const options: NativeGeocoderOptions = {
-      useLocale: true,
-      maxResults: 5,
-    };
-
-    this.nativeGeocoder
-      .reverseGeocode(
-        this.currentLocation.latitude,
-        this.currentLocation.longitude,
-        options
-      )
+  getLocationNameByCoordinate(latitude, longitude) {
+    this.nativePluginsService
+      .getLocationNameByCoordinate(latitude, longitude)
       .then((result: NativeGeocoderResult[]) => {
+        let data;
         if (result) {
           result.forEach((item) => {
             if (item.locality) {
@@ -124,19 +118,8 @@ export class QiblaFinderPage implements OnInit {
             }
           });
         }
+        return data;
       })
-      .catch((error: any) => console.log(error));
-
-    this.nativeGeocoder
-      .forwardGeocode('Jablanica', options)
-      .then((result: NativeGeocoderResult[]) =>
-        console.log(
-          'The coordinates of Jablanica are latitude=' +
-            result[0].latitude +
-            ' and longitude=' +
-            result[0].longitude
-        )
-      )
       .catch((error: any) => console.log(error));
   }
 
@@ -148,4 +131,3 @@ export class QiblaFinderPage implements OnInit {
     return (degree * Math.PI) / 180;
   }
 }
-
