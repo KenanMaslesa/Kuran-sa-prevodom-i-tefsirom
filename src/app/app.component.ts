@@ -28,6 +28,8 @@ export class AppComponent {
 
   constructor(private nativePluginsService: NativePluginsService, private cachingService: CachingService) {
     this.cachingService.initStorage();
-    this.nativePluginsService.getCurrentLocation();
+    if(this.nativePluginsService.geolocationData == null) {
+      this.nativePluginsService.getCurrentLocation();
+    }
   }
 }

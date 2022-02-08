@@ -74,8 +74,8 @@ export class PrayerTimesPage implements OnInit {
       this.getCurrentPosition();
     } else {
       this.getPrayerTimes(
-        this.nativePluginsService.geolocationData.coords.latitude,
-        this.nativePluginsService.geolocationData.coords.longitude
+        this.nativePluginsService.geolocationData.latitude,
+        this.nativePluginsService.geolocationData.longitude
       );
     }
   }
@@ -83,8 +83,8 @@ export class PrayerTimesPage implements OnInit {
   getCurrentPosition() {
     this.nativePluginsService.getCurrentLocation();
     this.getPrayerTimes(
-      this.nativePluginsService.geolocationData.coords.latitude,
-      this.nativePluginsService.geolocationData.coords.longitude
+      this.nativePluginsService.geolocationData.latitude,
+      this.nativePluginsService.geolocationData.longitude
     );
   }
 
@@ -178,8 +178,8 @@ export class PrayerTimesPage implements OnInit {
         };
         if (time.hours === 0 && time.minutes === 0 && time.seconds === 1) {
           self.getPrayerTimes(
-            self.nativePluginsService.geolocationData.coords.latitude,
-            self.nativePluginsService.geolocationData.coords.longitude
+            self.nativePluginsService.geolocationData.latitude,
+            self.nativePluginsService.geolocationData.longitude
           );
         }
       },
@@ -206,8 +206,8 @@ export class PrayerTimesPage implements OnInit {
   onCalculationMethodChanged(method) {
     this.clearCounter();
     this.getPrayerTimes(
-      this.nativePluginsService.geolocationData.coords.latitude,
-      this.nativePluginsService.geolocationData.coords.longitude,
+      this.nativePluginsService.geolocationData.latitude,
+      this.nativePluginsService.geolocationData.longitude,
       method
     );
   }

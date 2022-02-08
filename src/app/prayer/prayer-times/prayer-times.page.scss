@@ -1,6 +1,8 @@
 
 ion-content {
   main {
+  margin-top: 20px;
+
       &::before {
           content: '';
           position: absolute;

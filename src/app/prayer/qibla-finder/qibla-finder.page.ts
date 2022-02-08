@@ -59,8 +59,8 @@ export class QiblaFinderPage implements OnInit {
       this.getCurrentPosition();
     } else {
       this.currentLocation = {
-        longitude: this.nativePluginsService.geolocationData.coords.longitude,
-        latitude: this.nativePluginsService.geolocationData.coords.latitude,
+        longitude: this.nativePluginsService.geolocationData.longitude,
+        latitude: this.nativePluginsService.geolocationData.latitude,
       };
       this.getLocationNameByCoordinate();
     }
@@ -73,8 +73,8 @@ export class QiblaFinderPage implements OnInit {
   getCurrentPosition() {
       this.nativePluginsService.getCurrentLocation();
       this.currentLocation = {
-        longitude: this.nativePluginsService.geolocationData.coords.longitude,
-        latitude: this.nativePluginsService.geolocationData.coords.latitude,
+        longitude: this.nativePluginsService.geolocationData.longitude,
+        latitude: this.nativePluginsService.geolocationData.latitude,
       };
   }
 

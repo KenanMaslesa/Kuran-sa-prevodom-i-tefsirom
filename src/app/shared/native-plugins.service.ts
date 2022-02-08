@@ -28,8 +28,8 @@ export class NativePluginsService {
       .getCurrentPosition()
       .then((resp) => {
         console.log(resp.coords.latitude + ' ' + resp.coords.longitude);
-        this.geolocationData = resp;
-        localStorage.setItem('geolocation', JSON.stringify(resp));
+        this.geolocationData = resp.coords;
+        localStorage.setItem('geolocation', JSON.stringify({latitude:resp.coords.latitude, longitude: resp.coords.longitude}));
       })
       .catch((error) => {
         alert('Error getting location: ' + JSON.stringify(error));
