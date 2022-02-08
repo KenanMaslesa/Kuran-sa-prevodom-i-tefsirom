@@ -1,0 +1,51 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Sure</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content *ngIf="searchSuraList">
+  <ion-item>
+    <ion-label>Type</ion-label>
+    <ion-select #type (ionChange)="searchByType(type.value)">
+      <ion-select-option value="all">Sve</ion-select-option>
+      <ion-select-option value="medinan">Medinske</ion-select-option>
+      <ion-select-option value="meccan">Mekkanske</ion-select-option>
+    </ion-select>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>Sortiranje</ion-label>
+    <ion-select #sort (ionChange)="sortSuraListByOrder(sort.value)">
+      <ion-select-option value="normal">Normal</ion-select-option>
+      <ion-select-option value="asc">Od prve objavljanje</ion-select-option>
+      <ion-select-option value="desc">Od zadnje objavljene</ion-select-option>
+    </ion-select>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="floating">Pretrazite</ion-label>
+    <ion-input #search (ionChange)="searchByTerm(search.value)"></ion-input>
+  </ion-item>
+
+  <p style="text-align: center;">Ukupno: {{searchSuraList.length}} sura</p>
+  <ion-card *ngFor="let sura of searchSuraList; let i = index" [routerLink]="['/quran/tabs/quran-template', sura.startpage]">
+    <ion-card-header>
+      <ion-card-title>{{sura.tname}} - {{sura.name}}</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      <strong>{{sura.endpage - sura.startpage}} stranica</strong>
+      <p>Start page: {{sura.startpage}}</p>
+      <p>End page: {{sura.endpage}}</p>
+      <p>Ajeta: {{sura.ayas}}</p>
+      <p>Order: {{sura.order}}</p>
+      <p>Start juz: {{sura.startjuz}}</p>
+      <p>End juz: {{sura.endjuz}}</p>
+      <p>Ima rijeci: {{sura.word}}</p>
+      <p>Ima slova: {{sura.theletter}}</p>
+      <p>Objavljena u: {{sura.type}}</p>
+      <p>Redni broj prvog ajeta sure: {{sura.start}}</p>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

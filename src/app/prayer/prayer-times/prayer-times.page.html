@@ -1,0 +1,103 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Vaktija</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-menu-button color="white"></ion-menu-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <main>
+    <!-- <app-loader *ngIf="!prayertimes"></app-loader> -->
+
+    <ion-item>
+      <ion-label>Metoda racunanja namaskih vremena</ion-label>
+      <ion-select class="ion-select form-control"  #method (ionChange)="onCalculationMethodChanged(method.value)">
+        <ion-select-option selected *ngFor="let calcuationMethod of calcuationMethods" value="{{calcuationMethod.name}}">{{calcuationMethod.name}}</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <div class="countdown" *ngIf="contdown">
+      <p>
+        <strong><ng-container *ngIf="contdown.hours<10">0</ng-container>{{contdown.hours}}:</strong>
+        <strong><ng-container *ngIf="contdown.minutes<10">0</ng-container>{{contdown.minutes}}:</strong>
+        <strong><ng-container *ngIf="contdown.seconds<10">0</ng-container>{{contdown.seconds}}</strong>
+      </p>
+    </div>
+    <div class="cards-wrapper" *ngIf="prayertimes && current">
+      <div class="card fajr">
+        <span class="upcoming-prayer {{current.nextPrayer === 'none' || current.nextPrayer === 'fajr' ?'active':''}}">Nadolazeci namaz</span>
+        <div class="prayer-name fajr-caption">Zora</div>
+        <div class="prayer-time fajr-time">
+          {{prayertimes.fajr}}
+        </div>
+      </div>
+
+      <div class="card sunrise {{current.currentPrayer === 'sunrise'?'active':''}}">
+        <span class="upcoming-prayer {{current.nextPrayer === 'sunrise'?'active':''}}">Nadolazeci namaz</span>
+        <div class="prayer-name sunrise-caption">Izlazak sunca</div>
+        <div class="prayer-time sunrise-time">
+          {{prayertimes.sunrise}}
+        </div>
+      </div>
+
+      <div class="card dhuhr {{current.currentPrayer === 'dhuhr'?'active':''}}">
+        <span class="upcoming-prayer {{current.nextPrayer === 'dhuhr'?'active':''}}">Nadolazeci namaz</span>
+        <div class="prayer-name dhuhr-caption">Podne</div>
+        <div class="prayer-time dhuhr-time">
+          {{prayertimes.dhuhr}}
+        </div>
+      </div>
+
+      <div class="card asr {{current.currentPrayer === 'asr'?'active':''}}">
+        <span class="upcoming-prayer {{current.nextPrayer === 'asr'?'active':''}}">Nadolazeci namaz</span>
+        <div class="prayer-name asr-caption">Ikindija</div>
+        <div class="prayer-time asr-time">
+          {{prayertimes.asr}}
+        </div>
+      </div>
+
+      <div class="card maghrib {{current.currentPrayer === 'maghrib'?'active':''}}">
+        <span class="upcoming-prayer {{current.nextPrayer === 'maghrib'?'active':''}}">Nadolazeci namaz</span>
+        <div class="prayer-name maghrib-caption">Akšam</div>
+        <div class="prayer-time maghrib-time">
+          {{prayertimes.maghrib}}
+        </div>
+      </div>
+
+      <div class="card isha {{current.currentPrayer === 'isha' || current.currentPrayer === 'none'?'active':''}}">
+        <span class="upcoming-prayer {{current.nextPrayer === 'isha'?'active':''}}">Nadolazeci namaz</span>
+        <div class="prayer-name isha-caption">Jacija</div>
+        <div class="prayer-time isha-time">
+          {{prayertimes.isha}}
+        </div>
+      </div>
+
+      <ng-container *ngIf="current.currentPrayer === 'isha' || current.currentPrayer === 'none'">
+
+        <div class="qiyamul-lejl">Najbolji namaz nakon farz namaza je noćni namaz. (Muslim)</div>
+
+        <div class="card midnight">
+          <span class="upcoming-prayer">Nadolazeci namaz</span>
+          <div class="prayer-name midnight-caption">Polovina noći</div>
+          <div class="prayer-time midnight-time">
+            {{prayertimes.middleOfTheNight}}
+          </div>
+        </div>
+
+        <div class="card qiyam">
+          <span class="upcoming-prayer">Nadolazeci namaz</span>
+          <div class="prayer-name qiyam-caption">Zadnja trećina</div>
+          <div class="prayer-time qiyam-time">
+            {{prayertimes.lastThirdOfTheNight}}
+          </div>
+        </div>
+      </ng-container>
+
+    </div>
+  </main>
+</ion-content>

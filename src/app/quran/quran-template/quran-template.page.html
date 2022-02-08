@@ -1,0 +1,154 @@
+
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      <ng-container *ngIf="suraList">
+        {{currentSuraTitle}}
+      </ng-container>
+    </ion-title>
+    <ion-icon slot="end" name="search" (click)="showSearchHeader=!showSearchHeader"></ion-icon>
+    <div class="play-btn-wrapper" *ngIf="audio" slot="end">
+      <ng-container>
+        <ion-icon name="play" *ngIf="audio.paused" (click)="resumeAudio()"></ion-icon>
+        <ion-icon name="pause" *ngIf="!audio.paused" (click)="pauseAudio()"></ion-icon>
+      </ng-container>
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <!-- <app-loader *ngIf="quranService.showLoader"></app-loader> -->
+
+  <header *ngIf="showSearchHeader">
+    <div class="form-group dropdown-wrapper">
+      <ion-item>
+        <ion-label>Sura</ion-label>
+        <ion-select name="sura" class="form-control" *ngIf="suraList" #surah (ionChange)="onSuraChanged(surah.value)">
+          <ion-select-option value="{{sura.startpage}}" *ngFor="let sura of suraList; let i = index">{{i+1}}.
+            {{sura.tname}} - {{sura.name}}
+          </ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Dzuz</ion-label>
+        <ion-select class="ion-select form-control" name="juz" #juz (ionChange)="onSuraChanged(juz.value)">
+          <ion-select-option value="1">Juz 1</ion-select-option>
+          <ion-select-option value="22">Juz 2</ion-select-option>
+          <ion-select-option value="42">Juz 3</ion-select-option>
+          <ion-select-option value="62">Juz 4</ion-select-option>
+          <ion-select-option value="82">Juz 5</ion-select-option>
+          <ion-select-option value="102">Juz 6</ion-select-option>
+          <ion-select-option value="121">Juz 7</ion-select-option>
+          <ion-select-option value="142">Juz 8</ion-select-option>
+          <ion-select-option value="162">Juz 9</ion-select-option>
+          <ion-select-option value="182">Juz 10</ion-select-option>
+          <ion-select-option value="201">Juz 11</ion-select-option>
+          <ion-select-option value="222">Juz 12</ion-select-option>
+          <ion-select-option value="242">Juz 13</ion-select-option>
+          <ion-select-option value="262">Juz 14</ion-select-option>
+          <ion-select-option value="282">Juz 15</ion-select-option>
+          <ion-select-option value="302">Juz 16</ion-select-option>
+          <ion-select-option value="322">Juz 17</ion-select-option>
+          <ion-select-option value="342">Juz 18</ion-select-option>
+          <ion-select-option value="362">Juz 19</ion-select-option>
+          <ion-select-option value="382">Juz 20</ion-select-option>
+          <ion-select-option value="402">Juz 21</ion-select-option>
+          <ion-select-option value="422">Juz 22</ion-select-option>
+          <ion-select-option value="442">Juz 23</ion-select-option>
+          <ion-select-option value="462">Juz 24</ion-select-option>
+          <ion-select-option value="482">Juz 25</ion-select-option>
+          <ion-select-option value="502">Juz 26</ion-select-option>
+          <ion-select-option value="522">Juz 27</ion-select-option>
+          <ion-select-option value="542">Juz 28</ion-select-option>
+          <ion-select-option value="562">Juz 29</ion-select-option>
+          <ion-select-option value="582">Juz 30</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Ucac</ion-label>
+        <ion-select class="ion-select form-control" name="qari" #qari (ionChange)="onQariChanged(qari.value)">
+          <ion-select-option value="https://dl.salamquran.com/ayat/afasy-murattal-192/">Mishary Afasy
+          </ion-select-option>
+          <ion-select-option value="https://dl.salamquran.com/ayat/muhammad_jibreel-murattal-32/">Muhammad Jibreel
+          </ion-select-option>
+          <ion-select-option value="https://dl.salamquran.com/ayat/minshawi-murattal-32/">Minshawi</ion-select-option>
+          <ion-select-option value="https://dl.salamquran.com/ayat/minshawi-withchild-32/">Minshawi-with child
+          </ion-select-option>
+          <ion-select-option value="https://dl.salamquran.com/ayat/minshawi-mujawwad-32/">Minshawi-mujawwad
+          </ion-select-option>
+          <ion-select-option value="https://dl.salamquran.com/ayat/husary-murattal-32/">Husary</ion-select-option>
+          <ion-select-option value="https://dl.salamquran.com/ayat/husary-mujawwad-32/">Husary-mujawwad
+          </ion-select-option>
+          <ion-select-option value="https://dl.salamquran.com/ayat/husary-muallim-16/">Husary-muallim
+          </ion-select-option>
+          <ion-select-option value="https://dl.salamquran.com/ayat/abdulbasit-murattal-32/">Abdulbasit
+          </ion-select-option>
+          <ion-select-option value="https://dl.salamquran.com/ayat/rifai-murattal-32/">Rifai</ion-select-option>
+          <ion-select-option value="https://dl.salamquran.com/ayat/sahih_international.en.ibrahim_walk-translation-32/">
+            en.ibrahim_walk-translation</ion-select-option>
+          <ion-select-option value="https://dl.salamquran.com/ayat/saeediyan-murattal-16/">Saeediyan</ion-select-option>
+          <ion-select-option value="https://dl.salamquran.com/ayat/sabzali-murattal-32/">Sabzali</ion-select-option>
+          <ion-select-option value="https://dl.salamquran.com/ayat/parhizgar-murattal-48/">Parhizgar</ion-select-option>
+          <ion-select-option value="https://dl.salamquran.com/ayat/makarem.fa.kabiri-translation-16/">
+            makarem.fa.kabiri-translation</ion-select-option>
+          <ion-select-option value="https://dl.salamquran.com/ayat/khalafi-murattal-192/">Khalafi</ion-select-option>
+
+        </ion-select>
+      </ion-item>
+
+        <ion-item>
+          <ion-label position="floating">Upisite broj stranice</ion-label>
+          <ion-input #number (ionChange)="onSuraChanged(number.value)"></ion-input>
+        </ion-item>
+    </div>
+  </header>
+
+  <div class="main" *ngIf="quranService.words">
+      <div class="quran-wrapper">
+        <div>
+          <div dir="rtl" lang="ar" *ngFor="let item of quranService.words.result; let i = index">
+            <section class="suraTitle" *ngIf="!item.word && item.detail.ayas">
+              <img src="https://salamquran.com/static/images/quran/sura-header.svg" alt="Quran sura title">
+              <h3>{{setSuraTitle(item.detail.name + ' - '+ item.detail.tname)}}</h3>
+            </section>
+
+            <section class="bismillah"
+              *ngIf="item.detail.line_type === 'besmellah' && quranService.words.result[1].detail.page !== '187'">
+              <div id="{{item.detail.page}}">﷽</div>
+              <h4 class="ayeSimple">بسم الله الرحمن الرحیم</h4>
+            </section>
+
+            <div class="ayeLine" *ngIf="item.word">
+              <ng-container *ngFor="let word of item.word">
+
+                <i *ngIf="word.char_type !== 'end'"
+                class="{{word.class_name}} aya{{word.verse_key.replace(':', '-')}}"  id="w{{word.audio_key}}" [innerHtml]="word.code"
+                (click)="playWord(word.audio)"></i> <!--ngbPopover="{{word.translation}}" triggers="mouseenter:mouseleave"-->
+
+                <i *ngIf="word.char_type === 'end'" class="{{word.class_name}} aya{{word.verse_key.replace(':', '-')}}"
+                  id="w{{word.audio_key}}" [innerHtml]="word.code" (click)="playAyat(word, word.aya, word.verse_key.replace(':', '-'))"
+                  (mouseover)="manageClassesOfAyats(word.verse_key, 'mouseover')"
+                  (mouseleave)="manageClassesOfAyats(word.verse_key, 'mouseleave')"></i>
+
+              </ng-container>
+            </div>
+          </div>
+        </div>
+      </div>
+  </div>
+
+  <ion-toolbar class="swiper">
+    <ion-buttons slot="start">
+      <ion-icon name="arrow-back-outline" (click)="onSuraChanged(+quranService.currentPage + 1)"></ion-icon>
+    </ion-buttons>
+    <ion-text>
+      {{quranService.currentPage}}
+    </ion-text>
+    <ion-buttons slot="end">
+      <ion-icon name="arrow-forward-outline" (click)="onSuraChanged(+quranService.currentPage - 1)"></ion-icon>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-content>

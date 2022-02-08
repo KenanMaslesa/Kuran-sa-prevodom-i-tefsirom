@@ -1,0 +1,216 @@
+[
+  {
+    "bosnian": "Allahu, Ti si Gospodar moj, nema boga osim Tebe, stvorio si me i ja sam Tvoj rob, ja sam na tragu zavjeta Tebi datog, i obećanja Tvog u svojim granicama. Tebi se sklanjam pred zlom koje sam počinio, priznajem blagodati Tvoje prema meni, Tebi priznajem svoje grijehe. Stoga, oprosti mi, jer osim Tebe niko drugi grijehe ne oprašta. (Buharija)",
+    "arabic": "للَّهُمَّ أَنْتَ رَبِّى، لَا إِلَهَ إِلاَّ أَنْتَ، خَلَقْتَنِى وَأَنَا عَبْدُكَ، وَأَنَا عَلَى عَهْدِكَ وَوَعْدِكَ مَا اسْتَطَعْتُ، أَعُوذُ بِكَ مِنْ شَرِّ مَا صَنَعْتُ، أَبُوءُ لَكَ بِنِعْمَتِكَ عَلَىَّ، وَأَبُوءُ بِذَنْبِى، اغْفِرْ لِي؛ فَإِنَّهُ لَا يَغْفِرُ الذُّنُوبَ إِلاَّ أَنْتَ",
+    "transcription": "ALLĀHUMME ENTE RABBĪ LĀ ILĀHE ILLĀ ENTE HALEKTENĪ VE ENE ‘ABDUKE ( žene reći: VE ENE EMETUKE) VE ENE ‘ALĀ ‘AHDIKE VE VA‘DIKE MESTETA‘TU, E‘ŪZU BIKE MIN ŠERRI MĀ SANA‘TU EBŪ-U LEKE BI NI‘METIKE ‘ALEJJE, VE EBŪ-U BIZENBĪ FAGFIRLĪ FE INNEHU LĀ JAGFIRU-Z-ZUNŪBE ILLĀ ENTE.",
+    "audio": "assets/audio/sejjidul-istigfar.mp3",
+    "imam": "Buhari",
+    "sentences": [
+      {
+        "arabic": "للَّهُمَّ أَنْتَ رَبِّى",
+        "bosnian": "Allahu, Ti si Gospodar moj,",
+        "transcription": "ALLĀHUMME ENTE RABBĪ",
+        "startSecond": 0,
+        "endSecond": 2.5
+      },
+      {
+        "arabic": "لَا إِلَهَ إِلاَّ أَنْتَ",
+        "bosnian": "nema boga osim Tebe,",
+        "transcription": "LĀ ILĀHE ILLĀ ENTE",
+        "startSecond": 2.9,
+        "endSecond": 7.6
+      },
+      {
+        "arabic": "خَلَقْتَنِى وَأَنَا عَبْدُكَ",
+        "bosnian": "stvorio si me i ja sam Tvoj rob,",
+        "transcription": "HALEKTENĪ VE ENE ‘ABDUKE ( žene će reći: HALEKTENĪ VE ENE EMETUKE)",
+        "startSecond": 7.7,
+        "endSecond": 10.2
+      },
+      {
+        "arabic": "وَأَنَا عَلَى عَهْدِكَ وَوَعْدِكَ مَا اسْتَطَعْتُ",
+        "bosnian": "ja sam na tragu zavjeta Tebi datog, i obećanja Tvog u svojim granicama.",
+        "transcription": "VE ENE ‘ALĀ ‘AHDIKE VE VA‘DIKE MESTETA‘TU",
+        "startSecond": 10.4,
+        "endSecond": 15.1
+      },
+      {
+        "arabic": "أَعُوذُ بِكَ مِنْ شَرِّ مَا صَنَعْتُ",
+        "bosnian": "Tebi se sklanjam pred zlom koje sam počinio,",
+        "transcription": "E‘ŪZU BIKE MIN ŠERRI MĀ SANA‘TU",
+        "startSecond": 15.3,
+        "endSecond": 19.9
+      },
+      {
+        "arabic": "أَبُوءُ لَكَ بِنِعْمَتِكَ عَلَىَّ",
+        "bosnian": "priznajem blagodati Tvoje prema meni,",
+        "transcription": "EBŪ-U LEKE BI NI‘METIKE ‘ALEJJE,",
+        "startSecond": 20,
+        "endSecond": 24.8
+      },
+      {
+        "arabic": "وَأَبُوءُ بِذَنْبِى",
+        "bosnian": "Tebi priznajem svoje grijehe.",
+        "transcription": "VE EBŪ-U BIZENBĪ",
+        "startSecond": 24.9,
+        "endSecond": 30
+      },
+      {
+        "arabic": "اغْفِرْ لِي",
+        "bosnian": "Stoga, oprosti mi,",
+        "transcription": "FAGFIRLĪ",
+        "startSecond": 30.2,
+        "endSecond": 31.8
+      },
+      {
+        "arabic": "فَإِنَّهُ لَا يَغْفِرُ الذُّنُوبَ إِلاَّ أَنْتَ",
+        "bosnian": "jer osim Tebe niko drugi grijehe ne oprašta.",
+        "transcription": "FAGFIRLĪ FE INNEHU LĀ JAGFIRU-Z-ZUNŪBE ILLĀ ENTE.",
+        "startSecond": 31.85,
+        "endSecond": 38.5
+      }
+    ]
+  },
+  {
+    "bosnian": "Allahu, Poznavaoče skrivenog i pojavnog (svijeta), Sazdavatelju nebesa i Zemlje, Gospodaru svega i njegov Posjedovatelju: svjedočim da nema boga osim Tebe, Tebi se sklanjam pred zlom moje duše, i pred zlom šejtana i njegovog širka, te da me sačuvaš od činjenja zla prema sebi ili bilo kom muslimanu.",
+    "arabic": "اللهم عالم الغيب والشهادة فاطر السموات والأرض ، رب كل شئ ومليكه ، أشهد أن لا إله إلا أنت ، أعوذ بك من شر نفسي ، ومن شر الشيطان وشركه ، وأن أقترف على نفسي سوءاً ، أو أجره إلى مسلم",
+    "transcription": "ALLĀHUMME ‘ĀLIME-L-GAJBI VE-Š-ŠEHĀDETI, FĀTIRE-S-SEMĀVATI VE-L-ERDI, RABBI KULLI ŠEJ-IN VE MELĪKEHU: EŠHEDU EN LĀ ILĀHE ILLĀ ENTE, E‘ŪZU BIKE MIN ŠERRI NEFSĪ VE MIN ŠERRI-Š-ŠEJTĀNI VE ŠIRKIHI, VE EN AKTERIFE ‘ALĀ NEFSĪ SŪ-EN EV EDŽURREHU ILĀ MUSLIMIN.",
+    "audio": "assets/audio/alimel-gajbi.mp3",
+    "sentences": [
+      {
+        "bosnian": "Allahu, Poznavaoče skrivenog i pojavnog (svijeta),",
+        "arabic": "اللَّهُمَّ عَالِمَ الغَيْبِ والشَّهَادَةِ",
+        "transcription": "ALLĀHUMME ‘ĀLIME-L-GAJBI VE-Š-ŠEHĀDETI,",
+        "startSecond": 0,
+        "endSecond": 4
+      },
+      {
+        "bosnian": "Sazdavatelju nebesa i Zemlje,",
+        "arabic": "فَاطِرَ السَّموَاتِ والأرْضِ",
+        "transcription": "FĀTIRE-S-SEMĀVATI VE-L-ERDI,",
+        "startSecond": 4.5,
+        "endSecond": 7.8
+      },
+      {
+        "bosnian": "Gospodaru svega i njegov Posjedovatelju:",
+        "arabic": "رَبَّ كُلِّ شَيءٍ ومَلِيْكَهُ",
+        "transcription": "RABBI KULLI ŠEJ-IN VE MELĪKEH",
+        "startSecond": 7.9,
+        "endSecond": 11.8
+      },
+      {
+        "bosnian": "svjedočim da nema boga osim Tebe,",
+        "arabic": "أشْهَدُ أنْ لا إلَهَ إلاَّ أنْتَ",
+        "transcription": "EŠHEDU EN LĀ ILĀHE ILLĀ ENTE",
+        "startSecond": 11.8,
+        "endSecond": 17.5
+      },
+      {
+        "bosnian": "Tebi se sklanjam pred zlom moje duše,",
+        "arabic": "أعُوذُ بِكَ مِنْ شَرِّ نَفْسِي",
+        "transcription": "E‘ŪZU BIKE MIN ŠERRI NEFSĪ",
+        "startSecond": 17.6,
+        "endSecond": 20.8
+      },
+      {
+        "bosnian": "i pred zlom šejtana i njegovog širka,",
+        "arabic": "وَمِنْ شَرِّ الشَّيْطَانِ وَشِرْكِهِ",
+        "transcription": "VE MIN ŠERRI-Š-ŠEJTĀNI VE ŠIRKIHI,",
+        "startSecond": 21,
+        "endSecond": 24.8
+      },
+      {
+        "bosnian": "te da me sačuvaš od činjenja zla prema sebi ili bilo kom muslimanu.",
+        "arabic": "وأنْ أقْتَرِفَ عَلَى نَفْسِي سُوءاً، أوْ أجُرَّهُ إلَى مُسْلِمٍ",
+        "transcription": "VE EN AKTERIFE ‘ALĀ NEFSĪ SŪ-EN EV EDŽURREHU ILĀ MUSLIMIN.",
+        "startSecond": 24.9,
+        "endSecond": 33
+      }
+    ]
+  },
+  {
+    "bosnian": "Allahu, molim Te za oprost i zaštitu Tvoju na dunjaluku i na ahiretu. Allahu, molim Te za oprost i zaštitu Tvoju u vjeri, na dunjaluku, u porodici i mojoj imovini. Allahu, zakloni moja sramna djela, a umiri moju bojazan. Allahu, sačuvaj me sa moje prednje strane, te od svega što me može zadesiti sa leđa, zdesne ili lijeve strane i odozgo. Prizivam Tvoju Veličinu da ne budem ščepan odozdo.",
+    "arabic": "اللهُمَّ إِنِّي أَسْأَلُكَ الْعَفْوَ وَالْعَافِيَةَ فِي الدُّنْيَا وَالْآخِرَةِ، اللهُمَّ إِنِّي أَسْأَلُكَ الْعَفْوَ وَالْعَافِيَةَ فِي دِينِي وَدُنْيَايَ وَأَهْلِي وَمَالِي، اللهُمَّ اسْتُرْ عَوْرَاتِي، وَآمِنْ رَوْعَاتِي، اللهُمَّ احْفَظْنِي مِنْ بَيْنِ يَدَيَّ، وَمِنْ خَلْفِي، وَعَنْ يَمِينِي، وَعَنْ شِمَالِي، وَمِنْ فَوْقِي، وَأَعُوذُ بِعَظَمَتِكَ أَنْ أُغْتَالَ مِنْ تَحْتِي",
+    "transcription": "ALLĀHUMME INNĪ ES ELUKE-L-‘AFVE VE-L-‘ĀFIJETE FI-D-DUNJĀ VE-L-ĀHIRETI. ALLĀHUMME INNĪ ES‘ELUKE-L-‘AFVE VE-L-‘ĀFIJETE FĪ DĪNĪ VE DUNJĀJE VE EHLĪ VE MĀLĪ. ALLĀHUMME- STUR ‘AVRĀTĪ VE ĀMIN REV‘ĀTĪ. ALLĀHUMME-HFAZNĪ MIN BEJNI JEDEJJE VE MIN HALFĪ VE ‘AN JEMĪNĪ VE ‘AN ŠIMĀLĪ VE MINFEVKĪ VE E‘ŪZU BI‘AZAMETIKE EN UGTĀLE MIN TAHTĪ.",
+    "audio": "assets/audio/afve.mp3",
+    "sentences": [
+      {
+        "bosnian": "Allahu, molim Te za oprost i zaštitu Tvoju",
+        "arabic": "اللهُمَّ إِنِّي أَسْأَلُكَ الْعَفْوَ وَالْعَافِيَةَ",
+        "transcription": "ALLĀHUMME INNĪ ES ELUKE-L-‘AFVE VE-L-‘ĀFIJEH",
+        "startSecond": 0,
+        "endSecond": 5
+      },
+      {
+        "bosnian": "na dunjaluku i na ahiretu.",
+        "arabic": "فِي الدُّنْيَا وَالْآخِرَةِ",
+        "transcription": "FI-D-DUNJĀ VE-L-ĀHIREH.",
+        "startSecond": 5.1,
+        "endSecond": 7.8
+      },
+      {
+        "bosnian": "Allahu, molim Te za oprost i zaštitu Tvoju",
+        "arabic": "اللهُمَّ إِنِّي أَسْأَلُكَ الْعَفْوَ وَالْعَافِيَةَ",
+        "transcription": "ALLĀHUMME INNĪ ES‘ELUKE-L-‘AFVE VE-L-‘ĀFIJEH",
+        "startSecond": 8.1,
+        "endSecond": 13
+      },
+      {
+        "bosnian": "u vjeri, na dunjaluku,",
+        "arabic": "فِي دِينِي وَدُنْيَايَ",
+        "transcription": "FĪ DĪNĪ VE DUNJĀJE",
+        "startSecond": 14,
+        "endSecond": 17.3
+      },
+      {
+        "bosnian": "u porodici i mojoj imovini.",
+        "arabic": "وَأَهْلِي وَمَالِي",
+        "transcription": "VE EHLĪ VE MĀLĪ.",
+        "startSecond": 17.4,
+        "endSecond": 20.2
+      },
+      {
+        "bosnian": "Allahu, zakloni moja sramna djela,",
+        "arabic": "اللهُمَّ اسْتُرْ عَوْرَاتِي",
+        "transcription": "ALLĀHUMME- STUR ‘AVRĀTĪ",
+        "startSecond": 20.3,
+        "endSecond": 23.3
+      },
+      {
+        "bosnian": "a umiri moju bojazan.",
+        "arabic": "وَآمِنْ رَوْعَاتِي",
+        "transcription": "VE ĀMIN REV‘ĀTĪ.",
+        "startSecond": 24,
+        "endSecond": 26.8
+      },
+      {
+        "bosnian": "Allahu, sačuvaj me sa moje prednje strane, te od svega što me može zadesiti sa leđa,",
+        "arabic": "اللهُمَّ احْفَظْنِي مِنْ بَيْنِ يَدَيَّ، وَمِنْ خَلْفِي",
+        "transcription": "ALLĀHUMME-HFAZNĪ MIN BEJNI JEDEJJE VE MIN HALFĪ",
+        "startSecond": 27,
+        "endSecond": 32.5
+      },
+      {
+        "bosnian": "zdesne ili lijeve strane",
+        "arabic": "وَعَنْ يَمِينِي، وَعَنْ شِمَالِي",
+        "transcription": "VE ‘AN JEMĪNĪ VE ‘AN ŠIMĀLĪ",
+        "startSecond": 32.6,
+        "endSecond": 36.2
+      },
+      {
+        "bosnian": "i odozgo.",
+        "arabic": "وَمِنْ فَوْقِي",
+        "transcription": "VE MINFEVKĪ",
+        "startSecond": 36.3,
+        "endSecond": 37.5
+      },
+      {
+        "bosnian": "Prizivam Tvoju Veličinu da ne budem ščepan odozdo.",
+        "arabic": "وَأَعُوذُ بِعَظَمَتِكَ أَنْ أُغْتَالَ مِنْ تَحْتِي",
+        "transcription": "VE E‘ŪZU BI‘AZAMETIKE EN UGTĀLE MIN TAHTĪ.",
+        "startSecond": 38,
+        "endSecond": 43
+      }
+    ]
+  }
+]

@@ -1,0 +1,99 @@
+ion-slides {
+  background-image: url('/assets/img/background.jpeg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding-bottom: 100px;
+  min-height: 85%;
+
+  &::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      background: rgba(255,255,255,.92);
+  }
+
+  ion-slide {
+      display: block;
+
+      audio {
+          display: none;
+      }
+
+      ion-icon {
+          font-size: 35px;
+      }
+
+      .card {
+          padding: 10px;
+
+          &:not(.card__arabic){
+              border-top: 1px solid gainsboro;
+          }
+
+          &__arabic {
+              font-size: 25px;
+              direction: rtl;
+              margin-left: 10px;
+          }
+
+          &--active {
+              color: var(--ion-color-primary);
+          }
+
+          p {
+              margin-bottom: 0;
+              margin-top: 5px;
+              cursor: pointer;
+              display: inline;
+              margin-right: 5px;
+              transition: all 0.3s;
+
+              &:hover {
+                color: var(--ion-color-primary);
+              }
+          }
+      }
+  }
+
+}
+
+.toggles {
+  padding: 0;
+
+  ion-toggle {
+      padding-left: 0;
+      margin-right: 15px;
+  }
+
+  ion-label {
+      text-align: center;
+  }
+}
+
+ion-toolbar {
+  &.swiper{
+      position: fixed;
+      bottom: 0;
+
+      ion-buttons {
+          ion-icon {
+              font-size: 25px;
+              padding: 0 30px;
+          }
+      }
+      ion-text {
+          position: absolute;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          font-size: 20px;
+          font-weight: bold;
+      }
+  }
+}
+
+.icons {
+  padding-top: 10px;
+}

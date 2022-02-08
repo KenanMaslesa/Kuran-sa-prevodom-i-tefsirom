@@ -1,0 +1,22 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Qibla</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-menu-button color="white"></ion-menu-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div id="container">
+    <img src="assets/img/compass.png" width="200em" [ngStyle]="{'transform': 'rotate('+(qiblaLocation*-1)+'deg)'}">
+    <div *ngIf="locationData && currentLocation">
+      <p>{{locationData.countryName}}</p>
+      <p>{{locationData.subAdministrativeArea}}</p>
+      <p>{{locationData.locality}}</p>
+    </div>
+  </div>
+</ion-content>
