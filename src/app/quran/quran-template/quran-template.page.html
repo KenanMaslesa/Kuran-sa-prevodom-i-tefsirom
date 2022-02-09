@@ -104,8 +104,8 @@
   </header>
   <div class="main">
     <ion-slides #slides pager="false"
-      (ionSlideNextStart)="onSuraChanged(+quranService.currentPage + 1)"
-      (ionSlidePrevStart)="onSuraChanged(+quranService.currentPage - 1)" (ionSlideReachStart)="start()">
+      (ionSlideNextEnd)="onSuraChanged(+quranService.currentPage + 1)"
+      (ionSlidePrevEnd)="onSuraChanged(+quranService.currentPage - 1)" (ionSlideReachStart)="start()">
       <ng-container *ngIf="quranService.words">
         <ion-slide dir="rtl" lang="ar" *ngFor="let o of fakeSlidesArray">
           <ng-container *ngFor="let item of quranService.words.result; let i = index">
@@ -140,7 +140,19 @@
             {{quranService.currentPage}}
           </ion-text>
         </ion-slide>
+
       </ng-container>
     </ion-slides>
+    <!-- <ion-toolbar class="swiper" color="primary">
+      <ion-buttons slot="start">
+        <ion-icon name="arrow-back-outline" (click)="onSuraChanged(+quranService.currentPage + 1)"></ion-icon>
+      </ion-buttons>
+      <ion-text>
+        {{quranService.currentPage}}
+      </ion-text>
+      <ion-buttons slot="end">
+        <ion-icon name="arrow-forward-outline" (click)="onSuraChanged(+quranService.currentPage - 1)"></ion-icon>
+      </ion-buttons>
+    </ion-toolbar> -->
   </div>
 </ion-content>
