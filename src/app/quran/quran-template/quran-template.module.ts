@@ -7,13 +7,15 @@ import { IonicModule } from '@ionic/angular';
 import { QuranTemplatePageRoutingModule } from './quran-template-routing.module';
 
 import { QuranTemplatePage } from './quran-template.page';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    QuranTemplatePageRoutingModule
+    QuranTemplatePageRoutingModule,
+    SharedModule
   ],
   declarations: [QuranTemplatePage]
 })

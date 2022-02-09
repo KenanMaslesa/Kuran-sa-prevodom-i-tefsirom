@@ -1,4 +1,3 @@
-
 <ion-header>
   <ion-toolbar color="primary">
     <ion-title>
@@ -17,9 +16,7 @@
 </ion-header>
 
 <ion-content>
-
-  <!-- <app-loader *ngIf="quranService.showLoader"></app-loader> -->
-
+  <app-loader *ngIf="quranService.showLoader"></app-loader>
   <header *ngIf="showSearchHeader">
     <div class="form-group dropdown-wrapper">
       <ion-item>
@@ -99,17 +96,19 @@
         </ion-select>
       </ion-item>
 
-        <ion-item>
-          <ion-label position="floating">Upisite broj stranice</ion-label>
-          <ion-input #number (ionChange)="onSuraChanged(number.value)"></ion-input>
-        </ion-item>
+      <ion-item>
+        <ion-label position="floating">Upisite broj stranice</ion-label>
+        <ion-input #number (ionChange)="onSuraChanged(number.value)"></ion-input>
+      </ion-item>
     </div>
   </header>
-
-  <div class="main" *ngIf="quranService.words">
-      <div class="quran-wrapper">
-        <div>
-          <div dir="rtl" lang="ar" *ngFor="let item of quranService.words.result; let i = index">
+  <div class="main">
+    <ion-slides #slides pager="false"
+      (ionSlideNextStart)="onSuraChanged(+quranService.currentPage + 1)"
+      (ionSlidePrevStart)="onSuraChanged(+quranService.currentPage - 1)" (ionSlideReachStart)="start()">
+      <ng-container *ngIf="quranService.words">
+        <ion-slide dir="rtl" lang="ar" *ngFor="let o of fakeSlidesArray">
+          <ng-container *ngFor="let item of quranService.words.result; let i = index">
             <section class="suraTitle" *ngIf="!item.word && item.detail.ayas">
               <img src="https://salamquran.com/static/images/quran/sura-header.svg" alt="Quran sura title">
               <h3>{{setSuraTitle(item.detail.name + ' - '+ item.detail.tname)}}</h3>
@@ -124,31 +123,24 @@
             <div class="ayeLine" *ngIf="item.word">
               <ng-container *ngFor="let word of item.word">
 
-                <i *ngIf="word.char_type !== 'end'"
-                class="{{word.class_name}} aya{{word.verse_key.replace(':', '-')}}"  id="w{{word.audio_key}}" [innerHtml]="word.code"
-                (click)="playWord(word.audio)"></i> <!--ngbPopover="{{word.translation}}" triggers="mouseenter:mouseleave"-->
+                <i *ngIf="word.char_type !== 'end'" class="{{word.class_name}} aya{{word.verse_key.replace(':', '-')}}"
+                  id="w{{word.audio_key}}" [innerHtml]="word.code" (click)="playWord(word.audio)"></i>
+                <!--ngbPopover="{{word.translation}}" triggers="mouseenter:mouseleave"-->
 
                 <i *ngIf="word.char_type === 'end'" class="{{word.class_name}} aya{{word.verse_key.replace(':', '-')}}"
-                  id="w{{word.audio_key}}" [innerHtml]="word.code" (click)="playAyat(word, word.aya, word.verse_key.replace(':', '-'))"
+                  id="w{{word.audio_key}}" [innerHtml]="word.code"
+                  (click)="playAyat(word, word.aya, word.verse_key.replace(':', '-'))"
                   (mouseover)="manageClassesOfAyats(word.verse_key, 'mouseover')"
                   (mouseleave)="manageClassesOfAyats(word.verse_key, 'mouseleave')"></i>
 
               </ng-container>
             </div>
-          </div>
-        </div>
-      </div>
+          </ng-container>
+          <ion-text>
+            {{quranService.currentPage}}
+          </ion-text>
+        </ion-slide>
+      </ng-container>
+    </ion-slides>
   </div>
-
-  <ion-toolbar class="swiper" color="primary">
-    <ion-buttons slot="start">
-      <ion-icon name="arrow-back-outline" (click)="onSuraChanged(+quranService.currentPage + 1)"></ion-icon>
-    </ion-buttons>
-    <ion-text>
-      {{quranService.currentPage}}
-    </ion-text>
-    <ion-buttons slot="end">
-      <ion-icon name="arrow-forward-outline" (click)="onSuraChanged(+quranService.currentPage - 1)"></ion-icon>
-    </ion-buttons>
-  </ion-toolbar>
 </ion-content>

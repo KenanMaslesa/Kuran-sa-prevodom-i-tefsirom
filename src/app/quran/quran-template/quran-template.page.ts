@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { IonSlides } from '@ionic/angular';
 import { QuranService } from '../quran.service';
 
 @Component({
@@ -8,6 +9,7 @@ import { QuranService } from '../quran.service';
   styleUrls: ['./quran-template.page.scss'],
 })
 export class QuranTemplatePage implements OnInit {
+  @ViewChild('slides', {static: true}) slides: IonSlides;
   indexOfAyahInQuran;
   sura;
   chapters;
@@ -23,12 +25,23 @@ export class QuranTemplatePage implements OnInit {
   suraList;
   showSearchHeader = false;
   currentSuraTitle = 'eeee';
+  fakeSlidesArray = [];
   constructor(public quranService: QuranService, private route: ActivatedRoute) {}
 
   ngOnInit(): void {
     this.quranService.currentPage = +this.route.snapshot.paramMap.get('page');
     this.quranService.getSuraWordsByPage(this.quranService.currentPage);
     this.getSuraList();
+
+    for(let i = 1; i<= 10; i++) {
+      this.fakeSlidesArray.push(i);
+    }
+  }
+
+  ionViewDidEnter() {
+    if(this.quranService.currentPage !== 1) {
+        this.slideTo(9);
+    }
   }
 
   cacheAllQuranPages() {
@@ -44,6 +57,28 @@ export class QuranTemplatePage implements OnInit {
   }
 
   onSuraChanged(pageNumber) {
+    if(pageNumber === 1) {
+      this.slides.lockSwipeToPrev(true);
+    }
+    else {
+      this.slides.lockSwipeToPrev(false);
+    }
+
+    if(pageNumber === 604){
+      this.slides.lockSwipeToNext(true);
+    }
+    else {
+      this.slides.lockSwipeToNext(false);
+    }
+
+    this.slides.getActiveIndex().then((index: number) => {
+      this.slides.length().then((length: number)=>{
+        if(index === length - 1){
+          this.fakeSlidesArray.push(1);
+        }
+      });
+    });
+
     this.quranService.currentPage = pageNumber;
     localStorage.setItem('currentPage', pageNumber);
     this.quranService.getSuraWordsByPage(pageNumber);
@@ -157,6 +192,18 @@ export class QuranTemplatePage implements OnInit {
           this.currentSuraTitle = `${index+1}. ${sura.name} - ${sura.tname} (${sura.startpage}-${sura.endpage})`;
         }
       });
+    }
+  }
+
+  slideTo(slideNumber) {
+    this.slides.slideTo(slideNumber);
+  }
+
+  start(){
+    this.quranService.words = [];
+    this.onSuraChanged(this.quranService.currentPage-1);
+    if(this.quranService.currentPage !== 1){
+      this.slideTo(8);
     }
   }
 }
