@@ -10,14 +10,14 @@ export class QuranResponseData {
 export class QuranService {
   words: any;
   showLoader = false;
-  currentPage: any;
+  currentPage: number;
   qari = 'https://dl.salamquran.com/ayat/afasy-murattal-192/';
   quranAPI = 'https://salamquran.com/en/api/v6'; //https://salamquran.com/api/v6/doc
 
   constructor(private http: HttpClient, private apiService: ApiService) {
     const page = localStorage.getItem('currentPage');
     if (page != null) {
-      this.currentPage = page;
+      this.currentPage = +page;
     } else {
       localStorage.setItem('currentPage', JSON.stringify(1));
       this.currentPage = 1;
@@ -59,5 +59,9 @@ export class QuranService {
 
   cacheAllQuranPages(page) {
     this.apiService.getData(`${this.quranAPI}/page/wbw?index=${page}`).subscribe();
+  }
+
+  getNumberOfLettersAndWordsPerPage() {
+    return this.apiService.getData(`assets/db/quran/lettersPerPage.json`);
   }
 }
