@@ -1,6 +1,6 @@
 
 <ion-header>
-  <ion-toolbar>
+  <ion-toolbar color="primary">
     <ion-title>
       <ng-container *ngIf="suraList">
         {{currentSuraTitle}}
@@ -140,7 +140,7 @@
       </div>
   </div>
 
-  <ion-toolbar class="swiper">
+  <ion-toolbar class="swiper" color="primary">
     <ion-buttons slot="start">
       <ion-icon name="arrow-back-outline" (click)="onSuraChanged(+quranService.currentPage + 1)"></ion-icon>
     </ion-buttons>
