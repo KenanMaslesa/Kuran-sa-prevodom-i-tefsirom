@@ -3,8 +3,7 @@
   justify-content: center;
   align-items: center;
   text-align: center;
-  height: 110%;
-  padding-bottom: 60px;
+  height: 100%;
 }
 
 .play-btn-wrapper{
@@ -55,10 +54,7 @@ i{
 
 .bismillah{
   font-family: bismillah;
-  font-size: 60px;
-  line-height: 50px;
-  padding: 5px 0;
-  height: 60px;
+  height: 35px;
   text-align: center;
   color: #333;
   overflow: hidden;
@@ -7623,6 +7619,7 @@ html[lang="ar"] #soreha .c7 span {
   overflow: hidden;
   //background-color: #f7f7f7;
   padding: 10px;
+  margin-top: 25px;
 
   &.number{
     width: 315px;
@@ -8057,6 +8054,14 @@ html[lang="ar"] #soreha .c7 span {
   //background-color: #f7f7f7;
   color: #000;
   min-height: 60px;
+
+  &:last-of-type() {
+    margin-bottom: 5px;
+  }
+
+  &:first-of-type {
+    margin-top: 10px;
+  }
 
   @media(max-width: 768px){
     min-height: 40px;
