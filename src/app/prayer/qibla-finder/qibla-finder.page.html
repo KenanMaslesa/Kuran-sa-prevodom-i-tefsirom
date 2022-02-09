@@ -11,12 +11,17 @@
 </ion-header>
 
 <ion-content>
-  <div id="container">
-    <img src="assets/img/compass.png" width="200em" [ngStyle]="{'transform': 'rotate('+(qiblaLocation*-1)+'deg)'}">
-    <div *ngIf="locationData && currentLocation">
-      <p>{{locationData.countryName}}</p>
-      <p>{{locationData.subAdministrativeArea}}</p>
-      <p>{{locationData.locality}}</p>
+  <main id="main" class="{{data.trueHeading >= qiblaDirectionInDegreesFromNorth-5 && data.trueHeading <= qiblaDirectionInDegreesFromNorth+5?'active':''}}">
+    <div id="container">
+      <img src="assets/img/compass.png" width="200em" [ngStyle]="{'transform': 'rotate('+(qiblaLocation*-1)+'deg)'}">
+      <p>{{qiblaDirectionInDegreesFromNorth}}°</p>
+      <p>{{(!!data ? data.trueHeading : 0)}}°</p>
+
+      <div *ngIf="locationData && currentLocation">
+        <p>{{locationData.countryName}}</p>
+        <p>{{locationData.subAdministrativeArea}}</p>
+        <p>{{locationData.locality}}</p>
+      </div>
     </div>
-  </div>
+  </main>
 </ion-content>

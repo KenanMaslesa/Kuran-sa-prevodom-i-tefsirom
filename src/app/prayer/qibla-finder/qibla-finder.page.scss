@@ -27,3 +27,10 @@
 ion-content ion-toolbar {
   --background: translucent;
 }
+#main {
+  height: 100%;
+
+  &.active {
+    background-color: lime;
+  }
+}
