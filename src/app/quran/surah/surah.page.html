@@ -12,8 +12,8 @@
     <ion-label>Type</ion-label>
     <ion-select #type (ionChange)="searchByType(type.value)">
       <ion-select-option value="all">Sve</ion-select-option>
-      <ion-select-option value="medinan">Medinske</ion-select-option>
-      <ion-select-option value="meccan">Mekkanske</ion-select-option>
+      <ion-select-option value="Medinan">Medinske</ion-select-option>
+      <ion-select-option value="Meccan">Mekkanske</ion-select-option>
     </ion-select>
   </ion-item>
 
@@ -34,11 +34,11 @@
   <p style="text-align: center;">Ukupno: {{searchSuraList.length}} sura</p>
   <ion-card *ngFor="let sura of searchSuraList; let i = index" [routerLink]="['/quran/tabs/quran-template', sura.startpage]">
     <ion-card-header>
-      <ion-card-title>{{sura.tname}} - {{sura.name}}</ion-card-title>
+      <ion-card-title>{{sura.index}}. {{sura.name}} - {{sura.tname}} - {{sura.ename}}</ion-card-title>
     </ion-card-header>
 
     <ion-card-content>
-      <strong>{{sura.endpage - sura.startpage}} stranica</strong>
+      <strong>~{{(sura.endpage - sura.startpage) + 1}} stranica</strong>
       <p>Start page: {{sura.startpage}}</p>
       <p>End page: {{sura.endpage}}</p>
       <p>Ajeta: {{sura.ayas}}</p>

@@ -1,6 +1,5 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { map } from 'rxjs/operators';
 import { ApiService } from '../shared/api.service';
 export class QuranResponseData {
   result: any;
@@ -25,12 +24,6 @@ export class QuranService {
     }
   }
 
-  getAyat(sura, ayat) {
-    return this.http
-      .get(`${this.quranAPI}/sura?index=${sura}&start=${ayat}&limit=1`)
-      .pipe();
-  }
-
   getSura(sura) {
     return this.http.get(`${this.quranAPI}/v6/sura?index=${sura}`).pipe();
   }
@@ -50,16 +43,7 @@ export class QuranService {
   }
 
   getListOfSura() {
-    return this.apiService.getData(`${this.quranAPI}/sura/list`).pipe(
-      map((responseData: QuranResponseData) => {
-        const suraArray = [];
-        // eslint-disable-next-line guard-for-in
-        for (const key in responseData.result) {
-          suraArray.push({ ...responseData.result[key] });
-        }
-        return suraArray;
-      })
-    );
+    return this.apiService.getData(`assets/db/quran/surahs.json`);
   }
 
   getAyah(pageNumber) {
