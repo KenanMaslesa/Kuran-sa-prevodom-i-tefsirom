@@ -39,9 +39,7 @@ export class QuranTemplatePage implements OnInit {
   }
 
   ionViewDidEnter() {
-    if(this.quranService.currentPage !== 1) {
-        this.slideTo(2);
-    }
+    this.slideTo(1);
   }
 
   cacheAllQuranPages() {

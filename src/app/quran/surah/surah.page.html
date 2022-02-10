@@ -1,54 +1,72 @@
 <ion-header>
   <ion-toolbar color="primary">
     <ion-title>Sure</ion-title>
-     <ion-buttons slot="start">
-    <ion-back-button defaultHref="/"></ion-back-button>
-  </ion-buttons>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-icon name="search-outline" *ngIf="!showSearchHeader" (click)="showSearchHeader=true"></ion-icon>
+      <ion-icon name="close-outline" *ngIf="showSearchHeader" (click)="showSearchHeader=false"></ion-icon>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
-<ion-content *ngIf="searchSuraList">
-  <ion-item>
-    <ion-label>Type</ion-label>
-    <ion-select #type (ionChange)="searchByType(type.value)">
-      <ion-select-option value="all">Sve</ion-select-option>
-      <ion-select-option value="Medinan">Medinske</ion-select-option>
-      <ion-select-option value="Meccan">Mekkanske</ion-select-option>
-    </ion-select>
-  </ion-item>
+<ion-content *ngIf="suraList">
+  <header *ngIf="showSearchHeader">
+    <ion-list>
+      <ion-item color="primary">
+        <ion-label>Type</ion-label>
+        <ion-select #type (ionChange)="searchByType(type.value)">
+          <ion-select-option value="all">Sve</ion-select-option>
+          <ion-select-option value="Medinan">Medinske</ion-select-option>
+          <ion-select-option value="Meccan">Mekkanske</ion-select-option>
+        </ion-select>
+      </ion-item>
 
-  <ion-item>
-    <ion-label>Sortiranje</ion-label>
-    <ion-select #sort (ionChange)="sortSuraListByOrder(sort.value)">
-      <ion-select-option value="normal">Normal</ion-select-option>
-      <ion-select-option value="asc">Od prve objavljanje</ion-select-option>
-      <ion-select-option value="desc">Od zadnje objavljene</ion-select-option>
-    </ion-select>
-  </ion-item>
+      <ion-item color="primary">
+        <ion-label>Sortiranje</ion-label>
+        <ion-select #sort (ionChange)="sortSuraListByOrder(sort.value)">
+          <ion-select-option value="normal">Normal</ion-select-option>
+          <ion-select-option value="asc">Od prve objavljanje</ion-select-option>
+          <ion-select-option value="desc">Od zadnje objavljene</ion-select-option>
+        </ion-select>
+      </ion-item>
 
-  <ion-item>
-    <ion-label position="floating">Pretrazite</ion-label>
-    <ion-input #search (ionChange)="searchByTerm(search.value)"></ion-input>
-  </ion-item>
+      <ion-item color="primary">
+        <ion-label position="floating">Pretrazite</ion-label>
+        <ion-input #search (ionChange)="searchByTerm(search.value)"></ion-input>
+      </ion-item>
+    </ion-list>
+  </header>
 
-  <p style="text-align: center;">Ukupno: {{searchSuraList.length}} sura</p>
-  <ion-card *ngFor="let sura of searchSuraList; let i = index" [routerLink]="['/quran/tabs/quran-template', sura.startpage]">
-    <ion-card-header>
-      <ion-card-title>{{sura.index}}. {{sura.name}} - {{sura.tname}} - {{sura.ename}}</ion-card-title>
-    </ion-card-header>
 
-    <ion-card-content>
-      <strong>~{{(sura.endpage - sura.startpage) + 1}} stranica</strong>
-      <p>Start page: {{sura.startpage}}</p>
-      <p>End page: {{sura.endpage}}</p>
-      <p>Ajeta: {{sura.ayas}}</p>
-      <p>Order: {{sura.order}}</p>
-      <p>Start juz: {{sura.startjuz}}</p>
-      <p>End juz: {{sura.endjuz}}</p>
-      <p>Ima rijeci: {{sura.word}}</p>
-      <p>Ima slova: {{sura.theletter}}</p>
-      <p>Objavljena u: {{sura.type}}</p>
-      <p>Redni broj prvog ajeta sure: {{sura.start}}</p>
-    </ion-card-content>
-  </ion-card>
+  <ion-list>
+    <p style="text-align: center;">Ukupno: {{isSearchOn?searchSuraList.length:suraList.length}} sura</p>
+
+    <ion-card *ngFor="let sura of suraListLazyLoaded; let i = index"
+      [routerLink]="['/quran/tabs/quran-template', sura.startpage]">
+      <ion-card-header>
+        <ion-card-title>{{sura.index}}. {{sura.name}} - {{sura.tname}} - {{sura.ename}}</ion-card-title>
+      </ion-card-header>
+
+      <ion-card-content>
+        <strong>~{{(sura.endpage - sura.startpage) + 1}} stranica</strong>
+        <!-- <p>Start page: {{sura.startpage}}</p>
+        <p>End page: {{sura.endpage}}</p>
+        <p>Ajeta: {{sura.ayas}}</p>
+        <p>Order: {{sura.order}}</p>
+        <p>Start juz: {{sura.startjuz}}</p>
+        <p>End juz: {{sura.endjuz}}</p>
+        <p>Ima rijeci: {{sura.word}}</p>
+        <p>Ima slova: {{sura.theletter}}</p>
+        <p>Objavljena u: {{sura.type}}</p>
+        <p>Redni broj prvog ajeta sure: {{sura.start}}</p> -->
+      </ion-card-content>
+    </ion-card>
+  </ion-list>
+
+  <ion-infinite-scroll threshold="100px" (ionInfinite)="loadData($event)">
+    <span style="text-align: center;">Nema vise sura</span>
+  </ion-infinite-scroll>
+  <ion-button (click)="ionContentScrollToTop()">Vrati me na pocetak</ion-button>
 </ion-content>
