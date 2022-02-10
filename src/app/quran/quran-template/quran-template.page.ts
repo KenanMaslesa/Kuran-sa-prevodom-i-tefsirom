@@ -29,7 +29,10 @@ export class QuranTemplatePage implements OnInit {
   constructor(public quranService: QuranService, private route: ActivatedRoute) {}
 
   ngOnInit(): void {
-    this.quranService.currentPage = +this.route.snapshot.paramMap.get('page');
+    const pageFromParams = +this.route.snapshot.paramMap.get('page');
+    if(pageFromParams !== 0) {
+      this.quranService.currentPage = pageFromParams;
+    }
     this.quranService.getSuraWordsByPage(this.quranService.currentPage);
     this.getSuraList();
 
@@ -55,6 +58,7 @@ export class QuranTemplatePage implements OnInit {
   }
 
   onSuraChanged(pageNumber) {
+    pageNumber--;
     if(pageNumber === 1) {
       this.slides.lockSwipeToPrev(true);
     }

@@ -5,6 +5,9 @@
         {{currentSuraTitle}}
       </ng-container>
     </ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
     <ion-icon slot="end" name="search" (click)="showSearchHeader=!showSearchHeader"></ion-icon>
     <div class="play-btn-wrapper" *ngIf="audio" slot="end">
       <ng-container>

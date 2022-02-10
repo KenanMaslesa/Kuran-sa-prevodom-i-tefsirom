@@ -17,6 +17,10 @@ const routes: Routes = [
         loadChildren: () => import('./juz/juz.module').then( m => m.JuzPageModule)
       },
       {
+        path: 'quran-template',
+        loadChildren: () => import('./quran-template/quran-template.module').then( m => m.QuranTemplatePageModule)
+      },
+      {
         path: 'quran-template/:page',
         loadChildren: () => import('./quran-template/quran-template.module').then( m => m.QuranTemplatePageModule)
       },
@@ -29,7 +33,7 @@ const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: '/quran/tabs/surah',
+    redirectTo: '/quran/tabs/quran-template',
     pathMatch: 'full'
   }
 ];

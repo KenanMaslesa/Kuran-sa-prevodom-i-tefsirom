@@ -44,7 +44,7 @@ export class SurahPage implements OnInit {
     event.target.complete();
 
     if(this.suraListLazyLoaded.length === this.suraList.length){ //ako je sve ucitano iskljuci infinite scroll
-      // this.disableInfiniteScroll(true);
+      this.disableInfiniteScroll(true);
     }
   }
 
@@ -57,7 +57,7 @@ export class SurahPage implements OnInit {
   }
 
   loadMoreSura(index, isSearchOn){
-    const numberOfLoadedSurahsOnScroll = 5;
+    const numberOfLoadedSurahsOnScroll = 6;
     let counter = 0;
     if(isSearchOn){
       for(let i = index * numberOfLoadedSurahsOnScroll; i<this.searchSuraList.length; i++){

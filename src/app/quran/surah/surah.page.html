@@ -46,7 +46,7 @@
     <ion-card *ngFor="let sura of suraListLazyLoaded; let i = index"
       [routerLink]="['/quran/tabs/quran-template', sura.startpage]">
       <ion-card-header>
-        <ion-card-title>{{sura.index}}. {{sura.name}} - {{sura.tname}} - {{sura.ename}}</ion-card-title>
+        <ion-card-title>{{sura.index}}. {{sura.name}} - {{sura.tname}}</ion-card-title>
       </ion-card-header>
 
       <ion-card-content>
@@ -66,7 +66,10 @@
   </ion-list>
 
   <ion-infinite-scroll threshold="100px" (ionInfinite)="loadData($event)">
-    <span style="text-align: center;">Nema vise sura</span>
+    <div (click)="ionContentScrollToTop()">
+      <ion-icon name="arrow-up-outline"></ion-icon>
+      <span style="text-align: center;">Vrati me na pocetak</span>
+      <ion-icon name="arrow-up-outline"></ion-icon>
+    </div>
   </ion-infinite-scroll>
-  <ion-button (click)="ionContentScrollToTop()">Vrati me na pocetak</ion-button>
 </ion-content>
