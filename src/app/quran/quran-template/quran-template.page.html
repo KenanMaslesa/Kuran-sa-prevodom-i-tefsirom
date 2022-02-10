@@ -105,9 +105,13 @@
   <div class="main">
     <ion-slides #slides pager="false"
       (ionSlideNextEnd)="onSuraChanged(+quranService.currentPage + 1)"
-      (ionSlidePrevEnd)="onSuraChanged(+quranService.currentPage - 1)" (ionSlideReachStart)="start()">
+      (ionSlidePrevEnd)="onSuraChanged(+quranService.currentPage - 1)"
+      (ionSlideReachStart)="start()"
+      (ionSlideReachEnd)="end()"
+      >
       <ng-container *ngIf="quranService.words">
-        <ion-slide dir="rtl" lang="ar" *ngFor="let o of fakeSlidesArray">
+        <ion-slide></ion-slide>
+        <ion-slide dir="rtl" lang="ar">
           <ng-container *ngFor="let item of quranService.words.result; let i = index">
             <section class="suraTitle" *ngIf="!item.word && item.detail.ayas">
               <img src="https://salamquran.com/static/images/quran/sura-header.svg" alt="Quran sura title">
@@ -140,7 +144,7 @@
             {{quranService.currentPage}}
           </ion-text>
         </ion-slide>
-
+        <ion-slide></ion-slide>
       </ng-container>
     </ion-slides>
     <!-- <ion-toolbar class="swiper" color="primary">

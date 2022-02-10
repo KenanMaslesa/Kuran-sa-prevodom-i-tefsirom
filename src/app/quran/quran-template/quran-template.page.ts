@@ -24,7 +24,7 @@ export class QuranTemplatePage implements OnInit {
   previousAyah;
   suraList;
   showSearchHeader = false;
-  currentSuraTitle = 'eeee';
+  currentSuraTitle = '';
   fakeSlidesArray = [];
   constructor(public quranService: QuranService, private route: ActivatedRoute) {}
 
@@ -33,14 +33,14 @@ export class QuranTemplatePage implements OnInit {
     this.quranService.getSuraWordsByPage(this.quranService.currentPage);
     this.getSuraList();
 
-    for(let i = 1; i<= 10; i++) {
+    for(let i = 1; i<= 3; i++) {
       this.fakeSlidesArray.push(i);
     }
   }
 
   ionViewDidEnter() {
     if(this.quranService.currentPage !== 1) {
-        this.slideTo(9);
+        this.slideTo(2);
     }
   }
 
@@ -70,14 +70,6 @@ export class QuranTemplatePage implements OnInit {
     else {
       this.slides.lockSwipeToNext(false);
     }
-
-    this.slides.getActiveIndex().then((index: number) => {
-      this.slides.length().then((length: number)=>{
-        if(index === length - 1){
-          this.fakeSlidesArray.push(1);
-        }
-      });
-    });
 
     this.quranService.currentPage = pageNumber;
     localStorage.setItem('currentPage', pageNumber);
@@ -201,9 +193,13 @@ export class QuranTemplatePage implements OnInit {
 
   start(){
     this.quranService.words = [];
-    this.onSuraChanged(this.quranService.currentPage-1);
     if(this.quranService.currentPage !== 1){
-      this.slideTo(8);
+      this.slideTo(1);
     }
+  }
+
+  end(){
+    this.quranService.words = [];
+    this.slideTo(1);
   }
 }
