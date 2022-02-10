@@ -43,6 +43,7 @@ export class QuranTemplatePage implements OnInit {
 
   ionViewDidEnter() {
     this.slideTo(1);
+    this.quranService.currentPage--;
   }
 
   cacheAllQuranPages() {
@@ -58,7 +59,6 @@ export class QuranTemplatePage implements OnInit {
   }
 
   onSuraChanged(pageNumber) {
-    pageNumber--;
     if(pageNumber === 1) {
       this.slides.lockSwipeToPrev(true);
     }
