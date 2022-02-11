@@ -6,7 +6,10 @@
 
   &.without-tabs{
     height: 100%;
-    margin-top: 5px;
+
+    @media(min-width: 500px){
+      margin-top: 140px;
+    }
   }
 }
 
