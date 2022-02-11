@@ -9,6 +9,7 @@ export class QuranResponseData {
 })
 export class QuranService {
   words: any;
+  showHeaderAndTabs = true;
   showLoader = false;
   currentPage: number;
   qari = 'https://dl.salamquran.com/ayat/afasy-murattal-192/';

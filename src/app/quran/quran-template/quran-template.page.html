@@ -1,4 +1,4 @@
-<ion-header>
+<ion-header class="{{quranService.showHeaderAndTabs?'show':'hide'}}">
   <ion-toolbar color="primary">
     <ion-title>
       <ng-container *ngIf="suraList">
@@ -105,7 +105,7 @@
       </ion-item>
     </div>
   </header>
-  <div class="main">
+  <div class="main {{quranService.showHeaderAndTabs?'':'without-tabs'}}" (click)="quranService.showHeaderAndTabs=!quranService.showHeaderAndTabs">
     <ion-slides #slides pager="false"
       (ionSlideNextEnd)="onSuraChanged(+quranService.currentPage + 1)"
       (ionSlidePrevEnd)="onSuraChanged(+quranService.currentPage - 1)"
