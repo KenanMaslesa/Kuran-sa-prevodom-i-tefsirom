@@ -9,6 +9,9 @@
       <ion-back-button defaultHref="/"></ion-back-button>
     </ion-buttons>
     <ion-icon slot="end" name="search" (click)="showSearchHeader=!showSearchHeader"></ion-icon>
+    <ion-icon slot="end" name="language" *ngIf="!showTranslation" (click)="showTranslation=true"></ion-icon>
+    <ion-icon slot="end" name="book" *ngIf="showTranslation" (click)="showTranslation=false"></ion-icon>
+
     <div class="play-btn-wrapper" *ngIf="audio" slot="end">
       <ng-container>
         <ion-icon name="play" *ngIf="audio.paused" (click)="resumeAudio()"></ion-icon>
@@ -105,6 +108,7 @@
       </ion-item>
     </div>
   </header>
+
   <div class="main {{quranService.showHeaderAndTabs?'':'without-tabs'}}" (click)="quranService.showHeaderAndTabs=!quranService.showHeaderAndTabs">
     <ion-slides #slides pager="false"
       (ionSlideNextEnd)="onSuraChanged(+quranService.currentPage + 1)"
@@ -115,6 +119,7 @@
       <ng-container *ngIf="quranService.words">
         <ion-slide></ion-slide>
         <ion-slide dir="rtl" lang="ar">
+          <ng-container *ngIf="!showTranslation">
           <ng-container *ngFor="let item of quranService.words.result; let i = index">
             <section class="suraTitle" *ngIf="!item.word && item.detail.ayas">
               <img src="https://salamquran.com/static/images/quran/sura-header.svg" alt="Quran sura title">
@@ -143,6 +148,14 @@
               </ng-container>
             </div>
           </ng-container>
+        </ng-container>
+          <!--translation-->
+          <div dir="ltr" lang="eng" class="translation" *ngIf="showTranslation">
+            <ng-container *ngFor="let item of translationForCurrentPage; let i = index">
+              <p>{{i+1}}. {{item}}</p>
+            </ng-container>
+          </div>
+
           <ion-text>
             {{quranService.currentPage}}
           </ion-text>

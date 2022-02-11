@@ -8900,3 +8900,10 @@ ion-slide {
 ion-slides {
   direction: rtl;
 }
+
+.translation {
+  text-align: left;
+  p {
+    padding: 2px 10px;
+  }
+}

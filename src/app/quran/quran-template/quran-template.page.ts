@@ -26,6 +26,10 @@ export class QuranTemplatePage implements OnInit {
   showSearchHeader = false;
   currentSuraTitle = '';
   fakeSlidesArray = [];
+  translation: any;
+  translationForCurrentPage = [];
+  arrayOfIndexes = [];
+  showTranslation = false;
   constructor(public quranService: QuranService, private route: ActivatedRoute) {}
 
   ngOnInit(): void {
@@ -39,6 +43,10 @@ export class QuranTemplatePage implements OnInit {
     for(let i = 1; i<= 3; i++) {
       this.fakeSlidesArray.push(i);
     }
+    this.getTranslation();
+    setTimeout(() => {
+      this.getIndexesFromPage();
+    }, 2000);
   }
 
   ionViewDidEnter() {
@@ -77,6 +85,10 @@ export class QuranTemplatePage implements OnInit {
     localStorage.setItem('currentPage', pageNumber);
     this.quranService.getSuraWordsByPage(pageNumber);
     this.setCurrentSuraTitle(this.quranService.currentPage);
+    this.translationForCurrentPage = [];
+    setTimeout(() => {
+      this.getIndexesFromPage();
+    }, 2000);
   }
 
   getSuraList(){
@@ -203,5 +215,29 @@ export class QuranTemplatePage implements OnInit {
   end(){
     this.quranService.words = [];
     this.slideTo(1);
+  }
+
+  getTranslation() {
+    this.quranService.getTranslation().subscribe(response => {
+      this.translation = response;
+    });
+  }
+
+  getTranslationForIndex(index){
+    const obj = this.translation.filter(item => item.index === index);
+    return obj[0].text;
+  }
+
+  getIndexesFromPage(){
+    this.quranService.words.result.forEach(word => {
+      if(word.word){
+        const index = word.word.filter(item => item.char_type === 'word')[0].index;
+        this.arrayOfIndexes.push(index);
+        this.translationForCurrentPage.push(this.getTranslationForIndex(index));
+        return;
+      }
+    });
+    const unique = [...new Set(this.translationForCurrentPage)];
+    this.translationForCurrentPage = unique;
   }
 }

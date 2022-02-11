@@ -65,4 +65,8 @@ export class QuranService {
   getNumberOfLettersAndWordsPerPage() {
     return this.apiService.getData(`assets/db/quran/lettersPerPage.json`);
   }
+
+  getTranslation() {
+    return this.apiService.getData(`assets/db/quran/translations/korkut.json`);
+  }
 }
