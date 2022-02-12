@@ -152,7 +152,7 @@
           <!--translation-->
           <div dir="ltr" lang="eng" class="translation" *ngIf="showTranslation">
             <ng-container *ngFor="let item of translationForCurrentPage; let i = index">
-              <p>{{i+1}}. {{item}}</p>
+              <p>{{item.aya}}. {{item.text}} </p>
             </ng-container>
           </div>
 

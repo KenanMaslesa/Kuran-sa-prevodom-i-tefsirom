@@ -218,14 +218,12 @@ export class QuranTemplatePage implements OnInit {
   }
 
   getTranslation() {
-    this.quranService.getTranslation().subscribe(response => {
-      this.translation = response;
-    });
+    this.translation =this.quranService.getTranslation();
   }
 
   getTranslationForIndex(index){
-    const obj = this.translation.filter(item => item.index === index);
-    return obj[0].text;
+    const response = this.quranService.getTranslationForIndex(+index);
+    return response;
   }
 
   getIndexesFromPage(){

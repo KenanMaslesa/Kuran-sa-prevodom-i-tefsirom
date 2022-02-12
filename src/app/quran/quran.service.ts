@@ -1,6 +1,8 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { of } from 'rxjs';
 import { ApiService } from '../shared/api.service';
+const quranTranslation = require('@kmaslesa/quran-translation-bs_korkut');
 export class QuranResponseData {
   result: any;
 }
@@ -67,6 +69,10 @@ export class QuranService {
   }
 
   getTranslation() {
-    return this.apiService.getData(`assets/db/quran/translations/korkut.json`);
+    return quranTranslation.getHolyQuranTranslation();
+  }
+
+  getTranslationForIndex(index){
+   return quranTranslation.getIndexTranslation(index);
   }
 }
