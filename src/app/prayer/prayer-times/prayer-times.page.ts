@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NativeGeocoderResult } from '@awesome-cordova-plugins/native-geocoder/ngx';
+import { Platform } from '@ionic/angular';
 
 const adhan = require('adhan'); //https://npm.io/package/adhan
 const countdown = require('countdown'); //https://www.npmjs.com/package/countdown
@@ -73,9 +74,28 @@ export class PrayerTimesPage implements OnInit {
     countryName: string;
     subAdministrativeArea: string;
   };
+  fajrTime: string;
+  dhuhrTime: string;
+  sunriseTime: string;
+  asrTime: string;
+  maghribTime: string;
+  ishaTime: string;
+  middleOfTheNight: string;
+  lastThirdOfTheNight: string;
 
-  constructor(private nativePluginsService: NativePluginsService) {
+  constructor(private nativePluginsService: NativePluginsService, private platform: Platform) {
     this.online = navigator.onLine;
+
+    // this.platform.pause.subscribe(async () => {
+    //   this.showStickyNotification(
+    //     this.fajrTime,
+    //     this.sunriseTime,
+    //     this.dhuhrTime,
+    //     this.asrTime,
+    //     this.maghribTime,
+    //     this.ishaTime
+    //   );
+    // });
   }
 
   ngOnInit() {
@@ -139,42 +159,43 @@ export class PrayerTimesPage implements OnInit {
     }
     const prayerTimes = new adhan.PrayerTimes(coordinates, date, params);
 
-    const fajrTime = moment(prayerTimes.fajr).format('HH:mm');
-    const sunriseTime = moment(prayerTimes.sunrise).format('HH:mm');
-    const dhuhrTime = moment(prayerTimes.dhuhr).format('HH:mm');
-    const asrTime = moment(prayerTimes.asr).format('HH:mm');
-    const maghribTime = moment(prayerTimes.maghrib).format('HH:mm');
-    const ishaTime = moment(prayerTimes.isha).format('HH:mm');
+    this.fajrTime = moment(prayerTimes.fajr).format('HH:mm');
+    this.sunriseTime = moment(prayerTimes.sunrise).format('HH:mm');
+    this.dhuhrTime = moment(prayerTimes.dhuhr).format('HH:mm');
+    this.asrTime = moment(prayerTimes.asr).format('HH:mm');
+    this.maghribTime = moment(prayerTimes.maghrib).format('HH:mm');
+    this.ishaTime = moment(prayerTimes.isha).format('HH:mm');
 
     const sunnahTimes = new adhan.SunnahTimes(prayerTimes);
-    const middleOfTheNight = moment(sunnahTimes.middleOfTheNight).format(
+    this.middleOfTheNight = moment(sunnahTimes.middleOfTheNight).format(
       'HH:mm'
     );
-    const lastThirdOfTheNight = moment(sunnahTimes.lastThirdOfTheNight).format(
+    this.lastThirdOfTheNight = moment(sunnahTimes.lastThirdOfTheNight).format(
       'HH:mm'
     );
 
-    this.showNotification('Sabah namaz', 'Nastupio je sabah namaz', 1, prayerTimes.fajr);
-    this.showNotification('Podne namaz', 'Nastupio je podne namaz', 2, prayerTimes.dhuhr);
-    this.showNotification('Ikindija namaz', 'Nastupila je ikindija namaz', 3, prayerTimes.asr);
-    this.showNotification('Aksam namaz', 'Nastupio je aksam namaz', 4, prayerTimes.maghrib);
-    this.showNotification('Jacija namaz', 'Nastupila je jacija namaz', 5, prayerTimes.isha);
-    this.showNotification('Polovina noci', 'Nastupila je polovina noci', 6, sunnahTimes.middleOfTheNight);
-    this.showNotification('Zadnja trecina noci', 'Nastupila je zadnja trecina noci', 7, sunnahTimes.lastThirdOfTheNight);
+    this.scheduleNotification('Sabah namaz', 'Nastupio je sabah namaz', 1, prayerTimes.fajr);
+    this.scheduleNotification('Podne namaz', 'Nastupio je podne namaz', 2, prayerTimes.dhuhr);
+    this.scheduleNotification('Ikindija namaz', 'Nastupila je ikindija namaz', 3, prayerTimes.asr);
+    this.scheduleNotification('Aksam namaz', 'Nastupio je aksam namaz', 4, prayerTimes.maghrib);
+    this.scheduleNotification('Jacija namaz', 'Nastupila je jacija namaz', 5, prayerTimes.isha);
+    this.scheduleNotification('Polovina noci', 'Nastupila je polovina noci', 6, sunnahTimes.middleOfTheNight);
+    this.scheduleNotification('Zadnja trecina noci', 'Nastupila je zadnja trecina noci', 7, sunnahTimes.lastThirdOfTheNight);
 
+    // this.showStickyNotification(this.fajrTime, this.sunriseTime, this.dhuhrTime, this.asrTime, this.maghribTime, this.ishaTime);
     const current = prayerTimes.currentPrayer();
     const next = prayerTimes.nextPrayer();
     const nextPrayerTime = prayerTimes.timeForPrayer(next);
 
     this.prayertimes = {
-      fajr: fajrTime,
-      sunrise: sunriseTime,
-      dhuhr: dhuhrTime,
-      asr: asrTime,
-      maghrib: maghribTime,
-      isha: ishaTime,
-      middleOfTheNight,
-      lastThirdOfTheNight,
+      fajr: this.fajrTime,
+      sunrise: this.sunriseTime,
+      dhuhr: this.dhuhrTime,
+      asr: this.asrTime,
+      maghrib: this.maghribTime,
+      isha: this.ishaTime,
+      middleOfTheNight: this.middleOfTheNight,
+      lastThirdOfTheNight: this.lastThirdOfTheNight,
       nextPrayerTime: next,
     };
 
@@ -193,6 +214,34 @@ export class PrayerTimesPage implements OnInit {
       nextPrayerTime: moment(nextPrayerTime).format('HH:mm'),
     };
   }
+
+  showStickyNotification(fajrTime, sunriseTime, dhuhrTime, asrTime, maghribTime, ishaTime) {
+    this.nativePluginsService.showNotification({
+      title: `Namaska vremena za: Sarajevo`,
+      text: `
+      ${fajrTime} - Zora
+      ${sunriseTime} - Izlazak sunca
+      ${dhuhrTime} - Podne
+      ${asrTime} - Ikindija
+      ${maghribTime} - Aksam
+      ${ishaTime} - Jacija`,
+      id: 100,
+      sticky: true,
+      lockscreen: true,
+      foreground: true,
+      sound: null,
+      led: true,
+      vibrate: true,
+      trigger: {
+        every: {
+          hour: new Date(new Date().getTime()).getHours(),
+          minute: new Date(new Date().getTime()).getMinutes()+1
+        },
+        count: 1
+      }
+    });
+  }
+
 
   setCounter(date: Date) {
     const self = this;
@@ -217,16 +266,24 @@ export class PrayerTimesPage implements OnInit {
     );
   }
 
-  showNotification(title, text, id: number, date){
+  scheduleNotification(title, text, id: number, date){
     this.nativePluginsService.showNotification({
       title,
       text,
       id,
       priority: 2,
-      wakeup: true,
       sticky: true,
+      wakeup: true,
+      launch: true,
+      lockscreen: true,
+      foreground: true,
       trigger: {
-        at: new Date(date),
+        // at: new Date(date),
+        every: {
+          hour: new Date(date).getHours(),
+          minute: new Date(date).getMinutes()
+        },
+        count: 1
       }
     });
   }
