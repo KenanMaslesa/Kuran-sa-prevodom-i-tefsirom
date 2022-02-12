@@ -195,7 +195,7 @@ export class QuranTemplatePage implements OnInit {
     if(this.suraList){
       this.suraList.forEach((sura, index) => {
         if(parseInt(page, 10) >= parseInt(sura.startpage, 10) && parseInt(page, 10) <= parseInt(sura.endpage, 10)){
-          this.currentSuraTitle = `${index+1}. ${sura.name} - ${sura.tname} (${sura.startpage}-${sura.endpage})`;
+          this.currentSuraTitle = `${index+1}. ${sura.name} - ${sura.tname}`;
         }
       });
     }

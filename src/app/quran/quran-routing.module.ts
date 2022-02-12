@@ -25,10 +25,6 @@ const routes: Routes = [
         loadChildren: () => import('./quran-template/quran-template.module').then( m => m.QuranTemplatePageModule)
       },
       {
-        path: 'translation',
-        loadChildren: () => import('./translation/translation.module').then( m => m.TranslationPageModule)
-      },
-      {
         path: '',
         redirectTo: '/tabs/surah',
         pathMatch: 'full'
