@@ -154,6 +154,14 @@ export class PrayerTimesPage implements OnInit {
       'HH:mm'
     );
 
+    this.showNotification('Sabah namaz', 'Nastupio je sabah namaz', 1, prayerTimes.fajr);
+    this.showNotification('Podne namaz', 'Nastupio je podne namaz', 2, prayerTimes.dhuhr);
+    this.showNotification('Ikindija namaz', 'Nastupila je ikindija namaz', 3, prayerTimes.asr);
+    this.showNotification('Aksam namaz', 'Nastupio je aksam namaz', 4, prayerTimes.maghrib);
+    this.showNotification('Jacija namaz', 'Nastupila je jacija namaz', 5, prayerTimes.isha);
+    this.showNotification('Polovina noci', 'Nastupila je polovina noci', 6, sunnahTimes.middleOfTheNight);
+    this.showNotification('Zadnja trecina noci', 'Nastupila je zadnja trecina noci', 7, sunnahTimes.lastThirdOfTheNight);
+
     const current = prayerTimes.currentPrayer();
     const next = prayerTimes.nextPrayer();
     const nextPrayerTime = prayerTimes.timeForPrayer(next);
@@ -207,6 +215,20 @@ export class PrayerTimesPage implements OnInit {
       // eslint-disable-next-line no-bitwise
       countdown.HOURS | countdown.MINUTES | countdown.SECONDS
     );
+  }
+
+  showNotification(title, text, id: number, date){
+    this.nativePluginsService.showNotification({
+      title,
+      text,
+      id,
+      priority: 2,
+      wakeup: true,
+      sticky: true,
+      trigger: {
+        at: new Date(date),
+      }
+    });
   }
 
   clearCounter() {

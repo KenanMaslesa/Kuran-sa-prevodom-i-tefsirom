@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { IonSlides } from '@ionic/angular';
+import { NativePluginsService } from 'src/app/shared/native-plugins.service';
 import { QuranService } from '../quran.service';
 
 @Component({
@@ -39,7 +40,8 @@ export class QuranTemplatePage implements OnInit {
   ayatsOfCurrentPage = [];
   constructor(
     public quranService: QuranService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private nativePluginsService: NativePluginsService
   ) {}
 
   ngOnInit(): void {
@@ -88,6 +90,9 @@ export class QuranTemplatePage implements OnInit {
     this.quranService.getSuraWordsByPage(pageNumber).subscribe((response) => {
       this.quranService.words = response;
       this.quranService.showLoader = false;
+    }, error => {
+      this.quranService.showLoader = false;
+      this.showTranslation = true;
     });
     this.translationForCurrentPage = [];
     this.getIndexesFromPage(this.ayatsOfCurrentPage);
