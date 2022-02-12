@@ -88,9 +88,9 @@ export class QuranTemplatePage implements OnInit {
     this.quranService.getSuraWordsByPage(pageNumber).subscribe((response) => {
       this.quranService.words = response;
       this.quranService.showLoader = false;
-      this.translationForCurrentPage = [];
-      this.getIndexesFromPage(this.ayatsOfCurrentPage);
     });
+    this.translationForCurrentPage = [];
+    this.getIndexesFromPage(this.ayatsOfCurrentPage);
     this.setCurrentSuraTitle(this.quranService.currentPage);
   }
 
