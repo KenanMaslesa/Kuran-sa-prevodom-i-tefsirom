@@ -110,14 +110,13 @@
   </header>
 
   <div class="main {{quranService.showHeaderAndTabs?'':'without-tabs'}}" (click)="quranService.showHeaderAndTabs=!quranService.showHeaderAndTabs">
-    <ion-slides #slides pager="false"
+    <ion-slides #slides pager="false" [options]="slideOpts"
       (ionSlideNextEnd)="onSuraChanged(+quranService.currentPage + 1)"
       (ionSlidePrevEnd)="onSuraChanged(+quranService.currentPage - 1)"
-      (ionSlideReachStart)="start()"
-      (ionSlideReachEnd)="end()"
+      (ionSlideReachStart)="slideTo(1)"
+      (ionSlideReachEnd)="slideTo(1)"
       >
       <ng-container *ngIf="quranService.words">
-        <ion-slide></ion-slide>
         <ion-slide dir="rtl" lang="ar">
           <ng-container *ngIf="!showTranslation">
           <ng-container *ngFor="let item of quranService.words.result; let i = index">
@@ -160,19 +159,7 @@
             {{quranService.currentPage}}
           </ion-text>
         </ion-slide>
-        <ion-slide></ion-slide>
       </ng-container>
     </ion-slides>
-    <!-- <ion-toolbar class="swiper" color="primary">
-      <ion-buttons slot="start">
-        <ion-icon name="arrow-back-outline" (click)="onSuraChanged(+quranService.currentPage + 1)"></ion-icon>
-      </ion-buttons>
-      <ion-text>
-        {{quranService.currentPage}}
-      </ion-text>
-      <ion-buttons slot="end">
-        <ion-icon name="arrow-forward-outline" (click)="onSuraChanged(+quranService.currentPage - 1)"></ion-icon>
-      </ion-buttons>
-    </ion-toolbar> -->
   </div>
 </ion-content>

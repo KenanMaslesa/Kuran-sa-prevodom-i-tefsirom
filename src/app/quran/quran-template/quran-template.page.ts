@@ -30,6 +30,11 @@ export class QuranTemplatePage implements OnInit {
   translationForCurrentPage = [];
   arrayOfIndexes = [];
   showTranslation = false;
+  slideOpts = {
+    initialSlide: 1,
+    speed: 50,
+    loop: true,
+  };
   constructor(public quranService: QuranService, private route: ActivatedRoute) {}
 
   ngOnInit(): void {
@@ -40,18 +45,10 @@ export class QuranTemplatePage implements OnInit {
     this.quranService.getSuraWordsByPage(this.quranService.currentPage);
     this.getSuraList();
 
-    for(let i = 1; i<= 3; i++) {
-      this.fakeSlidesArray.push(i);
-    }
     this.getTranslation();
     setTimeout(() => {
       this.getIndexesFromPage();
     }, 2000);
-  }
-
-  ionViewDidEnter() {
-    this.slideTo(1);
-    this.quranService.currentPage--;
   }
 
   cacheAllQuranPages() {
@@ -80,7 +77,6 @@ export class QuranTemplatePage implements OnInit {
     else {
       this.slides.lockSwipeToNext(false);
     }
-
     this.quranService.currentPage = pageNumber;
     localStorage.setItem('currentPage', pageNumber);
     this.quranService.getSuraWordsByPage(pageNumber);
@@ -203,18 +199,6 @@ export class QuranTemplatePage implements OnInit {
 
   slideTo(slideNumber) {
     this.slides.slideTo(slideNumber);
-  }
-
-  start(){
-    this.quranService.words = [];
-    if(this.quranService.currentPage !== 1){
-      this.slideTo(1);
-    }
-  }
-
-  end(){
-    this.quranService.words = [];
-    this.slideTo(1);
   }
 
   getTranslation() {
