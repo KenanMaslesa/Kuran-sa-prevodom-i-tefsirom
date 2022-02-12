@@ -9,7 +9,7 @@ import { QuranService } from '../quran.service';
   styleUrls: ['./quran-template.page.scss'],
 })
 export class QuranTemplatePage implements OnInit {
-  @ViewChild('slides', {static: true}) slides: IonSlides;
+  @ViewChild('slides', { static: true }) slides: IonSlides;
   indexOfAyahInQuran;
   sura;
   chapters;
@@ -30,65 +30,72 @@ export class QuranTemplatePage implements OnInit {
   translationForCurrentPage = [];
   arrayOfIndexes = [];
   showTranslation = false;
+  showArabicInTranslation = true;
   slideOpts = {
     initialSlide: 1,
     speed: 50,
     loop: true,
   };
-  constructor(public quranService: QuranService, private route: ActivatedRoute) {}
+  ayatsOfCurrentPage = [];
+  constructor(
+    public quranService: QuranService,
+    private route: ActivatedRoute
+  ) {}
 
   ngOnInit(): void {
     const pageFromParams = +this.route.snapshot.paramMap.get('page');
-    if(pageFromParams !== 0) {
+    if (pageFromParams !== 0) {
       this.quranService.currentPage = pageFromParams;
     }
     this.quranService.getSuraWordsByPage(this.quranService.currentPage);
+    this.ayatsOfCurrentPage = this.quranService.getAyatsByPage(
+      this.quranService.currentPage
+    );
     this.getSuraList();
-
+    this.getIndexesFromPage(this.ayatsOfCurrentPage);
     this.getTranslation();
-    setTimeout(() => {
-      this.getIndexesFromPage();
-    }, 2000);
   }
 
   cacheAllQuranPages() {
     let i = 1;
     const self = this;
-    const repeater = setInterval(()=>{
-      if(i > 604){
+    const repeater = setInterval(() => {
+      if (i > 604) {
         clearInterval(repeater);
       }
       self.quranService.cacheAllQuranPages(i);
-      i+=1;
+      i += 1;
     }, 5000); //repeat every 5s
   }
 
   onSuraChanged(pageNumber) {
-    if(pageNumber === 1) {
+    if (pageNumber === 1) {
       this.slides.lockSwipeToPrev(true);
-    }
-    else {
+    } else {
       this.slides.lockSwipeToPrev(false);
     }
 
-    if(pageNumber === 604){
+    if (pageNumber === 604) {
       this.slides.lockSwipeToNext(true);
-    }
-    else {
+    } else {
       this.slides.lockSwipeToNext(false);
     }
     this.quranService.currentPage = pageNumber;
     localStorage.setItem('currentPage', pageNumber);
-    this.quranService.getSuraWordsByPage(pageNumber);
+    this.ayatsOfCurrentPage = this.quranService.getAyatsByPage(
+      this.quranService.currentPage
+    );
+    this.quranService.getSuraWordsByPage(pageNumber).subscribe((response) => {
+      this.quranService.words = response;
+      this.quranService.showLoader = false;
+      this.translationForCurrentPage = [];
+      this.getIndexesFromPage(this.ayatsOfCurrentPage);
+    });
     this.setCurrentSuraTitle(this.quranService.currentPage);
-    this.translationForCurrentPage = [];
-    setTimeout(() => {
-      this.getIndexesFromPage();
-    }, 2000);
   }
 
-  getSuraList(){
-    this.quranService.getListOfSura().subscribe(response => {
+  getSuraList() {
+    this.quranService.getListOfSura().subscribe((response) => {
       this.suraList = response;
       this.setCurrentSuraTitle(this.quranService.currentPage);
     });
@@ -99,6 +106,34 @@ export class QuranTemplatePage implements OnInit {
       return this.suraTitle;
     } else {
       return (this.suraTitle = title);
+    }
+  }
+
+  slideTo(slideNumber) {
+    this.slides.slideTo(slideNumber);
+  }
+
+  getTranslation() {
+    this.translation = this.quranService.getTranslation();
+  }
+
+  getTranslationForIndex(index) {
+    const response = this.quranService.getTranslationForIndex(+index);
+    return response;
+  }
+
+  getIndexesFromPage(ayats: any[]) {
+    if (ayats) {
+      ayats.forEach((aya) => {
+        this.arrayOfIndexes.push(aya.index);
+        this.translationForCurrentPage.push({
+          translation: this.getTranslationForIndex(aya.index),
+          text: aya.text,
+          juz: aya.juz,
+          page: aya.page,
+          verseKey: aya.verse_key,
+        });
+      });
     }
   }
 
@@ -137,11 +172,11 @@ export class QuranTemplatePage implements OnInit {
     };
   }
 
-  pauseAudio(){
+  pauseAudio() {
     this.audio.pause();
   }
 
-  resumeAudio(){
+  resumeAudio() {
     this.audio.play();
   }
 
@@ -183,43 +218,20 @@ export class QuranTemplatePage implements OnInit {
     return this.quranService.changeQariUrl(url);
   }
 
-  onQariChanged(value){
+  onQariChanged(value) {
     this.quranService.qari = value;
   }
 
   setCurrentSuraTitle(page) {
-    if(this.suraList){
+    if (this.suraList) {
       this.suraList.forEach((sura, index) => {
-        if(parseInt(page, 10) >= parseInt(sura.startpage, 10) && parseInt(page, 10) <= parseInt(sura.endpage, 10)){
-          this.currentSuraTitle = `${index+1}. ${sura.name} - ${sura.tname}`;
+        if (
+          parseInt(page, 10) >= parseInt(sura.startpage, 10) &&
+          parseInt(page, 10) <= parseInt(sura.endpage, 10)
+        ) {
+          this.currentSuraTitle = `${index + 1}. ${sura.name} - ${sura.tname}`;
         }
       });
     }
-  }
-
-  slideTo(slideNumber) {
-    this.slides.slideTo(slideNumber);
-  }
-
-  getTranslation() {
-    this.translation =this.quranService.getTranslation();
-  }
-
-  getTranslationForIndex(index){
-    const response = this.quranService.getTranslationForIndex(+index);
-    return response;
-  }
-
-  getIndexesFromPage(){
-    this.quranService.words.result.forEach(word => {
-      if(word.word){
-        const index = word.word.filter(item => item.char_type === 'word')[0].index;
-        this.arrayOfIndexes.push(index);
-        this.translationForCurrentPage.push(this.getTranslationForIndex(index));
-        return;
-      }
-    });
-    const unique = [...new Set(this.translationForCurrentPage)];
-    this.translationForCurrentPage = unique;
   }
 }

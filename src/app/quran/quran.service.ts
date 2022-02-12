@@ -1,8 +1,9 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { of } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { ApiService } from '../shared/api.service';
 const quranTranslation = require('@kmaslesa/quran-translation-bs_korkut');
+const quranAyats = require('@kmaslesa/quran-ayats');
 export class QuranResponseData {
   result: any;
 }
@@ -31,14 +32,10 @@ export class QuranService {
     return this.http.get(`${this.quranAPI}/v6/sura?index=${sura}`).pipe();
   }
 
-  getSuraWordsByPage(page) {
+  getSuraWordsByPage(page): Observable<any> {
     this.showLoader = true;
-    this.apiService
-      .getData(`${this.quranAPI}/page/wbw?index=${page}`)
-      .subscribe((response) => {
-        this.words = response;
-        this.showLoader = false;
-      });
+    return this.apiService
+      .getData(`${this.quranAPI}/page/wbw?index=${page}`);
   }
 
   getWordsBySura(sura) {
@@ -49,8 +46,8 @@ export class QuranService {
     return this.apiService.getData(`assets/db/quran/surahs.json`);
   }
 
-  getAyah(pageNumber) {
-    return this.http.get(`${this.quranAPI}/aya?index=${pageNumber}`);
+  getAyatsByPage(pageNumber) {
+    return quranAyats.getAyatsByPage(pageNumber);
   }
 
   changeQariUrl(url: string) {

@@ -8903,7 +8903,27 @@ ion-slides {
 
 .translation {
   text-align: left;
-  p {
-    padding: 2px 10px;
-  }
+
+  .ayah {
+    border-bottom: 1px solid gainsboro;
+
+    p {
+      padding: 2px 10px;
+    }
+
+    .verse_key{
+      height: 35px;
+      font-size: 15px;
+      padding-left: 10px;
+
+      p{
+        background: #3780ff;
+        display: inline-block;
+        color: white;
+        border-radius: 5px;
+        padding: 0px 4px !important;
+      }
+    }
+
+}
 }
