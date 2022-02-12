@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { Observable, of, Subject } from 'rxjs';
 import { ApiService } from '../shared/api.service';
 const quranTranslation = require('@kmaslesa/quran-translation-bs_korkut');
 const quranAyats = require('@kmaslesa/quran-ayats');
@@ -15,6 +15,7 @@ export class QuranService {
   showHeaderAndTabs = true;
   showLoader = false;
   currentPage: number;
+  currentPageChanged = new Subject();
   qari = 'https://dl.salamquran.com/ayat/afasy-murattal-192/';
   quranAPI = 'https://salamquran.com/en/api/v6'; //https://salamquran.com/api/v6/doc
 
@@ -26,6 +27,7 @@ export class QuranService {
       localStorage.setItem('currentPage', JSON.stringify(1));
       this.currentPage = 1;
     }
+    this.currentPageChanged.next(true);
   }
 
   getSura(sura) {
