@@ -52,7 +52,9 @@ ion-slides {
               transition: all 0.3s;
 
               &:hover {
-                color: var(--ion-color-primary);
+                @media(min-width: 768px){
+                  color: var(--ion-color-primary);
+                }
               }
           }
       }
