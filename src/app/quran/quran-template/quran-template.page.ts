@@ -29,12 +29,16 @@ export class QuranTemplatePage implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.getSuraList();
+  }
+
+  ionViewWillEnter() {
     const pageFromParams = +this.route.snapshot.paramMap.get('page');
     if (pageFromParams !== 0) {
       this.quranService.currentPage = pageFromParams;
     }
+    this.quranService.words = [];
     this.quranService.getSuraWordsByPage(this.quranService.currentPage);
-    this.getSuraList();
   }
 
   cacheAllQuranPages() {
@@ -94,6 +98,20 @@ export class QuranTemplatePage implements OnInit {
     this.slides.slideTo(slideNumber);
   }
 
+  setCurrentSuraTitle(page) {
+    if (this.suraList) {
+      this.suraList.forEach((sura, index) => {
+        if (
+          parseInt(page, 10) >= parseInt(sura.startpage, 10) &&
+          parseInt(page, 10) <= parseInt(sura.endpage, 10)
+        ) {
+          this.currentSuraTitle = `${index + 1}. ${sura.name} - ${sura.tname}`;
+        }
+      });
+    }
+  }
+
+  //AUDIO
   playWord(url) {
     let audioUrl = 'https://dl.salamquran.com/wbw/';
     audioUrl += url;
@@ -178,17 +196,5 @@ export class QuranTemplatePage implements OnInit {
   onQariChanged(value) {
     this.quranService.qari = value;
   }
-
-  setCurrentSuraTitle(page) {
-    if (this.suraList) {
-      this.suraList.forEach((sura, index) => {
-        if (
-          parseInt(page, 10) >= parseInt(sura.startpage, 10) &&
-          parseInt(page, 10) <= parseInt(sura.endpage, 10)
-        ) {
-          this.currentSuraTitle = `${index + 1}. ${sura.name} - ${sura.tname}`;
-        }
-      });
-    }
-  }
+  //AUDIO
 }

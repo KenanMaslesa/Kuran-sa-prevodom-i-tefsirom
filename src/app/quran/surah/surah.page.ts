@@ -49,7 +49,9 @@ export class SurahPage implements OnInit {
   }
 
   disableInfiniteScroll(value: boolean) {
-    this.infiniteScroll.disabled = value;
+    if(this.infiniteScroll){
+      this.infiniteScroll.disabled = value;
+    }
   }
 
   ionContentScrollToTop(duration = 2000){
