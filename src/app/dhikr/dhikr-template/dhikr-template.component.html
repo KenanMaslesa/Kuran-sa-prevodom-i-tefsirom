@@ -1,5 +1,5 @@
 <ion-list class="toggles">
-  <ion-item color="primary">
+  <ion-item>
     <ion-label>AR</ion-label>
     <ion-toggle [(ngModel)]="dhikrService.showArabicDhikr" (ngModelChange)="dhikrService.onModelChange(dhikrLocalStoarge.showArabicDhikr, dhikrService.showArabicDhikr)"></ion-toggle>
     <ion-label>TR</ion-label>
@@ -43,7 +43,7 @@
     </ion-slide>
   </ion-slides>
 
-  <ion-toolbar class="swiper" color="primary">
+  <!-- <ion-toolbar class="swiper">
     <ion-buttons slot="start">
       <ion-icon name="arrow-back-outline" (click)="slidePrev()"></ion-icon>
     </ion-buttons>
@@ -53,6 +53,6 @@
     <ion-buttons slot="end">
       <ion-icon name="arrow-forward-outline" (click)="slideNext()"></ion-icon>
     </ion-buttons>
-  </ion-toolbar>
+  </ion-toolbar> -->
 
 </ion-content>

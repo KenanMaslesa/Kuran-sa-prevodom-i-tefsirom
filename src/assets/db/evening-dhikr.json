@@ -10,7 +10,7 @@
         "arabic": "للَّهُمَّ أَنْتَ رَبِّى",
         "bosnian": "Allahu, Ti si Gospodar moj,",
         "transcription": "ALLĀHUMME ENTE RABBĪ",
-        "startSecond": 0.9,
+        "startSecond": 0.1,
         "endSecond": 2.5
       },
       {
@@ -81,7 +81,7 @@
         "bosnian": "Allahu, Poznavaoče skrivenog i pojavnog (svijeta),",
         "arabic": "اللَّهُمَّ عَالِمَ الغَيْبِ والشَّهَادَةِ",
         "transcription": "ALLĀHUMME ‘ĀLIME-L-GAJBI VE-Š-ŠEHĀDETI,",
-        "startSecond": 0.9,
+        "startSecond": 0.1,
         "endSecond": 4
       },
       {
@@ -138,7 +138,7 @@
         "bosnian": "Allahu, molim Te za oprost i zaštitu Tvoju",
         "arabic": "اللهُمَّ إِنِّي أَسْأَلُكَ الْعَفْوَ وَالْعَافِيَةَ",
         "transcription": "ALLĀHUMME INNĪ ES ELUKE-L-‘AFVE VE-L-‘ĀFIJEH",
-        "startSecond": 0.9,
+        "startSecond": 0.1,
         "endSecond": 5
       },
       {
