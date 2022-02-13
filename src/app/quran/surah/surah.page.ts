@@ -59,7 +59,7 @@ export class SurahPage implements OnInit {
   }
 
   loadMoreSura(index, isSearchOn){
-    const numberOfLoadedSurahsOnScroll = 6;
+    const numberOfLoadedSurahsOnScroll = 10;
     let counter = 0;
     if(isSearchOn){
       for(let i = index * numberOfLoadedSurahsOnScroll; i<this.searchSuraList.length; i++){

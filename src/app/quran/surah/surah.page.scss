@@ -22,3 +22,26 @@ header{
   top: 47px;
   z-index: 9;
 }
+
+ion-card {
+  margin-bottom: 20px;
+
+  ion-card-header{
+    border-bottom: 1px solid gainsboro;
+    background: gainsboro;
+    padding: 10px 15px;
+
+    ion-card-title {
+      .startPage {
+        font-size: 14px;
+        position: absolute;
+        top: 3px;
+        right: 0;
+      }
+    }
+
+    p {
+      margin: 5px 0px;
+    }
+  }
+}
