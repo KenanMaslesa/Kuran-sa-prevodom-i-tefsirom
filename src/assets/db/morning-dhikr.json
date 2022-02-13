@@ -10,7 +10,7 @@
         "arabic": "أَصْبَحْنَا وَأَصْبَحَ الْمُلْكُ لِلَّهِ، وَالْحَمْدُ لِلَّهِ",
         "bosnian": "Osvanusmo i osvanu svekolika Allahova vlast. Hvala Allahu.",
         "transcription": "ASBAHNĀ VE ASBEHAL MULKU LILLĀHI, VEL HAMDU LILLĀH",
-        "startSecond": 0,
+        "startSecond": 0.9,
         "endSecond": 7
       },
       {
@@ -74,7 +74,7 @@
         "arabic": "اللَّهُمَّ بِكَ أَصْبَحْنَا",
         "bosnian": "Allahu, Tvojom voljom dočekasmo jutro",
         "transcription": "ALLĀHUMME BIKE ASBAHNĀ",
-        "startSecond": 0,
+        "startSecond": 0.9,
         "endSecond": 4
       },
       {
@@ -117,7 +117,7 @@
         "arabic": "أَصْبَحْنَا عَلَى فِطْرَةِ الْإِسْلَامِ",
         "bosnian": "Jutro smo dočekali u krilu islama,",
         "transcription": "Asbahna ‘ala fitreti-l-islami",
-        "startSecond": 0,
+        "startSecond": 0.9,
         "endSecond": 5
       },
       {
@@ -161,7 +161,7 @@
         "arabic": "للَّهُمَّ أَنْتَ رَبِّى",
         "bosnian": "Allahu, Ti si Gospodar moj,",
         "transcription": "ALLĀHUMME ENTE RABBĪ",
-        "startSecond": 0,
+        "startSecond": 0.9,
         "endSecond": 2.5
       },
       {
@@ -232,7 +232,7 @@
         "bosnian": "Allahu, Poznavaoče skrivenog i pojavnog (svijeta),",
         "arabic": "اللَّهُمَّ عَالِمَ الغَيْبِ والشَّهَادَةِ",
         "transcription": "ALLĀHUMME ‘ĀLIME-L-GAJBI VE-Š-ŠEHĀDETI,",
-        "startSecond": 0,
+        "startSecond": 0.9,
         "endSecond": 4
       },
       {
@@ -289,7 +289,7 @@
         "bosnian": "Allahu, molim Te za oprost i zaštitu Tvoju",
         "arabic": "اللهُمَّ إِنِّي أَسْأَلُكَ الْعَفْوَ وَالْعَافِيَةَ",
         "transcription": "ALLĀHUMME INNĪ ES ELUKE-L-‘AFVE VE-L-‘ĀFIJEH",
-        "startSecond": 0,
+        "startSecond": 0.9,
         "endSecond": 5
       },
       {
