@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { IonSlides } from '@ionic/angular';
 import { QuranService } from '../quran.service';
 
@@ -10,36 +10,22 @@ import { QuranService } from '../quran.service';
 })
 export class QuranTemplatePage implements OnInit {
   @ViewChild('slides', { static: true }) slides: IonSlides;
-  indexOfAyahInQuran;
   sura;
-  chapters;
-  chapterDetails;
-  numberOfAyats = new Array(Number(7));
-  currentSura = 1;
-  chapterWords;
-  chapterNumber = 2;
-  words;
   suraTitle = '';
   audio;
   previousAyah;
   suraList;
   showSearchHeader = false;
   currentSuraTitle = '';
-  fakeSlidesArray = [];
-  translation: any;
-  translationForCurrentPage = [];
-  arrayOfIndexes = [];
-  showTranslation = false;
-  showArabicInTranslation = true;
   slideOpts = {
     initialSlide: 1,
     speed: 50,
     loop: true,
   };
-  ayatsOfCurrentPage = [];
   constructor(
     public quranService: QuranService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -48,12 +34,6 @@ export class QuranTemplatePage implements OnInit {
       this.quranService.currentPage = pageFromParams;
     }
     this.quranService.getSuraWordsByPage(this.quranService.currentPage);
-    this.ayatsOfCurrentPage = this.quranService.getAyatsByPage(
-      this.quranService.currentPage
-    );
-    this.getSuraList();
-    this.getIndexesFromPage(this.ayatsOfCurrentPage);
-    this.getTranslation();
   }
 
   cacheAllQuranPages() {
@@ -82,18 +62,14 @@ export class QuranTemplatePage implements OnInit {
     }
     this.quranService.currentPage = pageNumber;
     localStorage.setItem('currentPage', pageNumber);
-    this.ayatsOfCurrentPage = this.quranService.getAyatsByPage(
-      this.quranService.currentPage
-    );
+
     this.quranService.getSuraWordsByPage(pageNumber).subscribe((response) => {
       this.quranService.words = response;
       this.quranService.showLoader = false;
     }, error => {
       this.quranService.showLoader = false;
-      this.showTranslation = true;
+      this.router.navigate(['/quran/tabs/translation']);
     });
-    this.translationForCurrentPage = [];
-    this.getIndexesFromPage(this.ayatsOfCurrentPage);
     this.setCurrentSuraTitle(this.quranService.currentPage);
     this.quranService.currentPageChanged.next(true);
   }
@@ -115,30 +91,6 @@ export class QuranTemplatePage implements OnInit {
 
   slideTo(slideNumber) {
     this.slides.slideTo(slideNumber);
-  }
-
-  getTranslation() {
-    this.translation = this.quranService.getTranslation();
-  }
-
-  getTranslationForIndex(index) {
-    const response = this.quranService.getTranslationForIndex(+index);
-    return response;
-  }
-
-  getIndexesFromPage(ayats: any[]) {
-    if (ayats) {
-      ayats.forEach((aya) => {
-        this.arrayOfIndexes.push(aya.index);
-        this.translationForCurrentPage.push({
-          translation: this.getTranslationForIndex(aya.index),
-          text: aya.text,
-          juz: aya.juz,
-          page: aya.page,
-          verseKey: aya.verse_key,
-        });
-      });
-    }
   }
 
   playWord(url) {

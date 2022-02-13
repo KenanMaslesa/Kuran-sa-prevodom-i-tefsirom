@@ -9,8 +9,6 @@
       <ion-back-button defaultHref="/"></ion-back-button>
     </ion-buttons>
     <ion-icon slot="end" name="search" (click)="showSearchHeader=!showSearchHeader"></ion-icon>
-    <ion-icon slot="end" name="language" *ngIf="!showTranslation" (click)="showTranslation=true"></ion-icon>
-    <ion-icon slot="end" name="book" *ngIf="showTranslation" (click)="showTranslation=false"></ion-icon>
 
     <div class="play-btn-wrapper" *ngIf="audio" slot="end">
       <ng-container>
@@ -25,51 +23,6 @@
   <app-loader *ngIf="quranService.showLoader"></app-loader>
   <header *ngIf="showSearchHeader">
     <div class="form-group dropdown-wrapper">
-      <ion-item>
-        <ion-label>Sura</ion-label>
-        <ion-select name="sura" class="form-control" *ngIf="suraList" #surah (ionChange)="onSuraChanged(surah.value)">
-          <ion-select-option value="{{sura.startpage}}" *ngFor="let sura of suraList; let i = index">{{i+1}}.
-            {{sura.tname}} - {{sura.name}}
-          </ion-select-option>
-        </ion-select>
-      </ion-item>
-
-      <ion-item>
-        <ion-label>Dzuz</ion-label>
-        <ion-select class="ion-select form-control" name="juz" #juz (ionChange)="onSuraChanged(juz.value)">
-          <ion-select-option value="1">Juz 1</ion-select-option>
-          <ion-select-option value="22">Juz 2</ion-select-option>
-          <ion-select-option value="42">Juz 3</ion-select-option>
-          <ion-select-option value="62">Juz 4</ion-select-option>
-          <ion-select-option value="82">Juz 5</ion-select-option>
-          <ion-select-option value="102">Juz 6</ion-select-option>
-          <ion-select-option value="121">Juz 7</ion-select-option>
-          <ion-select-option value="142">Juz 8</ion-select-option>
-          <ion-select-option value="162">Juz 9</ion-select-option>
-          <ion-select-option value="182">Juz 10</ion-select-option>
-          <ion-select-option value="201">Juz 11</ion-select-option>
-          <ion-select-option value="222">Juz 12</ion-select-option>
-          <ion-select-option value="242">Juz 13</ion-select-option>
-          <ion-select-option value="262">Juz 14</ion-select-option>
-          <ion-select-option value="282">Juz 15</ion-select-option>
-          <ion-select-option value="302">Juz 16</ion-select-option>
-          <ion-select-option value="322">Juz 17</ion-select-option>
-          <ion-select-option value="342">Juz 18</ion-select-option>
-          <ion-select-option value="362">Juz 19</ion-select-option>
-          <ion-select-option value="382">Juz 20</ion-select-option>
-          <ion-select-option value="402">Juz 21</ion-select-option>
-          <ion-select-option value="422">Juz 22</ion-select-option>
-          <ion-select-option value="442">Juz 23</ion-select-option>
-          <ion-select-option value="462">Juz 24</ion-select-option>
-          <ion-select-option value="482">Juz 25</ion-select-option>
-          <ion-select-option value="502">Juz 26</ion-select-option>
-          <ion-select-option value="522">Juz 27</ion-select-option>
-          <ion-select-option value="542">Juz 28</ion-select-option>
-          <ion-select-option value="562">Juz 29</ion-select-option>
-          <ion-select-option value="582">Juz 30</ion-select-option>
-        </ion-select>
-      </ion-item>
-
       <ion-item>
         <ion-label>Ucac</ion-label>
         <ion-select class="ion-select form-control" name="qari" #qari (ionChange)="onQariChanged(qari.value)">
@@ -118,7 +71,7 @@
       >
       <ng-container *ngIf="quranService.words">
         <ion-slide dir="rtl" lang="ar">
-          <ng-container *ngIf="!showTranslation">
+          <ng-container>
           <ng-container *ngFor="let item of quranService.words.result; let i = index">
             <section class="suraTitle" *ngIf="!item.word && item.detail.ayas">
               <img src="https://salamquran.com/static/images/quran/sura-header.svg" alt="Quran sura title">
@@ -148,23 +101,6 @@
             </div>
           </ng-container>
         </ng-container>
-
-          <!--translation-->
-          <div dir="ltr" lang="eng" class="translation" *ngIf="showTranslation">
-            <ion-item>
-              <ion-label>Prikazi ajete na arapskom jeziku</ion-label>
-              <ion-toggle [(ngModel)]="showArabicInTranslation"></ion-toggle>
-            </ion-item>
-            <div class="ayah" *ngFor="let item of translationForCurrentPage; let i = index">
-              <div class="verse_key">
-                <p>{{item.verseKey}}</p>
-
-              </div>
-              <p *ngIf="showArabicInTranslation">{{item.text}} </p>
-              <p>{{item.translation.text}}</p>
-            </div>
-          </div>
-        <!--translation-->
           <ion-text>
             {{quranService.currentPage}}
           </ion-text>
