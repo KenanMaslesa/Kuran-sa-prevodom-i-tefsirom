@@ -10,10 +10,10 @@
     </ion-buttons>
     <ion-icon slot="end" name="search" *ngIf="quranService.showHeaderAndTabs" (click)="quranService.showHeaderAndTabs=!quranService.showHeaderAndTabs;showSearchHeader=!showSearchHeader"></ion-icon>
 
-    <div class="play-btn-wrapper" *ngIf="audio" slot="end">
+    <div class="play-btn-wrapper" *ngIf="audio && quranService.showHeaderAndTabs" slot="end">
       <ng-container>
-        <ion-icon name="play" *ngIf="audio.paused" (click)="resumeAudio()"></ion-icon>
-        <ion-icon name="pause" *ngIf="!audio.paused" (click)="pauseAudio()"></ion-icon>
+        <ion-icon name="play" *ngIf="audio.paused" (click)="resumeAudio(); quranService.showHeaderAndTabs=!quranService.showHeaderAndTabs"></ion-icon>
+        <ion-icon name="pause" *ngIf="!audio.paused" (click)="pauseAudio(); quranService.showHeaderAndTabs=!quranService.showHeaderAndTabs"></ion-icon>
       </ng-container>
     </div>
   </ion-toolbar>
