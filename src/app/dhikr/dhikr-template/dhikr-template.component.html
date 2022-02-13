@@ -1,11 +1,11 @@
 <ion-list class="toggles">
   <ion-item color="primary">
     <ion-label>AR</ion-label>
-    <ion-toggle [(ngModel)]="showArabicDhikr"></ion-toggle>
+    <ion-toggle [(ngModel)]="dhikrService.showArabicDhikr" (ngModelChange)="dhikrService.onModelChange(dhikrLocalStoarge.showArabicDhikr, dhikrService.showArabicDhikr)"></ion-toggle>
     <ion-label>TR</ion-label>
-    <ion-toggle [(ngModel)]="showDhikrTranslation"></ion-toggle>
+    <ion-toggle [(ngModel)]="dhikrService.showDhikrTranslation" (ngModelChange)="dhikrService.onModelChange(dhikrLocalStoarge.showDhikrTranslation, dhikrService.showDhikrTranslation)"></ion-toggle>
     <ion-label>BOS</ion-label>
-    <ion-toggle [(ngModel)]="showBosnianDhikr"></ion-toggle>
+    <ion-toggle [(ngModel)]="dhikrService.showBosnianDhikr" (ngModelChange)="dhikrService.onModelChange(dhikrLocalStoarge.showBosnianDhikr, dhikrService.showBosnianDhikr)"></ion-toggle>
   </ion-item>
 </ion-list>
 
@@ -18,14 +18,14 @@
         <ion-icon name="pause-outline" (click)="mediaPlayerService.stopAudio()" *ngIf="mediaPlayerService.isPlaying"></ion-icon>
       </div>
 
-      <div class="card card__arabic" *ngIf="showArabicDhikr">
+      <div class="card card__arabic" *ngIf="dhikrService.showArabicDhikr">
         <ng-container *ngFor="let sentence of dhikr.sentences">
           <p dir="rtl" [class.card--active]="mediaPlayerService.currentTime >= sentence.startSecond && mediaPlayerService.currentTime <= sentence.endSecond"
             (click)="mediaPlayerService.setAudioCurrentTime(sentence.startSecond, dhikr.audio)">{{sentence.arabic}}</p>
         </ng-container>
       </div>
 
-      <div class="card" *ngIf="showDhikrTranslation">
+      <div class="card" *ngIf="dhikrService.showDhikrTranslation">
         <ng-container *ngFor="let sentence of dhikr.sentences">
           <p [class.card--active]="mediaPlayerService.currentTime >= sentence.startSecond && mediaPlayerService.currentTime <= sentence.endSecond"
             (click)="mediaPlayerService.setAudioCurrentTime(sentence.startSecond, dhikr.audio)">{{sentence.transcription}}</p>
@@ -34,7 +34,7 @@
 
       <div class="card">
         <ng-container *ngFor="let sentence of dhikr.sentences">
-          <p *ngIf="showBosnianDhikr"
+          <p *ngIf="dhikrService.showBosnianDhikr"
             [class.card--active]="mediaPlayerService.currentTime >= sentence.startSecond && mediaPlayerService.currentTime <= sentence.endSecond"
             (click)="mediaPlayerService.setAudioCurrentTime(sentence.startSecond, dhikr.audio)">{{sentence.bosnian}}</p>
         </ng-container>
