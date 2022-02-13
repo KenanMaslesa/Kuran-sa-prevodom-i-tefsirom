@@ -36,7 +36,7 @@ export class QuranTemplatePage implements OnInit {
       this.quranService.currentPage = pageFromParams;
     }
     this.quranService.words = [];
-    this.quranService.getSuraWordsByPage(pageFromParams).subscribe((response) => {
+    this.quranService.getSuraWordsByPage(this.quranService.currentPage).subscribe((response) => {
       this.quranService.words = response;
       this.quranService.showLoader = false;
     }, error => {
