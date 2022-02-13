@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MediaPlayerService } from 'src/app/shared/media-player.service';
 import { DhikrService } from '../dhikr.service';
 
 @Component({
@@ -8,7 +9,10 @@ import { DhikrService } from '../dhikr.service';
 export class MorningDhikrPage implements OnInit {
   morningDhikrs: any;
 
-  constructor(private morningDhikrService: DhikrService) { }
+  constructor(
+    private morningDhikrService: DhikrService,
+    private mediaPlayerService: MediaPlayerService
+  ) {}
 
   ngOnInit(): void {
     this.getMorningDhikr();
@@ -20,8 +24,12 @@ export class MorningDhikrPage implements OnInit {
     }, 100);
   }
 
-  getMorningDhikr(){
-    this.morningDhikrService.getMorningDhikr().subscribe(dhikrs => {
+  ionViewDidLeave() {
+    this.mediaPlayerService.removePlayer();
+  }
+
+  getMorningDhikr() {
+    this.morningDhikrService.getMorningDhikr().subscribe((dhikrs) => {
       this.morningDhikrs = dhikrs;
     });
   }
