@@ -74,4 +74,8 @@ export class QuranService {
   getTranslationForIndex(index){
    return quranTranslation.getIndexTranslation(index);
   }
+
+  getJuzs() {
+    return this.apiService.getData(`assets/db/quran/juzs.json`);
+  }
 }
