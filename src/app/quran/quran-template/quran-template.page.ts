@@ -10,15 +10,13 @@ import { QuranService } from '../quran.service';
 })
 export class QuranTemplatePage implements OnInit {
   @ViewChild('slides', { static: true }) slides: IonSlides;
-  sura;
-  suraTitle = '';
   audio;
   previousAyah;
   suraList;
+  suraTitle;
   showSearchHeader = false;
   currentSuraTitle = '';
   slideOpts = {
-    initialSlide: 1,
     speed: 50,
     loop: true,
   };
