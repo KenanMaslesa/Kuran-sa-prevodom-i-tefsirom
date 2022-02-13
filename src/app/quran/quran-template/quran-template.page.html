@@ -1,4 +1,4 @@
-<ion-header class="{{quranService.showHeaderAndTabs?'show':'hide'}}">
+<ion-header class="{{quranService.showHeaderAndTabs?'show':'hide'}}" (click)="quranService.showHeaderAndTabs=!quranService.showHeaderAndTabs">
   <ion-toolbar color="primary">
     <ion-title>
       <ng-container *ngIf="suraList">
@@ -8,7 +8,7 @@
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/"></ion-back-button>
     </ion-buttons>
-    <ion-icon slot="end" name="search" (click)="showSearchHeader=!showSearchHeader"></ion-icon>
+    <ion-icon slot="end" name="search" *ngIf="quranService.showHeaderAndTabs" (click)="quranService.showHeaderAndTabs=!quranService.showHeaderAndTabs;showSearchHeader=!showSearchHeader"></ion-icon>
 
     <div class="play-btn-wrapper" *ngIf="audio" slot="end">
       <ng-container>
@@ -62,7 +62,7 @@
     </div>
   </header>
 
-  <div class="main {{quranService.showHeaderAndTabs?'':'without-tabs'}}" (click)="quranService.showHeaderAndTabs=!quranService.showHeaderAndTabs">
+  <div class="main {{quranService.showHeaderAndTabs?'':'without-tabs'}}">
     <ion-slides #slides pager="false" [options]="slideOpts"
       (ionSlideNextEnd)="onSuraChanged(+quranService.currentPage + 1)"
       (ionSlidePrevEnd)="onSuraChanged(+quranService.currentPage - 1)"
