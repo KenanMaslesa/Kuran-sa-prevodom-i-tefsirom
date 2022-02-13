@@ -54,7 +54,6 @@ export class MediaPlayerService {
     this.stopAudio();
     this.player.seek(time);
     this.player.play();
-    this.isPlaying = true;
     this.watchCurrentTime();
   }
 
