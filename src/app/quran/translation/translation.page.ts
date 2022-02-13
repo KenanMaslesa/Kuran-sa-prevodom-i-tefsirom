@@ -9,6 +9,7 @@ import { QuranService } from '../quran.service';
 })
 export class TranslationPage implements OnInit {
   @ViewChild('slides', { static: true }) slides: IonSlides;
+  showArabic = false;
   translationForCurrentPage = [];
   ayatsOfCurrentPage = [];
   arrayOfIndexes = [];
