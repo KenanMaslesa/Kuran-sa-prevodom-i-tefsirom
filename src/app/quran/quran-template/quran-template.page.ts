@@ -34,6 +34,7 @@ export class QuranTemplatePage implements OnInit {
       this.quranService.currentPage = pageFromParams;
     }
     this.quranService.getSuraWordsByPage(this.quranService.currentPage);
+    this.getSuraList();
   }
 
   cacheAllQuranPages() {
