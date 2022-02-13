@@ -41,7 +41,14 @@ export class MediaPlayerService {
   setAudioCurrentTime(time, audioUrl){
     if(!this.player){
       this.player = new Howl({
-        src: [audioUrl]
+        src: [audioUrl],
+        onplay: () => {
+          this.isPlaying = true;
+        },
+        onend: () => {
+          this.isPlaying = false;
+          this.clearWatchCurrentTimeInterval();
+        }
       });
     }
     this.stopAudio();
