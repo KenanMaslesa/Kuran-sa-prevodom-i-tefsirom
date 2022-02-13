@@ -25,7 +25,7 @@
     <div class="form-group dropdown-wrapper">
       <ion-item>
         <ion-label>Ucac</ion-label>
-        <ion-select class="ion-select form-control" name="qari" #qari (ionChange)="onQariChanged(qari.value)">
+        <ion-select #select [(ngModel)]="quranService.qari" (ngModelChange)="quranService.setQariUrl(select.value)" class="ion-select form-control" name="qari" #qari (ionChange)="onQariChanged(qari.value)">
           <ion-select-option value="https://dl.salamquran.com/ayat/afasy-murattal-192/">Mishary Afasy
           </ion-select-option>
           <ion-select-option value="https://dl.salamquran.com/ayat/muhammad_jibreel-murattal-32/">Muhammad Jibreel

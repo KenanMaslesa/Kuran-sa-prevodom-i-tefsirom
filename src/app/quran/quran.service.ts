@@ -33,6 +33,10 @@ export class QuranService {
       this.currentPage = 1;
     }
     this.currentPageChanged.next(true);
+    const qari = localStorage.getItem('qari');
+    if(qari){
+      this.qari = qari;
+    }
   }
 
   getSura(sura) {
@@ -67,6 +71,11 @@ export class QuranService {
       'https://dl.salamquran.com/ayat/afasy-murattal-192/',
       this.qari
     );
+  }
+
+  setQariUrl(url: string){
+    localStorage.setItem('qari', url);
+    this.qari = url;
   }
 
   cacheAllQuranPages(page) {
