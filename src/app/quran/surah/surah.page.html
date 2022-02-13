@@ -64,7 +64,7 @@
       </ion-card-content>
     </ion-card> -->
 
-    <ion-card *ngFor="let sura of suraListLazyLoaded; let i = index" [routerLink]="['/quran/tabs/quran-template', sura.startpage]">
+    <ion-card *ngFor="let sura of suraListLazyLoaded; let i = index" (click)="quranService.currentPage = sura.startpage" [routerLink]="['/quran/tabs/quran-template']">
       <ion-card-header>
         <ion-card-title>{{sura.index}}. Sura {{sura.tname}} <span class="startPage">{{sura.startpage}}</span></ion-card-title>
         <p>{{sura.type==='Meccan'?'Mekkanska':'Medinska'}} - {{sura.ayas}} ajeta</p>

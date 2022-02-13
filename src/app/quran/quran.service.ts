@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, of, Subject } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { ApiService } from '../shared/api.service';
 const quranTranslation = require('@kmaslesa/quran-translation-bs_korkut');
 const quranAyats = require('@kmaslesa/quran-ayats');
@@ -18,6 +19,7 @@ export class QuranService {
   currentPageChanged = new Subject();
   qari = 'https://dl.salamquran.com/ayat/afasy-murattal-192/';
   quranAPI = 'https://salamquran.com/en/api/v6'; //https://salamquran.com/api/v6/doc
+  suraList = [];
 
   constructor(private http: HttpClient, private apiService: ApiService) {
     const page = localStorage.getItem('currentPage');
@@ -25,6 +27,9 @@ export class QuranService {
       this.currentPage = +page;
     } else {
       localStorage.setItem('currentPage', JSON.stringify(1));
+      this.currentPage = 1;
+    }
+    if(this.currentPage < 1 || this.currentPage > 604){
       this.currentPage = 1;
     }
     this.currentPageChanged.next(true);
@@ -45,7 +50,12 @@ export class QuranService {
   }
 
   getListOfSura() {
-    return this.apiService.getData(`assets/db/quran/surahs.json`);
+    return this.apiService.getData(`assets/db/quran/surahs.json`).pipe(
+      map(response=> {
+        this.suraList = response;
+        return response;
+      })
+    );
   }
 
   getAyatsByPage(pageNumber) {
@@ -77,5 +87,18 @@ export class QuranService {
 
   getJuzs() {
     return this.apiService.getData(`assets/db/quran/juzs.json`);
+  }
+
+  setCurrentSuraTitle(page) {
+    if (this.suraList) {
+      this.suraList.forEach((sura, index) => {
+        if (
+          parseInt(page, 10) >= parseInt(sura.startpage, 10) &&
+          parseInt(page, 10) <= parseInt(sura.endpage, 10)
+        ) {
+          return `${index + 1}. ${sura.name} - ${sura.tname}`;
+        }
+      });
+    }
   }
 }

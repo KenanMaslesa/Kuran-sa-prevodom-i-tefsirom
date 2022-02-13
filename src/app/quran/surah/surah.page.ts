@@ -16,7 +16,7 @@ export class SurahPage implements OnInit {
   loadMoreIndex = 0;
   isSearchOn = false;
   showSearchHeader = false;
-  constructor(private quranService: QuranService) { }
+  constructor(public quranService: QuranService) { }
 
   ngOnInit() {
     this.getSuraList();

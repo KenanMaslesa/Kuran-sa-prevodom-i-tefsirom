@@ -9,7 +9,7 @@ import { QuranService } from '../quran.service';
 export class JuzPage implements OnInit {
   juzList = [];
   suraList = [];
-  constructor(private quranService: QuranService) { }
+  constructor(public quranService: QuranService) { }
 
   ngOnInit() {
     this.getJuzList();
