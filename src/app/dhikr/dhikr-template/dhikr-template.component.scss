@@ -2,8 +2,8 @@ ion-slides {
   background-image: url('/assets/img/background.jpeg');
   background-repeat: no-repeat;
   background-size: cover;
-  padding-bottom: 100px;
-  min-height: 85%;
+  padding-bottom: 50px;
+  min-height: 100%;
 
   &::before {
       content: '';
@@ -24,10 +24,18 @@ ion-slides {
 
       ion-icon {
           font-size: 35px;
+          background: #dcdcdcc9;
+          border-radius: 50%;
+          padding: 5px;
       }
 
       .card {
           padding: 10px;
+          background: #dcdcdc7a;
+          border-radius: 10px;
+          width: 95%;
+          margin: 0 auto;
+          margin-bottom: 10px;
 
           &:not(.card__arabic){
               border-top: 1px solid gainsboro;
@@ -36,7 +44,6 @@ ion-slides {
           &__arabic {
               font-size: 25px;
               direction: rtl;
-              margin-left: 10px;
           }
 
           &--active {

@@ -32,9 +32,9 @@
         </ng-container>
       </div>
 
-      <div class="card">
+      <div class="card" *ngIf="dhikrService.showBosnianDhikr">
         <ng-container *ngFor="let sentence of dhikr.sentences">
-          <p *ngIf="dhikrService.showBosnianDhikr"
+          <p
             [class.card--active]="mediaPlayerService.currentTime >= sentence.startSecond && mediaPlayerService.currentTime <= sentence.endSecond"
             (click)="mediaPlayerService.setAudioCurrentTime(sentence.startSecond, dhikr.audio)">{{sentence.bosnian}}</p>
         </ng-container>
