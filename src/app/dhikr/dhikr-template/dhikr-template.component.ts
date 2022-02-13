@@ -1,5 +1,6 @@
 import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { IonSlides } from '@ionic/angular';
+import { MediaPlayerService } from 'src/app/shared/media-player.service';
 import { NativePluginsService } from 'src/app/shared/native-plugins.service';
 import { DhikrService } from '../dhikr.service';
 @Component({
@@ -9,7 +10,7 @@ import { DhikrService } from '../dhikr.service';
 })
 export class DhikrTemplateComponent implements OnInit {
   @Input() name: string;
-  @ViewChild('slides', {static: true}) slides: IonSlides;
+  @ViewChild('slides', { static: true }) slides: IonSlides;
   @Input() dhikrs: any;
   showBosnianDhikr = true;
   showArabicDhikr = true;
@@ -19,7 +20,11 @@ export class DhikrTemplateComponent implements OnInit {
   endSecond: number;
   sliderLength: number;
   sliderActiveIndex = 0;
-  constructor(private dhikrService: DhikrService, private nativePluginsService: NativePluginsService) { }
+  constructor(
+    private dhikrService: DhikrService,
+    private nativePluginsService: NativePluginsService,
+    public mediaPlayerService: MediaPlayerService
+  ) {}
 
   ngOnInit() {
     this.setSliderLength();
@@ -33,28 +38,21 @@ export class DhikrTemplateComponent implements OnInit {
     });
   }
 
-  setAudio(audio, startSecond){
-    this.startSecond = startSecond;
-    audio.currentTime = startSecond;
-    audio.play();
-  }
+  // playAudio(audioUrl) {
+  //   this.mediaPlayerService.playAudio(audioUrl);
+  //   this.mediaPlayerService.watchCurrentTime();
+  // }
 
-  updateCurrentTime(audio){
-    this.currentTime = audio.currentTime;
-    if(this.currentTime >= this.endSecond){
-      this.setAudio(audio, this.startSecond);
-    }
-  }
+  // stopAudioPlayer() {
+  //   this.mediaPlayerService.stopAudio();
+  // }
 
-  pauseAudio(audio){
-    audio.pause();
-  }
+  // setAudioCurrentTime(time, audioUrl){
+  //   this.mediaPlayerService.setAudioCurrentTime(time, audioUrl);
+  //   this.mediaPlayerService.watchCurrentTime();
+  // }
 
-  stopAudio(audio){
-     audio.currentTime = 0;
-  }
-
-  getSliderActiveIndex(){
+  getSliderActiveIndex() {
     this.slides.getActiveIndex().then((index: number) => {
       this.sliderActiveIndex = index;
     });
