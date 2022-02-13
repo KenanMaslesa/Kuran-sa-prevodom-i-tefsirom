@@ -8897,7 +8897,7 @@ ion-icon {
 ion-slide {
   display: block;
   min-height: 85vh;
-  width: 100%;
+  width: 100% !important;
 }
 ion-slides {
   direction: rtl;
