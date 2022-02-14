@@ -106,8 +106,7 @@ ion-toolbar {
 }
 
 .counter {
-  position: absolute;
-  top: 5px;
+  position: fixed;
   right: 8px;
   z-index: 99;
   background: var(--ion-color-primary);
