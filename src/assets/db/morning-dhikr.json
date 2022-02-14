@@ -493,5 +493,48 @@
         "endSecond": 12.5
       }
     ]
+  },
+  {
+    "bosnian": "Neka je slavljen i hvaljen Allah u razmjerama brojnosti Njegovih stvorenih bića, u razmjeri Njegovog zadovoljstva, težine Njegova prijestolja (Arša) i mnoštva osebujnosti Njegovih riječi.",
+    "arabic": "سُبْحَانَ اللَّهِ وَبِحَمْدِهِ، عَدَدَ خَلْقِهِ، وَرِضَا نَفْسِهِ، وَزِنَةَ عَرْشِهِ، وَمِدَادَ كَلِمَاتِهِ",
+    "transcription": "SUBHĀNALLĀHI VE BI HAMDIH, ‘ADEDE HALKIH, VE RIDĀ NEFSIH, VE ZINETE ‘ARŠIH, VE MIDĀDE KELIMĀTIH.",
+    "audio": "assets/audio/adede-halkih.mp3",
+    "sentences": [
+      {
+        "bosnian": "Neka je slavljen i hvaljen Allah",
+        "arabic": "سُبْحَانَ اللَّهِ وَبِحَمْدِهِ،",
+        "transcription": "SUBHĀNALLĀHI VE BI HAMDIH,",
+        "startSecond": 0.1,
+        "endSecond": 2.8
+      },
+      {
+        "bosnian": "u razmjerama brojnosti Njegovih stvorenih bića,",
+        "arabic": "عَدَدَ خَلْقِهِ،",
+        "transcription": "‘ADEDE HALKIH,",
+        "startSecond": 3,
+        "endSecond": 5
+      },
+      {
+        "bosnian": "u razmjeri Njegovog zadovoljstva,",
+        "arabic": "وَرِضَا نَفْسِهِ،",
+        "transcription": "VE RIDĀ NEFSIH,",
+        "startSecond": 5.1,
+        "endSecond": 7
+      },
+      {
+        "bosnian": "težine Njegova prijestolja (Arša)",
+        "arabic": "وَزِنَةَ عَرْشِهِ،",
+        "transcription": "VE ZINETE ‘ARŠIH,",
+        "startSecond": 7.1,
+        "endSecond": 8.9
+      },
+      {
+        "bosnian": "i mnoštva osebujnosti Njegovih riječi.",
+        "arabic": "وَمِدَادَ كَلِمَاتِهِ",
+        "transcription": "VE MIDĀDE KELIMĀTIH.",
+        "startSecond": 9,
+        "endSecond": 11
+      }
+    ]
   }
 ]
