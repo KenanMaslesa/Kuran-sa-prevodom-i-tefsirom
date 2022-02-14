@@ -464,5 +464,34 @@
         "endSecond": 3
       }
     ]
+  },
+  {
+    "bosnian": "Zadovoljan sam da mi je Allah Gospodar, vjera islam, Muhammed, a.s., vjerovjesnik.",
+    "arabic": "رَضِيتُ بِاللهِ رَبًّا وَ بِالإسْلاَمِ دِينًا وَ بِمُحَمَّدٍ صَلَّى اللهُ عَلَيْهِ وَ آلِهِ وَ سَلَّمَ نَبِيًّا",
+    "transcription": "REDĪTU BILLĀHI RABBĀ, VE BI-L-ISLĀMI DĪNĀ, VE BI MUHAMMEDIN SALLĀLLAHU ‘ALEJHI VE SELLEME NEBIJJĀ.",
+    "audio": "assets/audio/raditu.mp3",
+    "sentences": [
+      {
+        "bosnian": "Zadovoljan sam da mi je Allah Gospodar,",
+        "arabic": "رَضِيتُ بِاللهِ رَبًّا",
+        "transcription": "REDĪTU BILLĀHI RABBĀ,",
+        "startSecond": 0.1,
+        "endSecond": 3
+      },
+      {
+        "bosnian": "vjera islam,",
+        "arabic": "وَ بِالإسْلاَمِ دِينًا",
+        "transcription": "VE BI-L-ISLĀMI DĪNĀ,",
+        "startSecond": 3.3,
+        "endSecond": 5.9
+      },
+      {
+        "bosnian": "Muhammed, a.s., vjerovjesnik.",
+        "arabic": "وَ بِمُحَمَّدٍ صَلَّى اللهُ عَلَيْهِ وَ آلِهِ وَ سَلَّمَ نَبِيًّا",
+        "transcription": "VE BI MUHAMMEDIN SALLĀLLAHU ‘ALEJHI VE SELLEME NEBIJJĀ.",
+        "startSecond": 6,
+        "endSecond": 12.5
+      }
+    ]
   }
 ]
