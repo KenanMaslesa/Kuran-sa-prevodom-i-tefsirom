@@ -87,59 +87,45 @@
     ]
   },
   {
-    "bosnian": "Allahu, Poznavaoče skrivenog i pojavnog (svijeta), Sazdavatelju nebesa i Zemlje, Gospodaru svega i njegov Posjedovatelju: svjedočim da nema boga osim Tebe, Tebi se sklanjam pred zlom moje duše, i pred zlom šejtana i njegovog širka, te da me sačuvaš od činjenja zla prema sebi ili bilo kom muslimanu.",
-    "arabic": "اللهم عالم الغيب والشهادة فاطر السموات والأرض ، رب كل شئ ومليكه ، أشهد أن لا إله إلا أنت ، أعوذ بك من شر نفسي ، ومن شر الشيطان وشركه ، وأن أقترف على نفسي سوءاً ، أو أجره إلى مسلم",
-    "transcription": "ALLĀHUMME ‘ĀLIME-L-GAJBI VE-Š-ŠEHĀDETI, FĀTIRE-S-SEMĀVATI VE-L-ERDI, RABBI KULLI ŠEJ-IN VE MELĪKEHU: EŠHEDU EN LĀ ILĀHE ILLĀ ENTE, E‘ŪZU BIKE MIN ŠERRI NEFSĪ VE MIN ŠERRI-Š-ŠEJTĀNI VE ŠIRKIHI, VE EN AKTERIFE ‘ALĀ NEFSĪ SŪ-EN EV EDŽURREHU ILĀ MUSLIMIN.",
-    "audio": "assets/audio/alimel-gajbi.mp3",
+    "bosnian": "Allahu, Tvojom voljom u noć ulazimo i jutro dočekujemo, Tvojom voljom živimo i umiremo i Tebi se vraćamo.",
+    "arabic": "اللَّهُمَّ بِكَ أَمْسَيْنَا وَبِكَ أَصْبَحْنَا، وَبِكَ نَحْيَا وَبِكَ نَمُوتُ، وَإِلَيْكَ الْمَصِيرُ",
+    "transcription": "ALLĀHUMME BIKE EMSEJNĀ VE BIKE ASBAHNĀ VE BIKE NAHJĀ VE BIKE NEMŪT VE ILEJKE-L-MESĪR.",
+    "audio": "assets/audio/emsejna2.mp3",
     "sentences": [
       {
-        "bosnian": "Allahu, Poznavaoče skrivenog i pojavnog (svijeta),",
-        "arabic": "اللَّهُمَّ عَالِمَ الغَيْبِ والشَّهَادَةِ",
-        "transcription": "ALLĀHUMME ‘ĀLIME-L-GAJBI VE-Š-ŠEHĀDETI,",
+        "bosnian": "Allahu, Tvojom voljom u noć ulazimo",
+        "arabic": "اللَّهُمَّ بِكَ أَمْسَيْنَا",
+        "transcription": "ALLĀHUMME BIKE EMSEJNĀ,",
         "startSecond": 0.1,
-        "endSecond": 4
+        "endSecond": 3.5
       },
       {
-        "bosnian": "Sazdavatelju nebesa i Zemlje,",
-        "arabic": "فَاطِرَ السَّموَاتِ والأرْضِ",
-        "transcription": "FĀTIRE-S-SEMĀVATI VE-L-ERDI,",
-        "startSecond": 4.5,
-        "endSecond": 7.8
+        "bosnian": "i jutro dočekujemo,",
+        "arabic": "وَبِكَ أَصْبَحْنَا،",
+        "transcription": "VE BIKE ASBAHNĀ,",
+        "startSecond": 3.6,
+        "endSecond": 6
       },
       {
-        "bosnian": "Gospodaru svega i njegov Posjedovatelju:",
-        "arabic": "رَبَّ كُلِّ شَيءٍ ومَلِيْكَهُ",
-        "transcription": "RABBI KULLI ŠEJ-IN VE MELĪKEH",
-        "startSecond": 7.9,
-        "endSecond": 11.8
+        "bosnian": "Tvojom voljom živimo",
+        "arabic": "وَبِكَ نَحْيَا",
+        "transcription": "VE BIKE NAHJĀ,",
+        "startSecond": 6.3,
+        "endSecond": 8.8
       },
       {
-        "bosnian": "svjedočim da nema boga osim Tebe,",
-        "arabic": "أشْهَدُ أنْ لا إلَهَ إلاَّ أنْتَ",
-        "transcription": "EŠHEDU EN LĀ ILĀHE ILLĀ ENTE",
-        "startSecond": 11.8,
-        "endSecond": 17.5
+        "bosnian": "i umiremo",
+        "arabic": "وَبِكَ نَمُوتُ،",
+        "transcription": "VE BIKE NEMŪT,",
+        "startSecond": 8.9,
+        "endSecond": 10.75
       },
       {
-        "bosnian": "Tebi se sklanjam pred zlom moje duše,",
-        "arabic": "أعُوذُ بِكَ مِنْ شَرِّ نَفْسِي",
-        "transcription": "E‘ŪZU BIKE MIN ŠERRI NEFSĪ",
-        "startSecond": 17.6,
-        "endSecond": 20.8
-      },
-      {
-        "bosnian": "i pred zlom šejtana i njegovog širka,",
-        "arabic": "وَمِنْ شَرِّ الشَّيْطَانِ وَشِرْكِهِ",
-        "transcription": "VE MIN ŠERRI-Š-ŠEJTĀNI VE ŠIRKIHI,",
-        "startSecond": 21,
-        "endSecond": 24.8
-      },
-      {
-        "bosnian": "te da me sačuvaš od činjenja zla prema sebi ili bilo kom muslimanu.",
-        "arabic": "وأنْ أقْتَرِفَ عَلَى نَفْسِي سُوءاً، أوْ أجُرَّهُ إلَى مُسْلِمٍ",
-        "transcription": "VE EN AKTERIFE ‘ALĀ NEFSĪ SŪ-EN EV EDŽURREHU ILĀ MUSLIMIN.",
-        "startSecond": 24.9,
-        "endSecond": 33
+        "bosnian": "i Tebi se vraćamo.",
+        "arabic": "وَإِلَيْكَ الْمَصِيرُ",
+        "transcription": "VE ILEJKE-L-MESĪR.",
+        "startSecond": 10.8,
+        "endSecond": 15
       }
     ]
   },
