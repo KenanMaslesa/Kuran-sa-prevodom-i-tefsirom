@@ -31,5 +31,8 @@ export class AppComponent {
     if(this.nativePluginsService.geolocationData == null) {
       this.nativePluginsService.getCurrentLocation();
     }
+
+    this.nativePluginsService.scheduleNotificationForMorningDhikr();
+    this.nativePluginsService.scheduleNotificationForEveningDhikr();
   }
 }

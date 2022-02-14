@@ -1,7 +1,6 @@
 import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { IonSlides } from '@ionic/angular';
 import { MediaPlayerService } from 'src/app/shared/media-player.service';
-import { NativePluginsService } from 'src/app/shared/native-plugins.service';
 import { DhikrLocalStoarge, DhikrService } from '../dhikr.service';
 @Component({
   selector: 'app-dhikr-template',
@@ -20,7 +19,6 @@ export class DhikrTemplateComponent implements OnInit {
   dhikrLocalStoarge = DhikrLocalStoarge;
   constructor(
     public dhikrService: DhikrService,
-    private nativePluginsService: NativePluginsService,
     public mediaPlayerService: MediaPlayerService
   ) {}
 
@@ -50,7 +48,6 @@ export class DhikrTemplateComponent implements OnInit {
 
   slideChanged() {
     this.getSliderActiveIndex();
-    this.nativePluginsService.vibrate(100);
   }
 
   slideNext() {

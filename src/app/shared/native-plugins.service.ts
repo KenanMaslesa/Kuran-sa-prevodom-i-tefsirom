@@ -52,11 +52,11 @@ export class NativePluginsService {
     this.localNotifications.schedule(notification);
   }
 
-  showNotificationForMorningDhikr() {
+  scheduleNotificationForMorningDhikr() {
     this.showNotification({
       title: `Vrijeme je za jutarnji zikr`,
       text: 'Zapocni dan spominjanjem Allaha Uzvisenog i tako se zastiti i u svoj zivot unesi bereket',
-      id: 1,
+      id: 10,
       sound: null,
       trigger: {
         // every: this.every,
@@ -65,6 +65,7 @@ export class NativePluginsService {
           hour: 6,
           minute: 30,
         },
+        count: 1
       },
       led: 'FF0000',
       badge: 1,
@@ -76,20 +77,20 @@ export class NativePluginsService {
     });
   }
 
-  showNotificationForEveningDhikr() {
+  scheduleNotificationForEveningDhikr() {
     this.showNotification({
       title: `Vrijeme je za vecernji zikr`,
       text: 'Zavrsi dan spominjanjem Allaha Uzvisenog i tako se zastiti i u svoj zivot unesi bereket',
-      id: 2,
+      id: 11,
       sound: null,
       trigger: {
-        every: this.every,
-        in: 10,
-        // every: {
-        //   hour: 15,
-        //   minute: 30,
-        // },
-        count: 2,
+        // every: this.every,
+        // in: 10,
+        every: {
+          hour: 15,
+          minute: 30,
+        },
+        count: 1,
       },
       led: { color: '#FF00FF', on: 500, off: 500 },
       // smallIcon: 'res://ic_stat_dhikr',
