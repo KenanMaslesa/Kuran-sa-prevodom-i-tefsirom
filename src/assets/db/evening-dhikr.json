@@ -1,73 +1,88 @@
 [
   {
-    "bosnian": "Allahu, Ti si Gospodar moj, nema boga osim Tebe, stvorio si me i ja sam Tvoj rob, ja sam na tragu zavjeta Tebi datog, i obećanja Tvog u svojim granicama. Tebi se sklanjam pred zlom koje sam počinio, priznajem blagodati Tvoje prema meni, Tebi priznajem svoje grijehe. Stoga, oprosti mi, jer osim Tebe niko drugi grijehe ne oprašta. (Buharija)",
-    "arabic": "للَّهُمَّ أَنْتَ رَبِّى، لَا إِلَهَ إِلاَّ أَنْتَ، خَلَقْتَنِى وَأَنَا عَبْدُكَ، وَأَنَا عَلَى عَهْدِكَ وَوَعْدِكَ مَا اسْتَطَعْتُ، أَعُوذُ بِكَ مِنْ شَرِّ مَا صَنَعْتُ، أَبُوءُ لَكَ بِنِعْمَتِكَ عَلَىَّ، وَأَبُوءُ بِذَنْبِى، اغْفِرْ لِي؛ فَإِنَّهُ لَا يَغْفِرُ الذُّنُوبَ إِلاَّ أَنْتَ",
-    "transcription": "ALLĀHUMME ENTE RABBĪ LĀ ILĀHE ILLĀ ENTE HALEKTENĪ VE ENE ‘ABDUKE ( žene reći: VE ENE EMETUKE) VE ENE ‘ALĀ ‘AHDIKE VE VA‘DIKE MESTETA‘TU, E‘ŪZU BIKE MIN ŠERRI MĀ SANA‘TU EBŪ-U LEKE BI NI‘METIKE ‘ALEJJE, VE EBŪ-U BIZENBĪ FAGFIRLĪ FE INNEHU LĀ JAGFIRU-Z-ZUNŪBE ILLĀ ENTE.",
-    "audio": "assets/audio/sejjidul-istigfar.mp3",
-    "imam": "Buhari",
+    "bosnian": "U noć uđosmo i noć dočeka svekolika Allahova vlast. Hvala Allahu i nema boga osim Njega Jedinog, Koji druga nema. Njemu pripada sva vlast i svaka pohvala i on nad svačim ima moć. Allahu, molim Te za sva dobra ove noći i za dobra poslije nje. I utječem Ti se od zla ove noći i zla poslije nje. Gospodaru moj, Tebi se sklanjam pred lijenošću i zlohudom ohološću. Tebi se sklanjam pred kaznom Džehennema i kaburskom kaznom.",
+    "arabic": "أَمْسَيْنَا وَأَمْسَى الْمُلْكُ لِلَّهِ، وَالْحَمْدُ لِلَّهِ لَا إِلَهَ إِلَّا اللهُ، وَحْدَهُ لَا شَرِيكَ لَهُ الْمُلْكُ وَلَهُ الْحَمْدُ وَهُوَ عَلَى كُلِّ شَيْءٍ قَدِيرٌ، رَبِّ أَسْأَلُكَ خَيْرَ مَا فِي هَذِهِ اللَّيْلَةِ وَخَيْرَ مَا بَعْدَهَا، وَأَعُوذُ بِكَ مِنْ شَرِّ مَا فِي هَذِهِ اللَّيْلَةِ وَشَرِّ مَا بَعْدَهَا، رَبِّ أَعُوذُ بِكَ مِنَ الْكَسَلِ وَسُوءِ الْكِبَرِ، رَبِّ أَعُوذُ بِكَ مِنْ عَذَابٍ فِي النَّارِ وَعَذَابٍ فِي الْقَبْرِ",
+    "transcription": "EMSEJNĀ VE EMSEL MULKU LILLĀH, VEL HAMDU LILLĀH, LĀ ILĀHE ILLALLĀHU VAHDEHU LĀ ŠERĪKE LEHU, LEHU-L-MULKU VE LEHU-L-HAMDU VE HUVE ‘ALĀ KULLI ŠEJ-IN KADIR. RABBI ES-ELUKE HAJRE MĀ FĪ HĀZIHI-L-LEJLETI VE HAJRE MĀ BA‘DEHĀ VE E‘ŪZU BIKE MIN ŠERRI HĀZIHI-L-LEJLETI VE ŠERRI MĀ BA‘DEHĀ RABBI E‘ŪZU BIKE MINE-L-KESELI VE SŪIL KIBER, RABBI E‘ŪZU BIKE MIN ‘AZĀBIN FI-N-NĀR, VE ‘AZĀBIN FI-L-KABR.",
+    "audio": "assets/audio/emsejna.mp3",
+    "imam": "Muslim",
+    "recitate": 1,
     "sentences": [
       {
-        "arabic": "للَّهُمَّ أَنْتَ رَبِّى",
-        "bosnian": "Allahu, Ti si Gospodar moj,",
-        "transcription": "ALLĀHUMME ENTE RABBĪ",
+        "arabic": "أَمْسَيْنَا وَأَمْسَى الْمُلْكُ لِلَّهِ،",
+        "bosnian": "U noć uđosmo i noć dočeka svekolika Allahova vlast.",
+        "transcription": "EMSEJNĀ VE EMSEL MULKU LILLĀH,",
         "startSecond": 0.1,
-        "endSecond": 2.5
+        "endSecond": 5.9
       },
       {
-        "arabic": "لَا إِلَهَ إِلاَّ أَنْتَ",
-        "bosnian": "nema boga osim Tebe,",
-        "transcription": "LĀ ILĀHE ILLĀ ENTE",
-        "startSecond": 2.9,
-        "endSecond": 7.6
+        "arabic": "وَالْحَمْدُ لِلهِ،",
+        "bosnian": "Hvala Allahu",
+        "transcription": "VEL HAMDU LILLĀH.",
+        "startSecond": 6,
+        "endSecond": 9.5
       },
       {
-        "arabic": "خَلَقْتَنِى وَأَنَا عَبْدُكَ",
-        "bosnian": "stvorio si me i ja sam Tvoj rob,",
-        "transcription": "HALEKTENĪ VE ENE ‘ABDUKE ( žene će reći: HALEKTENĪ VE ENE EMETUKE)",
-        "startSecond": 7.7,
-        "endSecond": 10.2
+        "arabic": "لَا إِلَهَ إِلَّا اللهُ وَحْدَهُ لَا شَرِيكَ لَهُ،",
+        "bosnian": "i nema boga osim Njega Jedinog, Koji druga nema.",
+        "transcription": "LĀ ILĀHE ILLALLĀHU VAHDEHU LĀ ŠERĪKE LEH,",
+        "startSecond": 10,
+        "endSecond": 17.9
       },
       {
-        "arabic": "وَأَنَا عَلَى عَهْدِكَ وَوَعْدِكَ مَا اسْتَطَعْتُ",
-        "bosnian": "ja sam na tragu zavjeta Tebi datog, i obećanja Tvog u svojim granicama.",
-        "transcription": "VE ENE ‘ALĀ ‘AHDIKE VE VA‘DIKE MESTETA‘TU",
-        "startSecond": 10.4,
-        "endSecond": 15.1
+        "arabic": "لَهُ الْمُلْكُ ولَهُ الْحَمْدُ، وَهُوَ عَلَى كُلِّ شَيْءٍ قَدِيرٌ،",
+        "bosnian": "Njemu pripada sva vlast i svaka pohvala i on nad svačim ima moć.",
+        "transcription": "LEHU-L-MULKU VE LEHU-L-HAMDU VE HUVE ‘ALĀ KULLI ŠEJ-IN KADIR.",
+        "startSecond": 18,
+        "endSecond": 26.9
       },
       {
-        "arabic": "أَعُوذُ بِكَ مِنْ شَرِّ مَا صَنَعْتُ",
-        "bosnian": "Tebi se sklanjam pred zlom koje sam počinio,",
-        "transcription": "E‘ŪZU BIKE MIN ŠERRI MĀ SANA‘TU",
-        "startSecond": 15.3,
-        "endSecond": 19.9
+        "arabic": "رَبِّ أَسْأَلُكَ خَيْرَ مَا فِي هَذِهِ اللَّيْلَةِ",
+        "bosnian": "Allahu, molim Te za sva dobra ove noći",
+        "transcription": "RABBI ES-ELUKE HAJRE MĀ FĪ HĀZIHI-L-LEJLEH,",
+        "startSecond": 27,
+        "endSecond": 32.4
       },
       {
-        "arabic": "أَبُوءُ لَكَ بِنِعْمَتِكَ عَلَىَّ",
-        "bosnian": "priznajem blagodati Tvoje prema meni,",
-        "transcription": "EBŪ-U LEKE BI NI‘METIKE ‘ALEJJE,",
-        "startSecond": 20,
-        "endSecond": 24.8
+        "arabic": "وَخَيْرَ مَا بَعْدَهَا،",
+        "bosnian": "i za dobra poslije nje.",
+        "transcription": "VE HAJRE MĀ BA‘DEHĀ.",
+        "startSecond": 32.5,
+        "endSecond": 36
       },
       {
-        "arabic": "وَأَبُوءُ بِذَنْبِى",
-        "bosnian": "Tebi priznajem svoje grijehe.",
-        "transcription": "VE EBŪ-U BIZENBĪ",
-        "startSecond": 24.9,
-        "endSecond": 30
+        "arabic": "وَأَعُوذُ بِكَ مِنْ شَرِّ مَا فِي هَذِهِ اللَّيْلَةِ",
+        "bosnian": "I utječem Ti se od zla ove noći",
+        "transcription": "VE E‘ŪZU BIKE MIN ŠERRI MA FI HĀZIHI-L-LEJLEH,",
+        "startSecond": 36.1,
+        "endSecond": 41.9
       },
       {
-        "arabic": "اغْفِرْ لِي",
-        "bosnian": "Stoga, oprosti mi,",
-        "transcription": "FAGFIRLĪ",
-        "startSecond": 30.2,
-        "endSecond": 31.8
+        "arabic": "وَشَرِّ مَا بَعْدَهَا،",
+        "bosnian": "i zla poslije nje.",
+        "transcription": "VE ŠERRI MĀ BA‘DEHĀ.",
+        "startSecond": 42,
+        "endSecond": 44.9
       },
       {
-        "arabic": "فَإِنَّهُ لَا يَغْفِرُ الذُّنُوبَ إِلاَّ أَنْتَ",
-        "bosnian": "jer osim Tebe niko drugi grijehe ne oprašta.",
-        "transcription": "FAGFIRLĪ FE INNEHU LĀ JAGFIRU-Z-ZUNŪBE ILLĀ ENTE.",
-        "startSecond": 31.85,
-        "endSecond": 38.5
+        "arabic": "رَبِّ أَعُوذُ بِكَ مِنَ الْكَسَلِ،",
+        "bosnian": "Gospodaru moj, Tebi se sklanjam pred lijenošću",
+        "transcription": "RABBI E‘ŪZU BIKE MINEL KESEL,",
+        "startSecond": 45,
+        "endSecond": 48.8
+      },
+      {
+        "arabic": "،وَسُوءِ الْكِبَرِ",
+        "bosnian": "i zlohudom ohološću.",
+        "transcription": "VE SŪIL KIBER.",
+        "startSecond": 48.9,
+        "endSecond": 52.1
+      },
+      {
+        "arabic": "رَبِّ أَعُوذُ بِكَ مِنْ عَذَابٍ فِي النَّارِوَعَذَابٍ فِي الْقَبْرِ",
+        "bosnian": "Tebi se sklanjam pred kaznom Džehennema i kaburskom kaznom.",
+        "transcription": "RABBI E‘ŪZU BIKE MIN ‘AZĀBIN FI-N-NĀR, VE ‘AZĀBIN FI-L-KABR.",
+        "startSecond": 52.2,
+        "endSecond": 60
       }
     ]
   },
