@@ -171,5 +171,27 @@
         "endSecond": 18.9
       }
     ]
+  },
+  {
+    "bosnian": "Utječem se savršenim Allahovim riječima od zla onoga što je stvorio.",
+    "arabic": "أَعُوذُ بِكَلِمَاتِ اللَّهِ التَّامَّاتِ مِنْ شَرِّ مَا خَلَقَ",
+    "transcription": "E‘ŪZU BIKELIMĀTILLĀHI-T-TĀMMĀTI MIN ŠERRI MĀ HALEK.",
+    "audio": "assets/audio/euzubikellimatillahi.mp3",
+    "sentences": [
+      {
+        "bosnian": "Utječem se savršenim Allahovim riječima",
+        "arabic": "أَعُوذُ بِكَلِمَاتِ اللَّهِ التَّامَّاتِ",
+        "transcription": "E‘ŪZU BIKELIMĀTILLĀHI-T-TĀMMĀTI",
+        "startSecond": 0.1,
+        "endSecond": 3.85
+      },
+      {
+        "bosnian": "od zla onoga što je stvorio.",
+        "arabic": "مِنْ شَرِّ مَا خَلَقَ",
+        "transcription": "MIN ŠERRI MĀ HALEK.",
+        "startSecond": 3.9,
+        "endSecond": 6
+      }
+    ]
   }
 ]
