@@ -363,5 +363,84 @@
         "endSecond": 43
       }
     ]
+  },
+  {
+    "bosnian": "O Ti, Živi, Postojani Održavatelju, molim Te za Tvoju obilatu milost – popravi moje stanje u svakom pogledu i ne prepusti me meni samome ni jednoga trena.",
+    "arabic": "يَا حَيُّ يَا قَيُّومُ بِرَحْمَتِكَ أَسْتَغيثُ, أَصْلِحْ لِي شَأْنِيَ كُلَّهُ, وَلاَ تَكِلْنِي إِلَى نَفْسِي طَرْفَةَ عَيْنٍ",
+    "transcription": "JA HAJJU JA KAJJUMU BI RAHMETIKE ESTEGISU, ASLIH LI ŠE’NI KULLEHU VE LA TEKILNI ILLA NEFSI TARFETE ’AJNIN.",
+    "audio": "assets/audio/jaHajju.mp3",
+    "sentences": [
+      {
+        "bosnian": "O Ti, Živi, Postojani Održavatelju,",
+        "arabic": "يَا حَيُّ يَا قَيُّومُ، ",
+        "transcription": "JA HAJJU JA KAJJUMU,",
+        "startSecond": 0.1,
+        "endSecond": 3.3
+      },
+      {
+        "bosnian": "molim Te za Tvoju obilatu milost,",
+        "arabic": "بِرَحْمَتِكَ أَسْتَغيثُ،",
+        "transcription": "BI RAHMETIKE ESTEGIS,",
+        "startSecond": 3.38,
+        "endSecond": 7
+      },
+      {
+        "bosnian": "popravi moje stanje u svakom pogledu",
+        "arabic": "أَصْلِحْ لِي شَأْنِيَ كُلَّهُ,",
+        "transcription": "ASLIH LI ŠE’NI KULLEHU",
+        "startSecond": 7.1,
+        "endSecond": 10
+      },
+      {
+        "bosnian": "i ne prepusti me meni samome",
+        "arabic": "وَلاَ تَكِلْنِي إِلَى نَفْسِي",
+        "transcription": "VE LA TEKILNI ILLA NEFSI",
+        "startSecond": 10.1,
+        "endSecond": 15.9
+      },
+      {
+        "bosnian": "ni jednoga trena.",
+        "arabic": "طَرْفَةَ عَيْنٍ",
+        "transcription": "TARFETE ’AJN.",
+        "startSecond": 16.4,
+        "endSecond": 18.9
+      }
+    ]
+  },
+  {
+    "bosnian": "Nema boga osim Allaha, Jedinoga, Koji druga nema. Njemu pripada vlast nad svim i sva pohvala. On sve može.",
+    "arabic": "لا إِلَهَ إِلاّ اللَّهُ وَحْدَهُ لا شَرِيكَ لَهُ لَهُ الْمُلْكُ وَلَهُ الْحَمْدُ وَهُوَ عَلَى كُلِّ شَيْءٍ قَدِير",
+    "transcription": "LA ILAHE ILLE-L-LAHU VAHDEHU LA ŠERIKE LEHU, LEHU-L-MULKU VE LEHU-L-HAMDU VE HUVE ‘ALA KULLI ŠEJ’IN KADIR.",
+    "audio": "assets/audio/lailaheillallah.mp3",
+    "sentences": [
+      {
+        "bosnian": "Nema boga osim Allaha, Jedinoga, Koji druga nema.",
+        "arabic": "لا إِلَهَ إِلاّ اللَّهُ وَحْدَهُ لا شَرِيكَ لَهُ",
+        "transcription": "LA ILAHE ILLE-L-LAHU VAHDEHU LA ŠERIKE LEH,",
+        "startSecond": 0.1,
+        "endSecond": 6
+      },
+      {
+        "bosnian": "Njemu pripada vlast nad svim",
+        "arabic": "لَهُ الْمُلْكُ",
+        "transcription": "LEHU-L-MULKU,",
+        "startSecond": 6.5,
+        "endSecond": 7.8
+      },
+      {
+        "bosnian": "i sva pohvala.",
+        "arabic": "وَلَهُ الْحَمْدُ",
+        "transcription": "VE LEHU-L-HAMDU,",
+        "startSecond": 7.89,
+        "endSecond": 9.2
+      },
+      {
+        "bosnian": "On sve može.",
+        "arabic": "وَهُوَ عَلَى كُلِّ شَيْءٍ قَدِير",
+        "transcription": "VE HUVE ‘ALA KULLI ŠEJ’IN KADIR.",
+        "startSecond": 9.29,
+        "endSecond": 14
+      }
+    ]
   }
 ]
