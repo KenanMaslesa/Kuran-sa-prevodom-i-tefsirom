@@ -442,5 +442,27 @@
         "endSecond": 14
       }
     ]
+  },
+  {
+    "bosnian": "Slavljen je Allah i Njemu pripada sva hvala",
+    "arabic": "سُبْحَانَ اللَّهِ وَبِحَمْدِه",
+    "transcription": "SUBHANALLĀHI VE BI HAMDIH.",
+    "audio": "assets/audio/subhanallahi.mp3",
+    "sentences": [
+      {
+        "bosnian": "Slavljen je Allah",
+        "arabic": "سُبْحَانَ اللَّهِ",
+        "transcription": "SUBHANALLĀHI",
+        "startSecond": 0.1,
+        "endSecond": 1.7
+      },
+      {
+        "bosnian": "i Njemu pripada sva hvala.",
+        "arabic": "وَبِحَمْدِه",
+        "transcription": "VE BI HAMDIH.",
+        "startSecond": 1.8,
+        "endSecond": 3
+      }
+    ]
   }
 ]
