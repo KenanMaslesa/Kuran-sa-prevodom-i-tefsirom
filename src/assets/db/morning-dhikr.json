@@ -116,35 +116,35 @@
       {
         "arabic": "أَصْبَحْنَا عَلَى فِطْرَةِ الْإِسْلَامِ",
         "bosnian": "Jutro smo dočekali u krilu islama,",
-        "transcription": "Asbahna ‘ala fitreti-l-islami",
+        "transcription": "ASBAHNA ‘ALĀ FITRETIL-ISLĀM,",
         "startSecond": 0.1,
         "endSecond": 5
       },
       {
         "arabic": "وَعَلَى كَلِمَةِ الْإِخْلَاصِ",
         "bosnian": "na principima šehadeta (riječi: la ilahe illellah)",
-        "transcription": "ve ‘ala kelimeti-l-ihlasi",
+        "transcription": "VE ALA KELIMETIL-IHLĀS,",
         "startSecond": 5.1,
         "endSecond": 9.8
       },
       {
         "arabic": ",وَعَلَى دِينِ نَبِيِّنَا مُحَمَّدٍ صَلَّى اللهُ عَلَيْهِ وَسَلَّمَ",
         "bosnian": "u vjeri vjerovjesnika našega, Muhammeda sallallahu ’alejhi ve sellem,",
-        "transcription": "ve ’ala dini nebijjina Muhammedin, sallallahu ’alejhi ve sellem,",
+        "transcription": "VE ALA DÎNI NEBIJJINĀ MUHAMMEDIN SALLALLĀHU ‘ALEJHI VE SELLEM, ",
         "startSecond": 9.9,
         "endSecond": 17.8
       },
       {
         "arabic": "وَعَلَى مِلَّةِ أَبِينَا إِبْرَاهِيمَ حَنِيفًا مُسْلِمًا",
         "bosnian": "i u vjeri praoca našeg Ibrahima, a.s., iskrenog monoteiste, muslimana,",
-        "transcription": "ve ‘ala milleti ebina Ibrahime hanifen muslimen",
+        "transcription": "VE ALA MILLETI EBÎNĀ IBRĀHÎME HANIFEN MUSLIMEN,",
         "startSecond": 18,
         "endSecond": 26.9
       },
       {
         "arabic": "وَمَا كَانَ مِنَ الْمُشْرِكِينَ",
         "bosnian": "koji nije bio idolopoklonik.",
-        "transcription": "ve ma kane mine-l-mušrikine.",
+        "transcription": "VE MĀ KĀNE MINEL-MUŠRIKÎN.",
         "startSecond": 27,
         "endSecond": 33
       }
