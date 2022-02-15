@@ -10,32 +10,46 @@ const routes: Routes = [
     children: [
       {
         path: 'surah',
-        loadChildren: () => import('./surah/surah.module').then( m => m.SurahPageModule)
+        loadChildren: () =>
+          import('./surah/surah.module').then((m) => m.SurahPageModule),
       },
       {
         path: 'juz',
-        loadChildren: () => import('./juz/juz.module').then( m => m.JuzPageModule)
+        loadChildren: () =>
+          import('./juz/juz.module').then((m) => m.JuzPageModule),
       },
       {
         path: 'quran-template',
-        loadChildren: () => import('./quran-template/quran-template.module').then( m => m.QuranTemplatePageModule)
+        loadChildren: () =>
+          import('./quran-template/quran-template.module').then(
+            (m) => m.QuranTemplatePageModule
+          ),
       },
       {
         path: 'translation',
-        loadChildren: () => import('./translation/translation.module').then( m => m.TranslationPageModule)
+        loadChildren: () =>
+          import('./translation/translation.module').then(
+            (m) => m.TranslationPageModule
+          ),
+      },
+
+      {
+        path: 'audio',
+        loadChildren: () =>
+          import('./audio/audio.module').then((m) => m.AudioPageModule),
       },
       {
         path: '',
         redirectTo: '/tabs/surah',
-        pathMatch: 'full'
-      }
-    ]
+        pathMatch: 'full',
+      },
+    ],
   },
   {
     path: '',
     redirectTo: '/quran/tabs/quran-template',
-    pathMatch: 'full'
-  }
+    pathMatch: 'full',
+  },
 ];
 
 @NgModule({

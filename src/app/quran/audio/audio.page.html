@@ -1,0 +1,34 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Audio</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item>
+    <ion-select #select [(ngModel)]="qari" (ngModelChange)="changeQari(select.value)" class="ion-select form-control">
+      <ion-select-option *ngFor="let item of listOfQari" [value]="item.value">{{item.name}}
+      </ion-select-option>
+    </ion-select>
+  </ion-item>
+
+  <ion-item class="player" *ngIf="mediaPlayerService.isPlaying">
+    <ion-icon name="pause-outline" *ngIf="!mediaPlayerService.isPaused && mediaPlayerService.isPlaying"
+      (click)="mediaPlayerService.pauseAudio()">Pause</ion-icon>
+    <ion-icon name="play-outline" *ngIf="mediaPlayerService.isPaused" (click)="mediaPlayerService.continueAudio()">
+      Nastavi</ion-icon>
+    <ion-range #range (touchend)="mediaPlayerService.setAudioCurrentTime(range.value)"
+      (mouseup)="mediaPlayerService.setAudioCurrentTime(range.value)" [(ngModel)]="mediaPlayerService.currentTime"
+      [max]="mediaPlayerService.getPlayerDuration()" color="secondary"></ion-range>
+      <!-- {{mediaPlayerService.currentTime.toFixed(0)}}:{{mediaPlayerService.getPlayerDuration().toFixed(0)}} -->
+  </ion-item>
+
+  <ion-card *ngFor="let sura of suraList; let i = index" (click)="playSura(sura.index)">
+    <ion-card-header>
+      <ion-card-title>{{sura.index}}. Sura {{sura.tname}} </ion-card-title>
+    </ion-card-header>
+  </ion-card>
+</ion-content>
