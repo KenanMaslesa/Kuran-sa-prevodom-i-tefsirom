@@ -1,17 +1,18 @@
 
 ion-content {
   main {
-      &::before {
-          content: '';
-          position: absolute;
-          left: 0;
-          right: 0;
-          top: 0;
-          bottom: 0;
-          background: rgba(255,255,255,.92);
-      }
+    background: url(../../../assets/img/salah.com.bg.png) no-repeat top center;
+    background-size: auto 50%;
+    background-repeat: no-repeat;
+    background-position: top;
+    background-color: #05b3ef;
+    height: 100%;
 
       .cards-wrapper {
+        position: absolute;
+        top: 55%;
+        left: 50%;
+        transform: translate(-50%, -40%);
           width: 90%;
           margin-left: auto;
           margin-right: auto;
@@ -19,11 +20,11 @@ ion-content {
 
           @media (max-width: 768px) {
             flex-direction: column;
-            width: 85%;
+            width: 70%;
           }
 
           @media (max-width: 550px) {
-            width: 90%;
+            width: 50%;
           }
 
           @media (min-width: 1440px) {
@@ -47,7 +48,6 @@ ion-content {
             width: 14%;
             display: inline-block;
             height: 140px;
-            background-color: var(--ion-color-primary);
             margin: 10px;
             border-radius: 10px;
             //padding: 30px;
@@ -68,9 +68,8 @@ ion-content {
               margin: 10px 0;
               display: flex;
               align-items: center;
-              height: 55px;
+              height: 40px;
               padding-top: 0;
-              background-color: var(--ion-color-primary);
               padding: 0px 5px;
               border-radius: 3px;
             }
@@ -90,8 +89,9 @@ ion-content {
             }
 
             &.active {
-              box-shadow: 0px 2px 20px 6px #dcd3d394;
-              filter: brightness(1.28);
+              div {
+                color: #7BF2FB;
+              }
             }
 
             .prayer-name,
@@ -134,7 +134,7 @@ ion-content {
               transition-delay: 1.5s;
 
               &.active {
-                  visibility: visible;
+                  // visibility: visible;
               }
 
               @media (max-width: 550px) {
@@ -167,8 +167,12 @@ ion-content {
 
       .location {
         text-align: center;
-        position: relative;
-        padding: 10px 0;
+        position: absolute;
+        bottom: 0;
+        color: white;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 100%;
 
         p {
           margin: 5px;

@@ -14,19 +14,14 @@
   <main>
     <!-- <app-loader *ngIf="!prayertimes"></app-loader> -->
 
-    <ion-item>
+    <!-- <ion-item>
       <ion-label>Metoda racunanja namaskih vremena</ion-label>
       <ion-select class="ion-select form-control"  #method (ionChange)="onCalculationMethodChanged(method.value)">
         <ion-select-option selected *ngFor="let calcuationMethod of calcuationMethods" value="{{calcuationMethod.name}}">{{calcuationMethod.name}}</ion-select-option>
       </ion-select>
-    </ion-item>
+    </ion-item> -->
 
-    <div class="location" *ngIf="locationData">
-      <ion-icon name="location-outline"></ion-icon>
-      <p>{{locationData.countryName}}</p>
-      <p>{{locationData.locality}}</p>
-      <ion-icon *ngIf="online" (click)="getCurrentPosition()" name="refresh-outline"></ion-icon>
-    </div>
+
     <div class="countdown" *ngIf="contdown">
       <p>
         <strong><ng-container *ngIf="contdown.hours<10">0</ng-container>{{contdown.hours}}:</strong>
@@ -103,7 +98,12 @@
           </div>
         </div>
       </ng-container>
-
+    </div>
+    <div class="location" *ngIf="locationData">
+      <!-- <ion-icon name="location-outline"></ion-icon> -->
+      <p>{{locationData.countryName}}</p>
+      <p>{{locationData.locality}}</p>
+      <ion-icon *ngIf="online" (click)="getCurrentPosition()" name="refresh-outline"></ion-icon>
     </div>
   </main>
 </ion-content>
