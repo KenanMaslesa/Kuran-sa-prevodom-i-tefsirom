@@ -26,9 +26,13 @@
       <!-- {{mediaPlayerService.currentTime.toFixed(0)}}:{{mediaPlayerService.getPlayerDuration().toFixed(0)}} -->
   </ion-item>
 
-  <ion-card *ngFor="let sura of suraList; let i = index" (click)="playSura(sura.index)">
+  <ion-card [class.active]="sura.index == selectedSuraIndex && (mediaPlayerService.isPlaying || mediaPlayerService.isPaused)" *ngFor="let sura of suraList; let i = index" (click)="playSura(sura.index)">
     <ion-card-header>
       <ion-card-title>{{sura.index}}. Sura {{sura.tname}} </ion-card-title>
+
+      <div *ngIf="sura.index == selectedSuraIndex && (mediaPlayerService.isPlaying || mediaPlayerService.isPaused)">
+        <ion-progress-bar color="light" [value]="mediaPlayerService.currentTime/mediaPlayerService.getPlayerDuration()"></ion-progress-bar>
+      </div>
     </ion-card-header>
   </ion-card>
 </ion-content>

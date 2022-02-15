@@ -28,6 +28,7 @@ export class MediaPlayerService { //https://howlerjs.com/
     });
     this.player.play();
     this.watchCurrentTime();
+    this.isPlaying = true;
   }
 
   stopAudio() {

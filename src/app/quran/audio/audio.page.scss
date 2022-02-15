@@ -3,4 +3,24 @@
   bottom: 0;
   z-index: 999;
   width: 100%;
+  filter: drop-shadow(2px 4px 5px black);
+}
+
+ion-card{
+  background: #f7f7f7;
+
+  &.active {
+    background: var(--ion-color-primary);;
+
+    ion-card-title{
+      color: white;
+    }
+  }
+
+  ion-progress-bar{
+    position: absolute;
+    bottom: 0px;
+    left: 0;
+    right: 0;
+  }
 }
