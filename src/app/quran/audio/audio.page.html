@@ -4,35 +4,66 @@
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/"></ion-back-button>
     </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-icon name="search-outline" *ngIf="!showHeader" (click)="showHeader=true"></ion-icon>
+      <ion-icon name="close-outline" *ngIf="showHeader" (click)="showHeader=false"></ion-icon>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <ion-item>
-    <ion-select #select [(ngModel)]="qari" (ngModelChange)="changeQari(select.value)" class="ion-select form-control">
-      <ion-select-option *ngFor="let item of listOfQari" [value]="item.value">{{item.name}}
-      </ion-select-option>
-    </ion-select>
-  </ion-item>
+  <header *ngIf="showHeader">
+    <ion-item>
+      <ion-label>Ucac</ion-label>
+      <ion-select interface="popover" cancelText="Zatvori" #select [(ngModel)]="qari"
+        (ngModelChange)="changeQari(select.value)" class="ion-select form-control">
+        <ion-select-option *ngFor="let item of listOfQari" [value]="item.value">{{item.name}}
+        </ion-select-option>
+      </ion-select>
+    </ion-item>
+  </header>
 
-  <ion-item class="player" *ngIf="mediaPlayerService.isPlaying">
-    <ion-icon name="pause-outline" *ngIf="!mediaPlayerService.isPaused && mediaPlayerService.isPlaying"
-      (click)="mediaPlayerService.pauseAudio()">Pause</ion-icon>
-    <ion-icon name="play-outline" *ngIf="mediaPlayerService.isPaused" (click)="mediaPlayerService.continueAudio()">
-      Nastavi</ion-icon>
-    <ion-range #range (touchend)="mediaPlayerService.setAudioCurrentTime(range.value)"
-      (mouseup)="mediaPlayerService.setAudioCurrentTime(range.value)" [(ngModel)]="mediaPlayerService.currentTime"
-      [max]="mediaPlayerService.getPlayerDuration()" color="secondary"></ion-range>
-      <!-- {{mediaPlayerService.currentTime.toFixed(0)}}:{{mediaPlayerService.getPlayerDuration().toFixed(0)}} -->
-  </ion-item>
 
-  <ion-card [class.active]="sura.index == selectedSuraIndex && (mediaPlayerService.isPlaying || mediaPlayerService.isPaused)" *ngFor="let sura of suraList; let i = index" (click)="playSura(sura.index)">
-    <ion-card-header>
-      <ion-card-title>{{sura.index}}. Sura {{sura.tname}} </ion-card-title>
+  <div class="player" *ngIf="mediaPlayerService.isPlaying || mediaPlayerService.isLoading">
+    <span class="track">{{suraList[selectedSuraIndex-1].tname}}</span>
+    <div class="inner">
+      <ion-icon class="shuffle-icon" name="shuffle-outline"></ion-icon>
+      <ion-icon class="back-icon" name="play-skip-back"></ion-icon>
 
-      <div *ngIf="sura.index == selectedSuraIndex && (mediaPlayerService.isPlaying || mediaPlayerService.isPaused)">
-        <ion-progress-bar color="light" [value]="mediaPlayerService.currentTime/mediaPlayerService.getPlayerDuration()"></ion-progress-bar>
+      <ion-icon name="pause" *ngIf="!mediaPlayerService.isPaused && mediaPlayerService.isPlaying"
+        (click)="mediaPlayerService.pauseAudio()"></ion-icon>
+      <ion-icon name="play" *ngIf="mediaPlayerService.isPaused" (click)="mediaPlayerService.continueAudio()"></ion-icon>
+      <ion-spinner *ngIf="mediaPlayerService.isLoading" name="bubbles"></ion-spinner>
+
+      <ion-icon class="forward-icon" name="play-skip-forward"></ion-icon>
+      <ion-icon class="repeat-icon" name="repeat-outline"></ion-icon>
+    </div>
+
+    <!-- (touchend)="mediaPlayerService.setAudioCurrentTime(range.value)" -->
+    <div class="range">
+      <span>{{mediaPlayerService.currentTime.toFixed(1)}}</span>
+      <ion-range #range (mouseup)="mediaPlayerService.setAudioCurrentTime(range.value)"
+        [(ngModel)]="mediaPlayerService.currentTime" [max]="mediaPlayerService.getPlayerDuration()" color="secondary">
+      </ion-range>
+      <span>{{mediaPlayerService.getPlayerDuration().toFixed(1)}}</span>
+    </div>
+  </div>
+
+  <h2 class="qari">{{getSelectedQari()}}</h2>
+
+  <ul [class.padding-bottom-100]="mediaPlayerService.player">
+    <li *ngFor="let sura of suraList; let i = index"
+      [class.active]="sura.index == selectedSuraIndex && (mediaPlayerService.isPlaying || mediaPlayerService.isPaused)"
+      (click)="playSura(sura.index)">
+      <div>
+        <p>{{sura.index}}. Sura {{sura.tname}} </p>
+        <ng-container
+          *ngIf="sura.index == selectedSuraIndex && (mediaPlayerService.isPlaying || mediaPlayerService.isPaused)">
+          <ion-progress-bar color="light"
+            [value]="mediaPlayerService.currentTime/mediaPlayerService.getPlayerDuration()"></ion-progress-bar>
+        </ng-container>
       </div>
-    </ion-card-header>
-  </ion-card>
+    </li>
+  </ul>
+
 </ion-content>

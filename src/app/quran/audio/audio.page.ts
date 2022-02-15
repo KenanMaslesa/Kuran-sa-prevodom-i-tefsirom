@@ -11,6 +11,7 @@ export class AudioPage implements OnInit {
   suraList;
   selectedSuraIndex;
   qari;
+  showHeader = false;
   listOfQari = [
     {
       name: 'Abdur-Rahman as-Sudais',
@@ -293,7 +294,10 @@ export class AudioPage implements OnInit {
     if (qariFromStorage) {
       this.qari = qariFromStorage;
     } else {
-      this.qari = 'mishaari_raashid_al_3afaasee';
+      this.qari = {
+        name: 'Mishari Rashid al-`Afasy',
+        value: 'mishaari_raashid_al_3afaasee',
+      };
     }
   }
 
@@ -303,6 +307,10 @@ export class AudioPage implements OnInit {
 
   changeQari(qari) {
     localStorage.setItem('audioQuranQari', qari);
+  }
+
+  getSelectedQari(){
+    return this.listOfQari.filter(qari => qari.value === this.qari).map(item => item.name);
   }
 
   getSuraList() {
