@@ -27,8 +27,8 @@
     (ionSlideReachEnd)="slideTo(1)">
     <ion-slide>
       <div dir="ltr" lang="eng" class="translation">
-        <div [id]="i" class="ayah" *ngFor="let item of translationForCurrentPage; let i = index">
-          <ion-progress-bar *ngIf="selectedAyah == item.index && (mediaPlayerService.isPlaying || mediaPlayerService.isPaused)" color="primary"
+        <div [id]="i" [class.blur]="selectedAyah != item.index && mediaPlayerService.isPlaying" [class.active]="selectedAyah == item.index" class="ayah" *ngFor="let item of translationForCurrentPage; let i = index">
+          <ion-progress-bar *ngIf="selectedAyah == item.index && (mediaPlayerService.isPlaying || mediaPlayerService.isPaused)" color="light"
             [value]="mediaPlayerService.currentTime/mediaPlayerService.getPlayerDuration()"></ion-progress-bar>
           <div class="verse_key" *ngIf="showArabic || showTranslation || showTafsir">
             <div class="player" *ngIf="selectedAyah == item.index || (!mediaPlayerService.isPlaying || mediaPlayerService.isPaused)">

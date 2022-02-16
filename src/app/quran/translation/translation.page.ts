@@ -79,6 +79,6 @@ export class TranslationPage implements OnInit {
 
   scrollToElement(elementId){
     const y = document.getElementById(elementId).offsetTop;
-    this.content.scrollToPoint(0, y, 1000);
+    this.content.scrollToPoint(0, y - 20, 1000);
   }
 }
