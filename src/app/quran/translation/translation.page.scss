@@ -9,7 +9,8 @@
     border-radius: 3px;
     width: 98%;
     margin: 0 auto;
-    margin-bottom: 25px;
+    margin-bottom: 30px;
+    border-radius: 5px;
 
     &:first-of-type {
       margin-top: 25px;
@@ -28,6 +29,12 @@
         }
       }
 
+      .suraTitle{
+        h3 {
+          color: white;
+        }
+      }
+
       .arabic_text {
         background: #3ca8df;
         padding: 15px;
@@ -37,6 +44,7 @@
         p{
           background: white;
           color: var(--ion-color-primary);
+
         }
       }
     }
@@ -55,11 +63,11 @@
       }
 
       &.arabic_text{
-          font-size: 25px;
-          background: hsl(240deg 7% 97%);
-          padding: 15px;
-          font-weight: 600;
-          color: #504e4e;
+        font-size: 20px;
+        padding: 10px;
+        font-weight: 600;
+        color: #504e4e;
+        margin: 5px 0px 0px;
       }
 
       &.translation{
@@ -76,19 +84,22 @@
         background: var(--ion-color-primary);
         display: inline-block;
         color: white;
-        border-radius: 5px;
         padding: 4px !important;
+        position: absolute;
+        right: 3px;
+        margin-top: 0px;
+        border-bottom-left-radius: 5px;
       }
     }
 
     .player {
       position: absolute;
-      right: 10px;
+      left: 10px;
       margin-top: 8px;
 
       ion-icon {
         font-size: 30px;
-        color: var(--ion-color-primary);;
+        color: #504e4e;
       }
     }
 
@@ -127,5 +138,12 @@ ion-slides {
     line-height: 55px;
     margin: 0;
     color: #a07a50;
+  }
+}
+
+ion-header {
+  ion-icon {
+    margin-right: 15px;
+    font-size: 25px;
   }
 }

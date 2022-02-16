@@ -4,9 +4,12 @@
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/"></ion-back-button>
     </ion-buttons>
+    <ion-icon slot="end" name="chevron-down-outline" *ngIf="!showSearchHeader" (click)="showSearchHeader=true;"></ion-icon>
+    <ion-icon slot="end" name="chevron-up-outline" *ngIf="showSearchHeader" (click)="showSearchHeader=false;"></ion-icon>
+
   </ion-toolbar>
 
-  <ion-list style="padding: 0;">
+  <ion-list style="padding: 0;" *ngIf="showSearchHeader">
     <ion-item>
       <ion-label>Arapski</ion-label>
       <ion-toggle [(ngModel)]="showArabic"></ion-toggle>
@@ -35,20 +38,21 @@
             color="light" [value]="mediaPlayerService.currentTime/mediaPlayerService.getPlayerDuration()">
           </ion-progress-bar>
 
+          <div class="player"
+          *ngIf="selectedAyah == item.index || (!mediaPlayerService.isPlaying || mediaPlayerService.isPaused)">
+          <ion-icon *ngIf="!mediaPlayerService.isPlaying && !mediaPlayerService.isPaused"
+            (click)="playAyah(item.index);" name="play"></ion-icon>
+          <!--scrollToElement(i)-->
+          <ion-icon *ngIf="mediaPlayerService.isPlaying && !mediaPlayerService.isPaused"
+            (click)="mediaPlayerService.stopAudio(); selectedAyah = null" name="stop"></ion-icon>
+        </div>
           <section *ngIf="item.aya == 1" class="suraTitle">
             <img src="https://salamquran.com/static/images/quran/sura-header.svg" alt="Quran sura title">
             <h3>{{suraList[(+item.sura)-1].name}} - {{suraList[(+item.sura)-1].tname}}</h3>
           </section>
 
           <div class="verse_key" *ngIf="showArabic || showTranslation || showTafsir">
-            <div class="player"
-              *ngIf="selectedAyah == item.index || (!mediaPlayerService.isPlaying || mediaPlayerService.isPaused)">
-              <ion-icon *ngIf="!mediaPlayerService.isPlaying && !mediaPlayerService.isPaused"
-                (click)="playAyah(item.index);" name="play"></ion-icon>
-              <!--scrollToElement(i)-->
-              <ion-icon *ngIf="mediaPlayerService.isPlaying && !mediaPlayerService.isPaused"
-                (click)="mediaPlayerService.stopAudio(); selectedAyah = null" name="stop"></ion-icon>
-            </div>
+
             <p *ngIf="suraList">Sura {{suraList[(+item.sura)-1].tname}}: {{item.aya}}. ajet</p>
           </div>
 

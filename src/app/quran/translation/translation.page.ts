@@ -14,6 +14,7 @@ export class TranslationPage implements OnInit {
   showArabic = true;
   showTranslation = true;
   showTafsir = true;
+  showSearchHeader = true;
   translationForCurrentPage = [];
   ayatsOfCurrentPage = [];
   arrayOfIndexes = [];
