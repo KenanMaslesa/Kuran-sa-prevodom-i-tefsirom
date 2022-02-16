@@ -43,7 +43,7 @@ export class TranslationPage implements OnInit {
   }
 
   onSuraChanged(pageNumber) {
-    this.scrollToTop(500);
+    this.scrollToTop(1000);
     if (pageNumber === 1) {
       this.slides.lockSwipeToPrev(true);
     } else {
