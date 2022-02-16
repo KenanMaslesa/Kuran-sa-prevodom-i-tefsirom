@@ -5,15 +5,22 @@
       <ion-back-button defaultHref="/"></ion-back-button>
     </ion-buttons>
   </ion-toolbar>
+
+  <ion-list style="padding: 0;">
+    <ion-item>
+      <ion-label>Arapski</ion-label>
+      <ion-toggle [(ngModel)]="showArabic"></ion-toggle>
+
+      <ion-label>Prijevod</ion-label>
+      <ion-toggle [(ngModel)]="showTranslation"></ion-toggle>
+
+      <ion-label>Tefsir</ion-label>
+      <ion-toggle [(ngModel)]="showTafsir"></ion-toggle>
+    </ion-item>
+  </ion-list>
 </ion-header>
 
 <ion-content>
-<ion-list>
-  <ion-item>
-    <ion-label>Prikazi ajete na arapskom jeziku</ion-label>
-    <ion-toggle [(ngModel)]="showArabic"></ion-toggle>
-  </ion-item>
-</ion-list>
 
   <ion-slides #slides pager="false" [options]="slideOpts"
     (ionSlideNextEnd)="onSuraChanged(+quranService.currentPage + 1)"
@@ -21,13 +28,28 @@
     (ionSlideReachEnd)="slideTo(1)">
     <ion-slide>
       <div dir="ltr" lang="eng" class="translation">
-        <div class="ayah" *ngFor="let item of translationForCurrentPage; let i = index">
-          <div class="verse_key">
+        <div [class.active]="selectedAyah == item.index" class="ayah" *ngFor="let item of translationForCurrentPage; let i = index">
+          <ion-progress-bar *ngIf="selectedAyah == item.index && (mediaPlayerService.isPlaying || mediaPlayerService.isPaused)" color="light"
+            [value]="mediaPlayerService.currentTime/mediaPlayerService.getPlayerDuration()"></ion-progress-bar>
+          <div class="verse_key" *ngIf="showArabic || showTranslation || showTafsir">
+            <div class="player" *ngIf="selectedAyah == item.index || (!mediaPlayerService.isPlaying || mediaPlayerService.isPaused)">
+              <ion-icon  *ngIf="!mediaPlayerService.isPlaying && !mediaPlayerService.isPaused" (click)="playAyah(item.index);" name="play"></ion-icon>
+              <ion-icon *ngIf="mediaPlayerService.isPlaying && !mediaPlayerService.isPaused" (click)="mediaPlayerService.stopAudio(); selectedAyah = null" name="stop"></ion-icon>
+              <ion-icon *ngIf="mediaPlayerService.isPaused" (click)="mediaPlayerService.continueAudio()" name="play"></ion-icon>
+            </div>
             <p>{{item.sura}}:{{item.aya}}</p>
           </div>
           <p class="arabic_text" *ngIf="showArabic">{{item.arabicText}}</p>
-          <p>{{item.translation}}</p>
-          <p>{{item.tafsir}}</p>
+
+          <div class="item" *ngIf="showTranslation">
+            <span>Prijevod:</span>
+            <p class="translation">{{item.translation}}</p>
+          </div>
+
+          <div class="item" *ngIf="showTafsir">
+            <span>Tefsir:</span>
+            <p class="tafsir">{{item.tafsir}}</p>
+          </div>
           <p class="end"></p>
         </div>
       </div>
