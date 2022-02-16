@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { IonSlides } from '@ionic/angular';
+import { IonContent, IonSlides } from '@ionic/angular';
 import { MediaPlayerService } from 'src/app/shared/media-player.service';
 import { QuranService } from '../quran.service';
 
@@ -10,6 +10,7 @@ import { QuranService } from '../quran.service';
 })
 export class TranslationPage implements OnInit {
   @ViewChild('slides', { static: true }) slides: IonSlides;
+  @ViewChild(IonContent) content: IonContent;
   showArabic = true;
   showTranslation = true;
   showTafsir = true;
@@ -66,5 +67,18 @@ export class TranslationPage implements OnInit {
   playAyah(ayahId){
     this.selectedAyah = ayahId;
     this.mediaPlayerService.playAudio(`https://cdn.islamic.network/quran/audio/64/ar.alafasy/${ayahId}.mp3`);
+  }
+
+  scrollToBottom(){
+    this.content.scrollToBottom(1500);
+  }
+
+  scrollToTop(){
+    this.content.scrollToTop(1500);
+  }
+
+  scrollToElement(elementId){
+    const y = document.getElementById(elementId).offsetTop;
+    this.content.scrollToPoint(0, y, 1000);
   }
 }

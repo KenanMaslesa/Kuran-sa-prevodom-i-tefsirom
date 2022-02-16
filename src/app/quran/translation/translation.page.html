@@ -21,21 +21,19 @@
 </ion-header>
 
 <ion-content>
-
   <ion-slides #slides pager="false" [options]="slideOpts"
     (ionSlideNextEnd)="onSuraChanged(+quranService.currentPage + 1)"
     (ionSlidePrevEnd)="onSuraChanged(+quranService.currentPage - 1)" (ionSlideReachStart)="slideTo(1)"
     (ionSlideReachEnd)="slideTo(1)">
     <ion-slide>
       <div dir="ltr" lang="eng" class="translation">
-        <div [class.active]="selectedAyah == item.index" class="ayah" *ngFor="let item of translationForCurrentPage; let i = index">
-          <ion-progress-bar *ngIf="selectedAyah == item.index && (mediaPlayerService.isPlaying || mediaPlayerService.isPaused)" color="light"
+        <div [id]="i" class="ayah" *ngFor="let item of translationForCurrentPage; let i = index">
+          <ion-progress-bar *ngIf="selectedAyah == item.index && (mediaPlayerService.isPlaying || mediaPlayerService.isPaused)" color="primary"
             [value]="mediaPlayerService.currentTime/mediaPlayerService.getPlayerDuration()"></ion-progress-bar>
           <div class="verse_key" *ngIf="showArabic || showTranslation || showTafsir">
             <div class="player" *ngIf="selectedAyah == item.index || (!mediaPlayerService.isPlaying || mediaPlayerService.isPaused)">
-              <ion-icon  *ngIf="!mediaPlayerService.isPlaying && !mediaPlayerService.isPaused" (click)="playAyah(item.index);" name="play"></ion-icon>
+              <ion-icon  *ngIf="!mediaPlayerService.isPlaying && !mediaPlayerService.isPaused" (click)="playAyah(item.index); scrollToElement(i)" name="play"></ion-icon>
               <ion-icon *ngIf="mediaPlayerService.isPlaying && !mediaPlayerService.isPaused" (click)="mediaPlayerService.stopAudio(); selectedAyah = null" name="stop"></ion-icon>
-              <ion-icon *ngIf="mediaPlayerService.isPaused" (click)="mediaPlayerService.continueAudio()" name="play"></ion-icon>
             </div>
             <p>{{item.sura}}:{{item.aya}}</p>
           </div>

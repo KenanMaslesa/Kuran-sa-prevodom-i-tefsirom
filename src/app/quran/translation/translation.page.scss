@@ -5,32 +5,6 @@
   .ayah {
     transition: all 0.5s;
 
-    &.active {
-      background: var(--ion-color-primary);
-
-      p {
-        color: white;
-      }
-
-      .player {
-        ion-icon {
-          color: white;
-        }
-      }
-
-      .arabic_text {
-        background: #3ca8df;
-        padding: 15px;
-      }
-
-      .verse_key{
-        p{
-          background: white;
-          color: var(--ion-color-primary);
-        }
-      }
-    }
-
     p {
       padding: 2px 10px;
 
