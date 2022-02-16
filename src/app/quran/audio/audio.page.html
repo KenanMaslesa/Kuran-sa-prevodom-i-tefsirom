@@ -42,7 +42,9 @@
     <!-- (touchend)="mediaPlayerService.setAudioCurrentTime(range.value)" -->
     <div class="range">
       <span>{{mediaPlayerService.currentTime.toFixed(1)}}</span>
-      <ion-range #range (mouseup)="mediaPlayerService.setAudioCurrentTime(range.value)"
+      <ion-range #range
+        (mouseup)="mediaPlayerService.setAudioCurrentTime(range.value)"
+        (touchend)="mediaPlayerService.setAudioCurrentTime(range.value)"
         [(ngModel)]="mediaPlayerService.currentTime" [max]="mediaPlayerService.getPlayerDuration()" color="secondary">
       </ion-range>
       <span>{{mediaPlayerService.getPlayerDuration().toFixed(1)}}</span>
