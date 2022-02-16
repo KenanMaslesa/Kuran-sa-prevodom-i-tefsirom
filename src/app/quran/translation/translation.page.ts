@@ -18,6 +18,7 @@ export class TranslationPage implements OnInit {
   ayatsOfCurrentPage = [];
   arrayOfIndexes = [];
   selectedAyah: number;
+  suraList: any;
   slideOpts = {
     initialSlide: 1,
     speed: 50,
@@ -31,6 +32,9 @@ export class TranslationPage implements OnInit {
     this.getTafsirAndTranslationForPage(this.quranService.currentPage);
     this.quranService.currentPageChanged.subscribe(()=> {
       this.onSuraChanged(this.quranService.currentPage);
+    });
+    this.quranService.getListOfSura().subscribe(response => {
+      this.suraList = response;
     });
   }
 
