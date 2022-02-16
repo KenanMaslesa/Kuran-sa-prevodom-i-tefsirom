@@ -66,7 +66,7 @@ export class TranslationPage implements OnInit {
 
   playAyah(ayahId){
     this.selectedAyah = ayahId;
-    this.mediaPlayerService.playAudio(`https://cdn.islamic.network/quran/audio/64/ar.alafasy/${ayahId}.mp3`);
+    this.mediaPlayerService.playAudio(`https://cdn.islamic.network/quran/audio/128/ar.alafasy/${ayahId}.mp3`);
   }
 
   scrollToBottom(){
