@@ -2,11 +2,14 @@
   text-align: left;
 
   .ayah {
-    border-bottom: 1px solid gainsboro;
 
     p {
       padding: 2px 10px;
 
+      &.end {
+        background: #3db3ef;
+        padding: 1px !important;
+      }
 
       &.arabic_text{
           font-size: 20px;

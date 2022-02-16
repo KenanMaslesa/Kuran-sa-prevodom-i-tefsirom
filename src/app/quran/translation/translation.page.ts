@@ -23,33 +23,14 @@ export class TranslationPage implements OnInit {
    }
 
   ngOnInit() {
-    this.ayatsOfCurrentPage = this.quranService.getAyatsByPage(
-      this.quranService.currentPage
-    );
-    this.getIndexesFromPage(this.ayatsOfCurrentPage);
+    this.getTafsirAndTranslationForPage(this.quranService.currentPage);
     this.quranService.currentPageChanged.subscribe(()=> {
       this.onSuraChanged(this.quranService.currentPage);
     });
   }
 
-  getIndexesFromPage(ayats: any[]) {
-    if (ayats) {
-      ayats.forEach((aya) => {
-        this.arrayOfIndexes.push(aya.index);
-        this.translationForCurrentPage.push({
-          translation: this.getTranslationForIndex(aya.index),
-          text: aya.text,
-          juz: aya.juz,
-          page: aya.page,
-          verseKey: aya.verse_key,
-        });
-      });
-    }
-  }
-
-  getTranslationForIndex(index) {
-    const response = this.quranService.getTranslationForIndex(+index);
-    return response;
+  getTafsirAndTranslationForPage(page) {
+    this.translationForCurrentPage = this.quranService.getTafsirAndTranslationForPage(page);
   }
 
   onSuraChanged(pageNumber) {
@@ -71,7 +52,7 @@ export class TranslationPage implements OnInit {
     );
 
     this.translationForCurrentPage = [];
-    this.getIndexesFromPage(this.ayatsOfCurrentPage);
+    this.getTafsirAndTranslationForPage(this.quranService.currentPage);
   }
 
   slideTo(slideNumber) {

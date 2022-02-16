@@ -23,10 +23,12 @@
       <div dir="ltr" lang="eng" class="translation">
         <div class="ayah" *ngFor="let item of translationForCurrentPage; let i = index">
           <div class="verse_key">
-            <p>{{item.verseKey}}</p>
+            <p>{{item.sura}}:{{item.aya}}</p>
           </div>
-          <p class="arabic_text" *ngIf="showArabic">{{item.text}}</p>
-          <p>{{item.translation?.text}}</p>
+          <p class="arabic_text" *ngIf="showArabic">{{item.arabicText}}</p>
+          <p>{{item.translation}}</p>
+          <p>{{item.tafsir}}</p>
+          <p class="end"></p>
         </div>
       </div>
     </ion-slide>

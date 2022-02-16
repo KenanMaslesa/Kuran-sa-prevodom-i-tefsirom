@@ -5,6 +5,7 @@ import { map } from 'rxjs/operators';
 import { ApiService } from '../shared/api.service';
 const quranTranslation = require('@kmaslesa/quran-translation-bs_korkut');
 const quranAyats = require('@kmaslesa/quran-ayats');
+const tefsir = require('@kmaslesa/tefsir');
 export class QuranResponseData {
   result: any;
 }
@@ -109,5 +110,9 @@ export class QuranService {
         }
       });
     }
+  }
+
+  getTafsirAndTranslationForPage(page){
+    return tefsir.getTafsirAndTranslationForPage(page);
   }
 }
