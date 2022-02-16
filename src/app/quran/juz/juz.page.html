@@ -8,7 +8,7 @@
 </ion-header>
 
 <ion-content>
-  <ion-card *ngFor="let juz of juzList; let i = index" (click)="quranService.currentPage = juz.startPage" [routerLink]="['/quran/tabs/quran-template']">
+  <ion-card *ngFor="let juz of juzList; let i = index" (click)="goTo('/quran/tabs/quran-template', juz);">
     <ion-card-header>
       <ion-card-title>{{juz.id}}. Dzuz <span class="startPage">{{juz.startPage}}</span></ion-card-title>
       <span class="total">{{(juz.endPage-juz.startPage)+1}} stranica</span>

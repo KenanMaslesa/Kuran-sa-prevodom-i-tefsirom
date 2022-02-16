@@ -1,9 +1,19 @@
-.translation {
+.translation-wrapper {
   text-align: left;
   position: relative;
+  background: gainsboro;
 
   .ayah {
     transition: all 0.5s;
+    background: white;
+    border-radius: 3px;
+    width: 98%;
+    margin: 0 auto;
+    margin-bottom: 25px;
+
+    &:first-of-type {
+      margin-top: 25px;
+    }
 
     &.active {
       background: var(--ion-color-primary);

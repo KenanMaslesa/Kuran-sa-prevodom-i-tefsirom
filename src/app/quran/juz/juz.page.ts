@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { QuranService } from '../quran.service';
 
 @Component({
@@ -9,7 +10,7 @@ import { QuranService } from '../quran.service';
 export class JuzPage implements OnInit {
   juzList = [];
   suraList = [];
-  constructor(public quranService: QuranService) { }
+  constructor(public quranService: QuranService, private router: Router) { }
 
   ngOnInit() {
     this.getJuzList();
@@ -28,4 +29,9 @@ export class JuzPage implements OnInit {
     });
   }
 
+  goTo(url, juz){
+    this.quranService.currentPage = juz.startPage;
+    this.quranService.currentPageChanged.next(true);
+    this.router.navigate([url]);
+  }
 }

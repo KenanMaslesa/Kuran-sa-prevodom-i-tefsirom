@@ -34,11 +34,16 @@ export class TranslationPage implements OnInit {
     });
   }
 
+  ionViewWillEnter(){
+    this.scrollToTop(1000);
+  }
+
   getTafsirAndTranslationForPage(page) {
     this.translationForCurrentPage = this.quranService.getTafsirAndTranslationForPage(page);
   }
 
   onSuraChanged(pageNumber) {
+    this.scrollToTop(500);
     if (pageNumber === 1) {
       this.slides.lockSwipeToPrev(true);
     } else {
@@ -73,8 +78,8 @@ export class TranslationPage implements OnInit {
     this.content.scrollToBottom(1500);
   }
 
-  scrollToTop(){
-    this.content.scrollToTop(1500);
+  scrollToTop(duration){
+    this.content.scrollToTop(duration);
   }
 
   scrollToElement(elementId){

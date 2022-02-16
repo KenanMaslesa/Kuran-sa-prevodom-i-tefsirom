@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
 import { IonContent, IonInfiniteScroll } from '@ionic/angular';
 import { QuranService } from '../quran.service';
 
@@ -16,7 +17,7 @@ export class SurahPage implements OnInit {
   loadMoreIndex = 0;
   isSearchOn = false;
   showSearchHeader = false;
-  constructor(public quranService: QuranService) { }
+  constructor(public quranService: QuranService, private router: Router) { }
 
   ngOnInit() {
     this.getSuraList();
@@ -119,5 +120,11 @@ export class SurahPage implements OnInit {
       this.suraListLazyLoaded = [];
       this.loadMoreSura(this.loadMoreIndex++, this.isSearchOn);
     }, 100);
+  }
+
+  goTo(url, sura){
+    this.quranService.currentPage = sura.startpage;
+    this.quranService.currentPageChanged.next(true);
+    this.router.navigate([url]);
   }
 }
