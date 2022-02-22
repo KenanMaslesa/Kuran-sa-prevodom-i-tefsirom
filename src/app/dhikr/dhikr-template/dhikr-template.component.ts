@@ -24,6 +24,7 @@ export class DhikrTemplateComponent implements OnInit {
 
   ngOnInit() {
     this.setSliderLength();
+    this.mediaPlayerService.removePlayer();
 
     this.dhikrService.morningDhikrPageEntered.subscribe(() => {
       this.setSliderLength();

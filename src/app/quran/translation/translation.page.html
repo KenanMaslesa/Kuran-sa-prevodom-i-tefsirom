@@ -1,8 +1,8 @@
 <ion-header>
   <ion-toolbar color="primary">
-    <ion-title>Prijevod i tefsir Kur'ana</ion-title>
+    <ion-title>Prijevod i tefsir</ion-title>
     <ion-buttons slot="start">
-      <ion-back-button defaultHref="/"></ion-back-button>
+      <ion-back-button defaultHref="/quran/tabs/quran-template"></ion-back-button>
     </ion-buttons>
     <ion-icon slot="end" name="chevron-down-outline" *ngIf="!showSearchHeader" (click)="showSearchHeader=true;"></ion-icon>
     <ion-icon slot="end" name="chevron-up-outline" *ngIf="showSearchHeader" (click)="showSearchHeader=false;"></ion-icon>
@@ -48,12 +48,12 @@
         </div>
           <section *ngIf="item.aya == 1" class="suraTitle">
             <img src="https://salamquran.com/static/images/quran/sura-header.svg" alt="Quran sura title">
-            <h3>{{suraList[(+item.sura)-1].name}} - {{suraList[(+item.sura)-1].tname}}</h3>
+            <h3>{{quranService.suraList[(+item.sura)-1]?.name}} - {{quranService.suraList[(+item.sura)-1]?.tname}}</h3>
           </section>
 
           <div class="verse_key" *ngIf="(showArabic || showTranslation || showTafsir) && item.aya != 1">
 
-            <p *ngIf="suraList">Sura {{suraList[(+item.sura)-1].tname}}: {{item.aya}}. ajet</p>
+            <p *ngIf="suraList">Sura {{quranService.suraList[(+item.sura)-1]?.tname}}: {{item.aya}}. ajet</p>
           </div>
 
           <p class="arabic_text" *ngIf="showArabic">{{item.arabicText}}</p>

@@ -6,7 +6,7 @@
       </ng-container>
     </ion-title>
     <ion-buttons slot="start">
-      <ion-back-button defaultHref="/"></ion-back-button>
+      <ion-back-button (click)="showSearchHeader=true;" defaultHref="/"></ion-back-button>
     </ion-buttons>
     <ion-icon slot="end" name="search" *ngIf="quranService.showHeaderAndTabs" (click)="quranService.showHeaderAndTabs=!quranService.showHeaderAndTabs;showSearchHeader=!showSearchHeader"></ion-icon>
 
@@ -20,38 +20,19 @@
 </ion-header>
 
 <ion-content>
-  <app-loader *ngIf="quranService.showLoader"></app-loader>
+  <div class="caching" *ngIf="quranService.currentPageForCaching<604">
+    <ion-label>Preuzimanje stranica</ion-label>
+    <ion-badge slot="end">{{quranService.currentPageForCaching}}/604</ion-badge>
+  </div>
+
+  <app-loader *ngIf="quranService.showLoader && quranService.currentPageForCaching>=604"></app-loader>
   <header *ngIf="showSearchHeader">
     <div class="form-group dropdown-wrapper">
       <ion-item>
         <ion-label>Ucac</ion-label>
-        <ion-select #select [(ngModel)]="quranService.qari" (ngModelChange)="quranService.setQariUrl(select.value)" class="ion-select form-control" name="qari" #qari (ionChange)="onQariChanged(qari.value)">
-          <ion-select-option value="https://dl.salamquran.com/ayat/afasy-murattal-192/">Mishary Afasy
+        <ion-select #select [(ngModel)]="quranService.qari" (ngModelChange)="quranService.changeQari(select.value)" class="ion-select form-control" name="qari" #qari (ionChange)="onQariChanged(qari.value)">
+          <ion-select-option *ngFor="let item of quranService.qariList" value="{{item.identifier}}">{{item.englishName}}
           </ion-select-option>
-          <ion-select-option value="https://dl.salamquran.com/ayat/muhammad_jibreel-murattal-32/">Muhammad Jibreel
-          </ion-select-option>
-          <ion-select-option value="https://dl.salamquran.com/ayat/minshawi-murattal-32/">Minshawi</ion-select-option>
-          <ion-select-option value="https://dl.salamquran.com/ayat/minshawi-withchild-32/">Minshawi-with child
-          </ion-select-option>
-          <ion-select-option value="https://dl.salamquran.com/ayat/minshawi-mujawwad-32/">Minshawi-mujawwad
-          </ion-select-option>
-          <ion-select-option value="https://dl.salamquran.com/ayat/husary-murattal-32/">Husary</ion-select-option>
-          <ion-select-option value="https://dl.salamquran.com/ayat/husary-mujawwad-32/">Husary-mujawwad
-          </ion-select-option>
-          <ion-select-option value="https://dl.salamquran.com/ayat/husary-muallim-16/">Husary-muallim
-          </ion-select-option>
-          <ion-select-option value="https://dl.salamquran.com/ayat/abdulbasit-murattal-32/">Abdulbasit
-          </ion-select-option>
-          <ion-select-option value="https://dl.salamquran.com/ayat/rifai-murattal-32/">Rifai</ion-select-option>
-          <ion-select-option value="https://dl.salamquran.com/ayat/sahih_international.en.ibrahim_walk-translation-32/">
-            en.ibrahim_walk-translation</ion-select-option>
-          <ion-select-option value="https://dl.salamquran.com/ayat/saeediyan-murattal-16/">Saeediyan</ion-select-option>
-          <ion-select-option value="https://dl.salamquran.com/ayat/sabzali-murattal-32/">Sabzali</ion-select-option>
-          <ion-select-option value="https://dl.salamquran.com/ayat/parhizgar-murattal-48/">Parhizgar</ion-select-option>
-          <ion-select-option value="https://dl.salamquran.com/ayat/makarem.fa.kabiri-translation-16/">
-            makarem.fa.kabiri-translation</ion-select-option>
-          <ion-select-option value="https://dl.salamquran.com/ayat/khalafi-murattal-192/">Khalafi</ion-select-option>
-
         </ion-select>
       </ion-item>
 
@@ -87,7 +68,7 @@
             <div class="ayeLine" *ngIf="item.word">
               <ng-container *ngFor="let word of item.word">
 
-                <i *ngIf="word.char_type !== 'end'" class="{{word.class_name}} aya{{word.verse_key.replace(':', '-')}}"
+                <i *ngIf="word.char_type !== 'end'" class="{{word.class_name}} index-{{word.index}} aya{{word.verse_key.replace(':', '-')}}"
                   id="w{{word.audio_key}}" [innerHtml]="word.code" (click)="playWord(word.audio)"></i>
                 <!--ngbPopover="{{word.translation}}" triggers="mouseenter:mouseleave"-->
 

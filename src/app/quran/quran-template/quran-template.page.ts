@@ -28,6 +28,13 @@ export class QuranTemplatePage implements OnInit {
 
   ngOnInit(): void {
     this.getSuraList();
+    this.cacheAllQuranPages();
+  }
+
+  cacheAllQuranPages(){
+    for(let i = 0; i<30; i++){
+      this.quranService.cacheAllQuranPages();
+    }
   }
 
   ionViewWillEnter() {
@@ -45,17 +52,6 @@ export class QuranTemplatePage implements OnInit {
     });
   }
 
-  cacheAllQuranPages() {
-    let i = 1;
-    const self = this;
-    const repeater = setInterval(() => {
-      if (i > 604) {
-        clearInterval(repeater);
-      }
-      self.quranService.cacheAllQuranPages(i);
-      i += 1;
-    }, 5000); //repeat every 5s
-  }
 
   onSuraChanged(pageNumber) {
     if (pageNumber === 1) {
@@ -130,7 +126,8 @@ export class QuranTemplatePage implements OnInit {
         this.manageClassesOfAyats(this.previousAyah, 'remove');
       }
     }
-    const audio = new Audio(this.quranService.changeQariUrl(url.audio));
+
+    const audio = new Audio(`https://cdn.islamic.network/quran/audio/${this.quranService.qari}/${url.index}.mp3`);
     this.audio = audio;
     this.previousAyah = ayah;
     this.removeActiveClasses();
@@ -144,7 +141,7 @@ export class QuranTemplatePage implements OnInit {
       ayah = Number(ayah) + 1;
       ayahID = ayahID.substring(0, ayahID.indexOf('-'));
       ayahID = ayahID + '-' + ayah;
-      audio.src = self.getAudioOfAyah(ayahID);
+      audio.src = `https://cdn.islamic.network/quran/audio/${this.quranService.qari}/${++url.index}.mp3`;;
       self.removeActiveClasses();
       self.manageClassesOfAyats(ayahID, 'add');
       audio.play();
@@ -167,11 +164,11 @@ export class QuranTemplatePage implements OnInit {
         aya.classList.add('active');
       } else if (action === 'remove') {
         aya.classList.remove('active');
-      } else if (action === 'mouseover') {
-        aya.classList.add('hover');
-      } else if (action === 'mouseleave') {
-        aya.classList.remove('hover');
-      }
+      } // else if (action === 'mouseover') {
+      //   aya.classList.add('hover');
+      // } else if (action === 'mouseleave') {
+      //   aya.classList.remove('hover');
+      // }
     });
   }
 
@@ -182,23 +179,8 @@ export class QuranTemplatePage implements OnInit {
     });
   }
 
-  getAudioOfAyah(v) {
-    let url = '';
-    const verse = v.replace('-', ':');
-    this.quranService.words.result.forEach((ayah) => {
-      if (ayah.word) {
-        ayah.word.forEach((element) => {
-          if (element.verse_key === verse) {
-            url = element.audio;
-          }
-        });
-      }
-    });
-    return this.quranService.changeQariUrl(url);
-  }
-
   onQariChanged(value) {
     this.quranService.qari = value;
   }
-  //AUDIO
+  //AUDIO END
 }

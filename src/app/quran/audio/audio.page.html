@@ -51,7 +51,7 @@
     </div>
   </div>
 
-  <h2 class="qari" (click)="showHeader=!showHeader">{{getSelectedQari()}}</h2>
+  <h2 class="qari" *ngIf="!showHeader" (click)="showHeader=!showHeader">{{getSelectedQari()}}</h2>
 
   <ul [class.padding-bottom-100]="mediaPlayerService.player">
     <li *ngFor="let sura of suraList; let i = index"

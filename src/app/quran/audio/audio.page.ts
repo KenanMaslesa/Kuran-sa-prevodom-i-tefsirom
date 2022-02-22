@@ -303,6 +303,8 @@ export class AudioPage implements OnInit {
 
   ngOnInit() {
     this.getSuraList();
+    this.mediaPlayerService.removePlayer();
+
   }
 
   changeQari(qari) {

@@ -33,11 +33,9 @@ export class SurahPage implements OnInit {
   }
 
   getSuraList(){
-    this.quranService.getListOfSura().subscribe(response => {
-      this.suraList = response;
-      this.searchSuraList = response;
+      this.suraList = this.quranService.suraList;
+      this.searchSuraList = this.quranService.suraList;
       this.loadMoreSura(this.loadMoreIndex++, this.isSearchOn);
-    });
   }
 
   loadData(event) {

@@ -1,15 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { MediaPlayerService } from '../shared/media-player.service';
 
 @Component({
   selector: 'app-homepage',
   templateUrl: './homepage.page.html',
   styleUrls: ['./homepage.page.scss'],
 })
-export class HomepagePage implements OnInit {
+export class HomepagePage{
 
-  constructor() { }
+  constructor(private mediaPlayerService: MediaPlayerService) { }
 
-  ngOnInit() {
+  ionViewDidEnter() {
+    this.mediaPlayerService.removePlayer();
   }
 
 }
