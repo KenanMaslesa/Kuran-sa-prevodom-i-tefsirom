@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { IonSlides } from '@ionic/angular';
+import { BookmarksItem, BookmarksService } from '../bookmarks/bookmarks.service';
 import { QuranService } from '../quran.service';
 
 @Component({
@@ -22,13 +23,18 @@ export class QuranTemplatePage implements OnInit {
   };
   constructor(
     public quranService: QuranService,
+    public bookmarksService: BookmarksService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
   ) {}
 
   ngOnInit(): void {
-    this.getSuraList();
-    this.cacheAllQuranPages();
+    this.suraList = this.quranService.suraList;
+    this.setCurrentSuraTitle(this.quranService.currentPage);
+
+    if(this.quranService.currentPageForCaching < 604){
+      this.cacheAllQuranPages();
+    }
   }
 
   cacheAllQuranPages(){
@@ -51,7 +57,6 @@ export class QuranTemplatePage implements OnInit {
       this.router.navigate(['/quran/tabs/translation']);
     });
   }
-
 
   onSuraChanged(pageNumber) {
     if (pageNumber === 1) {
@@ -79,13 +84,6 @@ export class QuranTemplatePage implements OnInit {
     this.quranService.currentPageChanged.next(true);
   }
 
-  getSuraList() {
-    this.quranService.getListOfSura().subscribe((response) => {
-      this.suraList = response;
-      this.setCurrentSuraTitle(this.quranService.currentPage);
-    });
-  }
-
   setSuraTitle(title: string) {
     if (title.indexOf('undefined') > -1) {
       return this.suraTitle;
@@ -109,6 +107,23 @@ export class QuranTemplatePage implements OnInit {
         }
       });
     }
+  }
+
+  addBookmark(pageNumber){
+    const sura = this.quranService.suraList.filter(surah => pageNumber >= surah.startpage && pageNumber <= surah.endpage)[0];
+    const item: BookmarksItem = {
+      pageNumber: +pageNumber,
+      sura,
+      date: new Date().toLocaleDateString()
+    };
+    this.bookmarksService.addBookmark(item);
+  }
+
+  deleteBookmark(pageNumber){
+    const item: BookmarksItem = {
+      pageNumber: +pageNumber,
+    };
+    this.bookmarksService.deleteBookmark(item);
   }
 
   //AUDIO

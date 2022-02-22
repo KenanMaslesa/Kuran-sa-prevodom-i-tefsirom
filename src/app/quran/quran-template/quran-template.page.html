@@ -9,6 +9,8 @@
       <ion-back-button (click)="showSearchHeader=true;" defaultHref="/"></ion-back-button>
     </ion-buttons>
     <ion-icon slot="end" name="search" *ngIf="quranService.showHeaderAndTabs" (click)="quranService.showHeaderAndTabs=!quranService.showHeaderAndTabs;showSearchHeader=!showSearchHeader"></ion-icon>
+    <ion-icon slot="end" name="bookmark-outline" *ngIf="!bookmarksService.checkIsInBookmark(quranService.currentPage)" (click)="addBookmark(quranService.currentPage);quranService.showHeaderAndTabs=!quranService.showHeaderAndTabs"></ion-icon>
+    <ion-icon slot="end" name="bookmark" *ngIf="bookmarksService.checkIsInBookmark(quranService.currentPage)" (click)="deleteBookmark(quranService.currentPage);quranService.showHeaderAndTabs=!quranService.showHeaderAndTabs"></ion-icon>
 
     <div class="play-btn-wrapper" *ngIf="audio && quranService.showHeaderAndTabs" slot="end">
       <ng-container>

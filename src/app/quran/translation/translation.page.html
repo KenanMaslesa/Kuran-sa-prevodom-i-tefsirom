@@ -4,12 +4,13 @@
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/quran/tabs/quran-template"></ion-back-button>
     </ion-buttons>
-    <ion-icon slot="end" name="chevron-down-outline" *ngIf="!showSearchHeader" (click)="showSearchHeader=true;"></ion-icon>
-    <ion-icon slot="end" name="chevron-up-outline" *ngIf="showSearchHeader" (click)="showSearchHeader=false;"></ion-icon>
-
+    <ion-buttons slot="end">
+      <ion-icon slot="end" name="bookmark-outline" *ngIf="!bookmarksService.checkIsInTafsirBookmark(quranService.currentPage)" (click)="addTafsirBookmark(quranService.currentPage);quranService.showHeaderAndTabs=!quranService.showHeaderAndTabs"></ion-icon>
+      <ion-icon slot="end" name="bookmark" *ngIf="bookmarksService.checkIsInTafsirBookmark(quranService.currentPage)" (click)="deleteTafsirBookmark(quranService.currentPage);quranService.showHeaderAndTabs=!quranService.showHeaderAndTabs"></ion-icon>
+    </ion-buttons>
   </ion-toolbar>
 
-  <ion-list style="padding: 0;" *ngIf="showSearchHeader">
+  <ion-list style="padding: 0;">
     <ion-item>
       <ion-label>Arapski</ion-label>
       <ion-toggle [(ngModel)]="showArabic"></ion-toggle>

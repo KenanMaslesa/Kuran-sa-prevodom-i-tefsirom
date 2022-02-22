@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { IonContent, IonSlides } from '@ionic/angular';
 import { MediaPlayerService } from 'src/app/shared/media-player.service';
+import { BookmarksItem, BookmarksService } from '../bookmarks/bookmarks.service';
 import { QuranService } from '../quran.service';
 
 @Component({
@@ -14,7 +15,6 @@ export class TranslationPage implements OnInit {
   showArabic = true;
   showTranslation = true;
   showTafsir = true;
-  showSearchHeader = true;
   translationForCurrentPage = [];
   ayatsOfCurrentPage = [];
   arrayOfIndexes = [];
@@ -26,25 +26,29 @@ export class TranslationPage implements OnInit {
     loop: true,
   };
 
-  constructor(public quranService: QuranService, public mediaPlayerService: MediaPlayerService) {
-   }
+  constructor(
+    public quranService: QuranService,
+    public mediaPlayerService: MediaPlayerService,
+    public bookmarksService: BookmarksService
+  ) {}
 
   ngOnInit() {
     this.getTafsirAndTranslationForPage(this.quranService.currentPage);
-    this.quranService.currentPageChanged.subscribe(()=> {
+    this.quranService.currentPageChanged.subscribe(() => {
       this.onSuraChanged(this.quranService.currentPage);
     });
-    this.quranService.getListOfSura().subscribe(response => {
+    this.quranService.getListOfSura().subscribe((response) => {
       this.suraList = response;
     });
   }
 
-  ionViewWillEnter(){
+  ionViewWillEnter() {
     this.scrollToTop(1000);
   }
 
   getTafsirAndTranslationForPage(page) {
-    this.translationForCurrentPage = this.quranService.getTafsirAndTranslationForPage(page);
+    this.translationForCurrentPage =
+      this.quranService.getTafsirAndTranslationForPage(page);
   }
 
   onSuraChanged(pageNumber) {
@@ -74,21 +78,40 @@ export class TranslationPage implements OnInit {
     this.slides.slideTo(slideNumber);
   }
 
-  playAyah(ayahId){
+  playAyah(ayahId) {
     this.selectedAyah = ayahId;
-    this.mediaPlayerService.playAudio(`https://cdn.islamic.network/quran/audio/${this.quranService.qari}/${ayahId}.mp3`);
+    this.mediaPlayerService.playAudio(
+      `https://cdn.islamic.network/quran/audio/${this.quranService.qari}/${ayahId}.mp3`
+    );
   }
 
-  scrollToBottom(){
+  scrollToBottom() {
     this.content.scrollToBottom(1500);
   }
 
-  scrollToTop(duration){
+  scrollToTop(duration) {
     this.content.scrollToTop(duration);
   }
 
-  scrollToElement(elementId){
+  scrollToElement(elementId) {
     const y = document.getElementById(elementId).offsetTop;
     this.content.scrollToPoint(0, y - 20, 1000);
+  }
+
+  addTafsirBookmark(pageNumber){
+    const sura = this.quranService.suraList.filter(surah => pageNumber >= surah.startpage && pageNumber <= surah.endpage)[0];
+    const item: BookmarksItem = {
+      pageNumber: +pageNumber,
+      sura,
+      date: new Date().toLocaleDateString()
+    };
+    this.bookmarksService.addTafsirBookmark(item);
+  }
+
+  deleteTafsirBookmark(pageNumber){
+    const item: BookmarksItem = {
+      pageNumber: +pageNumber,
+    };
+    this.bookmarksService.deleteTafsirBookmark(item);
   }
 }

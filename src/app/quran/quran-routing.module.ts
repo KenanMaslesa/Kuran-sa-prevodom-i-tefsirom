@@ -39,6 +39,10 @@ const routes: Routes = [
           import('./audio/audio.module').then((m) => m.AudioPageModule),
       },
       {
+        path: 'bookmarks',
+        loadChildren: () => import('./bookmarks/bookmarks.module').then( m => m.BookmarksPageModule)
+      },
+      {
         path: '',
         redirectTo: '/tabs/surah',
         pathMatch: 'full',
