@@ -8,11 +8,14 @@
 </ion-header>
 
 <ion-content>
+  <h5 class="title">Kur'an</h5>
+  <p class="description" *ngIf="bookmarksService.bookmarks.length === 0">Nemate biljeski</p>
+
   <ion-item-sliding *ngFor="let item of bookmarksService.bookmarks">
 
     <ion-item (click)="goTo('/quran/tabs/quran-template', item);">
       <ion-label>
-        <h2>{{item.sura.name}}</h2>
+        <h2>{{item.sura?.name}} - {{item.sura?.tname}}</h2>
         <p>{{item.date}}</p>
       </ion-label>
       <ion-note slot="end">
@@ -27,12 +30,13 @@
     </ion-item-options>
   </ion-item-sliding>
 
-  <h1>Tefsir</h1>
+  <h5 class="title">Prijevod i Tefsir</h5>
+  <p class="description" *ngIf="bookmarksService.tafsirBookmarks.length === 0">Nemate biljeski</p>
   <ion-item-sliding *ngFor="let item of bookmarksService.tafsirBookmarks">
 
     <ion-item (click)="goTo('/quran/tabs/translation', item);">
       <ion-label>
-        <h2>{{item.sura.name}}</h2>
+        <h2>{{item.sura?.name}} - {{item.sura?.tname}}</h2>
         <p>{{item.date}}</p>
       </ion-label>
       <ion-note slot="end">
