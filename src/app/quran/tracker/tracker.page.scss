@@ -1,0 +1,23 @@
+ion-item-sliding {
+    ion-icon {
+      &.success {
+        color: lime;
+      }
+      &.danger {
+        color: red;
+      }
+    }
+}
+
+.segment {
+  display: none;
+
+  &.show {
+    display: block;
+  }
+}
+
+ion-note {
+  font-size: 14px;
+  padding: 13px 0;
+}
