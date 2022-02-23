@@ -57,9 +57,7 @@
             <p *ngIf="suraList">Sura {{quranService.suraList[(+item.sura)-1]?.tname}}: {{item.aya}}. ajet</p>
           </div>
 
-          <div class="arabic_text" *ngIf="showArabic">
-            <img [src]="'http://cdn.alquran.cloud/media/image/'+item.sura+'_'+item.aya" alt="">
-          </div>
+          <p class="arabic_text" *ngIf="showArabic">{{item.arabicText}}</p>
 
           <div class="item" *ngIf="showTranslation">
             <span>Prijevod:</span>
