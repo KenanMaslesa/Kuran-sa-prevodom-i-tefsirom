@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
+import { IonContent } from '@ionic/angular';
 import { QuranService } from '../quran.service';
 import { TrackerService } from './tracker.service';
 
@@ -8,7 +9,8 @@ import { TrackerService } from './tracker.service';
   templateUrl: './tracker.page.html',
   styleUrls: ['./tracker.page.scss'],
 })
-export class TrackerPage implements OnInit {
+export class TrackerPage {
+  @ViewChild(IonContent) ionContent: IonContent;
   pages = [];
   showPages = true;
   showSurahs = false;
@@ -18,8 +20,9 @@ export class TrackerPage implements OnInit {
     private router: Router
   ) {}
 
-  ngOnInit() {
-    for (let i = 1; i <= 604; i++) {
+  ionViewWillEnter(){
+    this.pages = [];
+    for (let i = 1; i <= 20; i++) {
       this.pages.push(i);
     }
   }
@@ -38,5 +41,25 @@ export class TrackerPage implements OnInit {
     this.quranService.setCurrentPage(sura.startpage?sura.startpage: sura);
     this.quranService.currentPageChanged.next(true);
     this.router.navigate([url]);
+  }
+
+  loadData(event){
+    let pagesPerScroll = 0;
+    for(let i = this.pages.length; i <= 604; i++){
+      pagesPerScroll++;
+      if(pagesPerScroll >= 20){
+        event.target.complete();
+        return;
+      }
+      this.pages.push(i);
+    }
+
+    if(this.pages.length === 604) {
+      // this.disableInfiniteScroll(true);
+    }
+  }
+
+  ionContentScrollToTop(duration = 1000){
+    this.ionContent.scrollToTop​(duration);
   }
 }

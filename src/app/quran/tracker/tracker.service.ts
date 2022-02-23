@@ -24,11 +24,16 @@ export class TrackerService {
   }
 
   isPageCompleted(pageNumber){
-    return this.completedPages.some(item => item === pageNumber);
+    return this.completedPages.some(item => +item === pageNumber);
   }
 
   getCounterForRange(startPage, endPage){
     const counter = this.completedPages.filter(item => item >= +startPage && item <= +endPage).length;
     return counter;
+  }
+
+  removeAllPages() {
+    this.completedPages = [];
+    localStorage.setItem('completedPages', JSON.stringify(this.completedPages));
   }
 }

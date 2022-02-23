@@ -15,9 +15,21 @@ ion-item-sliding {
   &.show {
     display: block;
   }
+
+  .title {
+    text-align: center;
+    color: dimgrey;
+    padding: 10px;
+    font-size: 16px;
+  }
 }
 
 ion-note {
   font-size: 14px;
   padding: 13px 0;
+}
+
+.scrollToTop {
+  text-align: center;
+  padding: 15px;
 }

@@ -19,8 +19,23 @@
   </ion-segment>
 
   <div class="segment" [class.show]="showPages">
-    <ion-item-sliding *ngFor="let page of pages" (click)="goTo('/quran/tabs/quran-template', +page);">
+    <ion-item-sliding>
       <ion-item>
+        <ion-label>
+          <h4 class="title">Proucili ste {{trackerService.completedPages.length}} od 604 stranice</h4>
+        </ion-label>
+      </ion-item>
+
+      <ion-item-options side="end">
+        <ion-item-option color="danger" expandable *ngIf="trackerService.completedPages.length >= 1"
+          (click)="trackerService.removeAllPages()">
+          Oznaci sve stranice kao neprocitane
+        </ion-item-option>
+      </ion-item-options>
+    </ion-item-sliding>
+
+    <ion-item-sliding *ngFor="let page of pages">
+      <ion-item (click)="goTo('/quran/tabs/quran-template', +page);">
         <ion-label>
           <h2>{{page}}. stranica</h2>
         </ion-label>
@@ -42,11 +57,18 @@
       </ion-item-options>
 
     </ion-item-sliding>
+    <ion-infinite-scroll threshold="100px" (ionInfinite)="loadData($event)">
+      <div (click)="ionContentScrollToTop()" class="scrollToTop">
+        <ion-icon name="arrow-up-outline"></ion-icon>
+        <span style="text-align: center;">Vrati me na pocetak</span>
+        <ion-icon name="arrow-up-outline"></ion-icon>
+      </div>
+    </ion-infinite-scroll>
   </div>
 
   <div class="segment" [class.show]="showSurahs">
-    <ion-item-sliding *ngFor="let sura of quranService.suraList" (click)="goTo('/quran/tabs/quran-template', sura);">
-      <ion-item>
+    <ion-item-sliding *ngFor="let sura of quranService.suraList">
+      <ion-item (click)="goTo('/quran/tabs/quran-template', sura);">
         <ion-label>
           <h2>{{sura.index}}. {{sura.tname}}</h2>
         </ion-label>
