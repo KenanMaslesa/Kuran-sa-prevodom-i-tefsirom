@@ -8,7 +8,7 @@
     <ion-buttons slot="start">
       <ion-back-button (click)="showSearchHeader=true;" defaultHref="/"></ion-back-button>
     </ion-buttons>
-    <ion-icon slot="end" name="search" *ngIf="quranService.showHeaderAndTabs" (click)="quranService.showHeaderAndTabs=!quranService.showHeaderAndTabs;showSearchHeader=!showSearchHeader"></ion-icon>
+    <!-- <ion-icon slot="end" name="search" *ngIf="quranService.showHeaderAndTabs" (click)="quranService.showHeaderAndTabs=!quranService.showHeaderAndTabs;showSearchHeader=!showSearchHeader"></ion-icon> -->
     <ion-icon slot="end" name="bookmark-outline" *ngIf="!bookmarksService.checkIsInBookmark(quranService.currentPage)" (click)="addBookmark(quranService.currentPage);quranService.showHeaderAndTabs=!quranService.showHeaderAndTabs"></ion-icon>
     <ion-icon slot="end" name="bookmark" *ngIf="bookmarksService.checkIsInBookmark(quranService.currentPage)" (click)="deleteBookmark(quranService.currentPage);quranService.showHeaderAndTabs=!quranService.showHeaderAndTabs"></ion-icon>
 
@@ -32,7 +32,7 @@
     <div class="form-group dropdown-wrapper">
       <ion-item>
         <ion-label>Ucac</ion-label>
-        <ion-select #select [(ngModel)]="quranService.qari" (ngModelChange)="quranService.changeQari(select.value)" class="ion-select form-control" name="qari" #qari (ionChange)="onQariChanged(qari.value)">
+        <ion-select #select [(ngModel)]="quranService.qari" (ngModelChange)="quranService.changeQari(select.value)" class="ion-select form-control" name="qari" #qari>
           <ion-select-option *ngFor="let item of quranService.qariList" value="{{item.identifier}}">{{item.englishName}}
           </ion-select-option>
         </ion-select>
@@ -84,7 +84,8 @@
             </div>
           </ng-container>
         </ng-container>
-          <ion-text>
+          <ion-text class="currentPage">
+            <ion-checkbox color="primary" (ionChange)="markPage($event)" [checked]="trackerService.isPageCompleted(quranService.currentPage)"></ion-checkbox>
             {{quranService.currentPage}}
           </ion-text>
         </ion-slide>

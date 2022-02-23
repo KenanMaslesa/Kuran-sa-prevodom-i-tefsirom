@@ -2373,6 +2373,11 @@ export class QuranService {
     }
   }
 
+  setCurrentPage(pageNumber: number){
+    this.currentPage = pageNumber;
+    localStorage.setItem('currentPage', JSON.stringify(this.currentPage));
+  }
+
   setCurrentPageForCaching() {
     const currentPageForCachingFromStore = localStorage.getItem('currentPageForCaching');
     if(currentPageForCachingFromStore != null) {

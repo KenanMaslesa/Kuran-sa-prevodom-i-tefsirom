@@ -43,6 +43,14 @@ const routes: Routes = [
         loadChildren: () => import('./bookmarks/bookmarks.module').then( m => m.BookmarksPageModule)
       },
       {
+        path: 'settings',
+        loadChildren: () => import('./settings/settings.module').then( m => m.SettingsPageModule)
+      },
+      {
+        path: 'tracker',
+        loadChildren: () => import('./tracker/tracker.module').then( m => m.TrackerPageModule)
+      },
+      {
         path: '',
         redirectTo: '/tabs/surah',
         pathMatch: 'full',
@@ -53,7 +61,7 @@ const routes: Routes = [
     path: '',
     redirectTo: '/quran/tabs/quran-template',
     pathMatch: 'full',
-  },
+  }
 ];
 
 @NgModule({

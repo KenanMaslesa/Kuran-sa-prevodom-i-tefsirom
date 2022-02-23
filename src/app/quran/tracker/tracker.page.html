@@ -1,0 +1,66 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Tracker</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <!-- Default Segment -->
+  <ion-segment value="pages" #segment (ionChange)="segmentChanged(segment.value)">
+    <ion-segment-button value="pages">
+      <ion-label>Stranice</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="surahs">
+      <ion-label>Sure</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+
+  <div class="segment" [class.show]="showPages">
+    <ion-item-sliding *ngFor="let page of pages" (click)="goTo('/quran/tabs/quran-template', +page);">
+      <ion-item>
+        <ion-label>
+          <h2>{{page}}. stranica</h2>
+        </ion-label>
+        <ion-icon class="success" slot="end" *ngIf="trackerService.isPageCompleted(page)"
+          name="checkmark-circle-outline"></ion-icon>
+        <ion-icon class="danger" slot="end" *ngIf="!trackerService.isPageCompleted(page)" name="close-circle-outline">
+        </ion-icon>
+      </ion-item>
+
+      <ion-item-options side="end">
+        <ion-item-option color="danger" *ngIf="trackerService.isPageCompleted(page)" expandable
+          (click)="trackerService.removePageFromComplated(page)">
+          Oznaci kao neprocitanu
+        </ion-item-option>
+        <ion-item-option *ngIf="!trackerService.isPageCompleted(page)" color="success" expandable
+          (click)="trackerService.addPageToComplated(page)">
+          Oznaci kao procitanu
+        </ion-item-option>
+      </ion-item-options>
+
+    </ion-item-sliding>
+  </div>
+
+  <div class="segment" [class.show]="showSurahs">
+    <ion-item-sliding *ngFor="let sura of quranService.suraList" (click)="goTo('/quran/tabs/quran-template', sura);">
+      <ion-item>
+        <ion-label>
+          <h2>{{sura.index}}. {{sura.tname}}</h2>
+        </ion-label>
+        <ion-note slot="end">
+          {{trackerService.getCounterForRange(sura.startpage, sura.endpage)}}/{{(sura.endpage - sura.startpage)+1}}
+        </ion-note>
+        <ion-icon class="success" slot="end"
+          *ngIf="trackerService.getCounterForRange(sura.startpage, sura.endpage)===(sura.endpage - sura.startpage)+1"
+          name="checkmark-circle-outline"></ion-icon>
+        <ion-icon class="danger" slot="end"
+          *ngIf="trackerService.getCounterForRange(sura.startpage, sura.endpage)!==(sura.endpage - sura.startpage)+1"
+          name="close-circle-outline"></ion-icon>
+      </ion-item>
+    </ion-item-sliding>
+  </div>
+
+</ion-content>

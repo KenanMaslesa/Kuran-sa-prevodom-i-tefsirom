@@ -1,8 +1,9 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { IonSlides } from '@ionic/angular';
 import { BookmarksItem, BookmarksService } from '../bookmarks/bookmarks.service';
 import { QuranService } from '../quran.service';
+import { TrackerService } from '../tracker/tracker.service';
 
 @Component({
   selector: 'app-quran-template',
@@ -20,12 +21,13 @@ export class QuranTemplatePage implements OnInit {
   slideOpts = {
     speed: 50,
     loop: true,
+    loopPreventsSlide: true
   };
   constructor(
     public quranService: QuranService,
     public bookmarksService: BookmarksService,
     private route: ActivatedRoute,
-    private router: Router,
+    public trackerService: TrackerService,
   ) {}
 
   ngOnInit(): void {
@@ -34,6 +36,15 @@ export class QuranTemplatePage implements OnInit {
 
     if(this.quranService.currentPageForCaching < 604){
       this.cacheAllQuranPages();
+    }
+  }
+
+  markPage(value){
+    if(value.currentTarget.checked){
+      this.trackerService.addPageToComplated(this.quranService.currentPage);
+    }
+    else {
+      this.trackerService.removePageFromComplated(this.quranService.currentPage);
     }
   }
 
@@ -54,7 +65,6 @@ export class QuranTemplatePage implements OnInit {
       this.quranService.showLoader = false;
     }, error => {
       this.quranService.showLoader = false;
-      this.router.navigate(['/quran/tabs/translation']);
     });
   }
 
@@ -78,7 +88,6 @@ export class QuranTemplatePage implements OnInit {
       this.quranService.showLoader = false;
     }, error => {
       this.quranService.showLoader = false;
-      this.router.navigate(['/quran/tabs/translation']);
     });
     this.setCurrentSuraTitle(this.quranService.currentPage);
     this.quranService.currentPageChanged.next(true);
@@ -94,6 +103,7 @@ export class QuranTemplatePage implements OnInit {
 
   slideTo(slideNumber) {
     this.slides.slideTo(slideNumber);
+    this.slides.update();
   }
 
   setCurrentSuraTitle(page) {
@@ -103,7 +113,7 @@ export class QuranTemplatePage implements OnInit {
           parseInt(page, 10) >= parseInt(sura.startpage, 10) &&
           parseInt(page, 10) <= parseInt(sura.endpage, 10)
         ) {
-          this.currentSuraTitle = `${index + 1}. ${sura.name} - ${sura.tname}`;
+          this.currentSuraTitle = `${index + 1}. ${sura.tname}`;
         }
       });
     }
@@ -192,10 +202,6 @@ export class QuranTemplatePage implements OnInit {
     activeAyats.forEach((aya) => {
       aya.classList.remove('active');
     });
-  }
-
-  onQariChanged(value) {
-    this.quranService.qari = value;
   }
   //AUDIO END
 }
