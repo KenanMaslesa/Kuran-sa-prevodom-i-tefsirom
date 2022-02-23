@@ -70,6 +70,15 @@
           </div>
           <p class="end"></p>
         </div>
+
+        <div class="benefits" *ngIf="benefits">
+          <h3>Poruke stranice:</h3>
+          <ul>
+            <li *ngFor="let benefit of benefits[quranService.currentPage-1]">
+              {{benefit.bosnian}}
+            </li>
+          </ul>
+        </div>
       </div>
     </ion-slide>
   </ion-slides>

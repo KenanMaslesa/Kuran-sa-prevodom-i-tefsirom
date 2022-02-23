@@ -20,6 +20,7 @@ export class TranslationPage implements OnInit {
   arrayOfIndexes = [];
   selectedAyah: number;
   suraList: any;
+  benefits: any;
   slideOpts = {
     initialSlide: 1,
     speed: 50,
@@ -39,6 +40,10 @@ export class TranslationPage implements OnInit {
     });
     this.quranService.getListOfSura().subscribe((response) => {
       this.suraList = response;
+    });
+
+    this.quranService.getBenefits().subscribe(res => {
+      this.benefits = res;
     });
   }
 

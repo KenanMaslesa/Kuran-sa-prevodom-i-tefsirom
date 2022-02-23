@@ -2474,4 +2474,8 @@ export class QuranService {
   getTafsirAndTranslationForPage(page){
     return tefsir.getTafsirAndTranslationForPage(page);
   }
+
+  getBenefits() {
+    return this.apiService.getData(`assets/db/quran/benefitsPerPage.json`);
+  }
 }
