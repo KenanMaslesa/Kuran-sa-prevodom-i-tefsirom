@@ -779,6 +779,38 @@
         "endSecond": 12.5
       }
     ]
+  },
+  {
+    "bosnian": "U ime Onoga uz čije ime neće nauditi ništa na nebesima niti na zemlji, a ON sve čuje i sve zna.",
+    "arabic": "بِسْمِ اللَّهِ الَّذِي لاَ يَضُرُّ مَعَ اسْمِهِ شَيْءٌ فِي الْأَرْضِ وَلاَ فِي السّمَاءِ, وَهُوَ السَّمِيعُ الْعَلِيمُِ",
+    "transcription": "BISMILLĀHILLEZĪ LĀ JEDURRU ME‘ASMIHI ŠEJ-UN FI-L-ERDI VE LĀ FI-S-SEMĀI VE HUVE-S-SEMĪ‘U-L-‘ALĪM.",
+    "audio": "assets/audio/bismillahillezi.mp3",
+    "type":"morning&evening-dhikr",
+    "imam": "Ebu Davud, Tirmizi, Ibn Madždže",
+    "recitate": 3,
+    "sentences": [
+      {
+        "bosnian": "U ime Onoga uz čije ime neće nauditi ništa",
+        "arabic": "بِسْمِ اللَّهِ الَّذِي لاَ يَضُرُّ مَعَ اسْمِهِ شَيْءٌ",
+        "transcription": "BISMILLĀHILLEZĪ LĀ JEDURRU ME‘ASMIHI ŠEJ-UN",
+        "startSecond": 0.1,
+        "endSecond": 5.5
+      },
+      {
+        "bosnian": "na nebesima niti na zemlji,",
+        "arabic": "فِي الْأَرْضِ وَلاَ فِي السّمَاءِ,",
+        "transcription": "FI-L-ERDI VE LĀ FI-S-SEMĀI,",
+        "startSecond": 5.6,
+        "endSecond": 9.5
+      },
+      {
+        "bosnian": "a ON sve čuje i sve zna.",
+        "arabic": " وَهُوَ السَّمِيعُ الْعَلِيمُِ",
+        "transcription": "VE HUVE-S-SEMĪ‘U-L-‘ALĪM.",
+        "startSecond": 9.6,
+        "endSecond": 13
+      }
+    ]
   }
 
 
