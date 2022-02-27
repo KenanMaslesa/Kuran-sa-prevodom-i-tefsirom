@@ -1,0 +1,127 @@
+[
+
+  {
+    "bosnian": "S Tvojim imenom, Gospodaru moj, legoh na bok i ako bude Tvoja volja, podići ću se. Ako uzmeš moju dušu, budi milostiv prema njoj, a ako je vratiš, zaštiti je kao što si zaštitio Svoje dobre robove.",
+    "arabic": "بِاسْمِكَ رَبِّـي وَضَعْـتُ جَنْـبي ، وَبِكَ أَرْفَعُـه، فَإِن أَمْسَـكْتَ نَفْسـي فارْحَـمْها ، وَإِنْ أَرْسَلْتَـها فاحْفَظْـها بِمـا تَحْفَـظُ بِه عِبـادَكَ الصّـالِحـين.",
+    "transcription": "BISMIKE RABBI VEDA’TU DŽENBI VE BIKE ERFE’UHU, FE IN EMSEKTE NEFSI FERHAM-HA VE IN ERSELTEHA FA-HFAZHA BIMA TAHFEZU BIHI IBADEKE-S-SALIHINE.",
+    "audio": "assets/audio/bismikeRabbi.mp3",
+    "type":"morning-dhikr",
+    "imam": "",
+    "recitate": 1,
+    "sentences": [
+      {
+        "bosnian": "S Tvojim imenom, Gospodaru moj, legoh na bok",
+        "arabic": "بِاسْمِكَ رَبِّـي وَضَعْـتُ جَنْـبي ،",
+        "transcription": "BISMIKE RABBI VEDA’TU DŽENBI",
+        "startSecond": 0.1,
+        "endSecond": 3.5
+      },
+      {
+        "bosnian": "i ako bude Tvoja volja, podići ću se.",
+        "arabic": "وَبِكَ أَرْفَعُـه،",
+        "transcription": "VE BIKE ERFE’UHU,",
+        "startSecond": 3.6,
+        "endSecond": 5.2
+      },
+      {
+        "bosnian": "Ako uzmeš moju dušu, budi milostiv prema njoj,",
+        "arabic": "فَإِن أَمْسَـكْتَ نَفْسـي فارْحَـمْها ،",
+        "transcription": "FE IN EMSEKTE NEFSI FERHAM-HA,",
+        "startSecond": 5.3,
+        "endSecond": 9
+      },
+      {
+        "bosnian": "a ako je vratiš, zaštiti je",
+        "arabic": "وَإِنْ أَرْسَلْتَـها فاحْفَظْـها",
+        "transcription": "VE IN ERSELTEHA FA-HFAZHA",
+        "startSecond": 9.1,
+        "endSecond": 12
+      },
+      {
+        "bosnian": "kao što si zaštitio Svoje dobre robove.",
+        "arabic": "بِمـا تَحْفَـظُ بِه عِبـادَكَ الصّـالِحـين.",
+        "transcription": "BIMA TAHFEZU BIHI IBADEKE-S-SALIHINE.",
+        "startSecond": 12.1,
+        "endSecond": 18
+      }
+    ]
+  },
+  {
+    "bosnian": "Allahu, Ti si, doista, stvorio moju dušu i Ti je umrtvljuješ. Tebi pripada njena smrt i njen život, pa ako je oživiš – zaštiti je, a ako je umrtviš – oprosti joj. Allahu, Tebe molim za oprost.",
+    "arabic": "اللّهُـمَّ إِنَّـكَ خَلَـقْتَ نَفْسـي وَأَنْـتَ تَوَفّـاهـا لَكَ ممَـاتـها وَمَحْـياها ، إِنْ أَحْيَيْـتَها فاحْفَظْـها ، وَإِنْ أَمَتَّـها فَاغْفِـرْ لَـها . اللّهُـمَّ إِنَّـي أَسْـأَلُـكَ العـافِـيَة.",
+    "transcription": "ALLAHUMME INNEKE HALAKTE NEFSI VE ENTE TEVEFFAHA. LEKE MEMATUHA VE MAHJAHA, IN AHJEJTEHA FAHFAZHA VE IN EMETTEHA FAGFIR LEHA. ALLAHUMME INNI ES’ELUKEL-AFIJETE.",
+    "audio": "assets/audio/AllahumeInnekeHalakteNefsi.mp3",
+    "type":"morning-dhikr",
+    "imam": "",
+    "recitate": 1,
+    "sentences": [
+      {
+        "bosnian": "Allahu, Ti si, doista, stvorio moju dušu",
+        "arabic": "للّهُـمَّ إِنَّـكَ خَلَـقْتَ نَفْسـي",
+        "transcription": "ALLAHUMME INNEKE HALAKTE NEFSI",
+        "startSecond": 0.1,
+        "endSecond": 4.25
+      },
+      {
+        "bosnian": "i Ti je umrtvljuješ.",
+        "arabic": "وَأَنْـتَ تَوَفّـاهـا",
+        "transcription": "VE ENTE TEVEFFAHA.",
+        "startSecond": 4.3,
+        "endSecond": 7.5
+      },
+      {
+        "bosnian": "Tebi pripada njena smrt i njen život,",
+        "arabic": "لَكَ ممَـاتـها وَمَحْـياها،",
+        "transcription": "LEKE MEMATUHA VE MAHJAHA,",
+        "startSecond": 7.6,
+        "endSecond": 11.9
+      },
+      {
+        "bosnian": "pa ako je oživiš – zaštiti je,",
+        "arabic": " إِنْ أَحْيَيْـتَها فاحْفَظْـها،",
+        "transcription": "IN AHJEJTEHA FAHFAZHA",
+        "startSecond": 12,
+        "endSecond": 15.3
+      },
+      {
+        "bosnian": "a ako je umrtviš – oprosti joj.",
+        "arabic": "وَإِنْ أَمَتَّـها فَاغْفِـرْ لَـها.",
+        "transcription": "VE IN EMETTEHA FAGFIR LEHA.",
+        "startSecond": 15.4,
+        "endSecond": 18.8
+      },
+      {
+        "bosnian": "Allahu, Tebe molim za oprost.",
+        "arabic": "اللّهُـمَّ إِنَّـي أَسْـأَلُـكَ العـافِـيَة.",
+        "transcription": "ALLAHUMME INNI ES’ELUKEL-AFIJETE.",
+        "startSecond": 18.9,
+        "endSecond": 23.8
+      }
+    ]
+  },
+  {
+    "bosnian": "Allahu, sačuvaj me od kazne Svoje na dan kada budeš oživio Svoje robove.",
+    "arabic": "اللّهُـمَّ قِنـي عَذابَـكَ يَـوْمَ تَبْـعَثُ عِبـادَك.",
+    "transcription": "ALLAHUMME KINI AZABEKE JEVME TEB’ASU IBADEKE.",
+    "audio": "assets/audio/AllahummeQiniAzabeke.mp3",
+    "type":"morning-dhikr",
+    "imam": "",
+    "recitate": 1,
+    "sentences": [
+      {
+        "bosnian": "Allahu, sačuvaj me od kazne Svoje",
+        "arabic": "اللّهُـمَّ قِنـي عَذابَـكَ",
+        "transcription": "ALLAHUMME KINI AZABEKE",
+        "startSecond": 0.1,
+        "endSecond": 3.25
+      },
+      {
+        "bosnian": "na dan kada budeš oživio Svoje robove.",
+        "arabic": "يَـوْمَ تَبْـعَثُ عِبـادَك.",
+        "transcription": "JEVME TEB’ASU IBADEKE.",
+        "startSecond": 3.3,
+        "endSecond": 6.7
+      }
+    ]
+  }
+]
