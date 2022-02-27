@@ -308,7 +308,7 @@
     "sentences": [
       {
         "bosnian": "Allahu, Tvojom voljom u noć ulazimo",
-        "arabic": "اللَّهُمَّ بِكَ أَمْسَيْنَا",
+        "arabic": "اللَّهُمَّ بِكَ أَمْسَيْنَا،",
         "transcription": "ALLĀHUMME BIKE EMSEJNĀ,",
         "startSecond": 0.1,
         "endSecond": 3.5
@@ -322,7 +322,7 @@
       },
       {
         "bosnian": "Tvojom voljom živimo",
-        "arabic": "وَبِكَ نَحْيَا",
+        "arabic": "وَبِكَ نَحْيَا،",
         "transcription": "VE BIKE NAHJĀ,",
         "startSecond": 6.3,
         "endSecond": 8.8
@@ -367,7 +367,7 @@
         "endSecond": 9.8
       },
       {
-        "arabic": ",وَعَلَى دِينِ نَبِيِّنَا مُحَمَّدٍ صَلَّى اللهُ عَلَيْهِ وَسَلَّمَ",
+        "arabic": "وَعَلَى دِينِ نَبِيِّنَا مُحَمَّدٍ صَلَّى اللهُ عَلَيْهِ وَسَلَّمَ،",
         "bosnian": "u vjeri vjerovjesnika našega, Muhammeda sallallahu ’alejhi ve sellem,",
         "transcription": "VE ALA DÎNI NEBIJJINĀ MUHAMMEDIN SALLALLĀHU ‘ALEJHI VE SELLEM, ",
         "startSecond": 9.9,
