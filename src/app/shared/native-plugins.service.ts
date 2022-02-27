@@ -65,7 +65,7 @@ export class NativePluginsService {
           hour: 6,
           minute: 30,
         },
-        count: 1
+        count: 365
       },
       led: 'FF0000',
       badge: 1,
@@ -87,16 +87,12 @@ export class NativePluginsService {
         // every: this.every,
         // in: 10,
         every: {
-          hour: 15,
+           hour: 15,
           minute: 30,
         },
-        count: 1,
+        count: 365,
       },
       led: { color: '#FF00FF', on: 500, off: 500 },
-      // smallIcon: 'res://ic_stat_dhikr',
-      // attachments: ['res://ic_stat_dhikr'],
-      // icon: 'res://ic_stat_dhikr',
-      // icon: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTzfXKe6Yfjr6rCtR6cMPJB8CqMAYWECDtDqH-eMnerHHuXv9egrw',
       badge: 1,
       vibrate: true,
       lockscreen: true,

@@ -283,7 +283,7 @@ export class PrayerTimesPage implements OnInit {
           hour: new Date(date).getHours(),
           minute: new Date(date).getMinutes()
         },
-        count: 1
+        count: 365
       }
     });
   }
