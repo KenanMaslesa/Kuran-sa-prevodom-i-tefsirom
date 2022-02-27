@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Subject } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 export enum DhikrLocalStoarge {
   'showArabicDhikr',
@@ -24,11 +25,15 @@ export class DhikrService {
    }
 
   getMorningDhikr() {
-    return this.http.get('assets/db/morning-dhikr.json');
+    return this.http.get<any[]>('assets/db/dhikr.json').pipe(
+      map(response => response.filter(item => item.type === 'morning-dhikr' || item.type === 'morning&evening-dhikr'))
+    );
   }
 
   getEveningDhikr() {
-    return this.http.get('assets/db/evening-dhikr.json');
+    return this.http.get<any[]>('assets/db/dhikr.json').pipe(
+      map(response => response.filter(item => item.type === 'evening-dhikr' || item.type === 'morning&evening-dhikr'))
+    );
   }
 
   getItemsFromLocalStoarge() {
