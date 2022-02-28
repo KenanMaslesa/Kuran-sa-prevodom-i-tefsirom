@@ -40,6 +40,13 @@
         </ng-container>
       </div>
 
+      <div class="recitate-counter-wrapper">
+        <div class="recitate-counter" (click)="dhikr.recitate = dhikr.recitate-1">
+          {{dhikr.recitate >= 1? dhikr.recitate: ''}}
+          <ion-icon *ngIf="dhikr.recitate<=0" name="checkmark-done-outline"></ion-icon>
+        </div>
+      </div>
+
     </ion-slide>
   </ion-slides>
 </section>
@@ -50,31 +57,38 @@
       <h2>{{i+1}}.</h2>
     </header>
     <div class="icons">
-      <ion-icon name="play-outline" (click)="mediaPlayerService.playAudio(dhikr.audio)" *ngIf="!mediaPlayerService.isPlaying && !mediaPlayerService.isPaused"></ion-icon>
-      <ion-icon name="play-outline" (click)="mediaPlayerService.continueAudio()" *ngIf="mediaPlayerService.isPaused"></ion-icon>
-      <ion-icon name="pause-outline" (click)="mediaPlayerService.pauseAudio()" *ngIf="mediaPlayerService.isPlaying && !mediaPlayerService.isPaused"></ion-icon>
+      <ion-icon name="play-outline" (click)="mediaPlayerService.playAudio(dhikr.audio); activeAudio = dhikr.audio" *ngIf="!mediaPlayerService.isPlaying && !mediaPlayerService.isPaused"></ion-icon>
+      <ion-icon name="play-outline" (click)="mediaPlayerService.continueAudio()" *ngIf="mediaPlayerService.isPaused && activeAudio === dhikr.audio"></ion-icon>
+      <ion-icon name="pause-outline" (click)="mediaPlayerService.pauseAudio()" *ngIf="mediaPlayerService.isPlaying && !mediaPlayerService.isPaused && activeAudio === dhikr.audio"></ion-icon>
     </div>
 
     <div class="card card__arabic" *ngIf="dhikrService.showArabicDhikr">
       <ng-container *ngFor="let sentence of dhikr.sentences">
-        <p dir="rtl" [class.card--active]="mediaPlayerService.currentTime >= sentence.startSecond && mediaPlayerService.currentTime <= sentence.endSecond"
-          (click)="mediaPlayerService.setAudioCurrentTime(sentence.startSecond, dhikr.audio)">{{sentence.arabic}}</p>
+        <p dir="rtl" [class.card--active]="mediaPlayerService.currentTime >= sentence.startSecond && mediaPlayerService.currentTime <= sentence.endSecond && activeAudio === dhikr.audio"
+          (click)="mediaPlayerService.setAudioCurrentTime(sentence.startSecond, dhikr.audio); activeAudio = dhikr.audio">{{sentence.arabic}}</p>
       </ng-container>
     </div>
 
     <div class="card" *ngIf="dhikrService.showDhikrTranslation">
       <ng-container *ngFor="let sentence of dhikr.sentences">
-        <p [class.card--active]="mediaPlayerService.currentTime >= sentence.startSecond && mediaPlayerService.currentTime <= sentence.endSecond"
-          (click)="mediaPlayerService.setAudioCurrentTime(sentence.startSecond, dhikr.audio)">{{sentence.transcription}}</p>
+        <p [class.card--active]="mediaPlayerService.currentTime >= sentence.startSecond && mediaPlayerService.currentTime <= sentence.endSecond && activeAudio === dhikr.audio"
+          (click)="mediaPlayerService.setAudioCurrentTime(sentence.startSecond, dhikr.audio); activeAudio = dhikr.audio">{{sentence.transcription}}</p>
       </ng-container>
     </div>
 
     <div class="card" *ngIf="dhikrService.showBosnianDhikr">
       <ng-container *ngFor="let sentence of dhikr.sentences">
         <p
-          [class.card--active]="mediaPlayerService.currentTime >= sentence.startSecond && mediaPlayerService.currentTime <= sentence.endSecond"
-          (click)="mediaPlayerService.setAudioCurrentTime(sentence.startSecond, dhikr.audio)">{{sentence.bosnian}}</p>
+          [class.card--active]="mediaPlayerService.currentTime >= sentence.startSecond && mediaPlayerService.currentTime <= sentence.endSecond && activeAudio === dhikr.audio"
+          (click)="mediaPlayerService.setAudioCurrentTime(sentence.startSecond, dhikr.audio); activeAudio = dhikr.audio">{{sentence.bosnian}}</p>
       </ng-container>
+    </div>
+
+    <div class="recitate-counter-wrapper">
+      <div class="recitate-counter" (click)="dhikr.recitate = dhikr.recitate-1">
+        {{dhikr.recitate >= 1? dhikr.recitate: ''}}
+        <ion-icon *ngIf="dhikr.recitate<=0" name="checkmark-done-outline"></ion-icon>
+      </div>
     </div>
 
   </div>

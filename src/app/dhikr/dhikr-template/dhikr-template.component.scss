@@ -23,10 +23,13 @@ ion-slides {
           display: none;
       }
 
-      ion-icon {
+      .icons {
+        ion-icon {
           font-size: 35px;
           padding: 5px;
       }
+      }
+
 
       .card {
           padding: 10px;
@@ -168,14 +171,34 @@ ion-toolbar {
 }
 
 section {
+  background-image: url('/assets/img/background.jpeg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100%;
+  overflow-y: scroll;
+
+  &::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background: rgba(255,255,255,.92);
+}
+
   .item {
     display: block;
     overflow-y: scroll;
     padding-bottom: 20px;
+    position: relative;
 
-    ion-icon {
+
+    .icons {
+      ion-icon {
         font-size: 35px;
         padding: 5px;
+    }
     }
 
     .card {
@@ -221,7 +244,7 @@ section {
     visibility: hidden;
 
     &.show {
-      max-height: auto;
+      max-height: 100%;
       visibility: visible;
     }
   }
@@ -234,3 +257,16 @@ section {
     }
   }
 }
+.recitate-counter-wrapper {
+  text-align: center;
+
+  .recitate-counter {
+    text-align: center;
+    background: #04b3ef;
+    display: inline-block;
+    padding: 15px 20px;
+    color: white;
+    border-radius: 50%;
+  }
+}
+

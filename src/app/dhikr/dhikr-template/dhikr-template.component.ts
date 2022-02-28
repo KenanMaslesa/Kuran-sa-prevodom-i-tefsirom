@@ -17,6 +17,7 @@ export class DhikrTemplateComponent implements OnInit {
   sliderLength: number;
   sliderActiveIndex = 0;
   dhikrLocalStoarge = DhikrLocalStoarge;
+  activeAudio: any;
   constructor(
     public dhikrService: DhikrService,
     public mediaPlayerService: MediaPlayerService
