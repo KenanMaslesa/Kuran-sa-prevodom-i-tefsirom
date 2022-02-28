@@ -217,18 +217,22 @@ section {
     }
 }
   &.slider {
-    display: none;
+    max-height: 0;
+    visibility: hidden;
 
     &.show {
-      display: block;
+      max-height: auto;
+      visibility: visible;
     }
   }
 
   &.scrolling-content {
-    display: none;
+    max-height: 0;
+    visibility: hidden;
 
     &.show {
-      display: block;
+      max-height: auto;
+      visibility: visible;
     }
   }
 }
