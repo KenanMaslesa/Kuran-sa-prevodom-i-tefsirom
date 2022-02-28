@@ -68,7 +68,7 @@ export class DhikrService {
       this.showDhikrTranslation = JSON.parse(showDhikrTranslationFromStorage);
     }
     else {
-      this.showDhikrTranslation = true;
+      this.showDhikrTranslation = false;
     }
 
     if(showSliderFromStorage){

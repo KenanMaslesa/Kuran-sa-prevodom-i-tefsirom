@@ -44,7 +44,7 @@ ion-slides {
           }
 
           &__arabic {
-              font-size: 25px;
+              font-size: 22px;
               direction: rtl;
           }
 
@@ -201,21 +201,25 @@ section {
     }
     }
 
+    .main-card {
+      background: hsl(240deg 8% 93% / 67%);
+      padding: 10px 0px;
+      border-radius: 10px;
+      width: 98%;
+      margin: 0 auto;
+
     .card {
         padding: 10px;
-        background: hsl(240deg 8% 93% / 67%);
-        border-radius: 10px;
-        width: 95%;
         margin: 0 auto;
         margin-bottom: 10px;
         text-align: center;
 
         &:not(.card__arabic){
-            border-top: 1px solid gainsboro;
+            border-top: 3px solid #f8f7f5;
         }
 
         &__arabic {
-            font-size: 25px;
+            font-size: 22px;
             direction: rtl;
         }
 
@@ -238,6 +242,8 @@ section {
             }
         }
     }
+  }
+
 }
   &.slider {
     max-height: 0;
@@ -263,10 +269,27 @@ section {
   .recitate-counter {
     text-align: center;
     background: #04b3ef;
-    display: inline-block;
-    padding: 15px 20px;
+    padding: 5px;
     color: white;
     border-radius: 50%;
+    position: absolute;
+    right: 4px;
+    bottom: 18px;
+    min-width: 40px;
+    min-height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &.done {
+      background: #29d929;
+    }
   }
 }
 
+.imam {
+  position: absolute;
+  left: 15px;
+  bottom: 15px;
+  font-style: italic;
+}

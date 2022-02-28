@@ -62,6 +62,8 @@
       <ion-icon name="pause-outline" (click)="mediaPlayerService.pauseAudio()" *ngIf="mediaPlayerService.isPlaying && !mediaPlayerService.isPaused && activeAudio === dhikr.audio"></ion-icon>
     </div>
 
+<div class="main-card">
+
     <div class="card card__arabic" *ngIf="dhikrService.showArabicDhikr">
       <ng-container *ngFor="let sentence of dhikr.sentences">
         <p dir="rtl" [class.card--active]="mediaPlayerService.currentTime >= sentence.startSecond && mediaPlayerService.currentTime <= sentence.endSecond && activeAudio === dhikr.audio"
@@ -84,12 +86,24 @@
       </ng-container>
     </div>
 
-    <div class="recitate-counter-wrapper">
-      <div class="recitate-counter" (click)="dhikr.recitate = dhikr.recitate-1">
-        {{dhikr.recitate >= 1? dhikr.recitate: ''}}
-        <ion-icon *ngIf="dhikr.recitate<=0" name="checkmark-done-outline"></ion-icon>
+    <div style="
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 20px;
+">
+      <div class="recitate-counter-wrapper">
+        <div class="recitate-counter" [class.done]="dhikr.recitate<=0" (click)="dhikr.recitate = dhikr.recitate-1">
+          {{dhikr.recitate >= 1? dhikr.recitate: ''}}
+          <ion-icon *ngIf="dhikr.recitate<=0" name="checkmark-done-outline"></ion-icon>
+        </div>
+      </div>
+      <div class="imam">
+        <p>{{dhikr.imam}}</p>
       </div>
     </div>
+
+  </div>
 
   </div>
 </section>
