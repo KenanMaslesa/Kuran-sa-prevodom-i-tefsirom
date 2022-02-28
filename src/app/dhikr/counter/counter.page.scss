@@ -1,0 +1,35 @@
+section {
+  height: 100%;
+  background: #1b1e1e;
+
+  .result {
+    position: absolute;
+    top: 33%;
+    left: 70px;
+    background: #7c8884;
+    right: 70px;
+    height: 78px;
+    color: white;
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    font-size: 55px;
+    padding-right: 10px;
+  }
+
+  .circle {
+    position: absolute;
+    top: 60%;
+    left: 31%;
+    width: 126px;
+    height: 106px;
+  }
+
+  .reset {
+    position: absolute;
+    top: 53%;
+    right: 20%;
+    height: 50px;
+    width: 55px;
+  }
+  }

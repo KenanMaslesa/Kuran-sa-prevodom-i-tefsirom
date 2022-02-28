@@ -36,6 +36,10 @@ const routes: Routes = [
           ),
       },
       {
+        path: 'counter',
+        loadChildren: () => import('./counter/counter.module').then( m => m.CounterPageModule)
+      },
+      {
         path: '',
         redirectTo: '/tabs/morning-dhikr',
         pathMatch: 'full',
@@ -46,7 +50,7 @@ const routes: Routes = [
     path: '',
     redirectTo: '/dhikr/tabs/morning-dhikr',
     pathMatch: 'full',
-  },
+  }
 ];
 
 @NgModule({
