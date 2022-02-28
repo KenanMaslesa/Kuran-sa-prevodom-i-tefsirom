@@ -1,0 +1,24 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Postavke</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list class="toggles">
+    <ion-item>
+      <ion-label>Prikazi arapski jezik u zikrovima</ion-label>
+      <ion-toggle [(ngModel)]="dhikrService.showArabicDhikr" (ngModelChange)="dhikrService.onModelChange(dhikrLocalStoarge.showArabicDhikr, dhikrService.showArabicDhikr)"></ion-toggle>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Prikazi transkripciju u zikrovima</ion-label>
+      <ion-toggle [(ngModel)]="dhikrService.showDhikrTranslation" (ngModelChange)="dhikrService.onModelChange(dhikrLocalStoarge.showDhikrTranslation, dhikrService.showDhikrTranslation)"></ion-toggle>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Prikazi bosanski jezik u zikrovima</ion-label>
+      <ion-toggle [(ngModel)]="dhikrService.showBosnianDhikr" (ngModelChange)="dhikrService.onModelChange(dhikrLocalStoarge.showBosnianDhikr, dhikrService.showBosnianDhikr)"></ion-toggle>
+    </ion-item>
+  </ion-list>
+</ion-content>

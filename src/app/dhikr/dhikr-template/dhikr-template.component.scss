@@ -2,8 +2,7 @@ ion-slides {
   background-image: url('/assets/img/background.jpeg');
   background-repeat: no-repeat;
   background-size: cover;
-  padding-bottom: 50px;
-  min-height: 100%;
+  height: 100%;
 
   &::before {
       content: '';
@@ -17,6 +16,8 @@ ion-slides {
 
   ion-slide {
       display: block;
+      overflow-y: scroll;
+      padding-bottom: 20px;
 
       audio {
           display: none;
@@ -106,11 +107,61 @@ ion-toolbar {
 }
 
 .counter {
-  position: fixed;
+  position: absolute;
   right: 8px;
   z-index: 99;
   background: var(--ion-color-primary);
   color: white;
   border-radius: 3px;
   padding: 3px;
+}
+
+.section-header h2 {
+  font-size: 32px;
+  color: #111;
+  text-transform: uppercase;
+  text-align: center;
+  font-weight: 700;
+  position: relative;
+  padding-bottom: 15px;
+
+  &::before {
+    content: "";
+    position: absolute;
+    display: block;
+    width: 120px;
+    height: 1px;
+    background: #ddd;
+    bottom: 1px;
+    left: calc(50% - 60px);
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    display: block;
+    width: 40px;
+    height: 3px;
+    background: var(--ion-color-primary);
+    bottom: 0;
+    left: calc(50% - 20px);
+  }
+}
+
+.arrows {
+  .arrow {
+    position: fixed;
+    top: 50%;
+    z-index: 99;
+    color: var(--ion-color-primary);
+    font-size: 25px;
+
+  &__left {
+    left: -7px;
+  }
+
+  &__right {
+    right: -7px;
+  }
+}
 }

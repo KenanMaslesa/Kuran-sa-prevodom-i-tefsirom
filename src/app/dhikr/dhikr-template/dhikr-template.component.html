@@ -1,15 +1,20 @@
-<ion-list class="toggles">
-  <ion-item>
-    <ion-label>AR</ion-label>
-    <ion-toggle [(ngModel)]="dhikrService.showArabicDhikr" (ngModelChange)="dhikrService.onModelChange(dhikrLocalStoarge.showArabicDhikr, dhikrService.showArabicDhikr)"></ion-toggle>
-    <ion-label>TR</ion-label>
-    <ion-toggle [(ngModel)]="dhikrService.showDhikrTranslation" (ngModelChange)="dhikrService.onModelChange(dhikrLocalStoarge.showDhikrTranslation, dhikrService.showDhikrTranslation)"></ion-toggle>
-    <ion-label>BOS</ion-label>
-    <ion-toggle [(ngModel)]="dhikrService.showBosnianDhikr" (ngModelChange)="dhikrService.onModelChange(dhikrLocalStoarge.showBosnianDhikr, dhikrService.showBosnianDhikr)"></ion-toggle>
-  </ion-item>
-</ion-list>
+
+<div class="arrows">
+  <ion-icon class="arrow arrow__left" name="chevron-back-outline" (click)="slidePrev()"></ion-icon>
+  <ion-icon class="arrow arrow__right" name="chevron-forward-outline" (click)="slideNext()"></ion-icon>
+</div>
 
 <ion-content>
+  <!-- <ion-list class="toggles">
+    <ion-item>
+      <ion-label>AR</ion-label>
+      <ion-toggle [(ngModel)]="dhikrService.showArabicDhikr" (ngModelChange)="dhikrService.onModelChange(dhikrLocalStoarge.showArabicDhikr, dhikrService.showArabicDhikr)"></ion-toggle>
+      <ion-label>TR</ion-label>
+      <ion-toggle [(ngModel)]="dhikrService.showDhikrTranslation" (ngModelChange)="dhikrService.onModelChange(dhikrLocalStoarge.showDhikrTranslation, dhikrService.showDhikrTranslation)"></ion-toggle>
+      <ion-label>BOS</ion-label>
+      <ion-toggle [(ngModel)]="dhikrService.showBosnianDhikr" (ngModelChange)="dhikrService.onModelChange(dhikrLocalStoarge.showBosnianDhikr, dhikrService.showBosnianDhikr)"></ion-toggle>
+    </ion-item>
+  </ion-list> -->
   <ion-text class="counter">
     {{sliderActiveIndex + 1}} / {{sliderLength}}
   </ion-text>

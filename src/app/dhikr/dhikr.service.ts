@@ -26,19 +26,19 @@ export class DhikrService {
 
   getMorningDhikr() {
     return this.http.get<any[]>('assets/db/dhikr.json').pipe(
-      map(response => response.filter(item => item.type === 'MORNING' || item.type === 'MORNING&EVENING'))
+      map(response => response.filter(item => item.category === 'MORNING' || item.category === 'MORNING&EVENING'))
     );
   }
 
   getEveningDhikr() {
     return this.http.get<any[]>('assets/db/dhikr.json').pipe(
-      map(response => response.filter(item => item.type === 'EVENING' || item.type === 'MORNING&EVENING'))
+      map(response => response.filter(item => item.category === 'EVENING' || item.category === 'MORNING&EVENING'))
     );
   }
 
   getDhikrBeforeSleeping(){
     return this.http.get<any[]>('assets/db/dhikr.json').pipe(
-      map(response => response.filter(item => item.type === 'BEFORE-SLEEPING'))
+      map(response => response.filter(item => item.category === 'BEFORE-SLEEPING'))
     );
   }
 

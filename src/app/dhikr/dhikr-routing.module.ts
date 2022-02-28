@@ -9,28 +9,44 @@ const routes: Routes = [
     children: [
       {
         path: 'morning-dhikr',
-        loadChildren: () => import('./morning-dhikr/morning-dhikr.module').then(m => m.MorningDhikrPageModule)
+        loadChildren: () =>
+          import('./morning-dhikr/morning-dhikr.module').then(
+            (m) => m.MorningDhikrPageModule
+          ),
       },
       {
         path: 'evening-dhikr',
-        loadChildren: () => import('./evening-dhikr/evening-dhikr.module').then(m => m.EveningDhikrPageModule)
+        loadChildren: () =>
+          import('./evening-dhikr/evening-dhikr.module').then(
+            (m) => m.EveningDhikrPageModule
+          ),
       },
       {
         path: 'dhikr-before-sleeping',
-        loadChildren: () => import('./dhikr-before-sleeping/dhikr-before-sleeping.module').then( m => m.DhikrBeforeSleepingPageModule)
+        loadChildren: () =>
+          import('./dhikr-before-sleeping/dhikr-before-sleeping.module').then(
+            (m) => m.DhikrBeforeSleepingPageModule
+          ),
+      },
+      {
+        path: 'settings',
+        loadChildren: () =>
+          import('./settings/settings.module').then(
+            (m) => m.SettingsPageModule
+          ),
       },
       {
         path: '',
         redirectTo: '/tabs/morning-dhikr',
-        pathMatch: 'full'
-      }
-    ]
+        pathMatch: 'full',
+      },
+    ],
   },
   {
     path: '',
     redirectTo: '/dhikr/tabs/morning-dhikr',
-    pathMatch: 'full'
-  }
+    pathMatch: 'full',
+  },
 ];
 
 @NgModule({
