@@ -1,20 +1,11 @@
 
-<div class="arrows">
-  <ion-icon class="arrow arrow__left" name="chevron-back-outline" (click)="slidePrev()"></ion-icon>
-  <ion-icon class="arrow arrow__right" name="chevron-forward-outline" (click)="slideNext()"></ion-icon>
-</div>
-
 <ion-content>
-  <!-- <ion-list class="toggles">
-    <ion-item>
-      <ion-label>AR</ion-label>
-      <ion-toggle [(ngModel)]="dhikrService.showArabicDhikr" (ngModelChange)="dhikrService.onModelChange(dhikrLocalStoarge.showArabicDhikr, dhikrService.showArabicDhikr)"></ion-toggle>
-      <ion-label>TR</ion-label>
-      <ion-toggle [(ngModel)]="dhikrService.showDhikrTranslation" (ngModelChange)="dhikrService.onModelChange(dhikrLocalStoarge.showDhikrTranslation, dhikrService.showDhikrTranslation)"></ion-toggle>
-      <ion-label>BOS</ion-label>
-      <ion-toggle [(ngModel)]="dhikrService.showBosnianDhikr" (ngModelChange)="dhikrService.onModelChange(dhikrLocalStoarge.showBosnianDhikr, dhikrService.showBosnianDhikr)"></ion-toggle>
-    </ion-item>
-  </ion-list> -->
+  <section class="slider" [class.show]="dhikrService.showSlider">
+    <div class="arrows">
+      <ion-icon class="arrow arrow__left" name="chevron-back-outline" (click)="slidePrev()"></ion-icon>
+      <ion-icon class="arrow arrow__right" name="chevron-forward-outline" (click)="slideNext()"></ion-icon>
+    </div>
+
   <ion-text class="counter">
     {{sliderActiveIndex + 1}} / {{sliderLength}}
   </ion-text>
@@ -51,17 +42,42 @@
 
     </ion-slide>
   </ion-slides>
+</section>
 
-  <!-- <ion-toolbar class="swiper">
-    <ion-buttons slot="start">
-      <ion-icon name="arrow-back-outline" (click)="slidePrev()"></ion-icon>
-    </ion-buttons>
-    <ion-text>
-      {{sliderActiveIndex + 1}} / {{sliderLength}}
-    </ion-text>
-    <ion-buttons slot="end">
-      <ion-icon name="arrow-forward-outline" (click)="slideNext()"></ion-icon>
-    </ion-buttons>
-  </ion-toolbar> -->
+<section class="scrolling-content" [class.show]="!dhikrService.showSlider">
+  <div class="item" *ngFor="let dhikr of dhikrs; let i = index">
+    <header class="section-header m-t-b-35">
+      <h2>{{i+1}}.</h2>
+    </header>
+    <div class="icons">
+      <ion-icon name="play-outline" (click)="mediaPlayerService.playAudio(dhikr.audio)" *ngIf="!mediaPlayerService.isPlaying && !mediaPlayerService.isPaused"></ion-icon>
+      <ion-icon name="play-outline" (click)="mediaPlayerService.continueAudio()" *ngIf="mediaPlayerService.isPaused"></ion-icon>
+      <ion-icon name="pause-outline" (click)="mediaPlayerService.pauseAudio()" *ngIf="mediaPlayerService.isPlaying && !mediaPlayerService.isPaused"></ion-icon>
+    </div>
+
+    <div class="card card__arabic" *ngIf="dhikrService.showArabicDhikr">
+      <ng-container *ngFor="let sentence of dhikr.sentences">
+        <p dir="rtl" [class.card--active]="mediaPlayerService.currentTime >= sentence.startSecond && mediaPlayerService.currentTime <= sentence.endSecond"
+          (click)="mediaPlayerService.setAudioCurrentTime(sentence.startSecond, dhikr.audio)">{{sentence.arabic}}</p>
+      </ng-container>
+    </div>
+
+    <div class="card" *ngIf="dhikrService.showDhikrTranslation">
+      <ng-container *ngFor="let sentence of dhikr.sentences">
+        <p [class.card--active]="mediaPlayerService.currentTime >= sentence.startSecond && mediaPlayerService.currentTime <= sentence.endSecond"
+          (click)="mediaPlayerService.setAudioCurrentTime(sentence.startSecond, dhikr.audio)">{{sentence.transcription}}</p>
+      </ng-container>
+    </div>
+
+    <div class="card" *ngIf="dhikrService.showBosnianDhikr">
+      <ng-container *ngFor="let sentence of dhikr.sentences">
+        <p
+          [class.card--active]="mediaPlayerService.currentTime >= sentence.startSecond && mediaPlayerService.currentTime <= sentence.endSecond"
+          (click)="mediaPlayerService.setAudioCurrentTime(sentence.startSecond, dhikr.audio)">{{sentence.bosnian}}</p>
+      </ng-container>
+    </div>
+
+  </div>
+</section>
 
 </ion-content>

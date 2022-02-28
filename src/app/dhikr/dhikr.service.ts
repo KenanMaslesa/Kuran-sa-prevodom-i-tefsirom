@@ -7,6 +7,7 @@ export enum DhikrLocalStoarge {
   'showArabicDhikr',
   'showBosnianDhikr',
   'showDhikrTranslation',
+  'showSlider'
 }
 @Injectable({
   providedIn: 'root'
@@ -17,6 +18,7 @@ export class DhikrService {
   showArabicDhikr: boolean;
   showBosnianDhikr: boolean;
   showDhikrTranslation: boolean;
+  showSlider: boolean;
 
   constructor(private http: HttpClient) {
     this.morningDhikrPageEntered = new Subject();
@@ -46,6 +48,7 @@ export class DhikrService {
     const showArabicDhikrFromStorage = localStorage.getItem(DhikrLocalStoarge.showArabicDhikr.toString());
     const showBosnianDhikrFromStorage = localStorage.getItem(DhikrLocalStoarge.showBosnianDhikr.toString());
     const showDhikrTranslationFromStorage = localStorage.getItem(DhikrLocalStoarge.showDhikrTranslation.toString());
+    const showSliderFromStorage = localStorage.getItem(DhikrLocalStoarge.showSlider.toString());
 
     if(showArabicDhikrFromStorage){
       this.showArabicDhikr = JSON.parse(showArabicDhikrFromStorage);
@@ -67,6 +70,13 @@ export class DhikrService {
     else {
       this.showDhikrTranslation = true;
     }
+
+    if(showSliderFromStorage){
+      this.showSlider = JSON.parse(showSliderFromStorage);
+    }
+    else {
+      this.showSlider = false;
+    }
   }
 
   onModelChange(item: DhikrLocalStoarge, value: boolean) {
@@ -79,5 +89,9 @@ export class DhikrService {
     else if(item === DhikrLocalStoarge.showBosnianDhikr){
       localStorage.setItem(DhikrLocalStoarge.showBosnianDhikr.toString(), JSON.stringify(value));
     }
+  }
+
+  onShowSliderModelChange(value) {
+      localStorage.setItem(DhikrLocalStoarge.showSlider.toString(), JSON.stringify(value));
   }
 }
