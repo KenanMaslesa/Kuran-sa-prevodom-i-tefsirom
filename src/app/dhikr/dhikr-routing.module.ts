@@ -16,6 +16,10 @@ const routes: Routes = [
         loadChildren: () => import('./evening-dhikr/evening-dhikr.module').then(m => m.EveningDhikrPageModule)
       },
       {
+        path: 'dhikr-before-sleeping',
+        loadChildren: () => import('./dhikr-before-sleeping/dhikr-before-sleeping.module').then( m => m.DhikrBeforeSleepingPageModule)
+      },
+      {
         path: '',
         redirectTo: '/tabs/morning-dhikr',
         pathMatch: 'full'

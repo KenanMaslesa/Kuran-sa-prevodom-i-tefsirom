@@ -21,7 +21,6 @@
         <ion-icon name="play-outline" (click)="mediaPlayerService.continueAudio()" *ngIf="mediaPlayerService.isPaused"></ion-icon>
         <ion-icon name="pause-outline" (click)="mediaPlayerService.pauseAudio()" *ngIf="mediaPlayerService.isPlaying && !mediaPlayerService.isPaused"></ion-icon>
       </div>
-      <h1 *ngIf="mediaPlayerService.isPlaying">{{mediaPlayerService.currentTime}} / {{mediaPlayerService.getPlayerDuration()}}</h1>
 
       <div class="card card__arabic" *ngIf="dhikrService.showArabicDhikr">
         <ng-container *ngFor="let sentence of dhikr.sentences">

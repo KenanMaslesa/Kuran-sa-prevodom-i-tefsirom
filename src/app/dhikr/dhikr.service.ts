@@ -25,15 +25,20 @@ export class DhikrService {
    }
 
   getMorningDhikr() {
-    // return this.http.get<any[]>('assets/db/dhikr.json').pipe(
-    //   map(response => response.filter(item => item.type === 'morning-dhikr' || item.type === 'morning&evening-dhikr'))
-    // );
-    return this.http.get<any[]>('assets/db/dhikrBeforeSleeping.json');
+    return this.http.get<any[]>('assets/db/dhikr.json').pipe(
+      map(response => response.filter(item => item.type === 'MORNING' || item.type === 'MORNING&EVENING'))
+    );
   }
 
   getEveningDhikr() {
     return this.http.get<any[]>('assets/db/dhikr.json').pipe(
-      map(response => response.filter(item => item.type === 'evening-dhikr' || item.type === 'morning&evening-dhikr'))
+      map(response => response.filter(item => item.type === 'EVENING' || item.type === 'MORNING&EVENING'))
+    );
+  }
+
+  getDhikrBeforeSleeping(){
+    return this.http.get<any[]>('assets/db/dhikr.json').pipe(
+      map(response => response.filter(item => item.type === 'BEFORE-SLEEPING'))
     );
   }
 
