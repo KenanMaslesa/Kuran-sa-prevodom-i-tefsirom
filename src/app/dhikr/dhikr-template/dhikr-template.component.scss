@@ -227,12 +227,10 @@ section {
   }
 
   &.scrolling-content {
-    max-height: 0;
-    visibility: hidden;
+    display: none;
 
     &.show {
-      max-height: auto;
-      visibility: visible;
+      display: block;
     }
   }
 }
