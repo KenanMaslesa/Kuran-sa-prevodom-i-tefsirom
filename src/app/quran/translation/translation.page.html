@@ -28,27 +28,27 @@
     <div>
       <div dir="ltr" lang="eng" class="translation-wrapper">
         <div [id]="i"
-          [class.active]="selectedAyah == item.index" class="ayah"
+          [class.active]="selectedAyah === item.index" class="ayah"
           *ngFor="let item of translationForCurrentPage; let i = index">
           <ion-progress-bar
-            *ngIf="selectedAyah == item.index && (mediaPlayerService.isPlaying || mediaPlayerService.isPaused)"
+            *ngIf="selectedAyah === item.index && (mediaPlayerService.isPlaying || mediaPlayerService.isPaused)"
             color="primary" [value]="mediaPlayerService.currentTime/mediaPlayerService.getPlayerDuration()">
           </ion-progress-bar>
 
           <div class="player"
-          *ngIf="selectedAyah == item.index || (!mediaPlayerService.isPlaying || mediaPlayerService.isPaused)">
+          *ngIf="selectedAyah === item.index || (!mediaPlayerService.isPlaying || mediaPlayerService.isPaused)">
           <ion-icon *ngIf="!mediaPlayerService.isPlaying && !mediaPlayerService.isPaused"
             (click)="playAyah(item.index);" name="play"></ion-icon>
           <!--scrollToElement(i)-->
           <ion-icon *ngIf="mediaPlayerService.isPlaying && !mediaPlayerService.isPaused"
             (click)="mediaPlayerService.stopAudio(); selectedAyah = null" name="stop"></ion-icon>
         </div>
-          <section *ngIf="item.ayaNumber == 1" class="suraTitle">
+          <section *ngIf="item.ayaNumber === 1" class="suraTitle">
             <img src="assets/img/surah_title.gif" alt="Quran sura title">
             <h3>{{quranService.suraList[(+item.sura)-1]?.name}} - {{quranService.suraList[(+item.sura)-1]?.tname}}</h3>
           </section>
 
-          <div class="verse_key" *ngIf="(showArabic || showTranslation || showTafsir) && item.ayaNumber != 1">
+          <div class="verse_key" *ngIf="(showArabic || showTranslation || showTafsir) && item.ayaNumber !== 1">
 
             <p *ngIf="suraList">Sura {{quranService.suraList[(+item.sura)-1]?.tname}}: {{item.ayaNumber}}. ajet</p>
           </div>
