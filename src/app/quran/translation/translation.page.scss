@@ -32,9 +32,10 @@
       }
 
       &.arabic_text{
-        font-size: 23px;
+        font-size: 22px;
         padding: 10px;
         margin: 5px 0px 0px;
+        font-family: quran;
       }
 
       &.translation{
@@ -180,4 +181,11 @@ ion-header {
   ion-checkbox {
     margin-left: 5px;
   }
+}
+
+
+@font-face {
+  font-family: quran;
+  src: url(me_quran-2.ttf) format("truetype");
+  font-display: block
 }
