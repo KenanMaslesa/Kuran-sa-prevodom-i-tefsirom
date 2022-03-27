@@ -3,7 +3,6 @@ import { Injectable } from '@angular/core';
 import { Observable, of, Subject } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { ApiService } from '../shared/api.service';
-const quranTranslation = require('@kmaslesa/quran-translation-bs_korkut');
 const quranAyats = require('@kmaslesa/quran-ayats');
 const tefsir = require('@kmaslesa/tefsir');
 export class QuranResponseData {
@@ -2444,14 +2443,6 @@ export class QuranService {
 
   getNumberOfLettersAndWordsPerPage() {
     return this.apiService.getData(`assets/db/quran/lettersPerPage.json`);
-  }
-
-  getTranslation() {
-    return quranTranslation.getHolyQuranTranslation();
-  }
-
-  getTranslationForIndex(index){
-   return quranTranslation.getIndexTranslation(index);
   }
 
   getJuzs() {
