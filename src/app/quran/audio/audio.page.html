@@ -1,18 +1,11 @@
 <ion-header>
   <ion-toolbar color="primary">
     <ion-title>Audio</ion-title>
-    <ion-buttons slot="start">
-      <ion-back-button defaultHref="/"></ion-back-button>
-    </ion-buttons>
-    <ion-buttons slot="end">
-      <ion-icon name="people-outline" *ngIf="!showHeader" (click)="showHeader=true"></ion-icon>
-      <ion-icon name="close-outline" *ngIf="showHeader" (click)="showHeader=false"></ion-icon>
-    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <header *ngIf="showHeader">
+  <header>
     <ion-item>
       <ion-label>Ucac</ion-label>
       <ion-select interface="popover" cancelText="Zatvori" #select [(ngModel)]="qari"
@@ -50,8 +43,6 @@
       <span>{{mediaPlayerService.getPlayerDuration().toFixed(1)}}</span>
     </div>
   </div>
-
-  <h2 class="qari" *ngIf="!showHeader" (click)="showHeader=!showHeader">{{getSelectedQari()}}</h2>
 
   <ul [class.padding-bottom-100]="mediaPlayerService.player">
     <li *ngFor="let sura of suraList; let i = index"

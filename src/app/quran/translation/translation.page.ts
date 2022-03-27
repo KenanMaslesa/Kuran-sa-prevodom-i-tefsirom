@@ -3,6 +3,7 @@ import { IonContent, IonSlides } from '@ionic/angular';
 import { MediaPlayerService } from 'src/app/shared/media-player.service';
 import { BookmarksItem, BookmarksService } from '../bookmarks/bookmarks.service';
 import { QuranService } from '../quran.service';
+import { TrackerService } from '../tracker/tracker.service';
 
 @Component({
   selector: 'app-translation',
@@ -15,12 +16,12 @@ export class TranslationPage implements OnInit {
   showArabic = true;
   showTranslation = true;
   showTafsir = true;
+  showSettings = false;
   translationForCurrentPage = [];
   ayatsOfCurrentPage = [];
   arrayOfIndexes = [];
   selectedAyah: number;
   suraList: any;
-  benefits: any;
   slideOpts = {
     initialSlide: 1,
     speed: 50,
@@ -30,7 +31,8 @@ export class TranslationPage implements OnInit {
   constructor(
     public quranService: QuranService,
     public mediaPlayerService: MediaPlayerService,
-    public bookmarksService: BookmarksService
+    public bookmarksService: BookmarksService,
+    public trackerService: TrackerService
   ) {}
 
   ngOnInit() {
@@ -40,10 +42,6 @@ export class TranslationPage implements OnInit {
     });
     this.quranService.getListOfSura().subscribe((response) => {
       this.suraList = response;
-    });
-
-    this.quranService.getBenefits().subscribe(res => {
-      this.benefits = res;
     });
   }
 
@@ -58,16 +56,11 @@ export class TranslationPage implements OnInit {
 
   onSuraChanged(pageNumber) {
     this.scrollToTop(1000);
-    if (pageNumber === 1) {
-      this.slides.lockSwipeToPrev(true);
-    } else {
-      this.slides.lockSwipeToPrev(false);
+    if (pageNumber < 1) {
+      return;
     }
-
-    if (pageNumber === 604) {
-      this.slides.lockSwipeToNext(true);
-    } else {
-      this.slides.lockSwipeToNext(false);
+    if (pageNumber > 604) {
+      return;
     }
     this.quranService.currentPage = pageNumber;
     localStorage.setItem('currentPage', pageNumber);
@@ -118,5 +111,14 @@ export class TranslationPage implements OnInit {
       pageNumber: +pageNumber,
     };
     this.bookmarksService.deleteTafsirBookmark(item);
+  }
+
+  markPage(value){
+    if(value.currentTarget.checked){
+      this.trackerService.addTranslationPageToComplated(+this.quranService.currentPage);
+    }
+    else {
+      this.trackerService.removeTranslationPageFromComplated(+this.quranService.currentPage);
+    }
   }
 }

@@ -1,6 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { IonSlides } from '@ionic/angular';
 import { BookmarksItem, BookmarksService } from '../bookmarks/bookmarks.service';
 import { QuranService } from '../quran.service';
 import { TrackerService } from '../tracker/tracker.service';
@@ -11,18 +10,12 @@ import { TrackerService } from '../tracker/tracker.service';
   styleUrls: ['./quran-template.page.scss'],
 })
 export class QuranTemplatePage implements OnInit {
-  @ViewChild('slides', { static: true }) slides: IonSlides;
   audio;
   previousAyah;
   suraList;
   suraTitle;
   showSearchHeader = false;
   currentSuraTitle = '';
-  slideOpts = {
-    speed: 50,
-    loop: true,
-    loopPreventsSlide: true
-  };
   constructor(
     public quranService: QuranService,
     public bookmarksService: BookmarksService,
@@ -36,15 +29,17 @@ export class QuranTemplatePage implements OnInit {
 
     if(this.quranService.currentPageForCaching < 604){
       this.cacheAllQuranPages();
+      this.quranService.getListOfSura().subscribe();
+      this.quranService.getJuzs().subscribe();
     }
   }
 
   markPage(value){
     if(value.currentTarget.checked){
-      this.trackerService.addPageToComplated(this.quranService.currentPage);
+      this.trackerService.addQuranPageToComplated(+this.quranService.currentPage);
     }
     else {
-      this.trackerService.removePageFromComplated(this.quranService.currentPage);
+      this.trackerService.removeQuranPageFromComplated(+this.quranService.currentPage);
     }
   }
 
@@ -52,6 +47,9 @@ export class QuranTemplatePage implements OnInit {
     for(let i = 0; i<30; i++){
       this.quranService.cacheAllQuranPages();
     }
+  }
+  ionViewWillLeave() {
+    this.stopAudio();
   }
 
   ionViewWillEnter() {
@@ -69,16 +67,11 @@ export class QuranTemplatePage implements OnInit {
   }
 
   onSuraChanged(pageNumber) {
-    if (pageNumber === 1) {
-      this.slides.lockSwipeToPrev(true);
-    } else {
-      this.slides.lockSwipeToPrev(false);
+    if (pageNumber < 1) {
+      return;
     }
-
-    if (pageNumber === 604) {
-      this.slides.lockSwipeToNext(true);
-    } else {
-      this.slides.lockSwipeToNext(false);
+    if (pageNumber > 604) {
+      return;
     }
     this.quranService.currentPage = pageNumber;
     localStorage.setItem('currentPage', pageNumber);
@@ -99,11 +92,6 @@ export class QuranTemplatePage implements OnInit {
     } else {
       return (this.suraTitle = title);
     }
-  }
-
-  slideTo(slideNumber) {
-    this.slides.slideTo(slideNumber);
-    this.slides.update();
   }
 
   setCurrentSuraTitle(page) {
@@ -175,6 +163,15 @@ export class QuranTemplatePage implements OnInit {
 
   pauseAudio() {
     this.audio.pause();
+  }
+
+  stopAudio() {
+    this.pauseAudio();
+    this.audio = null;
+    const activeWords = document.querySelectorAll('.ayeLine i.active');
+    activeWords.forEach(word => {
+      word.classList.remove('active');
+    });
   }
 
   resumeAudio() {

@@ -2374,8 +2374,8 @@ export class QuranService {
   }
 
   setCurrentPage(pageNumber: number){
-    this.currentPage = pageNumber;
-    localStorage.setItem('currentPage', JSON.stringify(this.currentPage));
+    this.currentPage = +pageNumber;
+    localStorage.setItem('currentPage', JSON.stringify(+this.currentPage));
   }
 
   setCurrentPageForCaching() {
@@ -2473,9 +2473,5 @@ export class QuranService {
 
   getTafsirAndTranslationForPage(page){
     return tefsir.getTafsirAndTranslationForPage(page);
-  }
-
-  getBenefits() {
-    return this.apiService.getData(`assets/db/quran/benefitsPerPage.json`);
   }
 }

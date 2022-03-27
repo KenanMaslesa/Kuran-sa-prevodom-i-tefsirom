@@ -1,8 +1,8 @@
 import { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
-  appId: 'io.ionic.starter',
-  appName: 'all-in-one',
+  appId: 'com.keno.kuran',
+  appName: 'Kuran',
   webDir: 'www',
   bundledWebRuntime: false
 };

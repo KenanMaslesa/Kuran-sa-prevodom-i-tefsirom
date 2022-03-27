@@ -12,35 +12,33 @@
 </ion-header>
 
 <ion-content *ngIf="suraList">
-  <header *ngIf="showSearchHeader">
-    <ion-list>
-      <ion-item color="primary">
-        <ion-label>Type</ion-label>
-        <ion-select #type (ionChange)="searchByType(type.value)">
+
+  <ion-list>
+    <ion-list *ngIf="showSearchHeader">
+      <ion-item>
+        <ion-label position="floating">Pretrazite</ion-label>
+        <ion-input #search (ionChange)="searchByTerm(search.value)"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Mjesto objave</ion-label>
+        <ion-select #type interface="popover" (ionChange)="searchByType(type.value)">
           <ion-select-option value="all">Sve</ion-select-option>
-          <ion-select-option value="Medinan">Medinske</ion-select-option>
-          <ion-select-option value="Meccan">Mekkanske</ion-select-option>
+          <ion-select-option value="Medinan">Medina</ion-select-option>
+          <ion-select-option value="Meccan">Mekka</ion-select-option>
         </ion-select>
       </ion-item>
 
-      <ion-item color="primary">
+      <ion-item>
         <ion-label>Sortiranje</ion-label>
-        <ion-select #sort (ionChange)="sortSuraListByOrder(sort.value)">
+        <ion-select #sort interface="popover" (ionChange)="sortSuraListByOrder(sort.value)">
           <ion-select-option value="normal">Normal</ion-select-option>
           <ion-select-option value="asc">Od prve objavljanje</ion-select-option>
           <ion-select-option value="desc">Od zadnje objavljene</ion-select-option>
         </ion-select>
       </ion-item>
 
-      <ion-item color="primary">
-        <ion-label position="floating">Pretrazite</ion-label>
-        <ion-input #search (ionChange)="searchByTerm(search.value)"></ion-input>
-      </ion-item>
     </ion-list>
-  </header>
-
-
-  <ion-list>
     <p style="text-align: center;">Ukupno: {{isSearchOn?searchSuraList.length:suraList.length}} sura</p>
 
     <!-- <ion-card *ngFor="let sura of suraListLazyLoaded; let i = index"
@@ -64,9 +62,9 @@
       </ion-card-content>
     </ion-card> -->
 
-    <ion-card *ngFor="let sura of suraListLazyLoaded; let i = index" (click)="goTo('/quran/tabs/quran-template', sura);">
+    <ion-card *ngFor="let sura of suraListLazyLoaded; let i = index" (click)="goTo('/tabs/quran-template', sura);">
       <ion-card-header>
-        <ion-card-title>{{sura.index}}. Sura {{sura.tname}} <span class="startPage">{{sura.startpage}}</span></ion-card-title>
+  <ion-card-title>{{sura.index}}. Sura {{sura.tname}} <span class="arabic-icon icon-surah{{i+1}}"></span></ion-card-title>
         <p>{{sura.type==='Meccan'?'Mekkanska':'Medinska'}} - {{sura.ayas}} ajeta</p>
       </ion-card-header>
     </ion-card>

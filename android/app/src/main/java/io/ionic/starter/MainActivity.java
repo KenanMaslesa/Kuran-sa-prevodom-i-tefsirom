@@ -1,4 +1,4 @@
-package io.ionic.starter;
+package com.keno.kuran;
 
 import com.getcapacitor.BridgeActivity;
 

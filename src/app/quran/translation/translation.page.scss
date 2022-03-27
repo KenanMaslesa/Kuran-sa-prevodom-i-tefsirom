@@ -2,6 +2,8 @@
   text-align: left;
   position: relative;
   background: gainsboro;
+  padding-top: 20px;
+  padding-bottom: 30px;
 
   .ayah {
     transition: all 0.5s;
@@ -14,39 +16,6 @@
 
     &:first-of-type {
       margin-top: 25px;
-    }
-
-    &.active {
-      background: var(--ion-color-primary);
-
-      p {
-        color: white;
-      }
-
-      .player {
-        ion-icon {
-          color: white;
-        }
-      }
-
-      .suraTitle{
-        h3 {
-          color: white;
-        }
-      }
-
-      .arabic_text {
-        background: #3ca8df;
-        padding: 15px;
-      }
-
-      .verse_key{
-        p{
-          background: white;
-          color: var(--ion-color-primary);
-
-        }
-      }
     }
 
     &.blur {
@@ -135,7 +104,6 @@ ion-slides {
     font-size: 16px;
     line-height: 55px;
     margin: 0;
-    color: #a07a50;
   }
 }
 
@@ -157,5 +125,59 @@ ion-header {
     li {
       margin-bottom: 20px;
     }
+  }
+}
+
+.swiper {
+  position: fixed;
+  border: 0;
+  width: 100%;
+  background: var(--ion-color-primary);
+  opacity: 0.8;
+  z-index: 9;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  bottom: 0;
+  height: 45px;
+  color: white;
+  font-weight: bold;
+
+  .icon-wrapper {
+    position: absolute;
+    width: 40%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 22px;
+
+    &.disabled {
+      opacity: 0.2;
+    }
+
+    &.left {
+    left: 0px;
+    }
+
+    &.right {
+      right: 0px;
+      }
+  }
+
+  .player {
+    ion-icon {
+      font-size: 25px;
+    }
+  }
+}
+
+.currentPage {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+
+  ion-checkbox {
+    margin-left: 5px;
   }
 }

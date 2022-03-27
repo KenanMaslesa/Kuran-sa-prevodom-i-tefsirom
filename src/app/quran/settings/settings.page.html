@@ -1,35 +1,14 @@
 <ion-header>
   <ion-toolbar color="primary">
     <ion-title>Postavke</ion-title>
-    <ion-buttons slot="start">
-      <ion-back-button defaultHref="/"></ion-back-button>
-    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <section>
-    <ion-item>
-      <ion-label>Odaberite svoj dnevni vird (u stranicama)</ion-label>
-    </ion-item>
-    <ion-item>
-      <ion-range #range
-      [(ngModel)]="settingsService.dailyVird" [max]="604" color="secondary"
-      (ngModelChange)="settingsService.dailyVirdChanged(range.value)">
-    </ion-range>
-    <span>{{settingsService.dailyVird}}</span>
-    </ion-item>
-  </section>
-
-<section>
-  <p>Odaberite ucaca</p>
-  <ion-item>
-    <ion-label>Ucac</ion-label>
-    <ion-select interface="popover" #select [(ngModel)]="quranService.qari" (ngModelChange)="quranService.changeQari(select.value)" class="ion-select form-control" name="qari" #qari>
-      <ion-select-option *ngFor="let item of quranService.qariList" value="{{item.identifier}}">{{item.englishName}}
-      </ion-select-option>
-    </ion-select>
-  </ion-item>
-</section>
-
+  <h4 style="text-align: center; margin-bottom: 0;">Izaberite temu</h4>
+  <div class="color-wrapper">
+    <div *ngFor="let item of colors" class="color" style="background: {{item.color}}" (click)="onColorChanged(item.color)">
+      <ion-icon *ngIf="item.color === themeColor" name="checkmark-circle-outline"></ion-icon>
+    </div>
+  </div>
 </ion-content>

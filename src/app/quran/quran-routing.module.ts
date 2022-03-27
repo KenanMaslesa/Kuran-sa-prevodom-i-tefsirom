@@ -59,7 +59,7 @@ const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: '/quran/tabs/quran-template',
+    redirectTo: '/tabs/quran-template',
     pathMatch: 'full',
   }
 ];

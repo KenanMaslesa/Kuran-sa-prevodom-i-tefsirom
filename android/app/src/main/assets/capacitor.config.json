@@ -1,6 +1,6 @@
 {
-	"appId": "io.ionic.starter",
-	"appName": "all-in-one",
+	"appId": "com.keno.kuran",
+	"appName": "Kuran",
 	"webDir": "www",
 	"bundledWebRuntime": false
 }

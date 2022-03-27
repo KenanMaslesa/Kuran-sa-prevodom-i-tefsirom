@@ -85,6 +85,7 @@ export class SurahPage implements OnInit {
   searchByType(type) {
     this.searchSuraList = this.suraList.filter(item => item.type === type || type === 'all');
     this.onEverySearch();
+    this.showSearchHeader = false;
   }
 
   sortSuraListByOrder(sortBy) {
@@ -101,6 +102,7 @@ export class SurahPage implements OnInit {
     }
     );
     this.onEverySearch();
+    this.showSearchHeader = false;
   }
 
   searchByTerm(term) {
@@ -110,7 +112,6 @@ export class SurahPage implements OnInit {
 
   onEverySearch(){
     this.ionContentScrollToTop(10);
-    this.showSearchHeader = false;
     this.loadMoreIndex = 0;
     this.isSearchOn = true;
     this.disableInfiniteScroll(false);

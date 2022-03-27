@@ -26,13 +26,21 @@
 @import "~@ionic/angular/css/flex-utils.css";
 
 html {
-  background: #1BB8BF;
-  background: -moz-radial-gradient(center, ellipse cover, #1BB8BF 0%, #0080C9 100%);
-  background: -webkit-radial-gradient(center, ellipse cover, #1BB8BF 0%, #0080C9 100%);
-  background: radial-gradient(ellipse at center, #1BB8BF 0%, #0080C9 100%);
-  background: url(assets/img/test2.png) no-repeat top center;
   height: 100%;
   background-size: cover;
+  background-position: center;
+  background-image: url("/assets/img/background.jpeg");
+
+  &::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background: rgba(255, 255, 255, 0.8);
+    z-index: -1;
+  }
 }
 
 ion-tab-bar, ion-header{

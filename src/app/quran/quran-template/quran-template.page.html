@@ -1,63 +1,46 @@
-<ion-header class="{{quranService.showHeaderAndTabs?'show':'hide'}}" (click)="quranService.showHeaderAndTabs=!quranService.showHeaderAndTabs">
+<ion-header class="{{quranService.showHeaderAndTabs?'show':'hide'}}"
+  (click)="quranService.showHeaderAndTabs=!quranService.showHeaderAndTabs">
   <ion-toolbar color="primary">
     <ion-title>
-      <ng-container *ngIf="suraList">
+      <ng-container *ngIf="suraList && quranService.currentPageForCaching >= 604">
         {{currentSuraTitle}}
       </ng-container>
-    </ion-title>
-    <ion-buttons slot="start">
-      <ion-back-button (click)="showSearchHeader=true;" defaultHref="/"></ion-back-button>
-    </ion-buttons>
-    <ion-icon slot="end" name="search" *ngIf="quranService.showHeaderAndTabs" (click)="quranService.showHeaderAndTabs=!quranService.showHeaderAndTabs;showSearchHeader=!showSearchHeader"></ion-icon>
-    <ion-icon slot="end" name="bookmark-outline" *ngIf="!bookmarksService.checkIsInBookmark(quranService.currentPage)" (click)="addBookmark(quranService.currentPage);quranService.showHeaderAndTabs=!quranService.showHeaderAndTabs"></ion-icon>
-    <ion-icon slot="end" name="bookmark" *ngIf="bookmarksService.checkIsInBookmark(quranService.currentPage)" (click)="deleteBookmark(quranService.currentPage);quranService.showHeaderAndTabs=!quranService.showHeaderAndTabs"></ion-icon>
-
-    <div class="play-btn-wrapper" *ngIf="audio && quranService.showHeaderAndTabs" slot="end">
-      <ng-container>
-        <ion-icon name="play" *ngIf="audio.paused" (click)="resumeAudio(); quranService.showHeaderAndTabs=!quranService.showHeaderAndTabs"></ion-icon>
-        <ion-icon name="pause" *ngIf="!audio.paused" (click)="pauseAudio(); quranService.showHeaderAndTabs=!quranService.showHeaderAndTabs"></ion-icon>
+      <ng-container *ngIf="quranService.currentPageForCaching < 604">
+        <ion-label>Preuzimanje stranica {{quranService.currentPageForCaching}}/604</ion-label>
       </ng-container>
-    </div>
+    </ion-title>
+
+    <ion-icon slot="end" name="bookmark-outline" *ngIf="!bookmarksService.checkIsInBookmark(quranService.currentPage)"
+      (click)="addBookmark(quranService.currentPage);quranService.showHeaderAndTabs=!quranService.showHeaderAndTabs">
+    </ion-icon>
+    <ion-icon slot="end" name="bookmark" *ngIf="bookmarksService.checkIsInBookmark(quranService.currentPage)"
+      (click)="deleteBookmark(quranService.currentPage);quranService.showHeaderAndTabs=!quranService.showHeaderAndTabs">
+    </ion-icon>
+    <ion-icon slot="end" name="search" *ngIf="!showSearchHeader"
+      (click)="quranService.showHeaderAndTabs=!quranService.showHeaderAndTabs;showSearchHeader=true">
+    </ion-icon>
+    <ion-icon slot="end" name="close-outline" *ngIf="showSearchHeader"
+    (click)="quranService.showHeaderAndTabs=!quranService.showHeaderAndTabs;showSearchHeader=false"></ion-icon>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <div class="caching" *ngIf="quranService.currentPageForCaching<604">
-    <ion-label>Preuzimanje stranica</ion-label>
-    <ion-badge slot="end">{{quranService.currentPageForCaching}}/604</ion-badge>
-  </div>
-
   <app-loader *ngIf="quranService.showLoader && quranService.currentPageForCaching>=604"></app-loader>
   <header *ngIf="showSearchHeader">
-    <div class="form-group dropdown-wrapper">
-      <ion-item>
-        <ion-label>Ucac</ion-label>
-        <ion-select #select [(ngModel)]="quranService.qari" (ngModelChange)="quranService.changeQari(select.value)" class="ion-select form-control" name="qari" #qari>
-          <ion-select-option *ngFor="let item of quranService.qariList" value="{{item.identifier}}">{{item.englishName}}
-          </ion-select-option>
-        </ion-select>
-      </ion-item>
-
       <ion-item>
         <ion-label position="floating">Upisite broj stranice</ion-label>
         <ion-input #number (ionChange)="onSuraChanged(number.value)"></ion-input>
       </ion-item>
-    </div>
   </header>
 
   <div class="main {{quranService.showHeaderAndTabs?'':'without-tabs'}}">
-    <ion-slides #slides pager="false" [options]="slideOpts"
-      (ionSlideNextEnd)="onSuraChanged(+quranService.currentPage + 1)"
-      (ionSlidePrevEnd)="onSuraChanged(+quranService.currentPage - 1)"
-      (ionSlideReachStart)="slideTo(1)"
-      (ionSlideReachEnd)="slideTo(1)"
-      >
-      <ng-container *ngIf="quranService.words">
-        <ion-slide dir="rtl" lang="ar">
-          <ng-container>
+
+    <ng-container *ngIf="quranService.words">
+      <div dir="rtl" lang="ar">
+        <ng-container>
           <ng-container *ngFor="let item of quranService.words.result; let i = index">
             <section class="suraTitle" *ngIf="!item.word && item.detail.ayas">
-              <img src="https://salamquran.com/static/images/quran/sura-header.svg" alt="Quran sura title">
+              <img src="assets/img/surah_title.gif" alt="Quran sura title">
               <h3>{{setSuraTitle(item.detail.name + ' - '+ item.detail.tname)}}</h3>
             </section>
 
@@ -70,7 +53,8 @@
             <div class="ayeLine" *ngIf="item.word">
               <ng-container *ngFor="let word of item.word">
 
-                <i *ngIf="word.char_type !== 'end'" class="{{word.class_name}} index-{{word.index}} aya{{word.verse_key.replace(':', '-')}}"
+                <i *ngIf="word.char_type !== 'end'"
+                  class="{{word.class_name}} index-{{word.index}} aya{{word.verse_key.replace(':', '-')}}"
                   id="w{{word.audio_key}}" [innerHtml]="word.code" (click)="playWord(word.audio)"></i>
                 <!--ngbPopover="{{word.translation}}" triggers="mouseenter:mouseleave"-->
 
@@ -84,12 +68,47 @@
             </div>
           </ng-container>
         </ng-container>
-          <ion-text class="currentPage">
-            <ion-checkbox color="primary" (ionChange)="markPage($event)" [checked]="trackerService.isPageCompleted(quranService.currentPage)"></ion-checkbox>
+      </div>
+    </ng-container>
+
+    <div class="swiper" color="primary">
+      <ng-container *ngIf="audio">
+        <div class="player">
+          <ion-icon name="play" *ngIf="audio.paused"
+          (click)="resumeAudio()"></ion-icon>
+        <ion-icon name="pause" *ngIf="!audio.paused"
+          (click)="pauseAudio();"></ion-icon>
+
+          <ion-icon name="stop" style="margin-left: 15px;"
+          (click)="stopAudio();"></ion-icon>
+
+        </div>
+          <ion-select style="margin-left: 20px; background: transparent; max-width: 60%;" interface="popover" #select [(ngModel)]="quranService.qari"
+            (ngModelChange)="quranService.changeQari(select.value)" class="ion-select form-control" name="qari" #qari>
+            <ion-select-option *ngFor="let item of quranService.qariList" value="{{item.identifier}}">{{item.englishName}}
+            </ion-select-option>
+          </ion-select>
+      </ng-container>
+
+      <ng-container *ngIf="!audio">
+
+        <div class="icon-wrapper left" [class.disabled]="quranService.currentPage === 604"
+          (click)="onSuraChanged(+quranService.currentPage + 1)">
+          <ion-icon style="margin-right: 30px;" class="next-icon" name="arrow-back-outline"></ion-icon>
+        </div>
+        <div class="currentPage">
+          <ion-text>
             {{quranService.currentPage}}
           </ion-text>
-        </ion-slide>
+          <ion-checkbox color="primary" (ionChange)="markPage($event)"
+            [checked]="trackerService.isQuranPageCompleted(quranService.currentPage)"></ion-checkbox>
+        </div>
+        <div class="icon-wrapper right" [class.disabled]="quranService.currentPage === 1"
+          (click)="onSuraChanged(+quranService.currentPage - 1)">
+          <ion-icon style="margin-left: 30px;" class="prev-icon" name="arrow-forward-outline"></ion-icon>
+        </div>
       </ng-container>
-    </ion-slides>
+    </div>
+
   </div>
 </ion-content>

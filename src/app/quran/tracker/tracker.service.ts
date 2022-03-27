@@ -1,39 +1,75 @@
 import { Injectable } from '@angular/core';
 
+enum LocalStorageKeys {
+  completedQuranPages = 'completedQuranPages',
+  completedTranslationPages = 'completedTranslationPages',
+}
 @Injectable({providedIn: 'root'})
 export class TrackerService {
-  completedPages = [];
+  completedQuranPages = [];
+  completedTranslationPages = [];
   constructor() {
-    const completedPagesFromStorage = localStorage.getItem('completedPages');
-    if(completedPagesFromStorage){
-      this.completedPages = JSON.parse(completedPagesFromStorage);
+    const completedQuranPagesFromStorage = localStorage.getItem(LocalStorageKeys.completedQuranPages);
+    const completedTranslationPagesFromStorage = localStorage.getItem(LocalStorageKeys.completedTranslationPages);
+    if(completedQuranPagesFromStorage){
+      this.completedQuranPages = JSON.parse(completedQuranPagesFromStorage);
+    }
+    if(completedTranslationPagesFromStorage){
+      this.completedTranslationPages = JSON.parse(completedTranslationPagesFromStorage);
     }
    }
 
-  addPageToComplated(pageNumber){
-    if(this.isPageCompleted(pageNumber)){
+  addQuranPageToComplated(pageNumber: number){
+    if(this.isQuranPageCompleted(pageNumber)){
       return;
     }
-    this.completedPages.push(pageNumber);
-    localStorage.setItem('completedPages', JSON.stringify(this.completedPages));
+    this.completedQuranPages.push(pageNumber);
+    localStorage.setItem(LocalStorageKeys.completedQuranPages, JSON.stringify(this.completedQuranPages));
   }
 
-  removePageFromComplated(pageNumber){
-    this.completedPages = this.completedPages.filter(item => item !== pageNumber);
-    localStorage.setItem('completedPages', JSON.stringify(this.completedPages));
+  addTranslationPageToComplated(pageNumber: number){
+    if(this.isTranslationPageCompleted(pageNumber)){
+      return;
+    }
+    this.completedTranslationPages.push(pageNumber);
+    localStorage.setItem(LocalStorageKeys.completedTranslationPages, JSON.stringify(this.completedTranslationPages));
   }
 
-  isPageCompleted(pageNumber){
-    return this.completedPages.some(item => +item === pageNumber);
+  removeQuranPageFromComplated(pageNumber: number){
+    this.completedQuranPages = this.completedQuranPages.filter(item => item !== pageNumber);
+    localStorage.setItem(LocalStorageKeys.completedQuranPages, JSON.stringify(this.completedQuranPages));
   }
 
-  getCounterForRange(startPage, endPage){
-    const counter = this.completedPages.filter(item => item >= +startPage && item <= +endPage).length;
+  removeTranslationPageFromComplated(pageNumber: number){
+    this.completedTranslationPages = this.completedTranslationPages.filter(item => item !== pageNumber);
+    localStorage.setItem(LocalStorageKeys.completedTranslationPages, JSON.stringify(this.completedTranslationPages));
+  }
+
+  isQuranPageCompleted(pageNumber: number){
+    return this.completedQuranPages.some(item => +item === pageNumber);
+  }
+
+  isTranslationPageCompleted(pageNumber: number){
+    return this.completedTranslationPages.some(item => +item === pageNumber);
+  }
+
+  getQuranCounterForRange(startPage: number, endPage: number){
+    const counter = this.completedQuranPages.filter(item => item >= startPage && item <= endPage).length;
     return counter;
   }
 
-  removeAllPages() {
-    this.completedPages = [];
-    localStorage.setItem('completedPages', JSON.stringify(this.completedPages));
+  getTranslationCounterForRange(startPage: number, endPage: number){
+    const counter = this.completedTranslationPages.filter(item => item >= startPage && item <= endPage).length;
+    return counter;
+  }
+
+  removeAllCompletedQuranPages() {
+    this.completedQuranPages = [];
+    localStorage.setItem(LocalStorageKeys.completedQuranPages, JSON.stringify(this.completedQuranPages));
+  }
+
+  removeAllCompletedTranslationPages() {
+    this.completedTranslationPages = [];
+    localStorage.setItem(LocalStorageKeys.completedTranslationPages, JSON.stringify(this.completedTranslationPages));
   }
 }
