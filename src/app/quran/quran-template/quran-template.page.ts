@@ -29,8 +29,6 @@ export class QuranTemplatePage implements OnInit {
 
     if(this.quranService.currentPageForCaching < 604){
       this.cacheAllQuranPages();
-      this.quranService.getListOfSura().subscribe();
-      this.quranService.getJuzs().subscribe();
     }
   }
 
