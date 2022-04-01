@@ -1,0 +1,111 @@
+<!-- <ion-header>
+  <ion-toolbar>
+    <ion-title>home</ion-title>
+  </ion-toolbar>
+</ion-header> -->
+
+<ion-content>
+  <!--ion-segment-->
+  <ion-segment [(ngModel)]="selectedSegment">
+    <ion-segment-button [value]="segments.sura">
+      <ion-label>Sure</ion-label>
+    </ion-segment-button>
+
+    <ion-segment-button [value]="segments.juz">
+      <ion-label>Dzuzevi</ion-label>
+    </ion-segment-button>
+
+    <ion-segment-button [value]="segments.page">
+      <ion-label>Stranice</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+  <!--ion-segment-->
+
+
+  <!--segments.sura-content-->
+  <ng-container *ngIf="selectedSegment === segments.sura">
+    <div *ngIf="suraList$ | async as suralist">
+      <!--search-->
+      <ion-icon class="search-icon" name="search-outline" *ngIf="!showSearchForSuraSegment" (click)="showSearchForSuraSegment = true"></ion-icon>
+      <ion-icon class="search-icon" name="close-outline" *ngIf="showSearchForSuraSegment" (click)="showSearchForSuraSegment = false"></ion-icon>
+      <div class="search search__sura" [class.show]="showSearchForSuraSegment">
+        <ion-list >
+          <ion-item>
+            <ion-label position="floating">Pretražite sure po nazivu</ion-label>
+            <ion-input #search (ionChange)="searchByTerm(search.value)"></ion-input>
+          </ion-item>
+
+          <ion-item>
+            <ion-label>Mjesto objave</ion-label>
+            <ion-select #type interface="popover" (ionChange)="searchByCity(type.value)">
+              <ion-select-option [value]="suraTypes.both">Sve</ion-select-option>
+              <ion-select-option [value]="suraTypes.medinan">Medina</ion-select-option>
+              <ion-select-option [value]="suraTypes.meccan">Mekka</ion-select-option>
+            </ion-select>
+          </ion-item>
+
+          <ion-item>
+            <ion-label>Sortiranje</ion-label>
+            <ion-select #sort interface="popover" (ionChange)="sortSuraListByOrder(sort.value)">
+              <ion-select-option [value]="sortOptions.byOrderInMushaf">Normal</ion-select-option>
+              <ion-select-option [value]="sortOptions.byFirstPublished">Od prve objavljanje</ion-select-option>
+              <ion-select-option [value]="sortOptions.byLastPublished">Od zadnje objavljene</ion-select-option>
+            </ion-select>
+          </ion-item>
+
+        </ion-list>
+      </div>
+
+      <!--search end-->
+
+      <p class="ion-text-center">Ukupno: {{suralist.length}} sura</p>
+      <ion-card class="sura" *ngFor="let sura of suralist; let i = index" (click)="goTo('/tabs/quran-template', sura)">
+        <ion-card-header>
+          <ion-card-title>
+            <span class="sura__title">{{sura.index}}. {{sura.name.bosnianTranscription}} - {{sura.name.bosnian}}</span>
+            <span class="arabic-icon icon-surah{{i+1}}"></span>
+          </ion-card-title>
+          <p class="sura__numberOfAyahs">{{sura.type==='Meccan'?'Mekkanska':'Medinska'}} - {{sura.numberOfAyas}} ajeta</p>
+        </ion-card-header>
+      </ion-card>
+    </div>
+  </ng-container>
+  <!--segments.sura-content-->
+
+
+  <!--segments.juz-content-->
+  <ng-container *ngIf="selectedSegment === segments.juz">
+    <div *ngIf="{juzList: juzList$ | async, suraList: suraList$ | async} as vm">
+      <ion-item class="search search__juz">
+        <ion-label position="floating">Upišite broj džuza</ion-label>
+        <ion-input #juz (ionChange)="searchJuzListById(juz.value)"></ion-input>
+      </ion-item>
+
+      <ion-card class="juz" *ngFor="let juz of vm.juzList; let i = index" (click)="goTo('/tabs/quran-template', juz);">
+        <ion-card-header>
+          <ion-card-title>{{juz.id}}. Dzuz <span class="startPage">{{juz.startPage}}</span></ion-card-title>
+          <span class="total">{{(juz.endPage-juz.startPage)+1}} stranica</span>
+        </ion-card-header>
+        <ion-card-content>
+          <ng-container *ngIf="juz.surahs">
+            <div *ngFor="let sura of juz.surahs" class="juz__content">
+              <p>
+                <strong>{{vm.suraList[sura.id-1]?.name.bosnianTranscription}}</strong> ({{sura.startAyah}}.ajet -
+                {{sura.endAyah}}.ajet)
+              </p>
+              <span class="arabic-name icon-surah{{sura.id}}"></span>
+            </div>
+          </ng-container>
+        </ion-card-content>
+      </ion-card>
+    </div>
+  </ng-container>
+  <!--segments.juz-content-->
+
+  <!--segments.page-content-->
+  <ng-container *ngIf="selectedSegment === segments.page">
+    <h1>stranice</h1>
+  </ng-container>
+  <!--segments.page-content-->
+
+</ion-content>

@@ -9,16 +9,6 @@ const routes: Routes = [
     component: QuranPage,
     children: [
       {
-        path: 'surah',
-        loadChildren: () =>
-          import('./surah/surah.module').then((m) => m.SurahPageModule),
-      },
-      {
-        path: 'juz',
-        loadChildren: () =>
-          import('./juz/juz.module').then((m) => m.JuzPageModule),
-      },
-      {
         path: 'quran-template',
         loadChildren: () =>
           import('./quran-template/quran-template.module').then(
@@ -51,15 +41,19 @@ const routes: Routes = [
         loadChildren: () => import('./tracker/tracker.module').then( m => m.TrackerPageModule)
       },
       {
+        path: 'home',
+        loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
+      },
+      {
         path: '',
-        redirectTo: '/tabs/surah',
+        redirectTo: '/tabs/home',
         pathMatch: 'full',
       },
     ],
   },
   {
     path: '',
-    redirectTo: '/tabs/quran-template',
+    redirectTo: '/tabs/home',
     pathMatch: 'full',
   }
 ];

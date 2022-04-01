@@ -1,34 +1,17 @@
-ion-infinite-scroll {
-  text-align: center;
-  margin-bottom: 15px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  ion-icon {
-    margin: 0 5px;
-  }
-}
-ion-toolbar {
-  ion-icon {
-    font-size: 25px;
-    margin-right: 10px;
-  }
-}
-header{
-  position: fixed;
-  left: 0;
-  right: 0;
-  top: 47px;
-  z-index: 9;
-}
-
-ion-card {
+.sura {
   margin-bottom: 20px;
 
+  &__title {
+    max-width: 75%;
+    display: inline-block;
+  }
+  &__numberOfAyahs {
+    margin: 5px 0px;
+  }
+
   ion-card-header{
-    border-bottom: 1px solid #f7f7f7;
-    background: #f7f7f7;
+    border-bottom: 1px solid #f4f5f6;
+    background: #f4f5f6;
     padding: 10px 15px;
 
     ion-card-title {
@@ -39,19 +22,80 @@ ion-card {
         right: 0;
       }
     }
+  }
+}
 
-    p {
-      margin: 5px 0px;
+.juz {
+  margin-bottom: 20px;
+
+  ion-card-header{
+    border-bottom: 1px solid #f4f5f6;
+    margin-bottom: 20px;
+    background: #f4f5f6;
+    padding: 10px 15px;
+
+    .total {
+      padding-top: 3px;
+      display: block;
+    }
+
+    ion-card-title {
+      .startPage {
+        font-size: 14px;
+        position: absolute;
+        top: 50%;
+        right: 0;
+      }
+    }
+  }
+
+  &__content {
+    display: flex; align-items: center; padding-bottom: 5px;
+
+    .arabic-name {
+      font-size: 20px; position: absolute; right: 10px;
     }
   }
 }
 
+ion-segment {
+  margin-bottom: 20px;
+}
+
+.search {
+  transition: all .4s;
+
+  &__sura {
+    opacity: 0;
+    max-height: 0;
+    visibility: hidden;
+
+    &.show {
+      opacity: 1;
+      max-height: 100%;
+    visibility: visible;
+    }
+  }
+
+  &__juz {
+    width: 90%;
+    margin: 0 auto;
+    margin-bottom: 15px;
+  }
+}
+
+.search-icon {
+  position: absolute;
+  right: 20px;
+  font-size: 25px;
+  z-index: 999;
+}
 
 /////////////////
 @font-face {
   font-family: surah_names;
-  src: url(surah_names.eot);
-  src: url(surah_names.eot) format("embedded-opentype") , url(https://salamquran.com/static/fonts/surah_names/surah_names.ttf) format("truetype") , url(https://salamquran.com/static/fonts/surah_names/surah_names.woff) format("woff") , url(https://salamquran.com/images/surah_names/surah_names.svg) format("svg");
+  src: url(fonts/surah_names.eot);
+  src: url(fonts/surah_names.eot) format("embedded-opentype") , url(fonts/surah_names.ttf) format("truetype") , url(fonts/surah_names.woff) format("woff");
   font-weight: 400;
   font-display: block
 }

@@ -3,8 +3,9 @@ import { Injectable } from '@angular/core';
 import { Observable, of, Subject } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { ApiService } from '../shared/api.service';
-const quranAyats = require('@kmaslesa/quran-ayats');
+import { Juz, Sura, Tafsir } from './quran.models';
 const tefsir = require('@kmaslesa/tefsir');
+const quranMetaData = require('@kmaslesa/quran-metadata');
 export class QuranResponseData {
   result: any;
 }
@@ -2401,19 +2402,6 @@ export class QuranService {
     return this.http.get(`${this.quranAPI}/page/wbw?index=${sura}`);
   }
 
-  getListOfSura() {
-    return this.apiService.getData(`assets/db/quran/surahs.json`).pipe(
-      map(response=> {
-        this.suraList = response;
-        return response;
-      })
-    );
-  }
-
-  getAyatsByPage(pageNumber) {
-    return quranAyats.getAyatsByPage(pageNumber);
-  }
-
   changeQari(qariIdentifier: string){
     localStorage.setItem('qari', qariIdentifier);
     this.qari = qariIdentifier;
@@ -2441,14 +2429,6 @@ export class QuranService {
     }
   }
 
-  getNumberOfLettersAndWordsPerPage() {
-    return this.apiService.getData(`assets/db/quran/lettersPerPage.json`);
-  }
-
-  getJuzs() {
-    return this.apiService.getData(`assets/db/quran/juzs.json`);
-  }
-
   setCurrentSuraTitle(page) {
     if (this.suraList) {
       this.suraList.forEach((sura, index) => {
@@ -2462,7 +2442,40 @@ export class QuranService {
     }
   }
 
-  getTafsirAndTranslationForPage(page){
-    return tefsir.getTafsirAndTranslationForPage(page);
+  getTafsirAndTranslationForPage(page): Observable<Tafsir[]>{
+    return of(tefsir.getTafsirAndTranslationForPage(page));
+  }
+
+  //metadata
+  getSuraList(): Observable<Sura[]> {
+    return of(quranMetaData.getSuraList());
+  }
+
+  getSuraListPublishedInMekka(): Observable<Sura[]> {
+    return of(quranMetaData.getSuraListPublishedInMekka());
+  }
+
+  sortSuraListByFirstPublished(): Observable<Sura[]> {
+    return of(quranMetaData.sortSuraListByFirstPublished());
+  }
+
+  sortSuraListByLastPublished(): Observable<Sura[]> {
+    return of(quranMetaData.sortSuraListByLastPublished());
+  }
+
+  getSuraListPublishedInMedina(): Observable<Sura[]> {
+    return of(quranMetaData.getSuraListPublishedInMedina());
+  }
+
+  searchSuraByBosnianName(searchTerm: string): Observable<Sura[]> {
+    return of(quranMetaData.searchSuraByBosnianName(searchTerm));
+  }
+
+  getJuzList(): Observable<Juz[]> {
+    return of(quranMetaData.getJuzList());
+  }
+
+  searchJuzListById(id): Observable<Juz[]> {
+    return of(quranMetaData.searchJuzListById(id));
   }
 }
