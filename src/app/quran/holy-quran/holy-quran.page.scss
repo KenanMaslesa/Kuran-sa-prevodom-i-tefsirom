@@ -3,7 +3,6 @@
   justify-content: center;
   align-items: center;
   text-align: center;
-  padding-bottom: 45px;
 
   &.without-tabs {
     height: 100%;
@@ -6113,10 +6112,6 @@
       margin-bottom: 5px;
     }
 
-    &:first-of-type {
-      margin-top: 10px;
-    }
-
     @media (max-width: 768px) {
       min-height: 40px;
     }
@@ -6158,7 +6153,7 @@
   overflow: hidden;
   //background-color: #f4f5f6;
   padding: 10px;
-  margin-top: 25px;
+  margin-top: 5px;
 
   &.number {
     width: 315px;
@@ -6249,7 +6244,9 @@ ion-header {
 }
 
 ion-slide {
-  display: block;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   min-height: 85vh;
   width: 100% !important;
 
