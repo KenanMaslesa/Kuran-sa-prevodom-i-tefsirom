@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ModalController } from '@ionic/angular';
 import { Observable } from 'rxjs';
 import { Juz, Sura } from '../quran.models';
 import { QuranService } from '../quran.service';
@@ -34,19 +35,14 @@ export class HomePage implements OnInit {
   public selectedSegment: Segments;
   public suraList$: Observable<Sura[]>;
   public juzList$: Observable<Juz[]>;
-  constructor(private quranService: QuranService, private router: Router) {
+
+  constructor(private quranService: QuranService, private router: Router, private modalController: ModalController) {
     this.selectedSegment = this.segments.sura;
     this.suraList$ = this.quranService.getSuraList();
     this.juzList$ = this.quranService.getJuzList();
   }
 
   ngOnInit() {}
-
-  goTo(url, juz) {
-    this.quranService.currentPage = juz.startPage;
-    this.quranService.currentPageChanged.next(true);
-    this.router.navigate([url]);
-  }
 
   searchByTerm(searchTerm) {
     this.suraList$ = this.quranService.searchSuraByBosnianName(searchTerm);

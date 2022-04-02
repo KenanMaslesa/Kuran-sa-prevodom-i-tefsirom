@@ -25,6 +25,35 @@
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
 
+@font-face {
+  font-family: quran;
+  src: url(me_quran-2.ttf) format("truetype");
+  font-display: block;
+}
+
+h4.title {
+  &::before {
+    content: "";
+    position: absolute;
+    display: block;
+    width: 120px;
+    height: 1px;
+    background: #ddd;
+    bottom: 1px;
+    left: calc(50% - 60px);
+  }
+  &::after {
+    content: "";
+    position: absolute;
+    display: block;
+    width: 40px;
+    height: 3px;
+    background: var(--ion-color-primary);
+    bottom: 0;
+    left: calc(50% - 20px);
+  }
+}
+
 html {
   height: 100%;
   background-size: cover;
@@ -58,4 +87,60 @@ ion-tab-bar, ion-header{
 
 ion-tab-bar {
   overflow-x: scroll;
+}
+
+
+.global-player {
+  position: absolute;
+  border: 0;
+  width: 100%;
+  background: var(--ion-color-primary);
+  opacity: 0.8;
+  z-index: 9;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  bottom: 0;
+  height: 45px;
+  color: white;
+  font-weight: bold;
+  background: #262932;
+  z-index: 99;
+
+  &.hide {
+    z-index: -1;
+    visibility: hidden;
+  }
+
+    .icon {
+      font-size: 30px;
+      width: 20%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      ion-icon {
+        background: var(--ion-color-primary);
+        border-radius: 50%;
+      }
+
+      &__play {
+        padding: 3px 3px 3px 5px;
+      }
+
+      &__pause {
+        padding: 3px;
+      }
+  }
+
+  .left-select, .right-select {
+    max-width: 40%;
+    width: 40%;
+  }
+}
+* {
+  scroll-margin-top: 75px;
+  /*
+  scroll-margin-top changes the vertical scroll destination, distancing the target element from the top of the viewport. Setting it to the same height as the header will ensure that it doesn't end up behind the header.
+  */
 }

@@ -1,124 +1,160 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { IonContent, IonSlides } from '@ionic/angular';
+import { Component, ViewChild } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { IonContent, IonInfiniteScroll, IonSlides } from '@ionic/angular';
+import { Observable, Subscription } from 'rxjs';
+import { tap } from 'rxjs/operators';
 import { MediaPlayerService } from 'src/app/shared/media-player.service';
-import { BookmarksItem, BookmarksService } from '../bookmarks/bookmarks.service';
+import { StorageService } from 'src/app/shared/storage.service';
+import { Tafsir } from '../quran.models';
 import { QuranService } from '../quran.service';
-import { TrackerService } from '../tracker/tracker.service';
-
 @Component({
   selector: 'app-translation',
   templateUrl: './translation.page.html',
   styleUrls: ['./translation.page.scss'],
 })
-export class TranslationPage implements OnInit {
-  @ViewChild('slides', { static: true }) slides: IonSlides;
-  @ViewChild(IonContent) content: IonContent;
-  showArabic = true;
-  showTranslation = true;
-  showTafsir = true;
-  showSettings = false;
-  translationForCurrentPage = [];
-  ayatsOfCurrentPage = [];
-  arrayOfIndexes = [];
-  selectedAyah: number;
-  suraList: any;
-  slideOpts = {
-    initialSlide: 1,
-    speed: 50,
-    loop: true,
-  };
+export class TranslationPage {
+  @ViewChild(IonContent) ionContent: IonContent;
+  @ViewChild(IonInfiniteScroll) infiniteScroll: IonInfiniteScroll;
+  @ViewChild(IonSlides) slides: IonSlides;
+
+  dataStream$: Observable<any>;
+  subs: Subscription = new Subscription();
+  loadMoreIndex = 0;
+  ayahList: Tafsir;
+  ayahListLazyLoaded = [];
+  numberOfLoadedPagesOnSlide = 1;
+  showLoader = false;
+  routeSuraId: number;
+  routePageId: number;
+  routeAyahId: number;
+  sliderActiveIndex: number;
+  isCurrentPageInBookmarks = false;
+  moreInfoAboutSura = false;
+  startPage = 1;
+  ayahsPerPage = [];
+  pagesArray = [];
 
   constructor(
+    private route: ActivatedRoute,
     public quranService: QuranService,
+    public storage: StorageService,
     public mediaPlayerService: MediaPlayerService,
-    public bookmarksService: BookmarksService,
-    public trackerService: TrackerService
-  ) {}
+    private router: Router
+  ) {
+    this.routeSuraId = +this.route.snapshot.params.id;
+    this.routePageId = +this.route.snapshot.params.page;
+    this.routeAyahId = +this.route.snapshot.params.ayah;
 
-  ngOnInit() {
-    this.getTafsirAndTranslationForPage(this.quranService.currentPage);
-    this.quranService.currentPageChanged.subscribe(() => {
-      this.onSuraChanged(this.quranService.currentPage);
-    });
-    this.quranService.getListOfSura().subscribe((response) => {
-      this.suraList = response;
-    });
+    if (this.routePageId) {
+      this.quranService.setCurrentPage(this.routePageId);
+    }
+
+    //switch slide when last ayah on current page is played
+    this.subs.add(
+      this.mediaPlayerService.switchSlide.subscribe(() => {
+        this.setStream();
+        setTimeout(() => {
+          this.mediaPlayerService.slideSwitched.emit(true);
+        }, 1000);
+      })
+    );
+
+    //scroll into playing ayah
+    this.subs.add(
+      this.mediaPlayerService.scrollIntoPlayingAyah.subscribe(
+        (activeAyahId) => {
+          this.scroll(activeAyahId);
+        }
+      )
+    );
+
+    this.setStream();
+  }
+
+  setStream() {
+    this.dataStream$ = this.quranService
+      .getTafsirAndTranslationForPage(this.quranService.currentPage)
+      .pipe(
+        tap((response) => {
+          this.ayahList = response;
+        })
+      );
+  }
+
+  ionViewWillLeave() {
+    this.subs.unsubscribe();
+    // this.router.navigateByUrl('/', { replaceUrl: true }); //da ukloni sa steka stranicu da bi samo skrolalo kad se pusti audio ali pravi problem sa tabovima/navigacijom, skontati netso
   }
 
   ionViewWillEnter() {
-    this.scrollToTop(1000);
-  }
-
-  getTafsirAndTranslationForPage(page) {
-    this.translationForCurrentPage =
-      this.quranService.getTafsirAndTranslationForPage(page);
-  }
-
-  onSuraChanged(pageNumber) {
-    this.scrollToTop(1000);
-    if (pageNumber < 1) {
-      return;
+    if (this.routePageId) {
+      this.quranService.setCurrentPage(this.routePageId)
     }
-    if (pageNumber > 604) {
-      return;
-    }
-    this.quranService.currentPage = pageNumber;
-    localStorage.setItem('currentPage', pageNumber);
-    this.ayatsOfCurrentPage = this.quranService.getAyatsByPage(
-      this.quranService.currentPage
-    );
-
-    this.translationForCurrentPage = [];
-    this.getTafsirAndTranslationForPage(this.quranService.currentPage);
+    this.setStream();
   }
 
-  slideTo(slideNumber) {
-    this.slides.slideTo(slideNumber);
+  onSuraChanged(page) {
+    this.quranService.setCurrentPage(page);
+    this.setStream();
   }
 
-  playAyah(ayahId) {
-    this.selectedAyah = ayahId;
+  ionViewDidLeave() {
+    this.mediaPlayerService.removePlayer();
+  }
+
+  slideTo(page) {
+    this.slides.slideTo(page);
+    this.showLoader = false;
+  }
+
+  scroll(id) {
+    console.log('SCOLL INTO AYAH WITH ID:' + id);
+    const ayah = document.getElementById(id);
+    ayah.scrollIntoView({
+      behavior: 'smooth',
+    });
+  }
+
+  playAyah(ayah, ayahNumberOnCurrentPage) {
     this.mediaPlayerService.playAudio(
-      `https://cdn.islamic.network/quran/audio/${this.quranService.qari}/${ayahId}.mp3`
+      ayah.index,
+      ayahNumberOnCurrentPage,
+      this.quranService.currentPage,
+      this.ayahList.ayahsPerPages.length
     );
   }
 
-  scrollToBottom() {
-    this.content.scrollToBottom(1500);
+  ionContentScrollToTop(duration = 2000) {
+    this.ionContent.scrollToTop(duration);
   }
 
-  scrollToTop(duration) {
-    this.content.scrollToTop(duration);
-  }
-
-  scrollToElement(elementId) {
-    const y = document.getElementById(elementId).offsetTop;
-    this.content.scrollToPoint(0, y - 20, 1000);
-  }
-
-  addTafsirBookmark(pageNumber){
-    const sura = this.quranService.suraList.filter(surah => pageNumber >= surah.startpage && pageNumber <= surah.endpage)[0];
-    const item: BookmarksItem = {
-      pageNumber: +pageNumber,
-      sura,
-      date: new Date().toLocaleDateString()
-    };
-    this.bookmarksService.addTafsirBookmark(item);
-  }
-
-  deleteTafsirBookmark(pageNumber){
-    const item: BookmarksItem = {
-      pageNumber: +pageNumber,
-    };
-    this.bookmarksService.deleteTafsirBookmark(item);
-  }
-
-  markPage(value){
-    if(value.currentTarget.checked){
-      this.trackerService.addTranslationPageToComplated(+this.quranService.currentPage);
+  disableInfiniteScroll(value: boolean) {
+    if (this.infiniteScroll) {
+      this.infiniteScroll.disabled = value;
     }
-    else {
-      this.trackerService.removeTranslationPageFromComplated(+this.quranService.currentPage);
+  }
+
+  displayCityBySuraType(type) {
+    if (type === 'Meccan') {
+      return 'Mekki';
+    } else if (type === 'Medinan') {
+      return 'Medini';
     }
+  }
+
+  setSliderActiveIndex(suraInfo) {
+    if (this.slides !== undefined) {
+      this.slides.getActiveIndex().then((index: number) => {
+        this.sliderActiveIndex = index;
+        this.checkIsPageInBookmarks(suraInfo);
+      });
+    }
+  }
+
+  checkIsPageInBookmarks(suraInfo) {
+    this.isCurrentPageInBookmarks = this.storage.isInBookmarks(
+      suraInfo,
+      this.sliderActiveIndex
+    );
   }
 }

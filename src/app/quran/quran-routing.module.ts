@@ -9,20 +9,17 @@ const routes: Routes = [
     component: QuranPage,
     children: [
       {
-        path: 'quran-template',
-        loadChildren: () =>
-          import('./quran-template/quran-template.module').then(
-            (m) => m.QuranTemplatePageModule
-          ),
+        path: 'home',
+        loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
       },
       {
-        path: 'translation',
-        loadChildren: () =>
-          import('./translation/translation.module').then(
-            (m) => m.TranslationPageModule
-          ),
+        path: 'holy-quran',
+        loadChildren: () => import('./holy-quran/holy-quran.module').then( m => m.HolyQuranPageModule)
       },
-
+      {
+        path: 'holy-quran/:page',
+        loadChildren: () => import('./holy-quran/holy-quran.module').then( m => m.HolyQuranPageModule)
+      },
       {
         path: 'audio',
         loadChildren: () =>
@@ -41,8 +38,12 @@ const routes: Routes = [
         loadChildren: () => import('./tracker/tracker.module').then( m => m.TrackerPageModule)
       },
       {
-        path: 'home',
-        loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
+        path: 'translation',
+        loadChildren: () => import('./translation/translation.module').then( m => m.TranslationPageModule)
+      },
+      {
+        path: 'translation/:page',
+        loadChildren: () => import('./translation/translation.module').then( m => m.TranslationPageModule)
       },
       {
         path: '',

@@ -1,133 +1,214 @@
-.translation-wrapper {
-  text-align: left;
-  position: relative;
-  background: gainsboro;
-  padding-top: 20px;
-  padding-bottom: 30px;
+main {
+  padding: 0;
+  p {
+    // color: var(--ion-text-color);
+    margin: 0 10px;
+  }
 
-  .ayah {
-    transition: all 0.5s;
-    background: white;
-    border-radius: 3px;
-    width: 98%;
+  header {
+    border-bottom: 1px solid #f4f5f6;
+    // color: var(--ion-text-color);
+    // background: white;
+    background: var(--ion-color-primary);
+    color: white;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+
+    position: fixed;
+    width: 100%;
+    z-index: 99;
+
+    .suraInfo {
+    padding: 0 10px;
+
+    h4 {
+      margin-bottom: 5px;
+      margin-top: 5px;
+    }
+    }
+
+    .backButton {
+      font-size: 24px;
+      position: absolute;
+      left: 10px;
+    }
+
+    .bookmarks {
+      font-size: 24px;
+      position: absolute;
+      right: 10px;
+    }
+
+    .currentPage {
+      font-size: 13px;
+      font-weight: bold;
+      font-style: italic;
+      margin-bottom: 5px;
+    }
+  }
+}
+
+
+
+.sura-info {
+  color: var(--ion-text-color);
+  text-align: center;
+
+  &__type {
+    margin-bottom: 15px !important;
+  }
+
+  &__purpose {
+    padding: 0 10px 20px;
+    line-height: 25px;
+  }
+}
+
+.backToTop {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+ion-slides {
+  height: 100%;
+  direction: rtl;
+  overflow: hidden;
+
+  .slide {
+    direction: ltr !important;
+    display: block;
+    overflow-y: scroll;
+    padding-bottom: 20px;
+    max-height: 100vh;
+    padding-bottom: 100px;
+    padding-top: 65px;
+
+    &.firstSlide,
+    &.lastSlide {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+  }
+}
+
+ion-content {
+  --overflow: hidden;
+}
+
+::-webkit-scrollbar {
+  width: 0px;
+}
+
+.currentPageFooter {
+  background: var(--ion-color-primary);
+    height: 30px;
+    width: 30px;
     margin: 0 auto;
-    margin-bottom: 30px;
-    border-radius: 5px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--ion-text-color);
+}
 
-    &:first-of-type {
-      margin-top: 25px;
-    }
+main {
+  height: 100%;
+  overflow: auto;
+}
 
-    &.blur {
-      // filter: blur(50px);
-    }
+.ayah {
+  padding: 0px 0px 40px;
+  color: var(--ion-text-color);
+  border-top: 1px solid #29232347;
 
-    p {
-      padding: 2px 10px;
+  &:first-of-type {
+    padding: 0px 0px 40px;
+  }
+  &.active {
+    box-shadow: 1px 1px 10px 3px var(--ion-color-primary);
+    width: 95%;
+    margin: 0 auto;
+    border-radius: 10px;
+    margin-bottom: 20px;
+  }
 
-      &.end {
-        background: gainsboro;
-        padding: 1px !important;
-        margin: 0;
-      }
+  &__header {
+    position: relative;
+    // border-top: 1px solid gray;
+    // border-top: 1px solid var(--ion-color-primary);
 
-      &.arabic_text{
-        font-size: 22px;
-        padding: 10px;
-        margin: 5px 0px 0px;
-        font-family: quran;
-      }
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
 
-      &.translation{
-        font-style: italic;
-    }
-    }
+    .icons {
+      justify-content: center;
+      align-items: center;
+      position: absolute;
+      right: 0;
+      top: 5px;
+      transition: all 1s;
 
-    .verse_key{
-      height: 35px;
-      font-size: 15px;
-      padding-left: 10px;
+      ion-icon {
+        font-size: 25px;
+        margin: 5px;
+        max-width: 25px;
 
-      p{
-        background: var(--ion-color-primary);
-        display: inline-block;
-        color: white;
-        padding: 4px !important;
-        position: absolute;
-        right: 3px;
-        margin-top: 0px;
-        border-bottom-left-radius: 5px;
+        &.red {
+          color: red;
+        }
       }
     }
 
     .player {
+      font-size: 25px;
       position: absolute;
-      left: 10px;
-      margin-top: 8px;
+      left: 5px;
+      top: 5px;
+      transition: all 1s;
+    }
 
-      ion-icon {
-        font-size: 30px;
-        color: #504e4e;
-      }
+    h4 {
+      margin-top: 30px;
+    }
+  }
+
+  &__info {
+    text-align: center;
+
+    .arabic {
+      font-family: quran;
+      margin-top: 0;
+      font-size: 20px;
+      line-height: 45px !important;
     }
 
     .item {
-      span {
-        margin-left: 10px;
-        font-weight: lighter;
+      margin: 15px 0px;
+
+      &__title {
+        margin-left: 3px;
         font-style: italic;
+        color: var(--ion-color-primary);
       }
 
-      .tafsir, .translation {
-        margin-top: 3px;
+      &__content {
+        margin-top: 5px;
+        line-height: 25px;
+        padding: 0 5px;
       }
-
-    }
-}
-}
-ion-slides {
-  direction: rtl;
-}
-
-.suraTitle {
-  position: relative;
-  overflow: hidden;
-  //background-color: #f4f5f6;
-  padding: 10px;
-  margin-top: 25px;
-
-  h3 {
-    position: absolute;
-    top: 0;
-    right: 0;
-    left: 0;
-    text-align: center;
-    font-size: 16px;
-    line-height: 55px;
-    margin: 0;
-  }
-}
-
-ion-header {
-  ion-icon {
-    margin-right: 15px;
-    font-size: 25px;
-  }
-}
-
-.benefits {
-  h3 {
-    text-align: center;
-  }
-
-  ul {
-    padding-left: 25px;
-
-    li {
-      margin-bottom: 20px;
     }
   }
 }
+
 
 .swiper {
   position: fixed;
@@ -171,21 +252,4 @@ ion-header {
       font-size: 25px;
     }
   }
-}
-
-.currentPage {
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-
-  ion-checkbox {
-    margin-left: 5px;
-  }
-}
-
-
-@font-face {
-  font-family: quran;
-  src: url(me_quran-2.ttf) format("truetype");
-  font-display: block
 }

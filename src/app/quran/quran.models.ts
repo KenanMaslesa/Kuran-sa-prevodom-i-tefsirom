@@ -46,6 +46,36 @@ export interface SurahsEntity {
 
 //tafsir
 export interface Tafsir {
+  suraInfo: SuraInfo;
+  ayahsPerPages?: ((AyahsPerPagesEntity)[] | null)[] | null;
+}
+export interface SuraInfo {
+  index: number;
+  numberOfAyas: number;
+  startAyaIndex: number;
+  name: Name;
+  aboutSura: AboutSura;
+  type: string;
+  orderInPublishing: number;
+  numberOfWords: number;
+  numberOfLetters: number;
+  startJuz: number;
+  endJuz: number;
+  startPage: number;
+  endPage: number;
+  totalPages: number;
+}
+export interface Name {
+  arabic: string;
+  english: string;
+  englishTranscription: string;
+  bosnian: string;
+  bosnianTranscription: string;
+}
+export interface AboutSura {
+  bosnian: string;
+}
+export interface AyahsPerPagesEntity {
   index: number;
   sura: number;
   ayaNumber: number;

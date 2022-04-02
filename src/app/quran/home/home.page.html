@@ -1,8 +1,9 @@
-<!-- <ion-header>
-  <ion-toolbar>
+<ion-header>
+  <ion-toolbar color="primary">
     <ion-title>home</ion-title>
   </ion-toolbar>
-</ion-header> -->
+</ion-header>
+
 
 <ion-content>
   <!--ion-segment-->
@@ -59,7 +60,7 @@
       <!--search end-->
 
       <p class="ion-text-center">Ukupno: {{suralist.length}} sura</p>
-      <ion-card class="sura" *ngFor="let sura of suralist; let i = index" (click)="goTo('/tabs/quran-template', sura)">
+      <ion-card class="sura" *ngFor="let sura of suralist; let i = index" [routerLink]="['/tabs/holy-quran', sura.startPage]">
         <ion-card-header>
           <ion-card-title>
             <span class="sura__title">{{sura.index}}. {{sura.name.bosnianTranscription}} - {{sura.name.bosnian}}</span>
@@ -81,7 +82,7 @@
         <ion-input #juz (ionChange)="searchJuzListById(juz.value)"></ion-input>
       </ion-item>
 
-      <ion-card class="juz" *ngFor="let juz of vm.juzList; let i = index" (click)="goTo('/tabs/quran-template', juz);">
+      <ion-card class="juz" *ngFor="let juz of vm.juzList; let i = index" [routerLink]="['/tabs/holy-quran', juz.startPage]">
         <ion-card-header>
           <ion-card-title>{{juz.id}}. Dzuz <span class="startPage">{{juz.startPage}}</span></ion-card-title>
           <span class="total">{{(juz.endPage-juz.startPage)+1}} stranica</span>

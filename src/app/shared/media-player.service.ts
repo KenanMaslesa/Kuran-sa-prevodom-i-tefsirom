@@ -1,5 +1,11 @@
-import { Injectable } from '@angular/core';
+import { EventEmitter, Injectable } from '@angular/core';
 import { Howl } from 'howler';
+import { QuranService } from '../quran/quran.service';
+
+export enum PlayerOptions {
+  repeat = 'REPEAT',
+  order = 'ORDER',
+}
 @Injectable({
   providedIn: 'root',
 })
@@ -11,9 +17,30 @@ export class MediaPlayerService {
   watchCurrentTimeInterval;
   isPaused = false;
   isLoading = false;
-  constructor() {}
+  audioUrl: string;
+  playingCurrentPage: any;
+  playingCurrentAyah: any;
+  switchSlide: EventEmitter<any> = new EventEmitter();
+  slideSwitched: EventEmitter<any> = new EventEmitter();
+  scrollIntoPlayingAyah: EventEmitter<number> = new EventEmitter();
 
-  playAudio(audioUrl) {
+  playOptions = [
+    {
+      value: PlayerOptions.order,
+      name: 'Ajet po ajet'
+    },
+    {
+      value: PlayerOptions.repeat,
+      name: 'Ponavljaj ajet'
+    }
+  ];
+  selectedPlayOption = PlayerOptions.order;
+  constructor(private quranService: QuranService) {}
+
+  playAudio(ayahIndexInHolyQuran, ayahNumberOnCurrentPage, currentPage, numberOfAyahsOnCurrentPage) {
+
+    this.audioUrl = `https://cdn.islamic.network/quran/audio/${this.quranService.qari}/${ayahIndexInHolyQuran}.mp3`;
+    this.playingCurrentAyah = ayahIndexInHolyQuran;
     this.isLoading = true;
     if (this.player) {
       this.stopAudio();
@@ -21,15 +48,43 @@ export class MediaPlayerService {
     }
     this.player = new Howl({
       html5: true,
-      src: [audioUrl],
+      src: [this.audioUrl],
       onplay: () => {
         this.isPlaying = true;
         this.isPaused = false;
         this.isLoading = false;
       },
+      onload: () => {
+        if(this.selectedPlayOption !== PlayerOptions.repeat) {
+          this.scrollIntoPlayingAyah.emit(this.playingCurrentAyah);
+        }
+      },
       onend: () => {
         this.isPlaying = false;
         this.clearWatchCurrentTimeInterval();
+
+          ayahIndexInHolyQuran = ayahIndexInHolyQuran + 1;
+          ayahNumberOnCurrentPage = ayahNumberOnCurrentPage + 1;
+          if(ayahNumberOnCurrentPage > numberOfAyahsOnCurrentPage) {
+            this.quranService.setCurrentPage(++this.quranService.currentPage);
+            currentPage = this.quranService.currentPage;
+            ayahNumberOnCurrentPage = 1;
+            this.quranService.getTafsirAndTranslationForPage(currentPage).subscribe(response => {
+              numberOfAyahsOnCurrentPage = response.ayahsPerPages.length;
+            });
+            if(currentPage > 604) {
+              alert('Proucen je zadnji ajet zadnje sure');
+              return;
+            }
+            this.switchSlide.emit(true);
+            this.slideSwitched.subscribe(()=> {
+              this.playAudio(ayahIndexInHolyQuran, ayahNumberOnCurrentPage, currentPage, numberOfAyahsOnCurrentPage);
+            });
+          }
+          else {
+            this.playAudio(ayahIndexInHolyQuran, ayahNumberOnCurrentPage, currentPage, numberOfAyahsOnCurrentPage);
+          }
+
       },
       onloaderror: (id, error) => {
         this.isLoading = false;
@@ -55,6 +110,7 @@ export class MediaPlayerService {
   pauseAudio() {
     this.player.pause();
     this.isPaused = true;
+    this.isPlaying = false;
   }
 
   continueAudio() {

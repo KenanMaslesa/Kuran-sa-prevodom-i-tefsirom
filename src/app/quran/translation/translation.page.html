@@ -1,104 +1,129 @@
-<ion-header>
-  <ion-toolbar color="primary">
-    <ion-title>Prijevod i tefsir</ion-title>
-    <ion-buttons slot="end">
-      <ion-icon name="bookmark-outline" *ngIf="!bookmarksService.checkIsInTafsirBookmark(quranService.currentPage)" (click)="addTafsirBookmark(quranService.currentPage);"></ion-icon>
-      <ion-icon name="bookmark" *ngIf="bookmarksService.checkIsInTafsirBookmark(quranService.currentPage)" (click)="deleteTafsirBookmark(quranService.currentPage);"></ion-icon>
-    </ion-buttons>
-    <ion-buttons slot="end">
-      <ion-icon name="settings-outline" (click)="showSettings = !showSettings"></ion-icon>
-    </ion-buttons>
-  </ion-toolbar>
-
-  <ion-list style="padding: 0;" *ngIf="showSettings">
-    <ion-item>
-      <ion-label>Arapski</ion-label>
-      <ion-toggle [(ngModel)]="showArabic"></ion-toggle>
-
-      <ion-label>Prijevod</ion-label>
-      <ion-toggle [(ngModel)]="showTranslation"></ion-toggle>
-
-      <ion-label>Tefsir</ion-label>
-      <ion-toggle [(ngModel)]="showTafsir"></ion-toggle>
-    </ion-item>
-  </ion-list>
-</ion-header>
-
 <ion-content>
-    <div>
-      <div dir="ltr" lang="eng" class="translation-wrapper">
-        <div [id]="i"
-          [class.active]="selectedAyah === item.index" class="ayah"
-          *ngFor="let item of translationForCurrentPage; let i = index">
+  <!-- <app-loader *ngIf="showLoader || mediaPlayerService.isLoading"></app-loader> -->
+  <main *ngIf="dataStream$ | async as vm">
+    <header>
+      <ion-icon class="backButton" name="arrow-back-outline"></ion-icon>
+      <div class="suraInfo">
+        <h4>
+          Sura name
+        </h4>
+        <p class="currentPage">
+          {{quranService.currentPage}}
+        </p>
+      </div>
+
+      <div class="bookmarks" *ngIf="sliderActiveIndex>0">
+        <!--bookmarks icons-->
+        <ion-icon *ngIf="!isCurrentPageInBookmarks" name="bookmark-outline"
+          (click)="storage.addToBookmarks(vm.suraInfo, sliderActiveIndex); checkIsPageInBookmarks(vm.suraInfo)">
+        </ion-icon>
+        <ion-icon *ngIf="isCurrentPageInBookmarks" style="color:tomato;" name="bookmark"
+          (click)="storage.removeFromBookmarks(vm.suraInfo, sliderActiveIndex); checkIsPageInBookmarks(vm.suraInfo)">
+        </ion-icon>
+        <!--bookmarks icons-->
+      </div>
+
+    </header>
+
+    <div style="margin-top: 80px;">
+      <div *ngFor="let ayah of vm.ayahsPerPages; let i = index">
+        <div class="ayah" [class.active]="routeAyahId === ayah.ayaNumber" id="{{ayah.index}}">
+          <!--progress-bar-->
           <ion-progress-bar
-            *ngIf="selectedAyah === item.index && (mediaPlayerService.isPlaying || mediaPlayerService.isPaused)"
+            *ngIf="mediaPlayerService.playingCurrentAyah === ayah.index && (mediaPlayerService.isPlaying || mediaPlayerService.isPaused)"
             color="primary" [value]="mediaPlayerService.currentTime/mediaPlayerService.getPlayerDuration()">
           </ion-progress-bar>
+          <!--progress-bar-->
 
-          <div class="player"
-          *ngIf="selectedAyah === item.index || (!mediaPlayerService.isPlaying || mediaPlayerService.isPaused)">
-          <ion-icon *ngIf="!mediaPlayerService.isPlaying && !mediaPlayerService.isPaused"
-            (click)="playAyah(item.index);" name="play"></ion-icon>
-          <!--scrollToElement(i)-->
-          <ion-icon *ngIf="mediaPlayerService.isPlaying && !mediaPlayerService.isPaused"
-            (click)="mediaPlayerService.stopAudio(); selectedAyah = null" name="stop"></ion-icon>
-        </div>
-          <section *ngIf="item.ayaNumber === 1" class="suraTitle">
-            <img src="assets/img/surah_title.gif" alt="Quran sura title">
-            <h3>{{quranService.suraList[(+item.sura)-1]?.name}} - {{quranService.suraList[(+item.sura)-1]?.tname}}</h3>
-          </section>
+          <div class="ayah__header" (click)="ayah.showHeader = false">
+            <h4 class="title">
+              {{ayah.ayaNumber}}.
+            </h4>
+            <div class="icons">
+              <!--favorite icons-->
+              <ion-icon *ngIf="!storage.isFavorite(ayah)" name="heart-outline" (click)="storage.addToFavorites(ayah)">
+              </ion-icon>
+              <ion-icon *ngIf="storage.isFavorite(ayah)" class="red" name="heart"
+                (click)="storage.removeFromFavorites(ayah)"></ion-icon>
+              <!--favorite icons-->
 
-          <div class="verse_key" *ngIf="(showArabic || showTranslation || showTafsir) && item.ayaNumber !== 1">
+              <ion-icon name="share-social"></ion-icon>
+            </div>
 
-            <p *ngIf="suraList">Sura {{quranService.suraList[(+item.sura)-1]?.tname}}: {{item.ayaNumber}}. ajet</p>
+            <!--player-->
+            <div class="player" [class.show]="ayah.showHeader"
+              *ngIf="mediaPlayerService.playingCurrentAyah === ayah.index || (!mediaPlayerService.isPlaying || mediaPlayerService.isPaused)">
+              <ion-icon *ngIf="!mediaPlayerService.isPlaying && !mediaPlayerService.isPaused"
+                (click)="playAyah(ayah,i+1);" name="play"></ion-icon>
+              <!--scrollToElement(i)-->
+              <ion-icon *ngIf="mediaPlayerService.isPlaying && !mediaPlayerService.isPaused"
+                (click)="mediaPlayerService.removePlayer(); mediaPlayerService.playingCurrentAyah = null" name="stop">
+              </ion-icon>
+            </div>
+            <!--player-->
           </div>
 
-          <p class="arabic_text" *ngIf="showArabic">{{item.aya}}</p>
-
-          <div class="item" *ngIf="showTranslation">
-            <span>Prijevod:</span>
-            <p class="translation">{{item.korkutsTranslation}}</p>
+          <div class="ayah__info">
+            <p class="arabic">{{ayah.aya}}</p>
+            <div class="item">
+              <span class="item__title">Prijevod:</span>
+              <p class="item__content">{{ayah.korkutsTranslation}}</p>
+            </div>
+            <div>
+              <span class="item__title">Tefsir:</span>
+              <p class="item__content">{{ayah.tafsir}}</p>
+            </div>
           </div>
-
-          <div class="item" *ngIf="showTafsir">
-            <span>Tefsir:</span>
-            <p class="tafsir">{{item.tafsir}}</p>
-          </div>
-          <p class="end"></p>
         </div>
       </div>
     </div>
-    <div class="swiper" color="primary">
-      <ng-container *ngIf="selectedAyah && mediaPlayerService.isPlaying">
-        <div class="player">
-          <ion-icon name="stop" style="margin-left: 15px;"
-          (click)="mediaPlayerService.stopAudio(); selectedAyah = null"></ion-icon>
 
-        </div>
-          <ion-select style="margin-left: 20px; background: transparent; max-width: 60%;" interface="popover" #select [(ngModel)]="quranService.qari"
-            (ngModelChange)="quranService.changeQari(select.value)" class="ion-select form-control" name="qari" #qari>
-            <ion-select-option *ngFor="let item of quranService.qariList" value="{{item.identifier}}">{{item.englishName}}
+      <!--global player-->
+      <ng-container *ngIf="mediaPlayerService.player">
+        <div class="global-player">
+          <ion-select class="left-select" [(ngModel)]="mediaPlayerService.selectedPlayOption" interface="popover"
+            #playerOptions>
+            <ion-select-option *ngFor="let option of mediaPlayerService.playOptions" [value]="option.value">
+              {{option.name}}</ion-select-option>
+          </ion-select>
+
+          <div class="icon">
+            <ion-icon class="icon__pause" name="pause" *ngIf="mediaPlayerService.isPlaying"
+              (click)="mediaPlayerService.pauseAudio();">
+            </ion-icon>
+            <ion-icon class="icon__play" name="play" *ngIf="mediaPlayerService.isPaused"
+              (click)="mediaPlayerService.continueAudio();">
+            </ion-icon>
+          </div>
+
+          <ion-select class="right-select" interface="popover" #select [(ngModel)]="quranService.qari"
+            (ngModelChange)="quranService.changeQari(select.value)" name="qari" #qari>
+            <ion-select-option *ngFor="let item of quranService.qariList" value="{{item.identifier}}">
+              {{item.englishName}}
             </ion-select-option>
           </ion-select>
+        </div>
+
       </ng-container>
+      <!--global player end-->
 
-
-      <ng-container *ngIf="!selectedAyah || !mediaPlayerService.isPlaying">
-        <div class="icon-wrapper left" [class.disabled]="quranService.currentPage === 604" (click)="onSuraChanged(+quranService.currentPage + 1)">
+      <div class="swiper" color="primary">
+        <div class="icon-wrapper left" [class.disabled]="quranService.currentPage === 604"
+          (click)="onSuraChanged(+quranService.currentPage + 1)">
           <ion-icon style="margin-right: 30px;" class="next-icon" name="arrow-back-outline"></ion-icon>
         </div>
-          <div class="currentPage">
-            <ion-text>
-              {{quranService.currentPage}}
-            </ion-text>
-          <ion-checkbox color="primary" (ionChange)="markPage($event)" [checked]="trackerService.isTranslationPageCompleted(quranService.currentPage)"></ion-checkbox>
-          </div>
-          <div class="icon-wrapper right" [class.disabled]="quranService.currentPage === 1" (click)="onSuraChanged(+quranService.currentPage - 1)">
-            <ion-icon style="margin-left: 30px;" class="prev-icon" name="arrow-forward-outline"></ion-icon>
-          </div>
-      </ng-container>
-
-
+        <div class="currentPage">
+          <ion-text>
+            {{quranService.currentPage}}
+          </ion-text>
+          <!-- <ion-checkbox color="primary" (ionChange)="markPage($event)"
+            [checked]="trackerService.isQuranPageCompleted(quranService.currentPage)"></ion-checkbox> -->
+        </div>
+        <div class="icon-wrapper right" [class.disabled]="quranService.currentPage === 1"
+          (click)="onSuraChanged(+quranService.currentPage - 1)">
+          <ion-icon style="margin-left: 30px;" class="prev-icon" name="arrow-forward-outline"></ion-icon>
+        </div>
       </div>
 
+  </main>
 </ion-content>

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { QuranService } from '../quran.service';
 import { BookmarksItem, BookmarksService } from './bookmarks.service';
@@ -8,12 +8,9 @@ import { BookmarksItem, BookmarksService } from './bookmarks.service';
   templateUrl: './bookmarks.page.html',
   styleUrls: ['./bookmarks.page.scss'],
 })
-export class BookmarksPage implements OnInit {
+export class BookmarksPage {
 
   constructor(public bookmarksService: BookmarksService, private quranService: QuranService, private router: Router) { }
-
-  ngOnInit() {
-  }
 
   deleteBookmark(pageNumber){
     const item: BookmarksItem = {

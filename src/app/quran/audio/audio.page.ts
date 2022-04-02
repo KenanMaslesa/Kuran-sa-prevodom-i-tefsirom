@@ -316,7 +316,7 @@ export class AudioPage implements OnInit {
   }
 
   getSuraList() {
-    this.quranService.getListOfSura().subscribe((response) => {
+    this.quranService.getSuraList().subscribe((response) => {
       this.suraList = response;
     });
   }
@@ -331,8 +331,8 @@ export class AudioPage implements OnInit {
       stringIndex = numberIndex.toString();
     }
     this.selectedSuraIndex = +index;
-    this.mediaPlayerService.playAudio(
-      `https://download.quranicaudio.com/quran/${this.qari}/${stringIndex}.mp3`
-    );
+    // this.mediaPlayerService.playAudio(
+    //   `https://download.quranicaudio.com/quran/${this.qari}/${stringIndex}.mp3`
+    // );
   }
 }

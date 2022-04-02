@@ -92,7 +92,7 @@ export class TrackerPage implements OnInit {
   }
 
   getSuraList() {
-    this.suraList = this.quranService.suraList;
+    // this.suraList = this.quranService.suraList;
     this.loadMoreSura(this.loadMoreIndex++);
   }
 
