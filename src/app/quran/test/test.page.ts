@@ -1,16 +1,15 @@
 import { Component, ViewChild } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
 import { IonSlides } from '@ionic/angular';
 import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { QuranService } from '../quran.service';
 
 @Component({
-  selector: 'app-holy-quran',
-  templateUrl: './holy-quran.page.html',
-  styleUrls: ['./holy-quran.page.scss'],
+  selector: 'app-test',
+  templateUrl: './test.page.html',
+  styleUrls: ['./test.page.scss'],
 })
-export class HolyQuranPage {
+export class TestPage {
   @ViewChild('slider') private slider: IonSlides;
   newIndex: number;
   quranWordsForCurrentPage = [];
@@ -24,14 +23,8 @@ export class HolyQuranPage {
   };
   allQuranWords = [];
   allQuranWords$: Observable<any>;
-  routePageId: number;
 
-
-  constructor(public quranService: QuranService, private route: ActivatedRoute) {
-    this.routePageId = +this.route.snapshot.params.page;
-    if(this.routePageId) {
-      this.quranService.setCurrentPage(this.routePageId);
-    }
+  constructor(public quranService: QuranService) {
     this.allQuranWords$ = this.quranService.getAllQuranWords().pipe(
       tap((response) => {
         const newArray = [];
@@ -84,19 +77,4 @@ export class HolyQuranPage {
     });
     console.log('loadNext');
   }
-    //AUDIO
-    playWord(url) {
-      let audioUrl = 'https://dl.salamquran.com/wbw/';
-      audioUrl += url;
-      const audio = new Audio(audioUrl);
-      audio.play();
-    }
-    playAyat(ayahIndex) {
-      const activeAyahs = document.querySelectorAll('.ayah'+ayahIndex);
-      activeAyahs.forEach(element => {
-        element.classList.add('active');
-      });
-      const audio = new Audio(`https://cdn.islamic.network/quran/audio/${this.quranService.qari}/${ayahIndex}.mp3`);
-        audio.play();
-    }
 }

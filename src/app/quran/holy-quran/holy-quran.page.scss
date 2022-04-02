@@ -6252,6 +6252,14 @@ ion-slide {
   display: block;
   min-height: 85vh;
   width: 100% !important;
+
+  &:nth-child(1) {
+    opacity: 0;
+  }
+  &:nth-child(3) {
+    opacity: 0;
+  }
+
 }
 ion-slides {
   direction: rtl;

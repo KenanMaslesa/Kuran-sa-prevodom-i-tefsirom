@@ -1,26 +1,3 @@
-<ion-header class="{{quranService.showHeaderAndTabs?'show':'hide'}}"
-  (click)="quranService.showHeaderAndTabs=!quranService.showHeaderAndTabs">
-  <ion-toolbar color="primary">
-    <ion-title>
-      <ng-container>
-        Naziv sure
-      </ng-container>
-    </ion-title>
-
-    <!-- <ion-icon slot="end" name="bookmark-outline" *ngIf="!bookmarksService.checkIsInBookmark(quranService.currentPage)"
-      (click)="addBookmark(quranService.currentPage);quranService.showHeaderAndTabs=!quranService.showHeaderAndTabs">
-    </ion-icon>
-    <ion-icon slot="end" name="bookmark" *ngIf="bookmarksService.checkIsInBookmark(quranService.currentPage)"
-      (click)="deleteBookmark(quranService.currentPage);quranService.showHeaderAndTabs=!quranService.showHeaderAndTabs">
-    </ion-icon>
-    <ion-icon slot="end" name="search" *ngIf="!showSearchHeader"
-      (click)="quranService.showHeaderAndTabs=!quranService.showHeaderAndTabs;showSearchHeader=true">
-    </ion-icon>
-    <ion-icon slot="end" name="close-outline" *ngIf="showSearchHeader"
-    (click)="quranService.showHeaderAndTabs=!quranService.showHeaderAndTabs;showSearchHeader=false"></ion-icon> -->
-  </ion-toolbar>
-</ion-header>
-
 <ion-content>
   <div class="main {{quranService.showHeaderAndTabs?'':'without-tabs'}}" *ngIf="allQuranWords$ | async as quranWords">
     <ion-slides #slider (ionSlideNextStart)="loadNext()" (ionSlidePrevStart)="loadPrev()" [options]="slideOpts">
@@ -59,4 +36,8 @@
       </ion-slide>
     </ion-slides>
   </div>
+
 </ion-content>
+
+
+<ng-container *ngIf="allQuranWords$ | async as quranWords"></ng-container>
