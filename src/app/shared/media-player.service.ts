@@ -61,7 +61,6 @@ export class MediaPlayerService {
       onend: () => {
         this.isPlaying = false;
         this.clearWatchCurrentTimeInterval();
-
           ayahIndexInHolyQuran = ayahIndexInHolyQuran + 1;
           ayahNumberOnCurrentPage = ayahNumberOnCurrentPage + 1;
           if(ayahNumberOnCurrentPage >= numberOfAyahsOnCurrentPage) {
@@ -96,6 +95,7 @@ export class MediaPlayerService {
         alert('onplayerror setAudioCurrentTime:' + error);
       },
     });
+    // this.player.rate(2);
     this.player.play();
     this.watchCurrentTime();
   }

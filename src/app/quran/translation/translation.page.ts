@@ -20,7 +20,7 @@ export class TranslationPage {
   dataStream$: Observable<any>;
   subs: Subscription = new Subscription();
   loadMoreIndex = 0;
-  ayahList: Tafsir;
+  ayahList = [];
   ayahListLazyLoaded = [];
   numberOfLoadedPagesOnSlide = 1;
   showLoader = false;
@@ -30,10 +30,11 @@ export class TranslationPage {
   sliderActiveIndex: number;
   isCurrentPageInBookmarks = false;
   moreInfoAboutSura = false;
-  startPage = 1;
-  ayahsPerPage = [];
-  pagesArray = [];
-
+  slideOpts = {
+    loop: true,
+    initialSlide: 1,
+    // speed:500
+  };
   constructor(
     private route: ActivatedRoute,
     public quranService: QuranService,
@@ -45,61 +46,59 @@ export class TranslationPage {
     this.routePageId = +this.route.snapshot.params.page;
     this.routeAyahId = +this.route.snapshot.params.ayah;
 
-    if (this.routePageId) {
-      this.quranService.setCurrentPage(this.routePageId);
-    }
-
     //switch slide when last ayah on current page is played
     this.subs.add(
       this.mediaPlayerService.switchSlide.subscribe(() => {
-        this.setStream();
-        setTimeout(() => {
-          this.mediaPlayerService.slideSwitched.emit(true);
-        }, 1000);
+        this.quranService.setCurrentPage(this.quranService.currentPage-1);
+        this.slides.slideTo(this.quranService.currentPage).finally(()=> {
+          setTimeout(() => {
+            this.mediaPlayerService.slideSwitched.emit(true);
+          }, 1000);
+        });
       })
     );
 
     //scroll into playing ayah
     this.subs.add(
-      this.mediaPlayerService.scrollIntoPlayingAyah.subscribe(
-        (activeAyahId) => {
-          this.scroll(activeAyahId);
-        }
-      )
+      this.mediaPlayerService.scrollIntoPlayingAyah.subscribe(activeAyahId => {
+        console.log('this.mediaPlayerService.scrollIntoPlayingAyah.subscribe: SCROL');
+        this.scroll(activeAyahId);
+      })
     );
 
-    this.setStream();
-  }
-
-  setStream() {
-    this.dataStream$ = this.quranService
-      .getTafsirAndTranslationForPage(this.quranService.currentPage)
-      .pipe(
-        tap((response) => {
-          this.ayahList = response;
-        })
-      );
   }
 
   ionViewWillLeave() {
     this.subs.unsubscribe();
-    // this.router.navigateByUrl('/', { replaceUrl: true }); //da ukloni sa steka stranicu da bi samo skrolalo kad se pusti audio ali pravi problem sa tabovima/navigacijom, skontati netso
   }
 
   ionViewWillEnter() {
-    if (this.routePageId) {
-      this.quranService.setCurrentPage(this.routePageId)
-    }
-    this.setStream();
-  }
-
-  onSuraChanged(page) {
-    this.quranService.setCurrentPage(page);
     this.setStream();
   }
 
   ionViewDidLeave() {
     this.mediaPlayerService.removePlayer();
+  }
+
+  loadMoreByFragmentAndThenScroll(fragment) {
+    this.showLoader = true;
+
+    for (let i = 0; i <= fragment; i++) {
+      this.loadMoreIndex++;
+      this.ayahListLazyLoaded.push(this.ayahList[i]);
+    }
+      this.slides.slideTo(this.routePageId).finally(()=> {
+        if(this.routeAyahId) {
+          setTimeout(() => {
+            this.scroll(this.routeAyahId);
+            this.showLoader = false;
+            }, 2500);
+        }
+        else {
+          this.showLoader = false;
+        }
+      });
+
   }
 
   slideTo(page) {
@@ -108,29 +107,68 @@ export class TranslationPage {
   }
 
   scroll(id) {
-    console.log('SCOLL INTO AYAH WITH ID:' + id);
     const ayah = document.getElementById(id);
     ayah.scrollIntoView({
-      behavior: 'smooth',
+      behavior: 'smooth'
     });
   }
 
-  playAyah(ayah, ayahNumberOnCurrentPage) {
+  loadNext() {
+    if(this.quranService.currentPage !== 1) {
+      this.slides.lockSwipeToPrev(false);
+    }
+    this.ayahList = [];
+    this.quranService.setCurrentPage(this.quranService.currentPage+1);
+    this.setStream();
+    this.slides.slideTo(1, 50, false);
+  }
+
+  loadPrev() {
+    if(this.quranService.currentPage === 1) {
+      this.slides.lockSwipeToPrev(true);
+    }
+
+    this.ayahList = [];
+    this.quranService.setCurrentPage(this.quranService.currentPage-1);
+    this.setStream();
+
+    this.slides.slideTo(1, 50, false);
+  }
+
+  setStream() {
+    this.ayahList = [];
+    this.dataStream$ = this.quranService
+      .getTafsirAndTranslationForPage(this.quranService.currentPage)
+      .pipe(
+        tap((response) => {
+          this.ayahList.push(response.ayahsPerPages);
+        })
+      );
+  }
+
+  playAyah(ayahIndex, ayahNumberOnCurrentPage) {
     this.mediaPlayerService.playAudio(
-      ayah.index,
+      ayahIndex,
       ayahNumberOnCurrentPage,
       this.quranService.currentPage,
-      this.ayahList.ayahsPerPages.length
+      this.ayahList[0].length,
     );
   }
 
-  ionContentScrollToTop(duration = 2000) {
-    this.ionContent.scrollToTop(duration);
-  }
+  loadMorePages() {
+    let counter = 0;
+    for (
+      let i = this.loadMoreIndex * this.numberOfLoadedPagesOnSlide;
+      i < this.ayahList.length;
+      i++
+    ) {
+      this.ayahListLazyLoaded.push(this.ayahList[i]);
+      counter++;
 
-  disableInfiniteScroll(value: boolean) {
-    if (this.infiniteScroll) {
-      this.infiniteScroll.disabled = value;
+      if (counter >= this.numberOfLoadedPagesOnSlide) {
+        this.loadMoreIndex++;
+        return;
+      }
     }
   }
 
@@ -139,15 +177,6 @@ export class TranslationPage {
       return 'Mekki';
     } else if (type === 'Medinan') {
       return 'Medini';
-    }
-  }
-
-  setSliderActiveIndex(suraInfo) {
-    if (this.slides !== undefined) {
-      this.slides.getActiveIndex().then((index: number) => {
-        this.sliderActiveIndex = index;
-        this.checkIsPageInBookmarks(suraInfo);
-      });
     }
   }
 

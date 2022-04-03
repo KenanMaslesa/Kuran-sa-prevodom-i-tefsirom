@@ -1,14 +1,14 @@
 <ion-content>
   <!-- <app-loader *ngIf="showLoader || mediaPlayerService.isLoading"></app-loader> -->
   <main *ngIf="dataStream$ | async as vm">
-    <header>
+    <header *ngIf="vm.suraInfo">
       <ion-icon class="backButton" name="arrow-back-outline"></ion-icon>
       <div class="suraInfo">
         <h4>
-          Sura name
+          {{vm.suraInfo.name.bosnianTranscription}} - {{vm.suraInfo.name.bosnian}}
         </h4>
         <p class="currentPage">
-          {{quranService.currentPage}}
+          {{!sliderActiveIndex?'uvodna stranica':sliderActiveIndex+' / '+ vm.suraInfo.totalPages}}
         </p>
       </div>
 
@@ -26,56 +26,66 @@
     </header>
 
     <div style="margin-top: 80px;">
-      <div *ngFor="let ayah of vm.ayahsPerPages; let i = index">
-        <div class="ayah" [class.active]="routeAyahId === ayah.ayaNumber" id="{{ayah.index}}">
-          <!--progress-bar-->
-          <ion-progress-bar
-            *ngIf="mediaPlayerService.playingCurrentAyah === ayah.index && (mediaPlayerService.isPlaying || mediaPlayerService.isPaused)"
-            color="primary" [value]="mediaPlayerService.currentTime/mediaPlayerService.getPlayerDuration()">
-          </ion-progress-bar>
-          <!--progress-bar-->
+      <ion-slides #slider (ionSlideNextStart)="loadNext()" (ionSlidePrevStart)="loadPrev()" [options]="slideOpts">
+        <ion-slide class="slide" *ngFor="let page of ayahList">
+          <div>
+            <ng-container *ngFor="let ayah of page; let i = index">
+              <div class="ayah" [class.active]="routeAyahId === ayah.ayaNumber" id="{{ayah.index}}">
+                <!--progress-bar-->
+                <ion-progress-bar
+                  *ngIf="mediaPlayerService.playingCurrentAyah === ayah.index && (mediaPlayerService.isPlaying || mediaPlayerService.isPaused)"
+                  color="primary" [value]="mediaPlayerService.currentTime/mediaPlayerService.getPlayerDuration()">
+                </ion-progress-bar>
+                <!--progress-bar-->
 
-          <div class="ayah__header" (click)="ayah.showHeader = false">
-            <h4 class="title">
-              {{ayah.ayaNumber}}.
-            </h4>
-            <div class="icons">
-              <!--favorite icons-->
-              <ion-icon *ngIf="!storage.isFavorite(ayah)" name="heart-outline" (click)="storage.addToFavorites(ayah)">
-              </ion-icon>
-              <ion-icon *ngIf="storage.isFavorite(ayah)" class="red" name="heart"
-                (click)="storage.removeFromFavorites(ayah)"></ion-icon>
-              <!--favorite icons-->
+                <div class="ayah__header" (click)="ayah.showHeader = false">
+                  <h4 class="title">
+                    {{ayah.ayaNumber}}.
+                  </h4>
+                  <div class="icons">
+                    <!--favorite icons-->
+                    <ion-icon *ngIf="!storage.isFavorite(ayah)" name="heart-outline"
+                      (click)="storage.addToFavorites(ayah)">
+                    </ion-icon>
+                    <ion-icon *ngIf="storage.isFavorite(ayah)" class="red" name="heart"
+                      (click)="storage.removeFromFavorites(ayah)"></ion-icon>
+                    <!--favorite icons-->
 
-              <ion-icon name="share-social"></ion-icon>
-            </div>
+                    <ion-icon name="share-social"></ion-icon>
+                  </div>
 
-            <!--player-->
-            <div class="player" [class.show]="ayah.showHeader"
-              *ngIf="mediaPlayerService.playingCurrentAyah === ayah.index || (!mediaPlayerService.isPlaying || mediaPlayerService.isPaused)">
-              <ion-icon *ngIf="!mediaPlayerService.isPlaying && !mediaPlayerService.isPaused"
-                (click)="playAyah(ayah,i+1);" name="play"></ion-icon>
-              <!--scrollToElement(i)-->
-              <ion-icon *ngIf="mediaPlayerService.isPlaying && !mediaPlayerService.isPaused"
-                (click)="mediaPlayerService.removePlayer(); mediaPlayerService.playingCurrentAyah = null" name="stop">
-              </ion-icon>
-            </div>
-            <!--player-->
+                  <!--player-->
+                  <div class="player" [class.show]="ayah.showHeader"
+                    *ngIf="mediaPlayerService.playingCurrentAyah === ayah.index || (!mediaPlayerService.isPlaying || mediaPlayerService.isPaused)">
+                    <ion-icon *ngIf="!mediaPlayerService.isPlaying && !mediaPlayerService.isPaused"
+                      (click)="playAyah(ayah.index, ayah.ayaNumber);" name="play"></ion-icon>
+                    <!--scrollToElement(i)-->
+                    <ion-icon *ngIf="mediaPlayerService.isPlaying && !mediaPlayerService.isPaused"
+                      (click)="mediaPlayerService.removePlayer(); mediaPlayerService.playingCurrentAyah = null"
+                      name="stop"></ion-icon>
+                  </div>
+                  <!--player-->
+                </div>
+
+                <div class="ayah__info">
+                  <p class="arabic">{{ayah.aya}}</p>
+                  <div class="item">
+                    <span class="item__title">Prijevod:</span>
+                    <p class="item__content">{{ayah.korkutsTranslation}}</p>
+                  </div>
+                  <div>
+                    <span class="item__title">Tefsir:</span>
+                    <p class="item__content">{{ayah.tafsir}}</p>
+                  </div>
+                </div>
+              </div>
+            </ng-container>
           </div>
-
-          <div class="ayah__info">
-            <p class="arabic">{{ayah.aya}}</p>
-            <div class="item">
-              <span class="item__title">Prijevod:</span>
-              <p class="item__content">{{ayah.korkutsTranslation}}</p>
-            </div>
-            <div>
-              <span class="item__title">Tefsir:</span>
-              <p class="item__content">{{ayah.tafsir}}</p>
-            </div>
-          </div>
-        </div>
-      </div>
+          <footer class="currentPageFooter">
+            {{sliderActiveIndex}}
+          </footer>
+        </ion-slide>
+      </ion-slides>
     </div>
 
       <!--global player-->
@@ -106,24 +116,5 @@
 
       </ng-container>
       <!--global player end-->
-
-      <div class="swiper" color="primary">
-        <div class="icon-wrapper left" [class.disabled]="quranService.currentPage === 604"
-          (click)="onSuraChanged(+quranService.currentPage + 1)">
-          <ion-icon style="margin-right: 30px;" class="next-icon" name="arrow-back-outline"></ion-icon>
-        </div>
-        <div class="currentPage">
-          <ion-text>
-            {{quranService.currentPage}}
-          </ion-text>
-          <!-- <ion-checkbox color="primary" (ionChange)="markPage($event)"
-            [checked]="trackerService.isQuranPageCompleted(quranService.currentPage)"></ion-checkbox> -->
-        </div>
-        <div class="icon-wrapper right" [class.disabled]="quranService.currentPage === 1"
-          (click)="onSuraChanged(+quranService.currentPage - 1)">
-          <ion-icon style="margin-left: 30px;" class="prev-icon" name="arrow-forward-outline"></ion-icon>
-        </div>
-      </div>
-
   </main>
 </ion-content>
