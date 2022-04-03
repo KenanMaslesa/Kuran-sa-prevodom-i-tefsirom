@@ -49,7 +49,6 @@ export class TranslationPage {
     //switch slide when last ayah on current page is played
     this.subs.add(
       this.mediaPlayerService.switchSlide.subscribe(() => {
-        this.quranService.setCurrentPage(this.quranService.currentPage-1);
         this.slides.slideTo(this.quranService.currentPage).finally(()=> {
           setTimeout(() => {
             this.mediaPlayerService.slideSwitched.emit(true);
@@ -108,9 +107,14 @@ export class TranslationPage {
 
   scroll(id) {
     const ayah = document.getElementById(id);
-    ayah.scrollIntoView({
-      behavior: 'smooth'
-    });
+    if(ayah){
+      ayah.scrollIntoView({
+        behavior: 'smooth'
+      });
+    }
+    else {
+      console.log('Nema ajeta sa ID: ' + id);
+    }
   }
 
   loadNext() {
@@ -146,12 +150,13 @@ export class TranslationPage {
       );
   }
 
-  playAyah(ayahIndex, ayahNumberOnCurrentPage) {
-    this.mediaPlayerService.playAudio(
-      ayahIndex,
-      ayahNumberOnCurrentPage,
+  playAyah(ayah, ayahOrderNumberOnPage) {
+    this.mediaPlayerService.playAudioForTranslationPage(
+      ayah.index,
+      ayah.ayaNumber,
+      this.ayahList,
       this.quranService.currentPage,
-      this.ayahList[0].length,
+      ayahOrderNumberOnPage
     );
   }
 

@@ -280,6 +280,10 @@ export class QuranService {
     return of(tefsir.getTafsirAndTranslationForPage(page));
   }
 
+  getNumberOfAyahsByPage(page): Observable<number>{
+    return of(tefsir.getNumberOfAyahsByPage(page));
+  }
+
   getTafsirAndTranslationForSura(suraId: number): Observable<any> {
     return of(tefsir.getTafsirAndTranslationForSura(+suraId));
   }

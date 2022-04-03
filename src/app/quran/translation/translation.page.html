@@ -8,7 +8,7 @@
           {{vm.suraInfo.name.bosnianTranscription}} - {{vm.suraInfo.name.bosnian}}
         </h4>
         <p class="currentPage">
-          {{!sliderActiveIndex?'uvodna stranica':sliderActiveIndex+' / '+ vm.suraInfo.totalPages}}
+          {{quranService.currentPage}}/604
         </p>
       </div>
 
@@ -58,7 +58,7 @@
                   <div class="player" [class.show]="ayah.showHeader"
                     *ngIf="mediaPlayerService.playingCurrentAyah === ayah.index || (!mediaPlayerService.isPlaying || mediaPlayerService.isPaused)">
                     <ion-icon *ngIf="!mediaPlayerService.isPlaying && !mediaPlayerService.isPaused"
-                      (click)="playAyah(ayah.index, ayah.ayaNumber);" name="play"></ion-icon>
+                      (click)="playAyah(ayah, i+1);" name="play"></ion-icon>
                     <!--scrollToElement(i)-->
                     <ion-icon *ngIf="mediaPlayerService.isPlaying && !mediaPlayerService.isPaused"
                       (click)="mediaPlayerService.removePlayer(); mediaPlayerService.playingCurrentAyah = null"

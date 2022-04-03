@@ -121,11 +121,15 @@ export class HolyQuranPage {
     }
 
     playAyah(ayahNumberOnCurrentPage, ayahIndex) {
-      this.mediaPlayerService.playAudio(
-        ayahIndex,
-        ayahNumberOnCurrentPage,
-        this.quranService.currentPage,
-        this.quranWordsForCurrentPage[0].words.length
+      this.subs.add(
+        this.quranService.getNumberOfAyahsByPage(this.quranService.currentPage).subscribe(numberOfAyahs => {
+          this.mediaPlayerService.playAudio(
+            ayahIndex,
+            ayahNumberOnCurrentPage,
+            this.quranService.currentPage,
+            numberOfAyahs
+          );
+        })
       );
     }
 }

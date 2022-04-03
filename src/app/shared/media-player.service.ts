@@ -61,14 +61,15 @@ export class MediaPlayerService {
       onend: () => {
         this.isPlaying = false;
         this.clearWatchCurrentTimeInterval();
-          ayahIndexInHolyQuran = ayahIndexInHolyQuran + 1;
-          ayahNumberOnCurrentPage = ayahNumberOnCurrentPage + 1;
-          if(ayahNumberOnCurrentPage >= numberOfAyahsOnCurrentPage) {
+        ayahIndexInHolyQuran = ayahIndexInHolyQuran + 1;
+        ayahNumberOnCurrentPage = ayahNumberOnCurrentPage + 1;
+
+          if(ayahNumberOnCurrentPage > numberOfAyahsOnCurrentPage) {
             this.quranService.setCurrentPage(++this.quranService.currentPage);
             currentPage = this.quranService.currentPage;
             ayahNumberOnCurrentPage = 1;
-            this.quranService.getTafsirAndTranslationForPage(currentPage).subscribe(response => {
-              numberOfAyahsOnCurrentPage = response.ayahsPerPages.length;
+            this.quranService.getNumberOfAyahsByPage(currentPage).subscribe(numberOfAyahs => {
+              numberOfAyahsOnCurrentPage = numberOfAyahs;
             });
             if(currentPage > 604) {
               alert('Proucen je zadnji ajet zadnje sure');
@@ -87,15 +88,87 @@ export class MediaPlayerService {
       onloaderror: (id, error) => {
         this.isLoading = false;
         this.isPlaying = false;
+        this.removePlayer();
         alert('onloaderror:' + error);
       },
       onplayerror: (id, error) => {
         this.isLoading = false;
         this.isPlaying = false;
-        alert('onplayerror setAudioCurrentTime:' + error);
+        this.removePlayer();
+        alert('onplayerror:' + error);
       },
     });
-    // this.player.rate(2);
+    this.player.rate(2);
+    this.player.play();
+    this.watchCurrentTime();
+  }
+
+  playAudioForTranslationPage(ayahIndexInHolyQuran, ayahIdOnPage, numberOfAyahsPerPages?, currentPage?, ayahOrderNumberOnPage?) {
+    let numberOfAyahsOnCurrentPage;
+    if(this.selectedPlayOption !== PlayerOptions.repeat) {
+       numberOfAyahsOnCurrentPage = numberOfAyahsPerPages[0].length;
+    }
+    this.audioUrl = `https://cdn.islamic.network/quran/audio/${this.quranService.qari}/${ayahIndexInHolyQuran}.mp3`;
+    this.playingCurrentAyah = ayahIndexInHolyQuran;
+    this.isLoading = true;
+    if (this.player) {
+      this.stopAudio();
+      this.removePlayer();
+    }
+    this.player = new Howl({
+      html5: true,
+      src: [this.audioUrl],
+      onplay: () => {
+        this.isPlaying = true;
+        this.isPaused = false;
+        this.isLoading = false;
+      },
+      onload: () => {
+        if(this.selectedPlayOption !== PlayerOptions.repeat) {
+          this.scrollIntoPlayingAyah.emit(ayahIndexInHolyQuran);
+        }
+      },
+      onend: () => {
+        this.isPlaying = false;
+        this.clearWatchCurrentTimeInterval();
+        if(this.selectedPlayOption === PlayerOptions.repeat) {
+          this.playAudioForTranslationPage(ayahIndexInHolyQuran, ayahIdOnPage, numberOfAyahsPerPages, currentPage, ayahOrderNumberOnPage);
+        }
+        else {
+          ayahIndexInHolyQuran = ayahIndexInHolyQuran + 1;
+          ayahIdOnPage = ayahIdOnPage + 1;
+          if(ayahOrderNumberOnPage >= numberOfAyahsOnCurrentPage) {
+            currentPage = currentPage + 1;
+            if(currentPage > 604) {
+              alert('Proucen je zadnji ajet ove sure');
+              return;
+            }
+            this.switchSlide.emit(true);
+            ayahOrderNumberOnPage = 1;
+            this.slideSwitched.subscribe(()=> {
+              this.playAudioForTranslationPage(ayahIndexInHolyQuran, ayahIdOnPage, numberOfAyahsPerPages, currentPage, ayahOrderNumberOnPage);
+            });
+          }
+          else {
+            ayahOrderNumberOnPage = ayahOrderNumberOnPage + 1;
+            this.playAudioForTranslationPage(ayahIndexInHolyQuran, ayahIdOnPage, numberOfAyahsPerPages, currentPage, ayahOrderNumberOnPage);
+          }
+        }
+
+      },
+      onloaderror: (id, error) => {
+        this.isLoading = false;
+        this.isPlaying = false;
+        this.removePlayer();
+        alert('onloaderror:' + error);
+      },
+      onplayerror: (id, error) => {
+        this.isLoading = false;
+        this.isPlaying = false;
+        this.removePlayer();
+        alert('onplayerror:' + error);
+      },
+    });
     this.player.play();
     this.watchCurrentTime();
   }
