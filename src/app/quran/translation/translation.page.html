@@ -1,5 +1,9 @@
-<ion-header class="{{quranService.showHeaderAndTabs?'show':'hide'}}"
-  (click)="quranService.showHeaderAndTabs=!quranService.showHeaderAndTabs">
+<!--exit fullscreen-->
+<ion-icon class="exit-fullscreen" name="exit-outline" *ngIf="quranService.showHeaderAndTabs === false"
+  (click)="quranService.showHeaderAndTabs = true"></ion-icon>
+<!--exit fullscreen-->
+
+<ion-header class="{{quranService.showHeaderAndTabs?'show':'hide'}}">
   <ion-toolbar color="primary" *ngIf="sura$ | async as sura">
     <ion-title style="font-size: 16px;" slot="start">
       {{sura.name.bosnianTranscription}}
@@ -10,10 +14,14 @@
         <ion-icon *ngIf="!checkIsPageInBookmarks()" name="bookmark-outline"
           (click)="addTafsirBookmark(sura); quranService.showHeaderAndTabs=!quranService.showHeaderAndTabs">
         </ion-icon>
-        <ion-icon *ngIf="checkIsPageInBookmarks()"  name="bookmark"
+        <ion-icon *ngIf="checkIsPageInBookmarks()" name="bookmark"
           (click)="deleteTafsirBookmark(sura); quranService.showHeaderAndTabs=!quranService.showHeaderAndTabs">
         </ion-icon>
         <!--bookmarks icons-->
+
+        <!--fullscreen-->
+        <ion-icon slot="end" name="expand-outline" (click)="quranService.showHeaderAndTabs = false"></ion-icon>
+        <!--fullscreen-->
       </div>
     </ion-buttons>
   </ion-toolbar>
@@ -22,7 +30,7 @@
 
 <ion-content>
   <!-- <app-loader *ngIf="showLoader || mediaPlayerService.isLoading"></app-loader> -->
-  <main *ngIf="dataStream$ | async as vm">
+  <main *ngIf="dataStream$ | async as vm" [class.fullscreen]="!quranService.showHeaderAndTabs">
 
     <div>
       <ion-slides #slider (ionSlideNextStart)="loadNext()" (ionSlidePrevStart)="loadPrev()" [options]="slideOpts">
@@ -87,33 +95,33 @@
       </ion-slides>
     </div>
 
-      <!--global player-->
-      <ng-container *ngIf="mediaPlayerService.player">
-        <div class="global-player">
-          <ion-select class="left-select" [(ngModel)]="mediaPlayerService.selectedPlayOption" interface="popover"
-            #playerOptions>
-            <ion-select-option *ngFor="let option of mediaPlayerService.playOptions" [value]="option.value">
-              {{option.name}}</ion-select-option>
-          </ion-select>
+    <!--global player-->
+    <ng-container *ngIf="mediaPlayerService.player">
+      <div class="global-player">
+        <ion-select class="left-select" [(ngModel)]="mediaPlayerService.selectedPlayOption" interface="popover"
+          #playerOptions>
+          <ion-select-option *ngFor="let option of mediaPlayerService.playOptions" [value]="option.value">
+            {{option.name}}</ion-select-option>
+        </ion-select>
 
-          <div class="icon">
-            <ion-icon class="icon__pause" name="pause" *ngIf="mediaPlayerService.isPlaying"
-              (click)="mediaPlayerService.pauseAudio();">
-            </ion-icon>
-            <ion-icon class="icon__play" name="play" *ngIf="mediaPlayerService.isPaused"
-              (click)="mediaPlayerService.continueAudio();">
-            </ion-icon>
-          </div>
-
-          <ion-select class="right-select" interface="popover" #select [(ngModel)]="quranService.qari"
-            (ngModelChange)="quranService.changeQari(select.value)" name="qari" #qari>
-            <ion-select-option *ngFor="let item of quranService.qariList" value="{{item.identifier}}">
-              {{item.englishName}}
-            </ion-select-option>
-          </ion-select>
+        <div class="icon">
+          <ion-icon class="icon__pause" name="pause" *ngIf="mediaPlayerService.isPlaying"
+            (click)="mediaPlayerService.pauseAudio();">
+          </ion-icon>
+          <ion-icon class="icon__play" name="play" *ngIf="mediaPlayerService.isPaused"
+            (click)="mediaPlayerService.continueAudio();">
+          </ion-icon>
         </div>
 
-      </ng-container>
-      <!--global player end-->
+        <ion-select class="right-select" interface="popover" #select [(ngModel)]="quranService.qari"
+          (ngModelChange)="quranService.changeQari(select.value)" name="qari" #qari>
+          <ion-select-option *ngFor="let item of quranService.qariList" value="{{item.identifier}}">
+            {{item.englishName}}
+          </ion-select-option>
+        </ion-select>
+      </div>
+
+    </ng-container>
+    <!--global player end-->
   </main>
 </ion-content>

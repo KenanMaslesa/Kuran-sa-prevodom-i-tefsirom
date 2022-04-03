@@ -141,3 +141,12 @@ ion-header {
   scroll-margin-top changes the vertical scroll destination, distancing the target element from the top of the viewport. Setting it to the same height as the header will ensure that it doesn't end up behind the header.
   */
 }
+
+.exit-fullscreen {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  color: var(--ion-color-primary);
+  z-index: 999;
+  font-size: 25px;
+}
