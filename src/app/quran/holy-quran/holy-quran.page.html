@@ -1,12 +1,12 @@
 <ion-header class="{{quranService.showHeaderAndTabs?'show':'hide'}}"
   (click)="quranService.showHeaderAndTabs=!quranService.showHeaderAndTabs">
-  <ion-toolbar color="primary" *ngIf="sura$ | async as sura">
+  <ion-toolbar color="primary" *ngIf="{sura: sura$ | async, juz: juz$ | async} as pageDetails">
     <ion-title slot="start">
-      {{sura.name.bosnianTranscription}} - {{sura.name.bosnian}}
+      {{pageDetails.sura.name.bosnianTranscription}} - {{pageDetails.juz.id}}.džuz
     </ion-title>
     <!--bookmarks-->
     <ion-icon slot="end" name="bookmark-outline" *ngIf="!checkIsInBookmark()"
-      (click)="addBookmark(sura);quranService.showHeaderAndTabs=!quranService.showHeaderAndTabs">
+      (click)="addBookmark(pageDetails.sura);quranService.showHeaderAndTabs=!quranService.showHeaderAndTabs">
     </ion-icon>
     <ion-icon slot="end" name="bookmark" *ngIf="checkIsInBookmark()"
       (click)="deleteBookmark(quranService.currentPage);quranService.showHeaderAndTabs=!quranService.showHeaderAndTabs">

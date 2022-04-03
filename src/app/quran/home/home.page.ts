@@ -45,9 +45,7 @@ export class HomePage implements OnInit {
   ngOnInit() {}
 
   ionViewDidEnter() {
-    setTimeout(() => {
       this.quranService.showLoader = false;
-    }, 1000);
   }
 
   searchByTerm(searchTerm) {

@@ -5,7 +5,7 @@ import { Observable, Subscription } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { MediaPlayerService } from 'src/app/shared/media-player.service';
 import { BookMarkItem, BookmarksService } from '../bookmarks/bookmarks.service';
-import { QuranWords, Sura } from '../quran.models';
+import { Juz, QuranWords, Sura } from '../quran.models';
 import { QuranService } from '../quran.service';
 
 @Component({
@@ -27,6 +27,7 @@ export class HolyQuranPage {
   routePageId: number;
   ayahCounter: number;
   sura$: Observable<Sura>;
+  juz$: Observable<Juz>;
 
   constructor(
     public quranService: QuranService,
@@ -56,6 +57,7 @@ export class HolyQuranPage {
 
   getWordsForCurrentPage(): Subscription {
     this.getSuraByPageNumber(this.quranService.currentPage);
+    this.getJuzByPageNumber(this.quranService.currentPage);
     return this.quranService
       .getQuranWordsByPage(this.quranService.currentPage)
       .subscribe((response) => {
@@ -65,6 +67,10 @@ export class HolyQuranPage {
 
   getSuraByPageNumber(page) {
     this.sura$ = this.quranService.getSuraByPageNumber(page);
+  }
+
+  getJuzByPageNumber(page) {
+    this.juz$ = this.quranService.getJuzByPageNumber(page);
   }
 
   ionViewWillLeave() {
@@ -79,6 +85,8 @@ export class HolyQuranPage {
   }
 
   loadPrev() {
+    this.quranService.showLoader = true;
+
     if (this.quranService.currentPage === 1) {
       this.slider.lockSwipeToPrev(true);
     }
@@ -86,10 +94,15 @@ export class HolyQuranPage {
     this.quranService.setCurrentPage(this.quranService.currentPage - 1);
     this.quranWordsForCurrentPage = [];
     this.subs.add(this.getWordsForCurrentPage());
-    this.slider.slideTo(1, 50, false);
+    this.slider.slideTo(1, 50, false).then(()=> {
+      setTimeout(() => {
+        this.quranService.showLoader = false;
+      }, 200);
+    });
   }
 
   loadNext() {
+    this.quranService.showLoader = true;
     if (this.quranService.currentPage !== 1) {
       this.slider.lockSwipeToPrev(false);
     }
@@ -97,7 +110,11 @@ export class HolyQuranPage {
     this.quranService.setCurrentPage(this.quranService.currentPage + 1);
     this.quranWordsForCurrentPage = [];
     this.subs.add(this.getWordsForCurrentPage());
-    this.slider.slideTo(1, 50, false);
+    this.slider.slideTo(1, 50, false).then(()=> {
+      setTimeout(() => {
+        this.quranService.showLoader = false;
+      }, 200);
+    });
   }
 
   //AUDIO

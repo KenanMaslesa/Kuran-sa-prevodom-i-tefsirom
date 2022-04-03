@@ -102,3 +102,20 @@ export interface Word {
   audio?: string | null;
   charType: string;
 }
+
+//juz
+export interface Juz {
+  id: number;
+  juzNumber: number;
+  surahs?: (Surah)[] | null;
+  firstAyahId: number;
+  lastAyahId: number;
+  numberOfAyahs: number;
+  startPage: number;
+  endPage: number;
+}
+export interface Surah {
+  id: number;
+  startAyah: number;
+  endAyah: number;
+}

@@ -302,6 +302,10 @@ export class QuranService {
     return of(quranMetaData.getSuraByPageNumber(page));
   }
 
+  getJuzByPageNumber(page): Observable<Juz> {
+    return of(quranMetaData.getJuzByPageNumber(page));
+  }
+
   sortSuraListByFirstPublished(): Observable<Sura[]> {
     return of(quranMetaData.sortSuraListByFirstPublished());
   }

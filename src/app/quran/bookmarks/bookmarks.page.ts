@@ -14,15 +14,13 @@ export class BookmarksPage {
   constructor(public bookmarksService: BookmarksService, private quranService: QuranService, private router: Router) { }
 
   goTo(url, pageNumber){
-    this.quranService.setCurrentPage(pageNumber);
+    this.quranService.setCurrentPage(pageNumber-1);
     this.quranService.currentPageChanged.next(true);
     this.router.navigate([url]);
   }
 
   ionViewDidEnter() {
-    setTimeout(() => {
       this.quranService.showLoader = false;
-    }, 1000);
   }
 
 }

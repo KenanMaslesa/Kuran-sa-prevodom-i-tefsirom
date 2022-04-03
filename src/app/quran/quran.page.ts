@@ -26,6 +26,9 @@ export class QuranPage {
   }
 
   goTo(url) {
+    if(url === this.tabsValue.holyQuran || url === this.tabsValue.translation) {
+      this.quranService.setCurrentPage(this.quranService.currentPage-1);
+    }
     this.quranService.showLoader = true;
     this.router.navigateByUrl(`/tabs/${url}`,{
       replaceUrl : true //remove page from stack (fix for audio issue when switching between pages)

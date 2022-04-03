@@ -33,7 +33,7 @@
     "@ionic/angular": "^6.0.0",
     "@ionic/storage": "^3.0.6",
     "@ionic/storage-angular": "^3.0.6",
-    "@kmaslesa/quran-metadata": "^1.0.14",
+    "@kmaslesa/quran-metadata": "^1.0.15",
     "@kmaslesa/quran-word-by-word": "^1.0.1",
     "@kmaslesa/tefsir": "^1.0.16",
     "adhan": "^4.3.1",

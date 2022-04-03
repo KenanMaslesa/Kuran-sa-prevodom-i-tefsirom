@@ -2,7 +2,7 @@
   (click)="quranService.showHeaderAndTabs=!quranService.showHeaderAndTabs">
   <ion-toolbar color="primary" *ngIf="sura$ | async as sura">
     <ion-title style="font-size: 16px;" slot="start">
-      {{sura.name.bosnianTranscription}} - {{sura.name.bosnian}}
+      {{sura.name.bosnianTranscription}}
     </ion-title>
     <ion-buttons slot="end">
       <div class="bookmarks">
@@ -10,7 +10,7 @@
         <ion-icon *ngIf="!checkIsPageInBookmarks()" name="bookmark-outline"
           (click)="addTafsirBookmark(sura); quranService.showHeaderAndTabs=!quranService.showHeaderAndTabs">
         </ion-icon>
-        <ion-icon *ngIf="checkIsPageInBookmarks()" style="color:tomato;" name="bookmark"
+        <ion-icon *ngIf="checkIsPageInBookmarks()"  name="bookmark"
           (click)="deleteTafsirBookmark(sura); quranService.showHeaderAndTabs=!quranService.showHeaderAndTabs">
         </ion-icon>
         <!--bookmarks icons-->
