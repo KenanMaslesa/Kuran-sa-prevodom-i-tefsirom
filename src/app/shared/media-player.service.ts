@@ -101,7 +101,7 @@ export class MediaPlayerService {
         alert('onplayerror:' + error);
       },
     });
-    this.player.rate(15);
+    // this.player.rate(2);
     this.player.play();
     this.watchCurrentTime();
   }
