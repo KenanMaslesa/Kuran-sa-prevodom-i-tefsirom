@@ -37,7 +37,11 @@ export class MediaPlayerService {
   selectedPlayOption = PlayerOptions.order;
   constructor(private quranService: QuranService) {}
 
-  playAudio(ayahIndexInHolyQuran, ayahNumberOnCurrentPage, currentPage, numberOfAyahsOnCurrentPage) {
+  playAudio(ayahIndexInHolyQuran, ordinalNumberOfAyahOnPage, currentPage, numberOfAyahsOnCurrentPage) {
+    if(ayahIndexInHolyQuran > 6236 || currentPage > 604) {
+      alert('Zadnji ajet proučen');
+      return;
+    }
     this.audioUrl = `https://cdn.islamic.network/quran/audio/${this.quranService.qari}/${ayahIndexInHolyQuran}.mp3`;
     this.playingCurrentAyah = ayahIndexInHolyQuran;
     this.isLoading = true;
@@ -62,26 +66,22 @@ export class MediaPlayerService {
         this.isPlaying = false;
         this.clearWatchCurrentTimeInterval();
         ayahIndexInHolyQuran = ayahIndexInHolyQuran + 1;
-        ayahNumberOnCurrentPage = ayahNumberOnCurrentPage + 1;
+        ordinalNumberOfAyahOnPage = ordinalNumberOfAyahOnPage + 1;
 
-          if(ayahNumberOnCurrentPage > numberOfAyahsOnCurrentPage) {
+          if(ordinalNumberOfAyahOnPage > numberOfAyahsOnCurrentPage) {
             this.quranService.setCurrentPage(++this.quranService.currentPage);
-            currentPage = this.quranService.currentPage;
-            ayahNumberOnCurrentPage = 1;
+            ordinalNumberOfAyahOnPage = 1;
+            currentPage++;
             this.quranService.getNumberOfAyahsByPage(currentPage).subscribe(numberOfAyahs => {
               numberOfAyahsOnCurrentPage = numberOfAyahs;
-            });
-            if(currentPage > 604) {
-              alert('Proucen je zadnji ajet zadnje sure');
-              return;
-            }
-            this.switchSlide.emit(true);
-            this.slideSwitched.subscribe(()=> {
-              this.playAudio(ayahIndexInHolyQuran, ayahNumberOnCurrentPage, currentPage, numberOfAyahsOnCurrentPage);
+              this.switchSlide.emit(true);
+              this.slideSwitched.subscribe(()=> {
+                this.playAudio(ayahIndexInHolyQuran, ordinalNumberOfAyahOnPage, currentPage, numberOfAyahsOnCurrentPage);
+              });
             });
           }
           else {
-            this.playAudio(ayahIndexInHolyQuran, ayahNumberOnCurrentPage, currentPage, numberOfAyahsOnCurrentPage);
+            this.playAudio(ayahIndexInHolyQuran, ordinalNumberOfAyahOnPage, currentPage, numberOfAyahsOnCurrentPage);
           }
 
       },
@@ -98,7 +98,7 @@ export class MediaPlayerService {
         alert('onplayerror:' + error);
       },
     });
-    this.player.rate(2);
+    this.player.rate(5);
     this.player.play();
     this.watchCurrentTime();
   }
@@ -139,8 +139,8 @@ export class MediaPlayerService {
           ayahIdOnPage = ayahIdOnPage + 1;
           if(ayahOrderNumberOnPage >= numberOfAyahsOnCurrentPage) {
             currentPage = currentPage + 1;
-            if(currentPage > 604) {
-              alert('Proucen je zadnji ajet ove sure');
+            if(currentPage >= 604) {
+              alert('Proucen je zadnji ajet zadnje sure');
               return;
             }
             this.switchSlide.emit(true);

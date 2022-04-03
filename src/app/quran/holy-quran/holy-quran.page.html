@@ -43,11 +43,10 @@
         </section>
       </ng-container>
       <!--sura title end-->
-
       <ng-container *ngFor="let word of ayah.words;">
         <!--end znak - playAyat-->
         <i class="p{{quranService.currentPage}} ayah{{word.index}} endAyah" *ngIf="word.charType === 'end'"
-          (click)="playAyah(ayahNumber, word.index);" [innerHtml]="word.code"></i>
+          (click)="playAyah(word.index);" [innerHtml]="word.code"></i>
         <!--end znak - playAyat -->
 
         <!-- word - playWord-->

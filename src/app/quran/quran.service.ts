@@ -284,6 +284,10 @@ export class QuranService {
     return of(tefsir.getNumberOfAyahsByPage(page));
   }
 
+  getOrdinalNumberOfAyahOnPage(ayahIndex, page): Observable<number>{
+    return of(tefsir.getOrdinalNumberOfAyahOnPage(ayahIndex,page));
+  }
+
   getTafsirAndTranslationForSura(suraId: number): Observable<any> {
     return of(tefsir.getTafsirAndTranslationForSura(+suraId));
   }

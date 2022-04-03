@@ -28,7 +28,7 @@ export class HolyQuranPage {
   allQuranWords = [];
   allQuranWords$: Observable<any>;
   routePageId: number;
-
+  ayahCounter: number;
 
   constructor(public quranService: QuranService, private route: ActivatedRoute, public mediaPlayerService: MediaPlayerService) {
     this.routePageId = +this.route.snapshot.params.page;
@@ -111,24 +111,17 @@ export class HolyQuranPage {
       audio.play();
     }
 
-    playAyat(ayahIndex) {
-      const activeAyahs = document.querySelectorAll('.ayah'+ayahIndex);
-      activeAyahs.forEach(element => {
-        element.classList.add('active');
-      });
-      const audio = new Audio(`https://cdn.islamic.network/quran/audio/${this.quranService.qari}/${ayahIndex}.mp3`);
-        audio.play();
-    }
-
-    playAyah(ayahNumberOnCurrentPage, ayahIndex) {
+    playAyah(ayahIndex) {
       this.subs.add(
-        this.quranService.getNumberOfAyahsByPage(this.quranService.currentPage).subscribe(numberOfAyahs => {
-          this.mediaPlayerService.playAudio(
-            ayahIndex,
-            ayahNumberOnCurrentPage,
-            this.quranService.currentPage,
-            numberOfAyahs
-          );
+        this.quranService.getOrdinalNumberOfAyahOnPage(ayahIndex, this.quranService.currentPage).subscribe(ordinalnumber => {
+          this.quranService.getNumberOfAyahsByPage(this.quranService.currentPage).subscribe(numberOfAyahs => {
+            this.mediaPlayerService.playAudio(
+              ayahIndex,
+              ordinalnumber,
+              this.quranService.currentPage,
+              numberOfAyahs
+            );
+          });
         })
       );
     }

@@ -34,7 +34,7 @@
     "@ionic/storage": "^3.0.6",
     "@ionic/storage-angular": "^3.0.6",
     "@kmaslesa/quran-metadata": "^1.0.13",
-    "@kmaslesa/tefsir": "^1.0.15",
+    "@kmaslesa/tefsir": "^1.0.16",
     "adhan": "^4.3.1",
     "cordova-plugin-badge": "^0.8.8",
     "cordova-plugin-device": "^2.0.3",
