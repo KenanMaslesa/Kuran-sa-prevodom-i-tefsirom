@@ -8,13 +8,11 @@
     <ion-title style="font-size: 16px;" slot="start">
       {{sura.name.bosnianTranscription}}
     </ion-title>
-    <ion-buttons slot="end">
-      <div class="bookmarks">
         <!--bookmarks icons-->
-        <ion-icon *ngIf="!checkIsPageInBookmarks()" name="bookmark-outline"
+        <ion-icon slot="end" *ngIf="!checkIsPageInBookmarks()" name="bookmark-outline"
           (click)="addTafsirBookmark(sura); quranService.showHeaderAndTabs=!quranService.showHeaderAndTabs">
         </ion-icon>
-        <ion-icon *ngIf="checkIsPageInBookmarks()" name="bookmark"
+        <ion-icon slot="end" *ngIf="checkIsPageInBookmarks()" name="bookmark"
           (click)="deleteTafsirBookmark(sura); quranService.showHeaderAndTabs=!quranService.showHeaderAndTabs">
         </ion-icon>
         <!--bookmarks icons-->
@@ -22,8 +20,6 @@
         <!--fullscreen-->
         <ion-icon slot="end" name="expand-outline" (click)="quranService.showHeaderAndTabs = false"></ion-icon>
         <!--fullscreen-->
-      </div>
-    </ion-buttons>
   </ion-toolbar>
 
 </ion-header>
