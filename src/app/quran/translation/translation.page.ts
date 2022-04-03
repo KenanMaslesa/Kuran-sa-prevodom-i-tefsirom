@@ -46,14 +46,13 @@ export class TranslationPage {
     this.routePageId = +this.route.snapshot.params.page;
     this.routeAyahId = +this.route.snapshot.params.ayah;
 
-    //switch slide when last ayah on current page is played
     this.subs.add(
       this.mediaPlayerService.switchSlide.subscribe(() => {
-        this.slides.slideTo(this.quranService.currentPage).finally(()=> {
-          setTimeout(() => {
-            this.mediaPlayerService.slideSwitched.emit(true);
-          }, 1000);
-        });
+        this.quranService.setCurrentPage(this.quranService.currentPage-1); //zato sto ce mi se povecati stranica u this.loadNext();
+        this.loadNext();
+        setTimeout(() => {
+          this.mediaPlayerService.slideSwitched.emit(true);
+        }, 1000);
       })
     );
 
@@ -150,13 +149,29 @@ export class TranslationPage {
       );
   }
 
-  playAyah(ayah, ayahOrderNumberOnPage) {
-    this.mediaPlayerService.playAudioForTranslationPage(
-      ayah.index,
-      ayah.ayaNumber,
-      this.ayahList,
-      this.quranService.currentPage,
-      ayahOrderNumberOnPage
+  // playAyah2(ayah, ayahOrderNumberOnPage) {
+  //   debugger
+  //   this.mediaPlayerService.playAudio(
+  //     ayah.index,
+  //     ayah.ayaNumber,
+  //     this.quranService.currentPage,
+  //     this.ayahList,
+  //     ayahOrderNumberOnPage
+  //   );
+  // }
+
+  playAyah(ayahIndex) {
+    this.subs.add(
+      this.quranService.getOrdinalNumberOfAyahOnPage(ayahIndex, this.quranService.currentPage).subscribe(ordinalnumber => {
+        this.quranService.getNumberOfAyahsByPage(this.quranService.currentPage).subscribe(numberOfAyahs => {
+          this.mediaPlayerService.playAudio(
+            ayahIndex,
+            ordinalnumber,
+            this.quranService.currentPage,
+            numberOfAyahs
+          );
+        });
+      })
     );
   }
 
