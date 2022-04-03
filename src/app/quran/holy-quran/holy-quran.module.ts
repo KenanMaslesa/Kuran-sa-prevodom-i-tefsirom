@@ -7,13 +7,12 @@ import { IonicModule } from '@ionic/angular';
 import { HolyQuranPageRoutingModule } from './holy-quran-routing.module';
 
 import { HolyQuranPage } from './holy-quran.page';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 @NgModule({
   imports: [
-    CommonModule,
-    FormsModule,
-    IonicModule,
-    HolyQuranPageRoutingModule
+    HolyQuranPageRoutingModule,
+    SharedModule
   ],
   declarations: [HolyQuranPage]
 })

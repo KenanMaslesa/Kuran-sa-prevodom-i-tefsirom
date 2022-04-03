@@ -8,18 +8,18 @@
     <ion-title style="font-size: 16px;" slot="start">
       {{sura.name.bosnianTranscription}}
     </ion-title>
-        <!--bookmarks icons-->
-        <ion-icon slot="end" *ngIf="!checkIsPageInBookmarks()" name="bookmark-outline"
-          (click)="addTafsirBookmark(sura); quranService.showHeaderAndTabs=!quranService.showHeaderAndTabs">
-        </ion-icon>
-        <ion-icon slot="end" *ngIf="checkIsPageInBookmarks()" name="bookmark"
-          (click)="deleteTafsirBookmark(sura); quranService.showHeaderAndTabs=!quranService.showHeaderAndTabs">
-        </ion-icon>
-        <!--bookmarks icons-->
+    <!--bookmarks icons-->
+    <ion-icon slot="end" *ngIf="!checkIsPageInBookmarks()" name="bookmark-outline"
+      (click)="addTafsirBookmark(sura); quranService.showHeaderAndTabs=!quranService.showHeaderAndTabs">
+    </ion-icon>
+    <ion-icon slot="end" *ngIf="checkIsPageInBookmarks()" name="bookmark"
+      (click)="deleteTafsirBookmark(sura); quranService.showHeaderAndTabs=!quranService.showHeaderAndTabs">
+    </ion-icon>
+    <!--bookmarks icons-->
 
-        <!--fullscreen-->
-        <ion-icon slot="end" name="expand-outline" (click)="quranService.showHeaderAndTabs = false"></ion-icon>
-        <!--fullscreen-->
+    <!--fullscreen-->
+    <ion-icon slot="end" name="expand-outline" (click)="quranService.showHeaderAndTabs = false"></ion-icon>
+    <!--fullscreen-->
   </ion-toolbar>
 
 </ion-header>
@@ -62,10 +62,7 @@
                     *ngIf="mediaPlayerService.playingCurrentAyah === ayah.index || (!mediaPlayerService.isPlaying || mediaPlayerService.isPaused)">
                     <ion-icon *ngIf="!mediaPlayerService.isPlaying && !mediaPlayerService.isPaused"
                       (click)="playAyah(ayah.index);" name="play"></ion-icon>
-                    <!--scrollToElement(i)-->
-                    <ion-icon *ngIf="mediaPlayerService.isPlaying && !mediaPlayerService.isPaused"
-                      (click)="mediaPlayerService.removePlayer(); mediaPlayerService.playingCurrentAyah = null"
-                      name="stop"></ion-icon>
+
                   </div>
                   <!--player-->
                 </div>
@@ -92,32 +89,7 @@
     </div>
 
     <!--global player-->
-    <ng-container *ngIf="mediaPlayerService.player">
-      <div class="global-player">
-        <ion-select class="left-select" [(ngModel)]="mediaPlayerService.selectedPlayOption" interface="popover"
-          #playerOptions>
-          <ion-select-option *ngFor="let option of mediaPlayerService.playOptions" [value]="option.value">
-            {{option.name}}</ion-select-option>
-        </ion-select>
-
-        <div class="icon">
-          <ion-icon class="icon__pause" name="pause" *ngIf="mediaPlayerService.isPlaying"
-            (click)="mediaPlayerService.pauseAudio();">
-          </ion-icon>
-          <ion-icon class="icon__play" name="play" *ngIf="mediaPlayerService.isPaused"
-            (click)="mediaPlayerService.continueAudio();">
-          </ion-icon>
-        </div>
-
-        <ion-select class="right-select" interface="popover" #select [(ngModel)]="quranService.qari"
-          (ngModelChange)="quranService.changeQari(select.value)" name="qari" #qari>
-          <ion-select-option *ngFor="let item of quranService.qariList" value="{{item.identifier}}">
-            {{item.englishName}}
-          </ion-select-option>
-        </ion-select>
-      </div>
-
-    </ng-container>
+    <app-player></app-player>
     <!--global player end-->
   </main>
 </ion-content>

@@ -1,0 +1,54 @@
+.global-player {
+  position: fixed;
+  border: 0;
+  width: 100%;
+  background: var(--ion-color-primary);
+  opacity: 0.8;
+  z-index: 9;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  bottom: 0;
+  height: 45px;
+  color: white;
+  font-weight: bold;
+  background: #262932;
+  z-index: 99;
+
+  &.hide {
+    z-index: -1;
+    visibility: hidden;
+  }
+
+  .icon {
+    font-size: 30px;
+    width: 30%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    ion-icon {
+      background: var(--ion-color-primary);
+      border-radius: 50%;
+    }
+
+    &__play {
+      padding: 3px 3px 3px 5px;
+    }
+
+    &__pause {
+      padding: 3px;
+    }
+
+    &__stop {
+      padding: 3px;
+      margin-right: 5px;
+    }
+  }
+
+  .left-select,
+  .right-select {
+    max-width: 40%;
+    width: 40%;
+  }
+}

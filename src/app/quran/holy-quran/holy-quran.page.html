@@ -66,33 +66,8 @@
       </ion-slide>
 
     </ion-slides>
-    <!--global player-->
-    <ng-container *ngIf="mediaPlayerService.player">
-      <div class="global-player">
-        <ion-select class="left-select" [(ngModel)]="mediaPlayerService.selectedPlayOption" interface="popover"
-          #playerOptions>
-          <ion-select-option *ngFor="let option of mediaPlayerService.playOptions" [value]="option.value">
-            {{option.name}}</ion-select-option>
-        </ion-select>
-
-        <div class="icon">
-          <ion-icon class="icon__pause" name="pause" *ngIf="mediaPlayerService.isPlaying"
-            (click)="mediaPlayerService.pauseAudio();">
-          </ion-icon>
-          <ion-icon class="icon__play" name="play" *ngIf="mediaPlayerService.isPaused"
-            (click)="mediaPlayerService.continueAudio();">
-          </ion-icon>
-        </div>
-
-        <ion-select class="right-select" interface="popover" #select [(ngModel)]="quranService.qari"
-          (ngModelChange)="quranService.changeQari(select.value)" name="qari" #qari>
-          <ion-select-option *ngFor="let item of quranService.qariList" value="{{item.identifier}}">
-            {{item.englishName}}
-          </ion-select-option>
-        </ion-select>
-      </div>
-
-    </ng-container>
-    <!--global player end-->
   </div>
+   <!--global player-->
+   <app-player></app-player>
+   <!--global player end-->
 </ion-content>

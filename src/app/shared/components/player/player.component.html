@@ -1,0 +1,40 @@
+    <!--global player-->
+    <ng-container *ngIf="mediaPlayerService.player">
+      <div class="global-player">
+        <ion-select class="left-select" [(ngModel)]="mediaPlayerService.selectedPlayOption" interface="popover"
+          #playerOptions>
+          <ion-select-option *ngFor="let option of mediaPlayerService.playOptions" [value]="option.value">
+            {{option.name}}</ion-select-option>
+        </ion-select>
+
+        <div class="icon">
+          <!--stop-->
+          <ion-icon class="icon__stop" *ngIf="mediaPlayerService.isPlaying || mediaPlayerService.isPaused"
+            (click)="mediaPlayerService.removePlayer(); mediaPlayerService.playingCurrentAyah = null" name="stop">
+          </ion-icon>
+          <!--stop-->
+
+          <!--pause-->
+          <ion-icon class="icon__pause" name="pause" *ngIf="mediaPlayerService.isPlaying"
+            (click)="mediaPlayerService.pauseAudio();">
+          </ion-icon>
+          <!--pause-->
+
+          <!--play-->
+          <ion-icon class="icon__play" name="play" *ngIf="mediaPlayerService.isPaused"
+            (click)="mediaPlayerService.continueAudio();">
+          </ion-icon>
+          <!--play-->
+
+        </div>
+
+        <ion-select class="right-select" interface="popover" #select [(ngModel)]="quranService.qari"
+          (ngModelChange)="quranService.changeQari(select.value)" name="qari" #qari>
+          <ion-select-option *ngFor="let item of quranService.qariList" value="{{item.identifier}}">
+            {{item.englishName}}
+          </ion-select-option>
+        </ion-select>
+      </div>
+
+    </ng-container>
+    <!--global player end-->
