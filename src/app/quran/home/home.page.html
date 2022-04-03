@@ -62,7 +62,7 @@
 
       <!--search end-->
 
-      <p class="ion-text-center">Ukupno: {{suralist.length}} sura</p>
+      <p class="ion-text-center">Broj sura: {{suralist.length}}</p>
       <ion-card class="sura" *ngFor="let sura of suralist; let i = index" [routerLink]="['/tabs/holy-quran', sura.startPage]">
         <ion-card-header>
           <ion-card-title>
@@ -80,14 +80,24 @@
   <!--segments.juz-content-->
   <ng-container *ngIf="selectedSegment === segments.juz">
     <div *ngIf="{juzList: juzList$ | async, suraList: suraList$ | async} as vm">
-      <ion-item class="search search__juz">
-        <ion-label position="floating">Upišite broj džuza</ion-label>
-        <ion-input #juz (ionChange)="searchJuzListById(juz.value)"></ion-input>
-      </ion-item>
+      <!--search-->
+          <ion-icon class="search-icon" name="search-outline" *ngIf="!showSearchForJuzSegment" (click)="showSearchForJuzSegment = true"></ion-icon>
+          <ion-icon class="search-icon" name="close-outline" *ngIf="showSearchForJuzSegment" (click)="showSearchForJuzSegment = false"></ion-icon>
+        <!--search-->
 
+      <div class="search search__juz" [class.show]="showSearchForJuzSegment">
+        <ion-list>
+        <ion-item >
+          <ion-label position="floating">Upišite broj džuza</ion-label>
+          <ion-input #juz (ionChange)="searchJuzListById(juz.value)"></ion-input>
+        </ion-item>
+        </ion-list>
+      </div>
+
+      <p class="ion-text-center">Broj džuzeva: {{vm.juzList.length}}</p>
       <ion-card class="juz" *ngFor="let juz of vm.juzList; let i = index" [routerLink]="['/tabs/holy-quran', juz.startPage]">
         <ion-card-header>
-          <ion-card-title>{{juz.id}}. Dzuz <span class="startPage">{{juz.startPage}}</span></ion-card-title>
+          <ion-card-title class="juz__title">{{juz.id}}. Dzuz <span class="startPage">{{juz.startPage}}</span></ion-card-title>
           <span class="total">{{(juz.endPage-juz.startPage)+1}} stranica</span>
         </ion-card-header>
         <ion-card-content>

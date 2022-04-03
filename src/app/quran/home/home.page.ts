@@ -32,6 +32,7 @@ export class HomePage implements OnInit {
   public readonly suraTypes = SuraTypes;
   public readonly sortOptions = SortOptions;
   public showSearchForSuraSegment = false;
+  public showSearchForJuzSegment = false;
   public selectedSegment: Segments;
   public suraList$: Observable<Sura[]>;
   public juzList$: Observable<Juz[]>;
