@@ -38,10 +38,6 @@ export class MediaPlayerService {
   constructor(private quranService: QuranService) {}
 
   playAudio(ayahIndexInHolyQuran, ordinalNumberOfAyahOnPage, currentPage, numberOfAyahsOnCurrentPage) {
-    if(ayahIndexInHolyQuran > 6236 || currentPage > 604) {
-      alert('Zadnji ajet proučen');
-      return;
-    }
     this.audioUrl = `https://cdn.islamic.network/quran/audio/${this.quranService.qari}/${ayahIndexInHolyQuran}.mp3`;
     this.playingCurrentAyah = ayahIndexInHolyQuran;
     this.isLoading = true;
@@ -69,9 +65,16 @@ export class MediaPlayerService {
         ordinalNumberOfAyahOnPage = ordinalNumberOfAyahOnPage + 1;
 
           if(ordinalNumberOfAyahOnPage > numberOfAyahsOnCurrentPage) {
+            currentPage++;
+
+            if(ayahIndexInHolyQuran > 6236 || currentPage > 604) {
+              alert('Zadnji ajet proučen');
+              this.removePlayer();
+              return;
+            }
             this.quranService.setCurrentPage(++this.quranService.currentPage);
             ordinalNumberOfAyahOnPage = 1;
-            currentPage++;
+
             this.quranService.getNumberOfAyahsByPage(currentPage).subscribe(numberOfAyahs => {
               numberOfAyahsOnCurrentPage = numberOfAyahs;
               this.switchSlide.emit(true);
@@ -98,7 +101,7 @@ export class MediaPlayerService {
         alert('onplayerror:' + error);
       },
     });
-    this.player.rate(5);
+    this.player.rate(15);
     this.player.play();
     this.watchCurrentTime();
   }
