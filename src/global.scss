@@ -16,7 +16,7 @@
 @import "~@ionic/angular/css/normalize.css";
 @import "~@ionic/angular/css/structure.css";
 @import "~@ionic/angular/css/typography.css";
-@import '~@ionic/angular/css/display.css';
+@import "~@ionic/angular/css/display.css";
 
 /* Optional CSS utils that can be commented out */
 @import "~@ionic/angular/css/padding.css";
@@ -72,7 +72,8 @@ html {
   }
 }
 
-ion-tab-bar, ion-header{
+ion-tab-bar,
+ion-header {
   transition: all 0.3s;
   justify-content: flex-start;
 
@@ -84,11 +85,6 @@ ion-tab-bar, ion-header{
     opacity: 0;
   }
 }
-
-ion-tab-bar {
-  overflow-x: scroll;
-}
-
 
 .global-player {
   position: absolute;
@@ -112,28 +108,29 @@ ion-tab-bar {
     visibility: hidden;
   }
 
-    .icon {
-      font-size: 30px;
-      width: 20%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
+  .icon {
+    font-size: 30px;
+    width: 20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
-      ion-icon {
-        background: var(--ion-color-primary);
-        border-radius: 50%;
-      }
+    ion-icon {
+      background: var(--ion-color-primary);
+      border-radius: 50%;
+    }
 
-      &__play {
-        padding: 3px 3px 3px 5px;
-      }
+    &__play {
+      padding: 3px 3px 3px 5px;
+    }
 
-      &__pause {
-        padding: 3px;
-      }
+    &__pause {
+      padding: 3px;
+    }
   }
 
-  .left-select, .right-select {
+  .left-select,
+  .right-select {
     max-width: 40%;
     width: 40%;
   }

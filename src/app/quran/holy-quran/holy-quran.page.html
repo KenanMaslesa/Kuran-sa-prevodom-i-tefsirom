@@ -26,7 +26,7 @@
     <ion-slides #slider (ionSlideNextStart)="loadNext()" (ionSlidePrevStart)="loadPrev()" [options]="slideOpts">
       <ion-slide class="page" *ngFor="let page of quranWordsForCurrentPage; let pageIndex = index">
     <div>
-    <div class="ayeLine" *ngFor="let ayah of page.words;">
+    <div class="ayeLine" *ngFor="let ayah of page.words; let ayahNumber = index">
 
       <!--sura title-->
       <ng-container *ngIf="ayah.suraName">
@@ -46,12 +46,12 @@
 
       <ng-container *ngFor="let word of ayah.words;">
         <!--end znak - playAyat-->
-        <i  class="p{{quranService.currentPage}} ayah{{word.index}} endAyah" [class.hide]="hideAyhas" *ngIf="word.charType === 'end'"
-          (click)="playAyat(word.index)" [innerHtml]="word.code"></i>
+        <i class="p{{quranService.currentPage}} ayah{{word.index}} endAyah" *ngIf="word.charType === 'end'"
+          (click)="playAyah(ayahNumber, word.index);" [innerHtml]="word.code"></i>
         <!--end znak - playAyat -->
 
         <!-- word - playWord-->
-        <i class="p{{quranService.currentPage}} ayah{{word.index}}" [class.hide]="hideAyhas" *ngIf="word.charType !== 'end'"
+        <i [class.active]="mediaPlayerService.playingCurrentAyah === word.index" class="p{{quranService.currentPage}} ayah{{word.index}}" *ngIf="word.charType !== 'end'"
           (click)="playWord(word.audio)" [innerHtml]="word.code"></i>
         <!--word - playWord-->
 

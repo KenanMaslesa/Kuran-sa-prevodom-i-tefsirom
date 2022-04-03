@@ -38,7 +38,6 @@ export class MediaPlayerService {
   constructor(private quranService: QuranService) {}
 
   playAudio(ayahIndexInHolyQuran, ayahNumberOnCurrentPage, currentPage, numberOfAyahsOnCurrentPage) {
-
     this.audioUrl = `https://cdn.islamic.network/quran/audio/${this.quranService.qari}/${ayahIndexInHolyQuran}.mp3`;
     this.playingCurrentAyah = ayahIndexInHolyQuran;
     this.isLoading = true;
@@ -65,7 +64,7 @@ export class MediaPlayerService {
 
           ayahIndexInHolyQuran = ayahIndexInHolyQuran + 1;
           ayahNumberOnCurrentPage = ayahNumberOnCurrentPage + 1;
-          if(ayahNumberOnCurrentPage > numberOfAyahsOnCurrentPage) {
+          if(ayahNumberOnCurrentPage >= numberOfAyahsOnCurrentPage) {
             this.quranService.setCurrentPage(++this.quranService.currentPage);
             currentPage = this.quranService.currentPage;
             ayahNumberOnCurrentPage = 1;

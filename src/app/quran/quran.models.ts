@@ -86,3 +86,19 @@ export interface AyahsPerPagesEntity {
   korkutsTranslation: string;
   tafsir: string;
 }
+
+//quran words
+export interface QuranWords {
+  words?: (WordsEntity)[] | null;
+  page: number;
+}
+export interface WordsEntity {
+  suraName?: string | null;
+  words?: (Word)[] | null;
+}
+export interface Word {
+  code: string;
+  index: number;
+  audio?: string | null;
+  charType: string;
+}
