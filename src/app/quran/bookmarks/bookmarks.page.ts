@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { Sura } from '../quran.models';
 import { QuranService } from '../quran.service';
-import { BookmarksItem, BookmarksService } from './bookmarks.service';
+import {BookmarksService } from './bookmarks.service';
 
 @Component({
   selector: 'app-bookmarks',
@@ -12,24 +13,16 @@ export class BookmarksPage {
 
   constructor(public bookmarksService: BookmarksService, private quranService: QuranService, private router: Router) { }
 
-  deleteBookmark(pageNumber){
-    const item: BookmarksItem = {
-      pageNumber: +pageNumber,
-    };
-    this.bookmarksService.deleteBookmark(item);
-  }
-
-  deleteTafsirBookmark(pageNumber){
-    const item: BookmarksItem = {
-      pageNumber: +pageNumber,
-    };
-    this.bookmarksService.deleteTafsirBookmark(item);
-  }
-
-  goTo(url, item: BookmarksItem){
-    this.quranService.currentPage = item.pageNumber;
+  goTo(url, pageNumber){
+    this.quranService.setCurrentPage(pageNumber);
     this.quranService.currentPageChanged.next(true);
     this.router.navigate([url]);
+  }
+
+  ionViewDidEnter() {
+    setTimeout(() => {
+      this.quranService.showLoader = false;
+    }, 1000);
   }
 
 }

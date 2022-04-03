@@ -85,15 +85,20 @@ ion-slides {
     overflow-y: scroll;
     padding-bottom: 20px;
     max-height: 100vh;
-    padding-bottom: 100px;
-    padding-top: 65px;
 
-    &.firstSlide,
-    &.lastSlide {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
+    &.playingAyah {
+      padding-bottom: 60px;
+    }
+
+    min-height: 85vh;
+    width: 100%;
+    // transition: all .5s;
+
+    &:nth-child(1) {
+      opacity: 0;
+    }
+    &:nth-child(3) {
+      opacity: 0;
     }
   }
 }
@@ -108,14 +113,14 @@ ion-content {
 
 .currentPageFooter {
   background: var(--ion-color-primary);
-    height: 30px;
-    width: 30px;
+    height: 40px;
+    width: 40px;
     margin: 0 auto;
     border-radius: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
-    color: var(--ion-text-color);
+    color: white;
 }
 
 main {
@@ -188,6 +193,7 @@ main {
       font-family: quran;
       margin-top: 0;
       font-size: 20px;
+      font-size: 5vw;
       line-height: 45px !important;
     }
 
@@ -204,6 +210,7 @@ main {
         margin-top: 5px;
         line-height: 25px;
         padding: 0 5px;
+        font-size: 4vw;
       }
     }
   }
@@ -251,5 +258,12 @@ main {
     ion-icon {
       font-size: 25px;
     }
+  }
+}
+
+ion-header {
+  ion-icon {
+    margin-right: 15px;
+    font-size: 25px;
   }
 }

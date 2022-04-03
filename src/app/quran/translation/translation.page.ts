@@ -5,7 +5,8 @@ import { Observable, Subscription } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { MediaPlayerService } from 'src/app/shared/media-player.service';
 import { StorageService } from 'src/app/shared/storage.service';
-import { Tafsir } from '../quran.models';
+import { BookmarksService } from '../bookmarks/bookmarks.service';
+import { Sura, Tafsir } from '../quran.models';
 import { QuranService } from '../quran.service';
 @Component({
   selector: 'app-translation',
@@ -23,6 +24,7 @@ export class TranslationPage {
   ayahList = [];
   ayahListLazyLoaded = [];
   numberOfLoadedPagesOnSlide = 1;
+  sura$: Observable<Sura>;
   showLoader = false;
   routeSuraId: number;
   routePageId: number;
@@ -38,8 +40,9 @@ export class TranslationPage {
   constructor(
     private route: ActivatedRoute,
     public quranService: QuranService,
-    public storage: StorageService,
+    public bookmarkService: BookmarksService,
     public mediaPlayerService: MediaPlayerService,
+    public storage: StorageService,
     private router: Router
   ) {
     this.routeSuraId = +this.route.snapshot.params.id;
@@ -68,14 +71,21 @@ export class TranslationPage {
 
   ionViewWillLeave() {
     this.subs.unsubscribe();
+    this.mediaPlayerService.removePlayer();
+  }
+
+  ionViewDidEnter() {
+    setTimeout(() => {
+      this.quranService.showLoader = false;
+    }, 1000);
   }
 
   ionViewWillEnter() {
     this.setStream();
   }
 
-  ionViewDidLeave() {
-    this.mediaPlayerService.removePlayer();
+  getSuraByPageNumber(page) {
+    this.sura$ = this.quranService.getSuraByPageNumber(page);
   }
 
   loadMoreByFragmentAndThenScroll(fragment) {
@@ -139,6 +149,7 @@ export class TranslationPage {
   }
 
   setStream() {
+    this.getSuraByPageNumber(this.quranService.currentPage);
     this.ayahList = [];
     this.dataStream$ = this.quranService
       .getTafsirAndTranslationForPage(this.quranService.currentPage)
@@ -148,17 +159,6 @@ export class TranslationPage {
         })
       );
   }
-
-  // playAyah2(ayah, ayahOrderNumberOnPage) {
-  //   debugger
-  //   this.mediaPlayerService.playAudio(
-  //     ayah.index,
-  //     ayah.ayaNumber,
-  //     this.quranService.currentPage,
-  //     this.ayahList,
-  //     ayahOrderNumberOnPage
-  //   );
-  // }
 
   playAyah(ayahIndex) {
     this.subs.add(
@@ -200,10 +200,25 @@ export class TranslationPage {
     }
   }
 
-  checkIsPageInBookmarks(suraInfo) {
-    this.isCurrentPageInBookmarks = this.storage.isInBookmarks(
-      suraInfo,
-      this.sliderActiveIndex
+  checkIsPageInBookmarks() {
+    return this.bookmarkService.checkIsInTafsirBookmark(
+      this.quranService.currentPage
     );
   }
+
+  addTafsirBookmark(sura: Sura) {
+    this.bookmarkService.addTafsirBookmark({
+      sura,
+      pageNumber: this.quranService.currentPage,
+      date: new Date()
+    });
+  }
+
+  deleteTafsirBookmark(sura: Sura) {
+    this.bookmarkService.deleteTafsirBookmark({
+      sura,
+      pageNumber: this.quranService.currentPage,
+      date: new Date()
+    });
+}
 }

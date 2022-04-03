@@ -21,21 +21,12 @@ const routes: Routes = [
         loadChildren: () => import('./holy-quran/holy-quran.module').then( m => m.HolyQuranPageModule)
       },
       {
-        path: 'audio',
-        loadChildren: () =>
-          import('./audio/audio.module').then((m) => m.AudioPageModule),
-      },
-      {
         path: 'bookmarks',
         loadChildren: () => import('./bookmarks/bookmarks.module').then( m => m.BookmarksPageModule)
       },
       {
         path: 'settings',
         loadChildren: () => import('./settings/settings.module').then( m => m.SettingsPageModule)
-      },
-      {
-        path: 'tracker',
-        loadChildren: () => import('./tracker/tracker.module').then( m => m.TrackerPageModule)
       },
       {
         path: 'translation',

@@ -4,6 +4,7 @@
   &__title {
     max-width: 75%;
     display: inline-block;
+    font-size: 16px;
   }
   &__numberOfAyahs {
     margin: 5px 0px;
@@ -58,6 +59,10 @@
   }
 }
 
+.settings-icon {
+  font-size: 22px;
+    margin-right: 10px;
+}
 ion-segment {
   margin-bottom: 20px;
 }
@@ -113,7 +118,7 @@ ion-segment {
   font-variant: normal;
   text-transform: none;
   line-height: 1;
-  font-size: 25px;
+  font-size: 28px;
   vertical-align: middle
 }
 

@@ -1,21 +1,21 @@
 <ion-tabs #tabs (ionTabsDidChange)="setCurrentTab()">
   <ion-tab-bar slot="bottom" color="primary" class="{{quranService.showHeaderAndTabs?'show':'hide'}}">
-    <ion-tab-button [tab]="tabsValue.home">
-      <ion-icon [name]="selectedTab === tabsValue.home?'home':'home-outline'"></ion-icon>
+    <ion-tab-button [tab]="tabsValue.home" (click)="goTo(tabsValue.home)">
+      <ion-icon [name]="selectedTab === tabsValue.home?'home':'home-outline'" (click)="goTo(tabsValue.home)"></ion-icon>
       <ion-label>Home</ion-label>
     </ion-tab-button>
 
-    <ion-tab-button [tab]="tabsValue.holyQuran">
+    <ion-tab-button [tab]="tabsValue.holyQuran" (click)="goTo(tabsValue.holyQuran)">
       <ion-icon [name]="selectedTab === tabsValue.holyQuran?'book':'book-outline'"></ion-icon>
       <ion-label>Kur'an</ion-label>
     </ion-tab-button>
 
-    <ion-tab-button [tab]="tabsValue.translation">
+    <ion-tab-button [tab]="tabsValue.translation" (click)="goTo(tabsValue.translation)">
       <ion-icon [name]="selectedTab === tabsValue.translation?'language':'language-outline'"></ion-icon>
       <ion-label>Prijevod</ion-label>
     </ion-tab-button>
 
-    <ion-tab-button [tab]="tabsValue.bookmarks">
+    <ion-tab-button [tab]="tabsValue.bookmarks" (click)="goTo(tabsValue.bookmarks)">
       <ion-icon [name]="selectedTab === tabsValue.bookmarks?'bookmarks':'bookmarks-outline'"></ion-icon>
       <ion-label>Biljeske</ion-label>
     </ion-tab-button>
@@ -23,3 +23,4 @@
   </ion-tab-bar>
 </ion-tabs>
 
+<app-loader *ngIf="quranService.showLoader"></app-loader>

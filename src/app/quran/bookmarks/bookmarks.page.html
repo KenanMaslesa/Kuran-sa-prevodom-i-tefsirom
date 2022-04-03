@@ -10,9 +10,9 @@
 
   <ion-item-sliding *ngFor="let item of bookmarksService.bookmarks">
 
-    <ion-item (click)="goTo('/tabs/quran-template', item);">
+    <ion-item (click)="goTo('/tabs/holy-quran', item.pageNumber);">
       <ion-label>
-        <h2>{{item.sura?.name}} - {{item.sura?.tname}}</h2>
+        <h2>{{item.sura.name.arabic}} - {{item.sura.name.bosnianTranscription}}</h2>
         <p>{{item.date}}</p>
       </ion-label>
       <ion-note slot="end">
@@ -21,7 +21,7 @@
     </ion-item>
 
     <ion-item-options side="end">
-      <ion-item-option color="danger" expandable (click)="deleteBookmark(item.pageNumber)">
+      <ion-item-option color="danger" expandable (click)="bookmarksService.deleteBookmark(item.pageNumber)">
         Izbrisi
       </ion-item-option>
     </ion-item-options>
@@ -31,9 +31,9 @@
   <p class="description" *ngIf="bookmarksService.tafsirBookmarks.length === 0">Nemate biljeski</p>
   <ion-item-sliding *ngFor="let item of bookmarksService.tafsirBookmarks">
 
-    <ion-item (click)="goTo('/tabs/translation', item);">
+    <ion-item (click)="goTo('/tabs/translation', item.pageNumber);">
       <ion-label>
-        <h2>{{item.sura?.name}} - {{item.sura?.tname}}</h2>
+        <h2>{{item.sura.name.arabic}} - {{item.sura.name.bosnianTranscription}}</h2>
         <p>{{item.date}}</p>
       </ion-label>
       <ion-note slot="end">
@@ -42,7 +42,7 @@
     </ion-item>
 
     <ion-item-options side="end">
-      <ion-item-option color="danger" expandable (click)="deleteTafsirBookmark(item.pageNumber)">
+      <ion-item-option color="danger" expandable (click)="bookmarksService.deleteTafsirBookmark(item)">
         Izbrisi
       </ion-item-option>
     </ion-item-options>

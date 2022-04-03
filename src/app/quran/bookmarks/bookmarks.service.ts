@@ -1,14 +1,15 @@
 import { Injectable } from '@angular/core';
+import { Sura } from '../quran.models';
 
-export interface BookmarksItem {
+export class BookMarkItem {
+  sura: Sura;
   pageNumber: number;
-  sura?: any;
-  date?: string;
+  date: Date;
 }
 @Injectable({ providedIn: 'root' })
 export class BookmarksService {
-  bookmarks: BookmarksItem[] = [];
-  tafsirBookmarks: BookmarksItem[] = [];
+  bookmarks: BookMarkItem[] = [];
+  tafsirBookmarks: BookMarkItem[] = [];
   constructor() {
     const bookmarksFromStorage = localStorage.getItem('bookmarks');
     if (bookmarksFromStorage) {
@@ -21,32 +22,32 @@ export class BookmarksService {
     }
   }
 
-  addBookmark(bookmarksItem: BookmarksItem) {
+  addBookmark(bookmarksItem: BookMarkItem) {
     this.bookmarks.push(bookmarksItem);
     localStorage.setItem('bookmarks', JSON.stringify(this.bookmarks));
   }
 
-  deleteBookmark(bookmarksItem: BookmarksItem){
-    this.bookmarks = this.bookmarks.filter(item => item.pageNumber !== bookmarksItem.pageNumber);
+  deleteBookmark(bookmarksItemPage: number){
+    this.bookmarks = this.bookmarks.filter(item => item.pageNumber !== bookmarksItemPage);
     localStorage.setItem('bookmarks', JSON.stringify(this.bookmarks));
   }
 
-  checkIsInBookmark(bookmarksItemPageNumber: number){
-    return this.bookmarks.some(item => item.pageNumber === bookmarksItemPageNumber);
+  checkIsInBookmark(pageNumber: number){
+    return this.bookmarks.some(item => item.pageNumber === pageNumber);
   }
 
 
-  addTafsirBookmark(bookmarksItem: BookmarksItem) {
+  addTafsirBookmark(bookmarksItem: BookMarkItem) {
     this.tafsirBookmarks.push(bookmarksItem);
     localStorage.setItem('tafsirBookmarks', JSON.stringify(this.tafsirBookmarks));
   }
 
-  deleteTafsirBookmark(bookmarksItem: BookmarksItem){
+  deleteTafsirBookmark(bookmarksItem: BookMarkItem){
     this.tafsirBookmarks = this.tafsirBookmarks.filter(item => item.pageNumber !== bookmarksItem.pageNumber);
     localStorage.setItem('tafsirBookmarks', JSON.stringify(this.tafsirBookmarks));
   }
 
-  checkIsInTafsirBookmark(bookmarksItemPageNumber: number){
-    return this.tafsirBookmarks.some(item => item.pageNumber === bookmarksItemPageNumber);
+  checkIsInTafsirBookmark(pageNumber: number){
+    return this.tafsirBookmarks.some(item => item.pageNumber === pageNumber);
   }
 }

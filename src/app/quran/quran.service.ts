@@ -1,11 +1,12 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, of, Subject } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { ApiService } from '../shared/api.service';
-import { Juz, Sura, Tafsir } from './quran.models';
+import { Juz, QuranWords, Sura, Tafsir } from './quran.models';
 const tefsir = require('@kmaslesa/tefsir');
 const quranMetaData = require('@kmaslesa/quran-metadata');
+const quranWords = require('@kmaslesa/quran-word-by-word');
 export class QuranResponseData {
   result: any;
 }
@@ -221,10 +222,6 @@ export class QuranService {
     }
   }
 
-  getSura(sura) {
-    return this.http.get(`${this.quranAPI}/v6/sura?index=${sura}`).pipe();
-  }
-
   getSuraWordsByPage(page): Observable<any> {
     this.showLoader = true;
     return this.apiService
@@ -301,6 +298,10 @@ export class QuranService {
     return of(quranMetaData.getSuraListPublishedInMekka());
   }
 
+  getSuraByPageNumber(page): Observable<Sura> {
+    return of(quranMetaData.getSuraByPageNumber(page));
+  }
+
   sortSuraListByFirstPublished(): Observable<Sura[]> {
     return of(quranMetaData.sortSuraListByFirstPublished());
   }
@@ -325,13 +326,16 @@ export class QuranService {
     return of(quranMetaData.searchJuzListById(id));
   }
 
-  getAllQuranWords(): Observable<any> {
-    return this.http.get('assets/quran-words-with-audio-index-charType.json');
-  }
-
   getQuranForPageWordByWord(page): Observable<any> {
     return this.http.get(`https://salamquran.com/en/api/v6/page/wbw?index=${page}`);
   }
 
+  getQuranWordsByPage(page): Observable<QuranWords> {
+    return of(quranWords.getWordsByPage(page));
+  }
+
+  getAllQuranWords(): Observable<QuranWords[]> {
+    return of(quranWords.getWordsByPage());
+  }
 
 }

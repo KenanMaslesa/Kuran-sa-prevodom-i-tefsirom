@@ -1,33 +1,32 @@
+<ion-header class="{{quranService.showHeaderAndTabs?'show':'hide'}}"
+  (click)="quranService.showHeaderAndTabs=!quranService.showHeaderAndTabs">
+  <ion-toolbar color="primary" *ngIf="sura$ | async as sura">
+    <ion-title style="font-size: 16px;" slot="start">
+      {{sura.name.bosnianTranscription}} - {{sura.name.bosnian}}
+    </ion-title>
+    <ion-buttons slot="end">
+      <div class="bookmarks">
+        <!--bookmarks icons-->
+        <ion-icon *ngIf="!checkIsPageInBookmarks()" name="bookmark-outline"
+          (click)="addTafsirBookmark(sura); quranService.showHeaderAndTabs=!quranService.showHeaderAndTabs">
+        </ion-icon>
+        <ion-icon *ngIf="checkIsPageInBookmarks()" style="color:tomato;" name="bookmark"
+          (click)="deleteTafsirBookmark(sura); quranService.showHeaderAndTabs=!quranService.showHeaderAndTabs">
+        </ion-icon>
+        <!--bookmarks icons-->
+      </div>
+    </ion-buttons>
+  </ion-toolbar>
+
+</ion-header>
+
 <ion-content>
   <!-- <app-loader *ngIf="showLoader || mediaPlayerService.isLoading"></app-loader> -->
   <main *ngIf="dataStream$ | async as vm">
-    <header *ngIf="vm.suraInfo">
-      <ion-icon class="backButton" name="arrow-back-outline"></ion-icon>
-      <div class="suraInfo">
-        <h4>
-          {{vm.suraInfo.name.bosnianTranscription}} - {{vm.suraInfo.name.bosnian}}
-        </h4>
-        <p class="currentPage">
-          {{quranService.currentPage}}/604
-        </p>
-      </div>
 
-      <div class="bookmarks" *ngIf="sliderActiveIndex>0">
-        <!--bookmarks icons-->
-        <ion-icon *ngIf="!isCurrentPageInBookmarks" name="bookmark-outline"
-          (click)="storage.addToBookmarks(vm.suraInfo, sliderActiveIndex); checkIsPageInBookmarks(vm.suraInfo)">
-        </ion-icon>
-        <ion-icon *ngIf="isCurrentPageInBookmarks" style="color:tomato;" name="bookmark"
-          (click)="storage.removeFromBookmarks(vm.suraInfo, sliderActiveIndex); checkIsPageInBookmarks(vm.suraInfo)">
-        </ion-icon>
-        <!--bookmarks icons-->
-      </div>
-
-    </header>
-
-    <div style="margin-top: 80px;">
+    <div>
       <ion-slides #slider (ionSlideNextStart)="loadNext()" (ionSlidePrevStart)="loadPrev()" [options]="slideOpts">
-        <ion-slide class="slide" *ngFor="let page of ayahList">
+        <ion-slide class="slide" [class.playingAyah]="mediaPlayerService.player" *ngFor="let page of ayahList">
           <div>
             <ng-container *ngFor="let ayah of page; let i = index">
               <div class="ayah" [class.active]="routeAyahId === ayah.ayaNumber" id="{{ayah.index}}">
@@ -82,7 +81,7 @@
             </ng-container>
           </div>
           <footer class="currentPageFooter">
-            {{sliderActiveIndex}}
+            {{quranService.currentPage}}
           </footer>
         </ion-slide>
       </ion-slides>
