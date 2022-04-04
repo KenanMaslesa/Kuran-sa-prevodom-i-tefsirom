@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
+import { IonSelect } from '@ionic/angular';
 import { QuranService } from 'src/app/quran/quran.service';
 import { MediaPlayerService } from '../../media-player.service';
 
@@ -8,7 +9,17 @@ import { MediaPlayerService } from '../../media-player.service';
   styleUrls: ['./player.component.scss'],
 })
 export class PlayerComponent {
+  @ViewChild('speedOptions', { static: false }) speedOptions: IonSelect;
+  @ViewChild('qari', { static: false }) qari: IonSelect;
 
-  constructor(public mediaPlayerService: MediaPlayerService, public quranService: QuranService) { }
+  constructor(public mediaPlayerService: MediaPlayerService, public quranService: QuranService) {
+  }
 
+  openSpeedOptions() {
+    this.speedOptions.open();
+  }
+
+  openQari() {
+    this.qari.open();
+  }
 }

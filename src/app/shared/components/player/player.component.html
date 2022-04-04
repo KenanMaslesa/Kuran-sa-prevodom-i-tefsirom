@@ -1,40 +1,90 @@
-    <!--global player-->
-    <ng-container *ngIf="mediaPlayerService.player">
-      <div class="global-player">
-        <ion-select class="left-select" [(ngModel)]="mediaPlayerService.selectedPlayOption" interface="popover"
-          #playerOptions>
-          <ion-select-option *ngFor="let option of mediaPlayerService.playOptions" [value]="option.value">
-            {{option.name}}</ion-select-option>
-        </ion-select>
+<!--global player-->
+<ng-container *ngIf="mediaPlayerService.player">
 
-        <div class="icon">
-          <!--stop-->
-          <ion-icon class="icon__stop" *ngIf="mediaPlayerService.isPlaying || mediaPlayerService.isPaused"
-            (click)="mediaPlayerService.removePlayer(); mediaPlayerService.playingCurrentAyah = null" name="stop">
+  <div class="global-player">
+
+    <div class="icon">
+      <div class="left-part">
+        <!--speed-->
+        <div class="speed">
+          <span>{{mediaPlayerService.selectedSpeedOption}}x</span>
+          <ion-icon (click)="openSpeedOptions()" name="speedometer-outline">{{mediaPlayerService.selectedSpeedOption}}
           </ion-icon>
-          <!--stop-->
-
-          <!--pause-->
-          <ion-icon class="icon__pause" name="pause" *ngIf="mediaPlayerService.isPlaying"
-            (click)="mediaPlayerService.pauseAudio();">
-          </ion-icon>
-          <!--pause-->
-
-          <!--play-->
-          <ion-icon class="icon__play" name="play" *ngIf="mediaPlayerService.isPaused"
-            (click)="mediaPlayerService.continueAudio();">
-          </ion-icon>
-          <!--play-->
-
         </div>
+        <!--speed-->
 
-        <ion-select class="right-select" interface="popover" #select [(ngModel)]="quranService.qari"
-          (ngModelChange)="quranService.changeQari(select.value)" name="qari" #qari>
-          <ion-select-option *ngFor="let item of quranService.qariList" value="{{item.identifier}}">
-            {{item.englishName}}
-          </ion-select-option>
-        </ion-select>
+        <!--repeat-->
+        <div class="repeat">
+          <span>{{mediaPlayerService.selectedRepeatOption}}</span>
+          <ion-icon id="repeat-popover" name="repeat-outline"></ion-icon>
+        </div>
+        <!--repeat-->
       </div>
 
-    </ng-container>
-    <!--global player end-->
+
+      <!--play-->
+      <ion-icon class="icon__play" name="play" *ngIf="mediaPlayerService.isPaused"
+        (click)="mediaPlayerService.continueAudio();">
+      </ion-icon>
+      <!--play-->
+
+      <!--pause-->
+      <ion-icon class="icon__pause" name="pause" *ngIf="mediaPlayerService.isPlaying"
+        (click)="mediaPlayerService.pauseAudio();">
+      </ion-icon>
+      <!--pause-->
+
+      <!--stop-->
+      <ion-icon class="icon__stop" *ngIf="mediaPlayerService.isPlaying || mediaPlayerService.isPaused"
+        (click)="mediaPlayerService.removePlayer(); mediaPlayerService.playingCurrentAyah = null" name="stop">
+      </ion-icon>
+      <!--stop-->
+
+      <div class="right-part" (click)="openQari()">
+        <!--qari-->
+        <span>{{quranService.qari.name}}</span>
+        <ion-icon class="icon__qari" name="people-outline"></ion-icon>
+        <!--qari-->
+      </div>
+
+
+    </div>
+  </div>
+
+  <div class="selects">
+    <!--qari-->
+    <ion-select class="right-select" interface="popover" #qari [(ngModel)]="quranService.qari"
+      (ngModelChange)="quranService.changeQari(qari.value)" name="qari">
+      <ion-select-option *ngFor="let item of quranService.qariList" value="{{item.identifier}}">
+        {{item.englishName}}
+      </ion-select-option>
+    </ion-select>
+    <!--qari-->
+
+    <!--speed-->
+    <ion-select class="left-select" [(ngModel)]="mediaPlayerService.selectedSpeedOption" interface="popover"
+      #speedOptions>
+      <ion-select-option *ngFor="let option of mediaPlayerService.speedOptions" [value]="option.value">
+        {{option.value}}</ion-select-option>
+    </ion-select>
+    <!--speed-->
+
+
+    <!--repeat-->
+    <ion-popover trigger="repeat-popover" side="top" alignment="top">
+      <ng-template>
+        <ion-item>
+          <ion-label>Unesite broj ponavljanja ajeta</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-input [(ngModel)]="mediaPlayerService.selectedRepeatOption" [placeholder]="'Unesi'"></ion-input>
+        </ion-item>
+      </ng-template>
+    </ion-popover>
+    <!--repeat-->
+
+  </div>
+
+
+</ng-container>
+<!--global player end-->

@@ -22,7 +22,6 @@
 
   .icon {
     font-size: 30px;
-    width: 30%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -42,7 +41,24 @@
 
     &__stop {
       padding: 3px;
-      margin-right: 5px;
+      margin-left: 5px;
+    }
+
+    &__qari {
+      padding: 1px 2px 2px;
+      font-size: 18px;
+    }
+
+    &__play-next {
+      &--disabled {
+        opacity: 0.3;
+      }
+    }
+
+    &__play-prev {
+      &--disabled {
+        opacity: 0.3;
+      }
     }
   }
 
@@ -50,5 +66,67 @@
   .right-select {
     max-width: 40%;
     width: 40%;
+  }
+}
+
+.selects {
+  visibility: hidden;
+  max-height: 0;
+  z-index: -1;
+}
+ion-popover {
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.left-part {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  left: 8px;
+
+  ion-icon {
+    padding: 1px 2px 2px;
+    font-size: 18px;
+  }
+
+  .repeat {
+    ion-icon {
+      padding: 1px 3px 3px;
+    }
+  }
+
+  span {
+    font-size: 14px;
+    margin-right: 3px;
+  }
+
+  .speed,
+  .repeat {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .speed {
+    margin-right: 10px;
+  }
+}
+
+.right-part {
+  position: absolute;
+  right: 6px;
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  max-width: 36%;
+
+  span {
+    font-size: 14px;
+    margin-right: 5px;
+    max-width: 70%;
+    overflow-x: auto;
+    text-align: center;
   }
 }

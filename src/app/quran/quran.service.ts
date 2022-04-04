@@ -1,8 +1,5 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, of, Subject } from 'rxjs';
-import { map } from 'rxjs/operators';
-import { ApiService } from '../shared/api.service';
 import { Juz, QuranWords, Sura, Tafsir } from './quran.models';
 const tefsir = require('@kmaslesa/tefsir');
 const quranMetaData = require('@kmaslesa/quran-metadata');
@@ -14,181 +11,90 @@ export class QuranResponseData {
   providedIn: 'root',
 })
 export class QuranService {
-  words: any;
   showHeaderAndTabs = true;
   showLoader = false;
   currentPage = 0;
   currentPageChanged = new Subject();
-  currentPageForCaching: number;
-  qari = '64/ar.aymanswoaid';
-  quranAPI = 'https://salamquran.com/en/api/v6'; //https://salamquran.com/api/v6/doc
+  qari = {
+    value: '128/ar.alafasy',
+    name: 'Mishhary Afasy'
+  };
   qariList = [
     {
       identifier: '64/ar.aymanswoaid',
-      language: 'ar',
-      name: 'أيمن سويد',
       englishName: 'Ayman Sowaid',
-      format: 'audio',
-      type: 'versebyverse',
-      direction: null
     },
     {
       identifier: '64/ar.abdulbasitmurattal',
-      language: 'ar',
-      name: 'عبد الباسط عبد الصمد المرتل',
       englishName: 'Abdul Basit',
-      format: 'audio',
-      type: 'translation',
-      direction: null
     },
     {
       identifier: '64/ar.abdullahbasfar',
-      language: 'ar',
-      name: 'عبد الله بصفر',
       englishName: 'Abdullah Basfar',
-      format: 'audio',
-      type: 'versebyverse',
-      direction: null
     },
     {
       identifier: '64/ar.abdurrahmaansudais',
-      language: 'ar',
-      name: 'عبدالرحمن السديس',
       englishName: 'Abdurrahmaan As-Sudais',
-      format: 'audio',
-      type: 'versebyverse',
-      direction: null
     },
     {
       identifier: '64/ar.abdulsamad',
-      language: 'ar',
-      name: 'عبدالباسط عبدالصمد',
       englishName: 'Abdul Samad',
-      format: 'audio',
-      type: 'versebyverse',
-      direction: null
     },
     {
       identifier: '128/ar.shaatree',
-      language: 'ar',
-      name: 'أبو بكر الشاطري',
       englishName: 'Abu Bakr Ash-Shaatree',
-      format: 'audio',
-      type: 'versebyverse',
-      direction: null
     },
     {
       identifier: '128/ar.ahmedajamy',
-      language: 'ar',
-      name: 'أحمد بن علي العجمي',
       englishName: 'Ahmed ibn Ali al-Ajamy',
-      format: 'audio',
-      type: 'versebyverse',
-      direction: null
     },
     {
       identifier: '128/ar.alafasy',
-      language: 'ar',
-      name: 'مشاري العفاسي',
-      englishName: 'Alafasy',
-      format: 'audio',
-      type: 'versebyverse',
-      direction: null
+      englishName: 'Mishary Alafasy',
     },
     {
       identifier: '64/ar.hanirifai',
-      language: 'ar',
-      name: 'هاني الرفاعي',
       englishName: 'Hani Rifai',
-      format: 'audio',
-      type: 'versebyverse',
-      direction: null
     },
     {
       identifier: '128/ar.husary',
-      language: 'ar',
-      name: 'محمود خليل الحصري',
       englishName: 'Husary',
-      format: 'audio',
-      type: 'versebyverse',
-      direction: null
     },
     {
       identifier: '128/ar.husarymujawwad',
-      language: 'ar',
-      name: 'محمود خليل الحصري (المجود)',
       englishName: 'Husary (Mujawwad)',
-      format: 'audio',
-      type: 'versebyverse',
-      direction: null
     },
     {
       identifier: '128/ar.hudhaify',
-      language: 'ar',
-      name: 'علي بن عبدالرحمن الحذيفي',
       englishName: 'Hudhaify',
-      format: 'audio',
-      type: 'versebyverse',
-      direction: null
     },
     {
       identifier: '128/ar.mahermuaiqly',
-      language: 'ar',
-      name: 'ماهر المعيقلي',
       englishName: 'Maher Al Muaiqly',
-      format: 'audio',
-      type: 'versebyverse',
-      direction: null
     },
     {
-      identifier: '128/ar.minshawi',//128
-      language: 'ar',
-      name: 'محمد صديق المنشاوي',
+      identifier: '128/ar.minshawi',
       englishName: 'Minshawi',
-      format: 'audio',
-      type: 'translation',
-      direction: null
     },
     {
       identifier: '64/ar.minshawimujawwad',
-      language: 'ar',
-      name: 'محمد صديق المنشاوي (المجود)',
       englishName: 'Minshawy (Mujawwad)',
-      format: 'audio',
-      type: 'translation',
-      direction: null
     },
     {
-      identifier: '128/ar.muhammadayyoub', //128
-      language: 'ar',
-      name: 'محمد أيوب',
+      identifier: '128/ar.muhammadayyoub',
       englishName: 'Muhammad Ayyoub',
-      format: 'audio',
-      type: 'versebyverse',
-      direction: null
     },
     {
-      identifier: '128/ar.muhammadjibreel',//128
-      language: 'ar',
-      name: 'محمد جبريل',
+      identifier: '128/ar.muhammadjibreel',
       englishName: 'Muhammad Jibreel',
-      format: 'audio',
-      type: 'versebyverse',
-      direction: null
     },
     {
       identifier: '64/ar.saoodshuraym',
-      language: 'ar',
-      name: 'سعود الشريم',
       englishName: 'Saood bin Ibraaheem Ash-Shuraym',
-      format: 'audio',
-      type: 'versebyverse',
-      direction: null
     }
   ];
 
-  constructor(private http: HttpClient, private apiService: ApiService) {
-    this.setCurrentPageForCaching();
+  constructor() {
     const page = localStorage.getItem('currentPage');
     if (page != null) {
       this.setCurrentPage(+page);
@@ -198,7 +104,11 @@ export class QuranService {
     this.currentPageChanged.next(true);
     const qari = localStorage.getItem('qari');
     if(qari){
-      this.qari = qari;
+      const qariObj = JSON.parse(qari);
+      this.qari = {
+        value: qariObj.identifier,
+        name: qariObj.englishName
+      };
     }
   }
 
@@ -212,65 +122,15 @@ export class QuranService {
     localStorage.setItem('currentPage', JSON.stringify(+this.currentPage));
   }
 
-  setCurrentPageForCaching() {
-    const currentPageForCachingFromStore = localStorage.getItem('currentPageForCaching');
-    if(currentPageForCachingFromStore != null) {
-      this.currentPageForCaching = +currentPageForCachingFromStore;
-    }
-    else {
-      this.currentPageForCaching = 1;
-    }
+  changeQari(qariIdentifier){
+    const qariObj = this.qariList.find(item =>  item.identifier === qariIdentifier);
+    localStorage.setItem('qari', JSON.stringify(qariObj));
+    this.qari = {
+      value: qariObj.identifier,
+      name: qariObj.englishName
+    };
   }
 
-  getSuraWordsByPage(page): Observable<any> {
-    this.showLoader = true;
-    return this.apiService
-      .getData(`${this.quranAPI}/page/wbw?index=${page}`);
-  }
-
-  getWordsBySura(sura) {
-    return this.http.get(`${this.quranAPI}/page/wbw?index=${sura}`);
-  }
-
-  changeQari(qariIdentifier: string){
-    localStorage.setItem('qari', qariIdentifier);
-    this.qari = qariIdentifier;
-  }
-
-  cacheAllQuranPages() {
-    if(this.currentPageForCaching <= 604){
-      return this.apiService.getData(`${this.quranAPI}/page/wbw?index=${this.currentPageForCaching}`).subscribe(response => {
-        console.log(`${this.currentPageForCaching}. stranica kesirana`);
-        if(this.currentPageForCaching > 604){
-          return;
-        }
-        else {
-          this.cacheAllQuranPages();
-          localStorage.setItem('currentPageForCaching', JSON.stringify(this.currentPageForCaching));
-          this.currentPageForCaching += 1;
-        }
-      }, error => {
-        console.log(`${this.currentPageForCaching}. stranica NIJE kesirana`);
-        this.cacheAllQuranPages();
-      });
-    }
-    else {
-      console.log('Pages are already cached');
-    }
-  }
-
-  // setCurrentSuraTitle(page) {
-  //   if (this.suraList) {
-  //     this.suraList.forEach((sura, index) => {
-  //       if (
-  //         parseInt(page, 10) >= parseInt(sura.startpage, 10) &&
-  //         parseInt(page, 10) <= parseInt(sura.endpage, 10)
-  //       ) {
-  //         return `${index + 1}. ${sura.name} - ${sura.tname}`;
-  //       }
-  //     });
-  //   }
-  // }
 
   //tafsir
   getTafsirAndTranslationForPage(page): Observable<Tafsir>{
@@ -330,9 +190,9 @@ export class QuranService {
     return of(quranMetaData.searchJuzListById(id));
   }
 
-  getQuranForPageWordByWord(page): Observable<any> {
-    return this.http.get(`https://salamquran.com/en/api/v6/page/wbw?index=${page}`);
-  }
+  // getQuranForPageWordByWord(page): Observable<any> {
+  //   return this.http.get(`https://salamquran.com/en/api/v6/page/wbw?index=${page}`);
+  // }
 
   getQuranWordsByPage(page): Observable<QuranWords> {
     return of(quranWords.getWordsByPage(page));

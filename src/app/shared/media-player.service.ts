@@ -2,6 +2,20 @@ import { EventEmitter, Injectable } from '@angular/core';
 import { Howl } from 'howler';
 import { QuranService } from '../quran/quran.service';
 
+export enum PlayerSpeedOptions {
+  slow1 = 0.50,
+  slow2 = 0.75,
+  normal = 1,
+  fast1 = 1.25,
+  fast2 = 1.50,
+  fast3 = 1.75,
+  fast4 = 2,
+}
+
+export enum PlayerRepeatOptions {
+  default = 1,
+}
+
 export enum PlayerOptions {
   repeat = 'REPEAT',
   order = 'ORDER',
@@ -18,27 +32,43 @@ export class MediaPlayerService {
   isPaused = false;
   isLoading = false;
   audioUrl: string;
+  repeatAyahCounter = 1;
   playingCurrentPage: any;
   playingCurrentAyah: any;
   switchSlide: EventEmitter<any> = new EventEmitter();
   slideSwitched: EventEmitter<any> = new EventEmitter();
   scrollIntoPlayingAyah: EventEmitter<number> = new EventEmitter();
 
-  playOptions = [
+  speedOptions = [
     {
-      value: PlayerOptions.order,
-      name: 'Ajet po ajet'
+      value: PlayerSpeedOptions.slow1
     },
     {
-      value: PlayerOptions.repeat,
-      name: 'Ponavljaj ajet'
+      value: PlayerSpeedOptions.slow2
+    },
+    {
+      value: PlayerSpeedOptions.normal
+    },
+    {
+      value: PlayerSpeedOptions.fast1
+    },
+    {
+      value: PlayerSpeedOptions.fast2
+    },
+    {
+      value: PlayerSpeedOptions.fast3
+    },
+    {
+      value: PlayerSpeedOptions.fast4
     }
   ];
-  selectedPlayOption = PlayerOptions.order;
+
+  selectedSpeedOption = PlayerSpeedOptions.normal;
+  selectedRepeatOption =  PlayerRepeatOptions.default;
   constructor(private quranService: QuranService) {}
 
   playAudio(ayahIndexInHolyQuran, ordinalNumberOfAyahOnPage, currentPage, numberOfAyahsOnCurrentPage) {
-    this.audioUrl = `https://cdn.islamic.network/quran/audio/${this.quranService.qari}/${ayahIndexInHolyQuran}.mp3`;
+    this.audioUrl = `https://cdn.islamic.network/quran/audio/${this.quranService.qari.value}/${ayahIndexInHolyQuran}.mp3`;
     this.playingCurrentAyah = ayahIndexInHolyQuran;
     this.isLoading = true;
     if (this.player) {
@@ -54,13 +84,13 @@ export class MediaPlayerService {
         this.isLoading = false;
       },
       onload: () => {
-        if(this.selectedPlayOption !== PlayerOptions.repeat) {
           this.scrollIntoPlayingAyah.emit(this.playingCurrentAyah);
-        }
       },
       onend: () => {
         this.isPlaying = false;
         this.clearWatchCurrentTimeInterval();
+        if(this.selectedRepeatOption === PlayerRepeatOptions.default || this.repeatAyahCounter >= this.selectedRepeatOption) {
+          this.repeatAyahCounter = 1;
         ayahIndexInHolyQuran = ayahIndexInHolyQuran + 1;
         ordinalNumberOfAyahOnPage = ordinalNumberOfAyahOnPage + 1;
 
@@ -86,76 +116,10 @@ export class MediaPlayerService {
           else {
             this.playAudio(ayahIndexInHolyQuran, ordinalNumberOfAyahOnPage, currentPage, numberOfAyahsOnCurrentPage);
           }
-
-      },
-      onloaderror: (id, error) => {
-        this.isLoading = false;
-        this.isPlaying = false;
-        this.removePlayer();
-        alert('onloaderror:' + error);
-      },
-      onplayerror: (id, error) => {
-        this.isLoading = false;
-        this.isPlaying = false;
-        this.removePlayer();
-        alert('onplayerror:' + error);
-      },
-    });
-    // this.player.rate(2);
-    this.player.play();
-    this.watchCurrentTime();
-  }
-
-  playAudioForTranslationPage(ayahIndexInHolyQuran, ayahIdOnPage, numberOfAyahsPerPages?, currentPage?, ayahOrderNumberOnPage?) {
-    let numberOfAyahsOnCurrentPage;
-    if(this.selectedPlayOption !== PlayerOptions.repeat) {
-       numberOfAyahsOnCurrentPage = numberOfAyahsPerPages[0].length;
-    }
-    this.audioUrl = `https://cdn.islamic.network/quran/audio/${this.quranService.qari}/${ayahIndexInHolyQuran}.mp3`;
-    this.playingCurrentAyah = ayahIndexInHolyQuran;
-    this.isLoading = true;
-    if (this.player) {
-      this.stopAudio();
-      this.removePlayer();
-    }
-    this.player = new Howl({
-      html5: true,
-      src: [this.audioUrl],
-      onplay: () => {
-        this.isPlaying = true;
-        this.isPaused = false;
-        this.isLoading = false;
-      },
-      onload: () => {
-        if(this.selectedPlayOption !== PlayerOptions.repeat) {
-          this.scrollIntoPlayingAyah.emit(ayahIndexInHolyQuran);
-        }
-      },
-      onend: () => {
-        this.isPlaying = false;
-        this.clearWatchCurrentTimeInterval();
-        if(this.selectedPlayOption === PlayerOptions.repeat) {
-          this.playAudioForTranslationPage(ayahIndexInHolyQuran, ayahIdOnPage, numberOfAyahsPerPages, currentPage, ayahOrderNumberOnPage);
         }
         else {
-          ayahIndexInHolyQuran = ayahIndexInHolyQuran + 1;
-          ayahIdOnPage = ayahIdOnPage + 1;
-          if(ayahOrderNumberOnPage >= numberOfAyahsOnCurrentPage) {
-            currentPage = currentPage + 1;
-            if(currentPage >= 604) {
-              alert('Proucen je zadnji ajet zadnje sure');
-              return;
-            }
-            this.switchSlide.emit(true);
-            ayahOrderNumberOnPage = 1;
-            this.slideSwitched.subscribe(()=> {
-              this.playAudioForTranslationPage(ayahIndexInHolyQuran, ayahIdOnPage, numberOfAyahsPerPages, currentPage, ayahOrderNumberOnPage);
-            });
-          }
-          else {
-            ayahOrderNumberOnPage = ayahOrderNumberOnPage + 1;
-            this.playAudioForTranslationPage(ayahIndexInHolyQuran, ayahIdOnPage, numberOfAyahsPerPages, currentPage, ayahOrderNumberOnPage);
-          }
+          this.repeatAyahCounter++;
+            this.playAudio(ayahIndexInHolyQuran, ordinalNumberOfAyahOnPage, currentPage, numberOfAyahsOnCurrentPage);
         }
 
       },
@@ -163,7 +127,7 @@ export class MediaPlayerService {
         this.isLoading = false;
         this.isPlaying = false;
         this.removePlayer();
-        alert('onloaderror:' + error);
+        // alert('onloaderror:' + error);
       },
       onplayerror: (id, error) => {
         this.isLoading = false;
@@ -172,6 +136,7 @@ export class MediaPlayerService {
         alert('onplayerror:' + error);
       },
     });
+    this.player.rate(this.selectedSpeedOption);
     this.player.play();
     this.watchCurrentTime();
   }

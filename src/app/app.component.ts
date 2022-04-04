@@ -1,17 +1,13 @@
 import { Component } from '@angular/core';
 import { QuranService } from './quran/quran.service';
-import { CachingService } from './shared/caching.service';
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
-  styleUrls: ['app.component.scss'],
 })
 export class AppComponent {
 
-  constructor(private cachingService: CachingService, private quranService: QuranService) {
+  constructor(private quranService: QuranService) {
     this.quranService.showLoader = true;
-    this.cachingService.initStorage();
-
     const themeColor = localStorage.getItem('theme');
 
     if (themeColor) {

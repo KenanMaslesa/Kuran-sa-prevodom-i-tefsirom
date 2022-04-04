@@ -58,9 +58,8 @@
                   </div>
 
                   <!--player-->
-                  <div class="player" [class.show]="ayah.showHeader"
-                    *ngIf="mediaPlayerService.playingCurrentAyah === ayah.index || (!mediaPlayerService.isPlaying || mediaPlayerService.isPaused)">
-                    <ion-icon *ngIf="!mediaPlayerService.isPlaying && !mediaPlayerService.isPaused"
+                  <div class="player" [class.show]="ayah.showHeader">
+                    <ion-icon *ngIf="!mediaPlayerService.isPlaying || mediaPlayerService.isPaused"
                       (click)="playAyah(ayah.index);" name="play"></ion-icon>
 
                   </div>
