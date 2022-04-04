@@ -6,12 +6,13 @@ import { PopoverController } from '@ionic/angular';
 @Component({
   template: `
     <ion-list>
-      <ion-item button>
+      <!-- <ion-item button>
         <ion-label>O aplikaciji</ion-label>
-      </ion-item>
+      </ion-item> -->
 
       <ion-item button (click)="goTo('/tabs/settings')">
         <ion-label>Postavke</ion-label>
+        <ion-icon slot="end" name="settings-outline"></ion-icon>
       </ion-item>
     </ion-list>
   `
