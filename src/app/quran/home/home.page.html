@@ -134,7 +134,7 @@
     <div *ngIf="{ayahs: dataStream$ | async, suraList: suraList$ | async} as vm">
       <div *ngIf="vm.ayahs" class="total-ayahs">Pronadjeno {{vm.ayahs.length}} ajeta</div>
 
-      <div class="ayah" *ngFor="let ayah of lazyLoadedAyahs" (click)="presentModal(ayah)" > <!--[routerLink]="['/tabs/translation/', ayah.page, ayah.index]"-->
+      <div class="ayah" *ngFor="let ayah of lazyLoadedAyahs" (click)="presentModal(ayah.page, ayah.index)" > <!--[routerLink]="['/tabs/translation/', ayah.page, ayah.index]"-->
 
         <div class="ayah__header">
           <div class="title">
