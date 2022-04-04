@@ -17,7 +17,7 @@ export class QuranService {
   currentPageChanged = new Subject();
   qari = {
     value: '128/ar.alafasy',
-    name: 'Mishhary Afasy'
+    name: 'Mishary Alafasy'
   };
   qariList = [
     {

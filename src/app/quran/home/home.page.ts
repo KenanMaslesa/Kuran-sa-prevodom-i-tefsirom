@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { ModalController } from '@ionic/angular';
+import { ModalController, PopoverController } from '@ionic/angular';
 import { Observable, of } from 'rxjs';
 import { tap } from 'rxjs/operators';
+import { PopoverPage } from 'src/app/shared/popover';
 import { Juz, Sura, TafsirAyah } from '../quran.models';
 import { QuranService } from '../quran.service';
 import { ModalPage } from './modal/modal.page';
@@ -49,14 +50,18 @@ export class HomePage {
   public loadMoreIndex = 0;
   public readonly numberOfLoadedAyahsOnScroll = 5;
 
-  constructor(private quranService: QuranService, private router: Router, private modalController: ModalController) {
+  constructor(
+    private quranService: QuranService,
+    public popoverCtrl: PopoverController,
+    private modalController: ModalController
+  ) {
     this.selectedSegment = this.segments.sura;
     this.suraList$ = this.quranService.getSuraList();
     this.juzList$ = this.quranService.getJuzList();
   }
 
   ionViewDidEnter() {
-      this.quranService.showLoader = false;
+    this.quranService.showLoader = false;
   }
 
   searchByTerm(searchTerm) {
@@ -91,42 +96,43 @@ export class HomePage {
 
   //search ayahs
   searchAyahs(searchTerm) {
-    if(searchTerm.length !== 0) {
+    if (searchTerm.length !== 0) {
       this.dataStream$ = this.quranService.searchAyahs(searchTerm).pipe(
-        tap(response => {
+        tap((response) => {
           this.allAyahs = response;
           this.loadMoreIndex = 0;
           this.lazyLoadedAyahs = [];
-          if(this.allAyahs.length >= 1){
+          if (this.allAyahs.length >= 1) {
             this.loadMoreAyahs(this.loadMoreIndex);
           }
         })
       );
-    }
-    else {
+    } else {
       this.dataStream$ = of(null);
       this.lazyLoadedAyahs = [];
     }
   }
 
   loadData(event) {
-      event.target.complete();
-      if (this.lazyLoadedAyahs.length >= this.allAyahs.length) {
-        event.target.disabled = true;
-        return;
-      }
-      this.loadMoreAyahs(this.loadMoreIndex);
+    event.target.complete();
+    if (this.lazyLoadedAyahs.length >= this.allAyahs.length) {
+      event.target.disabled = true;
+      return;
+    }
+    this.loadMoreAyahs(this.loadMoreIndex);
   }
 
   loadMoreAyahs(loadMoreIndex) {
     let counter = 0;
-    for(let i = loadMoreIndex * this.numberOfLoadedAyahsOnScroll; i < this.allAyahs.length; i++) {
-
+    for (
+      let i = loadMoreIndex * this.numberOfLoadedAyahsOnScroll;
+      i < this.allAyahs.length;
+      i++
+    ) {
       if (counter >= this.numberOfLoadedAyahsOnScroll) {
         this.loadMoreIndex++;
         return;
-      }
-      else {
+      } else {
         this.lazyLoadedAyahs.push(this.allAyahs[i]);
         counter++;
       }
@@ -139,9 +145,17 @@ export class HomePage {
       initialBreakpoint: 0.2,
       componentProps: {
         page,
-        ayah
+        ayah,
       },
     });
     return await modal.present();
+  }
+
+  async presentPopover(event: Event) {
+    const popover = await this.popoverCtrl.create({
+      component: PopoverPage,
+      event,
+    });
+    await popover.present();
   }
 }

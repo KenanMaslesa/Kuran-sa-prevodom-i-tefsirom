@@ -2,7 +2,9 @@
   <ion-toolbar color="primary">
     <ion-title>Kur'an</ion-title>
     <ion-buttons slot="end">
-      <ion-icon class="settings-icon" name="settings-outline" routerLink="/tabs/settings"></ion-icon>
+      <ion-button (click)="presentPopover($event)">
+        <ion-icon slot="icon-only" ios="ellipsis-horizontal" md="ellipsis-vertical"></ion-icon>
+      </ion-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
