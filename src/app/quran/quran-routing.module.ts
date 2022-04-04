@@ -21,6 +21,10 @@ const routes: Routes = [
         loadChildren: () => import('./holy-quran/holy-quran.module').then( m => m.HolyQuranPageModule)
       },
       {
+        path: 'holy-quran/:page/:ayah',
+        loadChildren: () => import('./holy-quran/holy-quran.module').then( m => m.HolyQuranPageModule)
+      },
+      {
         path: 'bookmarks',
         loadChildren: () => import('./bookmarks/bookmarks.module').then( m => m.BookmarksPageModule)
       },
@@ -34,6 +38,10 @@ const routes: Routes = [
       },
       {
         path: 'translation/:page',
+        loadChildren: () => import('./translation/translation.module').then( m => m.TranslationPageModule)
+      },
+      {
+        path: 'translation/:page/:ayah',
         loadChildren: () => import('./translation/translation.module').then( m => m.TranslationPageModule)
       },
       {

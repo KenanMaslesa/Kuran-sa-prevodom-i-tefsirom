@@ -1,0 +1,11 @@
+ion-button {
+  display: block;
+  margin: 15px 0;
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+
+  &:first-child {
+    margin-top: 30px;
+  }
+}

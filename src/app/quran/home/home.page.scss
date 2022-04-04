@@ -608,4 +608,10 @@ ion-segment {
         font-weight: bold;
       }
     }
+
+    &__info {
+      .arabic {
+        font-family: quran;
+      }
+    }
 }

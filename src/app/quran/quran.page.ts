@@ -17,7 +17,6 @@ export class QuranPage {
   @ViewChild('tabs', { static: false }) tabs: IonTabs;
   tabsValue = Tabs;
   selectedTab: string;
-  showLoader = false;
   constructor(public quranService: QuranService, private router: Router) {
   }
 
@@ -26,6 +25,9 @@ export class QuranPage {
   }
 
   goTo(url) {
+    if(this.selectedTab === url) {
+      return;
+    }
     if(url === this.tabsValue.holyQuran || url === this.tabsValue.translation) {
       this.quranService.setCurrentPage(this.quranService.currentPage-1);
     }

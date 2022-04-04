@@ -33,7 +33,7 @@
         <ion-slide class="slide" [class.playingAyah]="mediaPlayerService.player" *ngFor="let page of ayahList">
           <div>
             <ng-container *ngFor="let ayah of page; let i = index">
-              <div class="ayah" [class.active]="routeAyahId === ayah.ayaNumber" id="{{ayah.index}}">
+              <div class="ayah" [class.active]="routeAyahIndex === ayah.index" id="{{ayah.index}}">
                 <!--progress-bar-->
                 <ion-progress-bar
                   *ngIf="mediaPlayerService.playingCurrentAyah === ayah.index && (mediaPlayerService.isPlaying || mediaPlayerService.isPaused)"

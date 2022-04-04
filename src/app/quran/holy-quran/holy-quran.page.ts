@@ -25,6 +25,7 @@ export class HolyQuranPage {
   };
   quranWords$: Observable<any>;
   routePageId: number;
+  routeAyahIndex: number;
   ayahCounter: number;
   sura$: Observable<Sura>;
   juz$: Observable<Juz>;
@@ -36,7 +37,9 @@ export class HolyQuranPage {
     public bookmarksService: BookmarksService
   ) {
     this.suraList$ = this.quranService.getSuraList();
+
     this.routePageId = +this.route.snapshot.params.page;
+    this.routeAyahIndex = +this.route.snapshot.params.ayah;
     if (this.routePageId) {
       this.quranService.setCurrentPage(this.routePageId-1);
     }

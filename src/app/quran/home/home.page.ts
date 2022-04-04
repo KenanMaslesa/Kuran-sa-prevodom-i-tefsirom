@@ -5,6 +5,7 @@ import { Observable, of } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { Juz, Sura, TafsirAyah } from '../quran.models';
 import { QuranService } from '../quran.service';
+import { ModalPage } from './modal/modal.page';
 
 enum Segments {
   sura = 'sura',
@@ -112,11 +113,11 @@ export class HomePage implements OnInit {
 
   loadData(event) {
       event.target.complete();
-      this.loadMoreAyahs(this.loadMoreIndex);
-
-      if (this.lazyLoadedAyahs.length === this.allAyahs.length) {
+      if (this.lazyLoadedAyahs.length >= this.allAyahs.length) {
         event.target.disabled = true;
+        return;
       }
+      this.loadMoreAyahs(this.loadMoreIndex);
   }
 
   loadMoreAyahs(loadMoreIndex) {
@@ -132,5 +133,17 @@ export class HomePage implements OnInit {
         counter++;
       }
     }
+  }
+
+  async presentModal(ayah: TafsirAyah) {
+    const modal = await this.modalController.create({
+      component: ModalPage,
+      initialBreakpoint: 0.2,
+      breakpoints: [0, 0.2],
+      componentProps: {
+        ayah
+      },
+    });
+    return await modal.present();
   }
 }

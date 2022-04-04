@@ -54,7 +54,7 @@
               <!--end znak - playAyat -->
 
               <!-- word - playWord-->
-              <i [class.active]="mediaPlayerService.playingCurrentAyah === word.index"
+              <i [class.active]="mediaPlayerService.playingCurrentAyah === word.index || word.index === routeAyahIndex"
                 class="p{{quranService.currentPage}} ayah{{word.index}}" *ngIf="word.charType !== 'end'"
                 (click)="playWord(word.audio)" [innerHtml]="word.code"></i>
               <!--word - playWord-->

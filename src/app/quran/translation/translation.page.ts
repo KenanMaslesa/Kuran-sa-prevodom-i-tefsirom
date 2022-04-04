@@ -6,7 +6,7 @@ import { tap } from 'rxjs/operators';
 import { MediaPlayerService } from 'src/app/shared/media-player.service';
 import { StorageService } from 'src/app/shared/storage.service';
 import { BookmarksService } from '../bookmarks/bookmarks.service';
-import { Sura, Tafsir } from '../quran.models';
+import { Sura } from '../quran.models';
 import { QuranService } from '../quran.service';
 @Component({
   selector: 'app-translation',
@@ -26,9 +26,8 @@ export class TranslationPage {
   numberOfLoadedPagesOnSlide = 1;
   sura$: Observable<Sura>;
   showLoader = false;
-  routeSuraId: number;
   routePageId: number;
-  routeAyahId: number;
+  routeAyahIndex: number;
   sliderActiveIndex: number;
   isCurrentPageInBookmarks = false;
   moreInfoAboutSura = false;
@@ -43,11 +42,12 @@ export class TranslationPage {
     public bookmarkService: BookmarksService,
     public mediaPlayerService: MediaPlayerService,
     public storage: StorageService,
-    private router: Router
   ) {
-    this.routeSuraId = +this.route.snapshot.params.id;
+    this.routeAyahIndex = +this.route.snapshot.params.ayah;
     this.routePageId = +this.route.snapshot.params.page;
-    this.routeAyahId = +this.route.snapshot.params.ayah;
+    if (this.routePageId) {
+      this.quranService.setCurrentPage(this.routePageId-1);
+    }
 
     this.subs.add(
       this.mediaPlayerService.switchSlide.subscribe(() => {
@@ -77,6 +77,9 @@ export class TranslationPage {
   ionViewDidEnter() {
     setTimeout(() => {
       this.quranService.showLoader = false;
+      if(this.routeAyahIndex) {
+          this.scroll(this.routeAyahIndex);
+      }
     }, 1000);
   }
 
@@ -86,27 +89,6 @@ export class TranslationPage {
 
   getSuraByPageNumber(page) {
     this.sura$ = this.quranService.getSuraByPageNumber(page);
-  }
-
-  loadMoreByFragmentAndThenScroll(fragment) {
-    this.showLoader = true;
-
-    for (let i = 0; i <= fragment; i++) {
-      this.loadMoreIndex++;
-      this.ayahListLazyLoaded.push(this.ayahList[i]);
-    }
-      this.slides.slideTo(this.routePageId).finally(()=> {
-        if(this.routeAyahId) {
-          setTimeout(() => {
-            this.scroll(this.routeAyahId);
-            this.showLoader = false;
-            }, 2500);
-        }
-        else {
-          this.showLoader = false;
-        }
-      });
-
   }
 
   slideTo(page) {
