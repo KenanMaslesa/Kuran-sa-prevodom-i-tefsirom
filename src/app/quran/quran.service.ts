@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable, of, Subject } from 'rxjs';
-import { Juz, QuranWords, Sura, Tafsir } from './quran.models';
+import { Juz, QuranWords, Sura, Tafsir, TafsirAyah } from './quran.models';
 const tefsir = require('@kmaslesa/tefsir');
 const quranMetaData = require('@kmaslesa/quran-metadata');
 const quranWords = require('@kmaslesa/quran-word-by-word');
@@ -200,6 +200,10 @@ export class QuranService {
 
   getAllQuranWords(): Observable<QuranWords[]> {
     return of(quranWords.getWordsByPage());
+  }
+
+  searchAyahs(searchTerm): Observable<TafsirAyah[]>  {
+    return of(tefsir.searchAyahs(searchTerm));
   }
 
 }

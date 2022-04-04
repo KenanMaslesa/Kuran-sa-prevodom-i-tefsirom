@@ -47,7 +47,7 @@ export interface SurahsEntity {
 //tafsir
 export interface Tafsir {
   suraInfo: SuraInfo;
-  ayahsPerPages?: ((AyahsPerPagesEntity)[] | null)[] | null;
+  ayahsPerPages?: ((TafsirAyah)[] | null)[] | null;
 }
 export interface SuraInfo {
   index: number;
@@ -75,7 +75,7 @@ export interface Name {
 export interface AboutSura {
   bosnian: string;
 }
-export interface AyahsPerPagesEntity {
+export interface TafsirAyah {
   index: number;
   sura: number;
   ayaNumber: number;

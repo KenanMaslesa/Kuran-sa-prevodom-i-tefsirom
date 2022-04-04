@@ -133,7 +133,8 @@ ion-segment {
   text-transform: none;
   line-height: 1;
   font-size: 28px;
-  vertical-align: middle
+  vertical-align: middle;
+  // color: var(--ion-color-primary);
 }
 
 .icon-surah59:before {
@@ -593,4 +594,18 @@ ion-segment {
 
 .icon-surah114:before {
   content: "\E972"
+}
+
+.ayah {
+  text-align: center;
+    padding: 10px;
+    border: 1px solid #ebe2e2;
+    margin: 10px;
+    border-radius: 5px;
+
+    &__header {
+      .title {
+        font-weight: bold;
+      }
+    }
 }

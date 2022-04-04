@@ -29,7 +29,7 @@
     "@ionic/angular": "^6.0.0",
     "@kmaslesa/quran-metadata": "^1.0.15",
     "@kmaslesa/quran-word-by-word": "^1.0.1",
-    "@kmaslesa/tefsir": "^1.0.16",
+    "@kmaslesa/tefsir": "^1.0.17",
     "adhan": "^4.3.1",
     "cordova-plugin-badge": "^0.8.8",
     "cordova-plugin-device": "^2.0.3",
