@@ -7,7 +7,7 @@
 
   <ion-toolbar color="primary" *ngIf="{sura: sura$ | async, juz: juz$ | async} as pageDetails">
     <ion-title slot="start">
-      {{pageDetails.sura.name.bosnianTranscription}} - {{pageDetails.juz.id}}.džuz
+      {{pageDetails.sura?.name.bosnianTranscription}} - {{pageDetails.juz?.id}}.džuz
     </ion-title>
     <!--bookmarks-->
     <ion-icon slot="end" name="bookmark-outline" *ngIf="!checkIsInBookmark()" (click)="addBookmark(pageDetails.sura);">

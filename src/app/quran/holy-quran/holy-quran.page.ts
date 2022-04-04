@@ -2,9 +2,8 @@ import { Component, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { IonSlides } from '@ionic/angular';
 import { Observable, Subscription } from 'rxjs';
-import { tap } from 'rxjs/operators';
 import { MediaPlayerService } from 'src/app/shared/media-player.service';
-import { BookMarkItem, BookmarksService } from '../bookmarks/bookmarks.service';
+import { BookmarksService } from '../bookmarks/bookmarks.service';
 import { Juz, QuranWords, Sura } from '../quran.models';
 import { QuranService } from '../quran.service';
 
@@ -21,7 +20,6 @@ export class HolyQuranPage {
   slideOpts = {
     loop: true,
     initialSlide: 1,
-    // speed:500
   };
   quranWords$: Observable<any>;
   routePageId: number;

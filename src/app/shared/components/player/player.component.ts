@@ -11,7 +11,7 @@ import { MediaPlayerService } from '../../media-player.service';
 export class PlayerComponent {
   @ViewChild('speedOptions', { static: false }) speedOptions: IonSelect;
   @ViewChild('qari', { static: false }) qari: IonSelect;
-
+  showSpeedOptions = false;
   constructor(public mediaPlayerService: MediaPlayerService, public quranService: QuranService) {
   }
 

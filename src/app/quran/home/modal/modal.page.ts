@@ -8,7 +8,8 @@ import { TafsirAyah } from '../../quran.models';
   styleUrls: ['./modal.page.scss'],
 })
 export class ModalPage {
-  @Input() ayah: TafsirAyah;
+  @Input() ayah?: number;
+  @Input() page: number;
   constructor(public modalController: ModalController) { }
 
 clicked() {

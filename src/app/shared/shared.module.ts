@@ -6,7 +6,7 @@ import { LoaderComponent } from './components/loader/loader.component';
 import { PlayerComponent } from './components/player/player.component';
 @NgModule({
   imports: [IonicModule, FormsModule, CommonModule],
-  exports: [LoaderComponent, PlayerComponent, IonicModule, CommonModule],
+  exports: [LoaderComponent, PlayerComponent, IonicModule, CommonModule,],
   declarations: [LoaderComponent, PlayerComponent],
   providers: [],
 })

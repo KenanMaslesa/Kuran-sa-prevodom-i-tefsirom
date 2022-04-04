@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { ModalController } from '@ionic/angular';
 import { Observable, of } from 'rxjs';
@@ -29,7 +29,7 @@ enum SortOptions {
   templateUrl: './home.page.html',
   styleUrls: ['./home.page.scss'],
 })
-export class HomePage implements OnInit {
+export class HomePage {
   public readonly segments = Segments;
   public readonly suraTypes = SuraTypes;
   public selectedSuraTypes = SuraTypes.both;
@@ -54,8 +54,6 @@ export class HomePage implements OnInit {
     this.suraList$ = this.quranService.getSuraList();
     this.juzList$ = this.quranService.getJuzList();
   }
-
-  ngOnInit() {}
 
   ionViewDidEnter() {
       this.quranService.showLoader = false;
@@ -135,12 +133,12 @@ export class HomePage implements OnInit {
     }
   }
 
-  async presentModal(ayah: TafsirAyah) {
+  async presentModal(page, ayah = null) {
     const modal = await this.modalController.create({
       component: ModalPage,
       initialBreakpoint: 0.2,
-      breakpoints: [0, 0.2],
       componentProps: {
+        page,
         ayah
       },
     });

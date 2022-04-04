@@ -68,7 +68,7 @@
 
       <p class="ion-text-center">Broj sura: {{suralist.length}}</p>
       <ion-card class="sura" *ngFor="let sura of suralist; let i = index"
-        [routerLink]="['/tabs/holy-quran', sura.startPage]">
+      (click)="presentModal(sura.startPage)">
         <ion-card-header>
           <ion-card-title>
             <span class="sura__title">{{sura.index}}. {{sura.name.bosnianTranscription}} - {{sura.name.bosnian}}</span>
@@ -104,7 +104,7 @@
 
       <p class="ion-text-center">Broj džuzeva: {{vm.juzList.length}}</p>
       <ion-card class="juz" *ngFor="let juz of vm.juzList; let i = index"
-        [routerLink]="['/tabs/holy-quran', juz.startPage]">
+      (click)="presentModal(juz.startPage)">
         <ion-card-header>
           <ion-card-title class="juz__title">{{juz.id}}. Dzuz <span class="startPage">{{juz.startPage}}</span>
           </ion-card-title>
@@ -132,7 +132,7 @@
     </ion-searchbar>
 
     <div *ngIf="{ayahs: dataStream$ | async, suraList: suraList$ | async} as vm">
-      <div *ngIf="vm.ayahs" style="text-align: center; margin-bottom: 20px;">Pronadjeno {{vm.ayahs.length}} ajeta</div>
+      <div *ngIf="vm.ayahs" class="total-ayahs">Pronadjeno {{vm.ayahs.length}} ajeta</div>
 
       <div class="ayah" *ngFor="let ayah of lazyLoadedAyahs" (click)="presentModal(ayah)" > <!--[routerLink]="['/tabs/translation/', ayah.page, ayah.index]"-->
 

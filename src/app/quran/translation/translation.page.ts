@@ -6,7 +6,7 @@ import { tap } from 'rxjs/operators';
 import { MediaPlayerService } from 'src/app/shared/media-player.service';
 import { StorageService } from 'src/app/shared/storage.service';
 import { BookmarksService } from '../bookmarks/bookmarks.service';
-import { Sura } from '../quran.models';
+import { Juz, Sura } from '../quran.models';
 import { QuranService } from '../quran.service';
 @Component({
   selector: 'app-translation',
@@ -25,6 +25,7 @@ export class TranslationPage {
   ayahListLazyLoaded = [];
   numberOfLoadedPagesOnSlide = 1;
   sura$: Observable<Sura>;
+  juz$: Observable<Juz>;
   showLoader = false;
   routePageId: number;
   routeAyahIndex: number;
@@ -34,7 +35,6 @@ export class TranslationPage {
   slideOpts = {
     loop: true,
     initialSlide: 1,
-    // speed:500
   };
   constructor(
     private route: ActivatedRoute,
@@ -90,6 +90,9 @@ export class TranslationPage {
   getSuraByPageNumber(page) {
     this.sura$ = this.quranService.getSuraByPageNumber(page);
   }
+  getJuzByPageNumber(page) {
+    this.juz$ = this.quranService.getJuzByPageNumber(page);
+  }
 
   slideTo(page) {
     this.slides.slideTo(page);
@@ -132,6 +135,8 @@ export class TranslationPage {
 
   setStream() {
     this.getSuraByPageNumber(this.quranService.currentPage);
+    this.getJuzByPageNumber(this.quranService.currentPage);
+
     this.ayahList = [];
     this.dataStream$ = this.quranService
       .getTafsirAndTranslationForPage(this.quranService.currentPage)

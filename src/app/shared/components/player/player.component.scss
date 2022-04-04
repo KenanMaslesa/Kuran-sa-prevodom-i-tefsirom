@@ -130,3 +130,44 @@ ion-popover {
     text-align: center;
   }
 }
+
+.repeat-options-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-color: #0000006b;
+  z-index: 999;
+  display: none;
+
+  &.show {
+    display: block;
+  }
+}
+.repeat-options {
+  position: absolute;
+  bottom: 45%;
+  left: 50%;
+  height: 50px;
+  transform: translate(-50%, -50%);
+}
+
+
+.close-part1 {
+  position: absolute;
+    top: 0;
+    bottom: 57%;
+    z-index: 999;
+    left: 0;
+    right: 0;
+}
+
+.close-part2 {
+  position: absolute;
+    bottom: 0;
+    top: 60%;
+    z-index: 999;
+    left: 0;
+    right: 0;
+}
