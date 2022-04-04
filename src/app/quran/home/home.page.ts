@@ -30,7 +30,9 @@ enum SortOptions {
 export class HomePage implements OnInit {
   public readonly segments = Segments;
   public readonly suraTypes = SuraTypes;
+  public selectedSuraTypes = SuraTypes.both;
   public readonly sortOptions = SortOptions;
+  public selectedSortOptions = SortOptions.byOrderInMushaf;
   public showSearchForSuraSegment = false;
   public showSearchForJuzSegment = false;
   public selectedSegment: Segments;
@@ -54,6 +56,7 @@ export class HomePage implements OnInit {
   }
 
   searchByCity(type: SuraTypes) {
+    this.selectedSortOptions = SortOptions.byOrderInMushaf;
     if (type === this.suraTypes.meccan) {
       this.suraList$ = this.quranService.getSuraListPublishedInMekka();
     } else if (type === this.suraTypes.medinan) {
@@ -64,6 +67,7 @@ export class HomePage implements OnInit {
   }
 
   sortSuraListByOrder(sortOption: SortOptions) {
+    this.selectedSuraTypes = SuraTypes.both;
     if (sortOption === this.sortOptions.byFirstPublished) {
       this.suraList$ = this.quranService.sortSuraListByFirstPublished();
     } else if (sortOption === this.sortOptions.byLastPublished) {

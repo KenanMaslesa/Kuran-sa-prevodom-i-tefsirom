@@ -41,8 +41,8 @@
 
           <ion-item>
             <ion-label>Mjesto objave</ion-label>
-            <ion-select #type interface="popover" (ionChange)="searchByCity(type.value)">
-              <ion-select-option [value]="suraTypes.both">Sve</ion-select-option>
+            <ion-select #type interface="popover" [(ngModel)]="selectedSuraTypes" (ionChange)="searchByCity(type.value)">
+              <ion-select-option [value]="suraTypes.both">Mekka i Medina</ion-select-option>
               <ion-select-option [value]="suraTypes.medinan">Medina</ion-select-option>
               <ion-select-option [value]="suraTypes.meccan">Mekka</ion-select-option>
             </ion-select>
@@ -50,8 +50,8 @@
 
           <ion-item>
             <ion-label>Sortiranje</ion-label>
-            <ion-select #sort interface="popover" (ionChange)="sortSuraListByOrder(sort.value)">
-              <ion-select-option [value]="sortOptions.byOrderInMushaf">Normal</ion-select-option>
+            <ion-select #sort interface="popover" [(ngModel)]="selectedSortOptions" (ionChange)="sortSuraListByOrder(sort.value)">
+              <ion-select-option [value]="sortOptions.byOrderInMushaf">Redoslijed u mushafu</ion-select-option>
               <ion-select-option [value]="sortOptions.byFirstPublished">Od prve objavljanje</ion-select-option>
               <ion-select-option [value]="sortOptions.byLastPublished">Od zadnje objavljene</ion-select-option>
             </ion-select>
