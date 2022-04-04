@@ -13,7 +13,7 @@
     <ion-item (click)="goTo('/tabs/holy-quran', item.pageNumber);">
       <ion-label>
         <h2>{{item.sura.name.arabic}} - {{item.sura.name.bosnianTranscription}}</h2>
-        <p>{{item.date}}</p>
+        <p>{{item.date | date: 'dd.MM.YYYY hh:mm'}}</p>
       </ion-label>
       <ion-note slot="end">
         {{item.pageNumber}}
@@ -34,7 +34,7 @@
     <ion-item (click)="goTo('/tabs/translation', item.pageNumber);">
       <ion-label>
         <h2>{{item.sura.name.arabic}} - {{item.sura.name.bosnianTranscription}}</h2>
-        <p>{{item.date}}</p>
+        <p>{{item.date | date: 'dd.MM.YYYY hh:mm'}}</p>
       </ion-label>
       <ion-note slot="end">
         {{item.pageNumber}}

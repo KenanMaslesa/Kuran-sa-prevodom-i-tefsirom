@@ -11,10 +11,10 @@
     </ion-title>
     <!--bookmarks icons-->
     <ion-icon slot="end" *ngIf="!checkIsPageInBookmarks()" name="bookmark-outline"
-      (click)="addTafsirBookmark(pageDetails.sura); quranService.showHeaderAndTabs=!quranService.showHeaderAndTabs">
+      (click)="addTafsirBookmark(pageDetails.sura);">
     </ion-icon>
     <ion-icon slot="end" *ngIf="checkIsPageInBookmarks()" name="bookmark"
-      (click)="deleteTafsirBookmark(pageDetails.sura); quranService.showHeaderAndTabs=!quranService.showHeaderAndTabs">
+      (click)="deleteTafsirBookmark(pageDetails.sura);">
     </ion-icon>
     <!--bookmarks icons-->
 
