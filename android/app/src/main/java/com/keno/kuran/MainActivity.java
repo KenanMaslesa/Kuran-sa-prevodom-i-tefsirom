@@ -1,4 +1,4 @@
-package com.keno.kuran;
+package com.coding.kuran;
 
 import com.getcapacitor.BridgeActivity;
 

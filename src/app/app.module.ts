@@ -11,6 +11,8 @@ import { AppComponent } from './app.component';
 
 import { LocalNotifications } from '@awesome-cordova-plugins/local-notifications/ngx';
 import { SocialSharing } from '@awesome-cordova-plugins/social-sharing/ngx';
+import { GoogleAnalytics } from '@ionic-native/google-analytics/ngx';
+
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
@@ -23,7 +25,8 @@ import { SocialSharing } from '@awesome-cordova-plugins/social-sharing/ngx';
   providers: [
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     LocalNotifications,
-    SocialSharing
+    SocialSharing,
+    GoogleAnalytics
   ],
   bootstrap: [AppComponent],
 })
