@@ -1,50 +1,113 @@
 <ion-header>
   <ion-toolbar color="primary">
-    <ion-title>Bilješke</ion-title>
+    <ion-title style="font-size: 16px;">Bilješke i omiljeni ajeti</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <h5 class="title">Kur'an</h5>
-  <p class="description" *ngIf="bookmarksService.bookmarks.length === 0">Nemate biljeski</p>
 
-  <ion-item-sliding *ngFor="let item of bookmarksService.bookmarks">
+  <ion-content>
+    <!--ion-segment-->
+    <ion-segment [(ngModel)]="selectedSegment">
+      <ion-segment-button [value]="segments.bookmark">
+        <ion-label>Bilješke</ion-label>
+      </ion-segment-button>
 
-    <ion-item (click)="goTo('/tabs/holy-quran', item.pageNumber);">
-      <ion-label>
-        <h2>{{item.sura.name.arabic}} - {{item.sura.name.bosnianTranscription}}</h2>
-        <p>{{item.date | date: 'dd.MM.YYYY hh:mm'}}</p>
-      </ion-label>
-      <ion-note slot="end">
-        {{item.pageNumber}}
-      </ion-note>
-    </ion-item>
+      <ion-segment-button [value]="segments.favorite">
+        <ion-label>Omiljeno</ion-label>
+      </ion-segment-button>
+    </ion-segment>
+    <!--ion-segment-->
 
-    <ion-item-options side="end">
-      <ion-item-option color="danger" expandable (click)="bookmarksService.deleteBookmark(item.pageNumber)">
-        Izbrisi
-      </ion-item-option>
-    </ion-item-options>
-  </ion-item-sliding>
+    <ng-container *ngIf="selectedSegment === segments.bookmark">
+      <h5 class="title">Kur'an</h5>
+      <p class="description" *ngIf="bookmarksService.bookmarks.length === 0">Nemate biljeski</p>
 
-  <h5 class="title">Prijevod i Tefsir</h5>
-  <p class="description" *ngIf="bookmarksService.tafsirBookmarks.length === 0">Nemate biljeski</p>
-  <ion-item-sliding *ngFor="let item of bookmarksService.tafsirBookmarks">
+      <ion-item-sliding *ngFor="let item of bookmarksService.bookmarks">
 
-    <ion-item (click)="goTo('/tabs/translation', item.pageNumber);">
-      <ion-label>
-        <h2>{{item.sura.name.arabic}} - {{item.sura.name.bosnianTranscription}}</h2>
-        <p>{{item.date | date: 'dd.MM.YYYY hh:mm'}}</p>
-      </ion-label>
-      <ion-note slot="end">
-        {{item.pageNumber}}
-      </ion-note>
-    </ion-item>
+        <ion-item (click)="goTo('/tabs/holy-quran', item.pageNumber);">
+          <ion-label>
+            <h2>{{item.sura.name.arabic}} - {{item.sura.name.bosnianTranscription}}</h2>
+            <p>{{item.date | date: 'dd.MM.YYYY hh:mm'}}</p>
+          </ion-label>
+          <ion-note slot="end">
+            {{item.pageNumber}}
+          </ion-note>
+        </ion-item>
 
-    <ion-item-options side="end">
-      <ion-item-option color="danger" expandable (click)="bookmarksService.deleteTafsirBookmark(item)">
-        Izbrisi
-      </ion-item-option>
-    </ion-item-options>
-  </ion-item-sliding>
-</ion-content>
+        <ion-item-options side="end">
+          <ion-item-option color="danger" expandable (click)="bookmarksService.deleteBookmark(item.pageNumber)">
+            Izbrisi
+          </ion-item-option>
+        </ion-item-options>
+      </ion-item-sliding>
+
+      <h5 class="title">Prijevod i Tefsir</h5>
+      <p class="description" *ngIf="bookmarksService.tafsirBookmarks.length === 0">Nemate biljeski</p>
+      <ion-item-sliding *ngFor="let item of bookmarksService.tafsirBookmarks">
+
+        <ion-item (click)="goTo('/tabs/translation', item.pageNumber);">
+          <ion-label>
+            <h2>{{item.sura.name.arabic}} - {{item.sura.name.bosnianTranscription}}</h2>
+            <p>{{item.date | date: 'dd.MM.YYYY hh:mm'}}</p>
+          </ion-label>
+          <ion-note slot="end">
+            {{item.pageNumber}}
+          </ion-note>
+        </ion-item>
+
+        <ion-item-options side="end">
+          <ion-item-option color="danger" expandable (click)="bookmarksService.deleteTafsirBookmark(item)">
+            Izbrisi
+          </ion-item-option>
+        </ion-item-options>
+      </ion-item-sliding>
+    </ng-container>
+
+
+
+    <ng-container *ngIf="selectedSegment === segments.favorite">
+      <div *ngFor="let ayah of storageService.favoriteAyahs">
+        <div class="ayah" id="{{ayah.index}}">
+          <!--progress-bar-->
+          <ion-progress-bar
+            *ngIf="mediaPlayerService.playingCurrentAyah === ayah.index && (mediaPlayerService.isPlaying || mediaPlayerService.isPaused)"
+            color="primary" [value]="mediaPlayerService.currentTime/mediaPlayerService.getPlayerDuration()">
+          </ion-progress-bar>
+          <!--progress-bar-->
+
+          <div class="ayah__header" (click)="ayah.showHeader = false">
+            <h4 class="title">
+              {{ayah.ayaNumber}}.
+            </h4>
+            <div class="icons">
+              <!--favorite icons-->
+              <ion-icon class="red" name="heart" (click)="storageService.removeFromFavorites(ayah)"></ion-icon>
+              <!--favorite icons-->
+
+              <!-- <ion-icon name="share-social"></ion-icon> -->
+            </div>
+
+            <!--player-->
+            <div class="player" [class.show]="ayah.showHeader">
+                <ion-icon *ngIf="(mediaPlayerService.isPaused || !mediaPlayerService.player)" (click)="playAyah(ayah.index);" name="play"></ion-icon>
+                <ion-icon *ngIf="mediaPlayerService.isPlaying && mediaPlayerService.playingCurrentAyah === ayah.index" (click)="mediaPlayerService.pauseAudio();" name="pause"></ion-icon>
+            </div>
+            <!--player-->
+          </div>
+
+          <div class="ayah__info">
+            <p class="arabic">{{ayah.aya}}</p>
+            <div class="item">
+              <span class="item__title">Prijevod:</span>
+              <p class="item__content">{{ayah.korkutsTranslation}}</p>
+            </div>
+            <div>
+              <span class="item__title">Tefsir:</span>
+              <p class="item__content">{{ayah.tafsir}}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+  </ion-content>

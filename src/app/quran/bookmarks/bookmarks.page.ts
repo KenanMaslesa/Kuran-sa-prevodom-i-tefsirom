@@ -1,26 +1,47 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { Sura } from '../quran.models';
+import { MediaPlayerService } from 'src/app/shared/media-player.service';
+import { StorageService } from 'src/app/shared/storage.service';
 import { QuranService } from '../quran.service';
-import {BookmarksService } from './bookmarks.service';
+import { BookmarksService } from './bookmarks.service';
 
+enum Segments {
+  bookmark = 'bookmark',
+  favorite = 'favorite',
+}
 @Component({
   selector: 'app-bookmarks',
   templateUrl: './bookmarks.page.html',
   styleUrls: ['./bookmarks.page.scss'],
 })
 export class BookmarksPage {
+  public readonly segments = Segments;
+  public selectedSegment = Segments.bookmark;
+  constructor(
+    public bookmarksService: BookmarksService,
+    private quranService: QuranService,
+    private router: Router,
+    public storageService: StorageService, //rename service
+    public mediaPlayerService: MediaPlayerService
+  ) {}
 
-  constructor(public bookmarksService: BookmarksService, private quranService: QuranService, private router: Router) { }
-
-  goTo(url, pageNumber){
-    this.quranService.setCurrentPage(pageNumber-1);
+  goTo(url, pageNumber) {
+    this.quranService.setCurrentPage(pageNumber - 1);
     this.quranService.currentPageChanged.next(true);
     this.router.navigate([url]);
   }
 
   ionViewDidEnter() {
-      this.quranService.showLoader = false;
+    this.quranService.showLoader = false;
+  }
+
+  ionViewDidLeave() {
+    this.mediaPlayerService.removePlayer();
+  }
+
+  playAyah(ayahIndex) {
+    this.mediaPlayerService.playingCurrentAyah = ayahIndex;
+    this.mediaPlayerService.playOneAyah(ayahIndex);
   }
 
 }

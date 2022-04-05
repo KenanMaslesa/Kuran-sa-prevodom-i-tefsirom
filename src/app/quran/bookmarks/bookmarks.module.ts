@@ -13,7 +13,7 @@ import { BookmarksPage } from './bookmarks.page';
     CommonModule,
     FormsModule,
     IonicModule,
-    BookmarksPageRoutingModule
+    BookmarksPageRoutingModule,
   ],
   declarations: [BookmarksPage]
 })

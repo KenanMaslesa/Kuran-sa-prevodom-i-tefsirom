@@ -32,13 +32,13 @@ enum SortOptions {
 })
 export class HomePage {
   public readonly segments = Segments;
+  public selectedSegment: Segments;
   public readonly suraTypes = SuraTypes;
   public selectedSuraTypes = SuraTypes.both;
   public readonly sortOptions = SortOptions;
   public selectedSortOptions = SortOptions.byOrderInMushaf;
   public showSearchForSuraSegment = false;
   public showSearchForJuzSegment = false;
-  public selectedSegment: Segments;
   public suraList$: Observable<Sura[]>;
   public juzList$: Observable<Juz[]>;
 

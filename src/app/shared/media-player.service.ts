@@ -67,6 +67,33 @@ export class MediaPlayerService {
   selectedRepeatOption =  PlayerRepeatOptions.default;
   constructor(private quranService: QuranService) {}
 
+  playOneAyah(ayahIndexInHolyQuran) {
+    this.audioUrl = `https://cdn.islamic.network/quran/audio/${this.quranService.qari.value}/${ayahIndexInHolyQuran}.mp3`;
+    if (this.player) {
+      this.stopAudio();
+      this.removePlayer();
+    }
+    this.player = new Howl({
+      html5: true,
+      src: [this.audioUrl],
+      onplay: () => {
+        this.isPlaying = true;
+        this.isPaused = false;
+        this.isLoading = false;
+      },
+      onload: () => {
+          this.scrollIntoPlayingAyah.emit(this.playingCurrentAyah);
+      },
+      onend: () => {
+        this.isPlaying = false;
+        this.clearWatchCurrentTimeInterval();
+      },
+    });
+    this.player.rate(this.selectedSpeedOption);
+    this.player.play();
+    this.watchCurrentTime();
+  }
+
   playAudio(ayahIndexInHolyQuran, ordinalNumberOfAyahOnPage, currentPage, numberOfAyahsOnCurrentPage) {
     this.audioUrl = `https://cdn.islamic.network/quran/audio/${this.quranService.qari.value}/${ayahIndexInHolyQuran}.mp3`;
     this.playingCurrentAyah = ayahIndexInHolyQuran;
