@@ -13,3 +13,9 @@
 ion-segment {
   margin-bottom: 20px;
 }
+
+.ayah {
+  &:first-child {
+    border-top: 1px solid #f0e9e9;
+  }
+}
