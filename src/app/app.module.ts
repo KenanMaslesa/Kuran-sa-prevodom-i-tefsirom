@@ -10,6 +10,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 import { LocalNotifications } from '@awesome-cordova-plugins/local-notifications/ngx';
+import { SocialSharing } from '@awesome-cordova-plugins/social-sharing/ngx';
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
@@ -22,6 +23,7 @@ import { LocalNotifications } from '@awesome-cordova-plugins/local-notifications
   providers: [
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     LocalNotifications,
+    SocialSharing
   ],
   bootstrap: [AppComponent],
 })

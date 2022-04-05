@@ -21,7 +21,7 @@
 
     <ng-container *ngIf="selectedSegment === segments.bookmark">
       <h5 class="title">Kur'an</h5>
-      <p class="description" *ngIf="bookmarksService.bookmarks.length === 0">Nemate biljeski</p>
+      <p class="description" *ngIf="bookmarksService.bookmarks.length === 0">Nemate bilješki</p>
 
       <ion-item-sliding *ngFor="let item of bookmarksService.bookmarks">
 
@@ -43,7 +43,7 @@
       </ion-item-sliding>
 
       <h5 class="title">Prijevod i Tefsir</h5>
-      <p class="description" *ngIf="bookmarksService.tafsirBookmarks.length === 0">Nemate biljeski</p>
+      <p class="description" *ngIf="bookmarksService.tafsirBookmarks.length === 0">Nemate bilješki</p>
       <ion-item-sliding *ngFor="let item of bookmarksService.tafsirBookmarks">
 
         <ion-item (click)="goTo('/tabs/translation', item.pageNumber);">
@@ -67,6 +67,7 @@
 
 
     <ng-container *ngIf="selectedSegment === segments.favorite">
+      <p class="description" *ngIf="storageService.favoriteAyahs.length === 0">Niste označili nijedan ajet kao omiljeni</p>
       <div *ngFor="let ayah of storageService.favoriteAyahs">
         <div class="ayah" id="{{ayah.index}}">
           <!--progress-bar-->
@@ -85,7 +86,7 @@
               <ion-icon class="red" name="heart" (click)="storageService.removeFromFavorites(ayah)"></ion-icon>
               <!--favorite icons-->
 
-              <!-- <ion-icon name="share-social"></ion-icon> -->
+              <ion-icon name="share-social" (click)="shareAyah(ayah)"></ion-icon>
             </div>
 
             <!--player-->

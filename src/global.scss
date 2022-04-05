@@ -116,7 +116,8 @@ ion-toolbar, ion-header {
  .ayah {
   padding: 0px 0px 40px;
   color: var(--ion-text-color);
-  border-top: 1px solid #29232347;
+  // border-top: 1px solid #29232347;
+  border-top: 1px solid #bbb8b847;
 
   &:first-of-type {
     padding: 0px 0px 40px;
@@ -155,6 +156,12 @@ ion-toolbar, ion-header {
         &.red {
           color: red;
           margin-right: 10px;
+        }
+
+        &.share-social {
+          &:active {
+          color: var(--ion-color-primary);
+          }
         }
       }
     }

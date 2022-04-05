@@ -4,9 +4,10 @@ import { IonContent, IonInfiniteScroll, IonSlides } from '@ionic/angular';
 import { Observable, Subscription } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { MediaPlayerService } from 'src/app/shared/media-player.service';
+import { NativePluginsService } from 'src/app/shared/native-plugins.service';
 import { StorageService } from 'src/app/shared/storage.service';
 import { BookmarksService } from '../bookmarks/bookmarks.service';
-import { Juz, Sura } from '../quran.models';
+import { Juz, Sura, TafsirAyah } from '../quran.models';
 import { QuranService } from '../quran.service';
 @Component({
   selector: 'app-translation',
@@ -42,6 +43,7 @@ export class TranslationPage {
     public bookmarkService: BookmarksService,
     public mediaPlayerService: MediaPlayerService,
     public storage: StorageService,
+    private nativePluginsService: NativePluginsService
   ) {
     this.routeAyahIndex = +this.route.snapshot.params.ayah;
     this.routePageId = +this.route.snapshot.params.page;
@@ -207,5 +209,9 @@ export class TranslationPage {
       pageNumber: this.quranService.currentPage,
       date: new Date()
     });
+}
+
+shareAyah(ayah: TafsirAyah) {
+  this.nativePluginsService.shareAyah(ayah);
 }
 }

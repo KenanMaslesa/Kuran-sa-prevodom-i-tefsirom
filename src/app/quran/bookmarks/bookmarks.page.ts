@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { MediaPlayerService } from 'src/app/shared/media-player.service';
+import { NativePluginsService } from 'src/app/shared/native-plugins.service';
 import { StorageService } from 'src/app/shared/storage.service';
+import { TafsirAyah } from '../quran.models';
 import { QuranService } from '../quran.service';
 import { BookmarksService } from './bookmarks.service';
 
@@ -22,7 +24,8 @@ export class BookmarksPage {
     private quranService: QuranService,
     private router: Router,
     public storageService: StorageService, //rename service
-    public mediaPlayerService: MediaPlayerService
+    public mediaPlayerService: MediaPlayerService,
+    public nativePluginsService: NativePluginsService
   ) {}
 
   goTo(url, pageNumber) {
@@ -42,6 +45,10 @@ export class BookmarksPage {
   playAyah(ayahIndex) {
     this.mediaPlayerService.playingCurrentAyah = ayahIndex;
     this.mediaPlayerService.playOneAyah(ayahIndex);
+  }
+
+  shareAyah(ayah: TafsirAyah) {
+    this.nativePluginsService.shareAyah(ayah);
   }
 
 }
