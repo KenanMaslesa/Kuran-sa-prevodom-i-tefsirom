@@ -3,13 +3,26 @@ import { Howl } from 'howler';
 import { QuranService } from '../quran/quran.service';
 
 export enum PlayerSpeedOptions {
-  slow1 = 0.50,
-  slow2 = 0.75,
+  slow1 = 0.3,
+  slow2 = 0.4,
+  slow3 = 0.5,
+  slow4 = 0.6,
+  slow5 = 0.7,
+  slow6 = 0.8,
+  slow7 = 0.9,
   normal = 1,
-  fast1 = 1.25,
-  fast2 = 1.50,
-  fast3 = 1.75,
-  fast4 = 2,
+  fast1 = 1.1,
+  fast2 = 1.2,
+  fast3 = 1.3,
+  fast4 = 1.4,
+  fast5 = 1.5,
+  fast6 = 1.6,
+  fast7 = 1.7,
+  fast8 = 1.8,
+  fast9 = 1.9,
+  fast10 = 2,
+  fast11 = 2.5,
+  fast12 = 3,
 }
 
 export enum PlayerRepeatOptions {
@@ -47,6 +60,21 @@ export class MediaPlayerService {
       value: PlayerSpeedOptions.slow2
     },
     {
+      value: PlayerSpeedOptions.slow3
+    },
+    {
+      value: PlayerSpeedOptions.slow4
+    },
+    {
+      value: PlayerSpeedOptions.slow5
+    },
+    {
+      value: PlayerSpeedOptions.slow6
+    },
+    {
+      value: PlayerSpeedOptions.slow7
+    },
+    {
       value: PlayerSpeedOptions.normal
     },
     {
@@ -60,7 +88,31 @@ export class MediaPlayerService {
     },
     {
       value: PlayerSpeedOptions.fast4
-    }
+    },
+    {
+      value: PlayerSpeedOptions.fast5
+    },
+    {
+      value: PlayerSpeedOptions.fast6
+    },
+    {
+      value: PlayerSpeedOptions.fast7
+    },
+    {
+      value: PlayerSpeedOptions.fast8
+    },
+    {
+      value: PlayerSpeedOptions.fast9
+    },
+    {
+      value: PlayerSpeedOptions.fast10
+    },
+    {
+      value: PlayerSpeedOptions.fast11
+    },
+    {
+      value: PlayerSpeedOptions.fast12
+    },
   ];
 
   selectedSpeedOption = PlayerSpeedOptions.normal;
