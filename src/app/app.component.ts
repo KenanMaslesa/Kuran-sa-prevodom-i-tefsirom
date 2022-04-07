@@ -1,13 +1,12 @@
 import { Component } from '@angular/core';
-import { GoogleAnalytics } from '@ionic-native/google-analytics/ngx';
+import { Insomnia } from '@awesome-cordova-plugins/insomnia/ngx';
 import { QuranService } from './quran/quran.service';
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
 })
 export class AppComponent {
-
-  constructor(private quranService: QuranService, private ga: GoogleAnalytics) {
+  constructor(private quranService: QuranService, private insomnia: Insomnia) {
     this.quranService.showLoader = true;
     const themeColor = localStorage.getItem('theme');
 
@@ -16,23 +15,14 @@ export class AppComponent {
         `--ion-color-primary`,
         `${JSON.parse(themeColor)}`
       );
-    }
-    else {
+    } else {
       localStorage.setItem('theme', JSON.stringify('#536a9e'));
     }
 
-    //gogle analytics
-    this.ga.startTrackerWithId('UA-XXXXXXXXXX-X')
-      .then(() => {
-        console.log('Google analytics is ready now');
-        this.ga.trackView('Outbox')
-        .then(() => {
-        })
-        .catch(
-          error => console.log(error)
-        );
-       }).catch(
-        error => console.log('Google Analytics Error: ' + error)
-      );
+    //keep app awake
+    this.insomnia.keepAwake().then(
+      () => console.log('app is awake'),
+      () => console.log('error')
+    );
   }
 }

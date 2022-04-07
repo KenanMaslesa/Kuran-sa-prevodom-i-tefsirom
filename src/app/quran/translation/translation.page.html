@@ -5,6 +5,9 @@
 
 <ion-header class="{{quranService.showHeaderAndTabs?'show':'hide'}}">
   <ion-toolbar color="primary" *ngIf="{sura: sura$ | async, juz: juz$ | async} as pageDetails">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
     <ion-title style="font-size: 16px;" slot="start">
       {{pageDetails.sura?.name?.bosnianTranscription}} - {{pageDetails.juz?.id}}.džuz
 

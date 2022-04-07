@@ -6,6 +6,9 @@
 <ion-header class="{{quranService.showHeaderAndTabs?'show':'hide'}}">
 
   <ion-toolbar color="primary" *ngIf="{sura: sura$ | async, juz: juz$ | async} as pageDetails">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
     <ion-title slot="start">
       {{pageDetails.sura?.name.bosnianTranscription}} - {{pageDetails.juz?.id}}.džuz
     </ion-title>
@@ -33,19 +36,18 @@
           <div class="ayeLine" *ngFor="let ayah of page.words; let ayahNumber = index">
 
             <!--sura title-->
-            <ng-container *ngIf="ayah.suraName">
+            <div *ngIf="ayah.suraName">
               <section class="suraTitle" *ngIf="ayah.suraName">
                 <img src="assets/img/surah_title.gif" alt="Quran sura title">
                 <h3>{{ayah.suraName}}</h3>
               </section>
 
-              <section class="bismillah" *ngIf="quranService.currentPage !== 187">
+              <section class="bismillah" *ngIf="quranService.currentPage !== 187 && quranService.currentPage !==1">
                 <!-- *ngIf="quranService.currentPage !== 187" because of sura Tevba-->
 
                 <div>﷽</div>
-                <h4 class="ayeSimple">بسم الله الرحمن الرحیم</h4>
               </section>
-            </ng-container>
+            </div>
             <!--sura title end-->
             <ng-container *ngFor="let word of ayah.words;">
               <!--end znak - playAyat-->
