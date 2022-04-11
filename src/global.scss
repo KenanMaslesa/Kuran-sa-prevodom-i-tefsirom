@@ -123,12 +123,8 @@ ion-toolbar, ion-header {
     padding: 0px 0px 40px;
   }
   &.active {
-    box-shadow: 0px 1px 4px 2px var(--ion-color-primary);
-    width: 95%;
-    margin: 0 auto;
-    border-radius: 5px;
-    margin-bottom: 20px;
-    margin-top: 20px;
+    box-shadow: inset 0px 0px 6px 0px var(--ion-color-primary);
+    margin: 20px 0;
   }
 
   &__header {
