@@ -158,7 +158,7 @@ export class QuranService {
     return of(quranMetaData.getSuraListPublishedInMekka());
   }
 
-  getSuraByPageNumber(page): Observable<Sura> {
+  getSuraByPageNumber(page): Observable<Sura[]> {
     return of(quranMetaData.getSuraByPageNumber(page));
   }
 

@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { IonContent, IonInfiniteScroll, IonSlides } from '@ionic/angular';
 import { Observable, Subscription } from 'rxjs';
@@ -14,7 +14,7 @@ import { QuranService } from '../quran.service';
   templateUrl: './translation.page.html',
   styleUrls: ['./translation.page.scss'],
 })
-export class TranslationPage {
+export class TranslationPage implements AfterViewInit {
   @ViewChild(IonContent) ionContent: IonContent;
   @ViewChild(IonInfiniteScroll) infiniteScroll: IonInfiniteScroll;
   @ViewChild(IonSlides) slides: IonSlides;
@@ -25,7 +25,7 @@ export class TranslationPage {
   ayahList = [];
   ayahListLazyLoaded = [];
   numberOfLoadedPagesOnSlide = 1;
-  sura$: Observable<Sura>;
+  sura$: Observable<Sura[]>;
   juz$: Observable<Juz>;
   showLoader = false;
   routePageId: number;
@@ -48,12 +48,12 @@ export class TranslationPage {
     this.routeAyahIndex = +this.route.snapshot.params.ayah;
     this.routePageId = +this.route.snapshot.params.page;
     if (this.routePageId) {
-      this.quranService.setCurrentPage(this.routePageId-1);
+      this.quranService.setCurrentPage(this.routePageId - 1);
     }
 
     this.subs.add(
       this.mediaPlayerService.switchSlide.subscribe(() => {
-        this.quranService.setCurrentPage(this.quranService.currentPage-1); //zato sto ce mi se povecati stranica u this.loadNext();
+        this.quranService.setCurrentPage(this.quranService.currentPage - 1); //zato sto ce mi se povecati stranica u this.loadNext();
         this.loadNext();
         setTimeout(() => {
           this.mediaPlayerService.slideSwitched.emit(true);
@@ -63,12 +63,26 @@ export class TranslationPage {
 
     //scroll into playing ayah
     this.subs.add(
-      this.mediaPlayerService.scrollIntoPlayingAyah.subscribe(activeAyahId => {
-        console.log('this.mediaPlayerService.scrollIntoPlayingAyah.subscribe: SCROL');
-        this.scroll(activeAyahId);
-      })
+      this.mediaPlayerService.scrollIntoPlayingAyah.subscribe(
+        (activeAyahId) => {
+          console.log(
+            'this.mediaPlayerService.scrollIntoPlayingAyah.subscribe: SCROL'
+          );
+          this.scroll(activeAyahId);
+        }
+      )
     );
-
+  }
+  ngAfterViewInit(): void {
+    if (this.routeAyahIndex) {
+      setTimeout(() => {
+        this.quranService.showLoader = true;
+      }, 200);
+      setTimeout(() => {
+        this.scroll(this.routeAyahIndex);
+      this.quranService.showLoader = false;
+      }, 1000);
+    }
   }
 
   ionViewWillLeave() {
@@ -76,16 +90,8 @@ export class TranslationPage {
     this.mediaPlayerService.removePlayer();
   }
 
-  ionViewDidEnter() {
-    setTimeout(() => {
-      this.quranService.showLoader = false;
-      if(this.routeAyahIndex) {
-          this.scroll(this.routeAyahIndex);
-      }
-    }, 1000);
-  }
-
   ionViewWillEnter() {
+    this.quranService.showLoader = false;
     this.setStream();
   }
 
@@ -103,33 +109,32 @@ export class TranslationPage {
 
   scroll(id) {
     const ayah = document.getElementById(id);
-    if(ayah){
+    if (ayah) {
       ayah.scrollIntoView({
-        behavior: 'smooth'
+        behavior: 'smooth',
       });
-    }
-    else {
+    } else {
       console.log('Nema ajeta sa ID: ' + id);
     }
   }
 
   loadNext() {
-    if(this.quranService.currentPage !== 1) {
+    if (this.quranService.currentPage !== 1) {
       this.slides.lockSwipeToPrev(false);
     }
     this.ayahList = [];
-    this.quranService.setCurrentPage(this.quranService.currentPage+1);
+    this.quranService.setCurrentPage(this.quranService.currentPage + 1);
     this.setStream();
     this.slides.slideTo(1, 50, false);
   }
 
   loadPrev() {
-    if(this.quranService.currentPage === 1) {
+    if (this.quranService.currentPage === 1) {
       this.slides.lockSwipeToPrev(true);
     }
 
     this.ayahList = [];
-    this.quranService.setCurrentPage(this.quranService.currentPage-1);
+    this.quranService.setCurrentPage(this.quranService.currentPage - 1);
     this.setStream();
 
     this.slides.slideTo(1, 50, false);
@@ -144,23 +149,27 @@ export class TranslationPage {
       .getTafsirAndTranslationForPage(this.quranService.currentPage)
       .pipe(
         tap((response) => {
-          this.ayahList.push(response.ayahsPerPages);
+          this.ayahList.push(response);
         })
       );
   }
 
   playAyah(ayahIndex) {
     this.subs.add(
-      this.quranService.getOrdinalNumberOfAyahOnPage(ayahIndex, this.quranService.currentPage).subscribe(ordinalnumber => {
-        this.quranService.getNumberOfAyahsByPage(this.quranService.currentPage).subscribe(numberOfAyahs => {
-          this.mediaPlayerService.playAudio(
-            ayahIndex,
-            ordinalnumber,
-            this.quranService.currentPage,
-            numberOfAyahs
-          );
-        });
-      })
+      this.quranService
+        .getOrdinalNumberOfAyahOnPage(ayahIndex, this.quranService.currentPage)
+        .subscribe((ordinalnumber) => {
+          this.quranService
+            .getNumberOfAyahsByPage(this.quranService.currentPage)
+            .subscribe((numberOfAyahs) => {
+              this.mediaPlayerService.playAudio(
+                ayahIndex,
+                ordinalnumber,
+                this.quranService.currentPage,
+                numberOfAyahs
+              );
+            });
+        })
     );
   }
 
@@ -195,23 +204,30 @@ export class TranslationPage {
     );
   }
 
-  addTafsirBookmark(sura: Sura) {
+  addTafsirBookmark(sura: Sura[]) {
+    let bookmarkSuraName = '';
+    const names = sura.map(
+      (item) => item.name.arabic && item.name.bosnianTranscription
+    );
+    names.forEach((name, index) => {
+      if (index + 1 < names.length) {
+        bookmarkSuraName += name + ', ';
+      } else {
+        bookmarkSuraName += name;
+      }
+    });
     this.bookmarkService.addTafsirBookmark({
-      sura,
+      sura: bookmarkSuraName,
       pageNumber: this.quranService.currentPage,
-      date: new Date()
+      date: new Date(),
     });
   }
 
-  deleteTafsirBookmark(sura: Sura) {
-    this.bookmarkService.deleteTafsirBookmark({
-      sura,
-      pageNumber: this.quranService.currentPage,
-      date: new Date()
-    });
-}
+  deleteTafsirBookmark() {
+    this.bookmarkService.deleteTafsirBookmark(this.quranService.currentPage);
+  }
 
-shareAyah(ayah: TafsirAyah) {
-  this.nativePluginsService.shareAyah(ayah);
-}
+  shareAyah(suraTitle: any, ayah: TafsirAyah) {
+    this.nativePluginsService.shareAyah(suraTitle.bosnianTranscription, ayah);
+  }
 }

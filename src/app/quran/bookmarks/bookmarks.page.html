@@ -30,8 +30,8 @@
 
         <ion-item (click)="goTo('/tabs/holy-quran', item.pageNumber);">
           <ion-label>
-            <h2>{{item.sura.name.arabic}} - {{item.sura.name.bosnianTranscription}}</h2>
-            <p>{{item.date | date: 'dd.MM.YYYY hh:mm'}}</p>
+            <h2>{{item.sura}}</h2>
+            <p>{{item.date | date: 'dd.MM.YYYY HH:mm'}}</p>
           </ion-label>
           <ion-note slot="end">
             {{item.pageNumber}}
@@ -40,7 +40,7 @@
 
         <ion-item-options side="end">
           <ion-item-option color="danger" expandable (click)="bookmarksService.deleteBookmark(item.pageNumber)">
-            Izbrisi
+            Izbriši
           </ion-item-option>
         </ion-item-options>
       </ion-item-sliding>
@@ -51,8 +51,8 @@
 
         <ion-item (click)="goTo('/tabs/translation', item.pageNumber);">
           <ion-label>
-            <h2>{{item.sura.name.arabic}} - {{item.sura.name.bosnianTranscription}}</h2>
-            <p>{{item.date | date: 'dd.MM.YYYY hh:mm'}}</p>
+            <h2>{{item.sura}}</h2>
+            <p>{{item.date | date: 'dd.MM.YYYY HH:mm'}}</p>
           </ion-label>
           <ion-note slot="end">
             {{item.pageNumber}}
@@ -60,8 +60,8 @@
         </ion-item>
 
         <ion-item-options side="end">
-          <ion-item-option color="danger" expandable (click)="bookmarksService.deleteTafsirBookmark(item)">
-            Izbrisi
+          <ion-item-option color="danger" expandable (click)="bookmarksService.deleteTafsirBookmark(item.pageNumber)">
+            Izbriši
           </ion-item-option>
         </ion-item-options>
       </ion-item-sliding>
@@ -69,7 +69,7 @@
 
 
 
-    <ng-container *ngIf="selectedSegment === segments.favorite">
+    <ng-container *ngIf="selectedSegment === segments.favorite && suraList">
       <p class="description" *ngIf="storageService.favoriteAyahs.length === 0">Niste označili nijedan ajet kao omiljeni</p>
       <div *ngFor="let ayah of storageService.favoriteAyahs">
         <div class="ayah" id="{{ayah.index}}">
@@ -82,14 +82,14 @@
 
           <div class="ayah__header" (click)="ayah.showHeader = false">
             <h4 class="title">
-              {{ayah.ayaNumber}}.
+              {{suraList[ayah.sura-1].name.bosnianTranscription}} {{ayah.ayaNumber}}.
             </h4>
             <div class="icons">
               <!--favorite icons-->
               <ion-icon class="red" name="heart" (click)="storageService.removeFromFavorites(ayah)"></ion-icon>
               <!--favorite icons-->
 
-              <ion-icon name="share-social" (click)="shareAyah(ayah)"></ion-icon>
+              <ion-icon name="share-social" (click)="shareAyah(suraList[ayah.sura-1].name.bosnianTranscription, ayah)"></ion-icon>
             </div>
 
             <!--player-->

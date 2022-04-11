@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Sura } from '../quran.models';
 
 export class BookMarkItem {
-  sura: Sura;
+  sura: string;
   pageNumber: number;
   date: Date;
 }
@@ -42,8 +42,8 @@ export class BookmarksService {
     localStorage.setItem('tafsirBookmarks', JSON.stringify(this.tafsirBookmarks));
   }
 
-  deleteTafsirBookmark(bookmarksItem: BookMarkItem){
-    this.tafsirBookmarks = this.tafsirBookmarks.filter(item => item.pageNumber !== bookmarksItem.pageNumber);
+  deleteTafsirBookmark(pageNumber: number){
+    this.tafsirBookmarks = this.tafsirBookmarks.filter(item => item.pageNumber !== pageNumber);
     localStorage.setItem('tafsirBookmarks', JSON.stringify(this.tafsirBookmarks));
   }
 

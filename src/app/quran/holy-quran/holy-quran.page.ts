@@ -2,6 +2,7 @@ import { Component, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { IonSlides } from '@ionic/angular';
 import { Observable, Subscription } from 'rxjs';
+import { tap } from 'rxjs/operators';
 import { MediaPlayerService } from 'src/app/shared/media-player.service';
 import { BookmarksService } from '../bookmarks/bookmarks.service';
 import { Juz, QuranWords, Sura } from '../quran.models';
@@ -16,6 +17,7 @@ export class HolyQuranPage {
   @ViewChild('slider') private slider: IonSlides;
   subs: Subscription = new Subscription();
   public suraList$: Observable<Sura[]>;
+  quranWordsForCurrentPage$: Observable<QuranWords>;
   quranWordsForCurrentPage: QuranWords[] = [];
   slideOpts = {
     loop: true,
@@ -25,7 +27,7 @@ export class HolyQuranPage {
   routePageId: number;
   routeAyahIndex: number;
   ayahCounter: number;
-  sura$: Observable<Sura>;
+  sura$: Observable<Sura[]>;
   juz$: Observable<Juz>;
 
   constructor(
@@ -41,8 +43,7 @@ export class HolyQuranPage {
     if (this.routePageId) {
       this.quranService.setCurrentPage(this.routePageId-1);
     }
-
-    this.subs.add(this.getWordsForCurrentPage());
+    this.getWordsForCurrentPage();
 
     //switch slide when last ayah on current page is played
     this.subs.add(
@@ -56,14 +57,14 @@ export class HolyQuranPage {
     );
   }
 
-  getWordsForCurrentPage(): Subscription {
+  getWordsForCurrentPage() {
     this.getSuraByPageNumber(this.quranService.currentPage);
     this.getJuzByPageNumber(this.quranService.currentPage);
-    return this.quranService
+    this.quranWordsForCurrentPage$ = this.quranService
       .getQuranWordsByPage(this.quranService.currentPage)
-      .subscribe((response) => {
+      .pipe(tap((response) => {
         this.quranWordsForCurrentPage.push(response);
-      });
+      }));
   }
 
   getSuraByPageNumber(page) {
@@ -88,13 +89,13 @@ export class HolyQuranPage {
   loadPrev() {
     this.quranService.showLoader = true;
 
-    if (this.quranService.currentPage === 1) {
+    if (this.quranService.currentPage <= 2) {
       this.slider.lockSwipeToPrev(true);
     }
 
     this.quranService.setCurrentPage(this.quranService.currentPage - 1);
     this.quranWordsForCurrentPage = [];
-    this.subs.add(this.getWordsForCurrentPage());
+    this.getWordsForCurrentPage();
     this.slider.slideTo(1, 50, false).then(()=> {
       setTimeout(() => {
         this.quranService.showLoader = false;
@@ -104,13 +105,13 @@ export class HolyQuranPage {
 
   loadNext() {
     this.quranService.showLoader = true;
-    if (this.quranService.currentPage !== 1) {
+    if (this.quranService.currentPage >= 1) {
       this.slider.lockSwipeToPrev(false);
     }
 
     this.quranService.setCurrentPage(this.quranService.currentPage + 1);
     this.quranWordsForCurrentPage = [];
-    this.subs.add(this.getWordsForCurrentPage());
+    this.getWordsForCurrentPage();
     this.slider.slideTo(1, 50, false).then(()=> {
       setTimeout(() => {
         this.quranService.showLoader = false;
@@ -120,10 +121,16 @@ export class HolyQuranPage {
 
   //AUDIO
   playWord(url) {
+    this.quranService.showLoader = true;
     let audioUrl = 'https://dl.salamquran.com/wbw/';
     audioUrl += url;
     const audio = new Audio(audioUrl);
     audio.play();
+    audio.onplay = (()=> {
+      setTimeout(() => {
+        this.quranService.showLoader = false;
+      }, 400);
+    });
   }
 
   playAyah(ayahIndex) {
@@ -147,9 +154,19 @@ export class HolyQuranPage {
 
   //bookmarks
   addBookmark(sura) {
+    let bookmarkSuraName = '';
+    const names = sura.map(item => item.name.arabic && item.name.bosnianTranscription);
+    names.forEach((name, index) => {
+      if(index+1 < names.length) {
+        bookmarkSuraName += name + ', ';
+      }
+      else {
+        bookmarkSuraName += name;
+      }
+    });
     this.bookmarksService.addBookmark({
       pageNumber: this.quranService.currentPage,
-      sura,
+      sura: bookmarkSuraName,
       date: new Date(),
     });
   }

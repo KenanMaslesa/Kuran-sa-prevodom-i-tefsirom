@@ -70,7 +70,7 @@
 
       <p class="ion-text-center">Broj sura: {{suralist.length}}</p>
       <ion-card class="sura" *ngFor="let sura of suralist; let i = index"
-      (click)="presentModal(sura.startPage)">
+      (click)="presentModal(sura.startPage, sura.startAyaIndex+1)">
         <ion-card-header>
           <ion-card-title>
             <span class="sura__title">{{sura.index}}. {{sura.name.bosnianTranscription}} - {{sura.name.bosnian}}</span>

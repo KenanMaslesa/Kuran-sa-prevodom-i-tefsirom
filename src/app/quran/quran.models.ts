@@ -89,18 +89,23 @@ export interface TafsirAyah {
 
 //quran words
 export interface QuranWords {
-  words?: (WordsEntity)[] | null;
+  ayahs?: (AyahsEntity)[] | null;
   page: number;
 }
-export interface WordsEntity {
-  suraName?: string | null;
+export interface AyahsEntity {
   words?: (Word)[] | null;
+  metaData: MetaData;
 }
 export interface Word {
-  code: string;
-  index: number;
+  code?: string | null;
   audio?: string | null;
-  charType: string;
+  index?: number | null;
+  charType?: string | null;
+}
+
+export interface MetaData {
+  lineType?: string | null;
+  suraName?: string | null;
 }
 
 //juz

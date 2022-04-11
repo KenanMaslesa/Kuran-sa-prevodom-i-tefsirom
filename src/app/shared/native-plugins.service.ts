@@ -1,12 +1,11 @@
 import { Injectable } from '@angular/core';
 import { SocialSharing } from '@awesome-cordova-plugins/social-sharing/ngx';
-import { ToastController } from '@ionic/angular';
 import { TafsirAyah } from '../quran/quran.models';
 
 @Injectable({providedIn: 'root'})
 export class NativePluginsService {
   appUrl = 'https://play.google.com/store/apps/details?id=com.coding.kuran';
-  constructor(private socialSharing: SocialSharing, private toastController: ToastController) { }
+  constructor(private socialSharing: SocialSharing) { }
 
   shareApp() {
     this.socialSharing.share('','','',this.appUrl);
@@ -20,14 +19,14 @@ export class NativePluginsService {
     window.location.href = this.appUrl;
   }
 
-  shareAyah(ayah: TafsirAyah) {
+  shareAyah(suraTitle: string, ayah: TafsirAyah) {
     const message = `
     ${ayah.aya}\n\n
     Prijevod:
-    ${ayah.korkutsTranslation}\n\n
+    "${ayah.korkutsTranslation}"\n\n
     Tefsir:
     ${ayah.tafsir}\n\n
-    #Kur'an
+    (Sura ${suraTitle}, ${ayah.ayaNumber}. ajet)
     `;
     this.share(message);
   }

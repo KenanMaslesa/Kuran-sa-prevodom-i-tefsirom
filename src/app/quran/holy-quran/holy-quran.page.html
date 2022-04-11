@@ -9,8 +9,13 @@
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/"></ion-back-button>
     </ion-buttons>
-    <ion-title slot="start">
-      {{pageDetails.sura?.name.bosnianTranscription}} - {{pageDetails.juz?.id}}.džuz
+    <ion-title style="font-size: 16px; max-width: 60%;" slot="start">
+      <span *ngFor="let item of pageDetails.sura; let i = index">
+        {{item.name?.bosnianTranscription}}<span *ngIf="i+1 < pageDetails.sura.length">,</span>
+      </span>
+      <div>
+        <span style="font-size: 13px;">Stranica {{quranService.currentPage}}, Džuz {{pageDetails.juz?.id}}</span>
+      </div>
     </ion-title>
     <!--bookmarks-->
     <ion-icon slot="end" name="bookmark-outline" *ngIf="!checkIsInBookmark()" (click)="addBookmark(pageDetails.sura);">
@@ -28,40 +33,43 @@
 </ion-header>
 
 <ion-content>
-  <div class="main {{quranService.showHeaderAndTabs?'':'without-tabs'}}">
+  <div class="main {{quranService.showHeaderAndTabs?'':'without-tabs'}}" *ngIf="quranWordsForCurrentPage$ | async">
     <ion-slides #slider (ionSlideNextStart)="loadNext()" (ionSlidePrevStart)="loadPrev()" [options]="slideOpts">
       <ion-slide class="page" [class.audioPlaying]="mediaPlayerService.player"
         *ngFor="let page of quranWordsForCurrentPage; let pageIndex = index">
         <div>
-          <div class="ayeLine" *ngFor="let ayah of page.words; let ayahNumber = index">
+          <div class="ayeLine" *ngFor="let ayah of page.ayahs; let ayahNumber = index">
 
             <!--sura title-->
-            <div *ngIf="ayah.suraName">
-              <section class="suraTitle" *ngIf="ayah.suraName">
+            <div *ngIf="ayah.metaData">
+              <section class="suraTitle" *ngIf="ayah.metaData.lineType === 'start_sura'">
                 <img src="assets/img/surah_title.gif" alt="Quran sura title">
-                <h3>{{ayah.suraName}}</h3>
+                <h3>{{ayah.metaData.suraName}}</h3>
               </section>
 
-              <section class="bismillah" *ngIf="quranService.currentPage !== 187 && quranService.currentPage !==1">
+              <section class="bismillah"
+                *ngIf="quranService.currentPage !== 187 && quranService.currentPage !==1 && ayah.metaData.lineType === 'besmellah'">
                 <!-- *ngIf="quranService.currentPage !== 187" because of sura Tevba-->
 
                 <div>﷽</div>
               </section>
             </div>
             <!--sura title end-->
-            <ng-container *ngFor="let word of ayah.words;">
+
+            <!--ayah-words-wrapper-->
+            <i *ngFor="let word of ayah.words;" [class.active]="mediaPlayerService.playingCurrentAyah === word.index">
               <!--end znak - playAyat-->
               <i class="p{{quranService.currentPage}} ayah{{word.index}} endAyah" *ngIf="word.charType === 'end'"
                 (click)="playAyah(word.index);" [innerHtml]="word.code"></i>
               <!--end znak - playAyat -->
 
               <!-- word - playWord-->
-              <i [class.active]="mediaPlayerService.playingCurrentAyah === word.index || word.index === routeAyahIndex"
-                class="p{{quranService.currentPage}} ayah{{word.index}}" *ngIf="word.charType !== 'end'"
+              <i class="p{{quranService.currentPage}} ayah{{word.index}}" *ngIf="word.charType !== 'end'"
                 (click)="playWord(word.audio)" [innerHtml]="word.code"></i>
               <!--word - playWord-->
+            </i>
+            <!--ayah-words-wrapper end-->
 
-            </ng-container>
           </div>
           <h6 class="currentPage">{{quranService.currentPage}}</h6>
         </div>
@@ -69,7 +77,7 @@
 
     </ion-slides>
   </div>
-   <!--global player-->
-   <app-player></app-player>
-   <!--global player end-->
+  <!--global player-->
+  <app-player></app-player>
+  <!--global player end-->
 </ion-content>

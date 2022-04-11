@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { MediaPlayerService } from 'src/app/shared/media-player.service';
 import { NativePluginsService } from 'src/app/shared/native-plugins.service';
 import { StorageService } from 'src/app/shared/storage.service';
@@ -19,6 +20,8 @@ enum Segments {
 export class BookmarksPage {
   public readonly segments = Segments;
   public selectedSegment = Segments.bookmark;
+  public suraList = [];
+  subs: Subscription = new Subscription();
   constructor(
     public bookmarksService: BookmarksService,
     private quranService: QuranService,
@@ -26,7 +29,13 @@ export class BookmarksPage {
     public storageService: StorageService, //rename service
     public mediaPlayerService: MediaPlayerService,
     public nativePluginsService: NativePluginsService
-  ) {}
+  ) {
+    this.subs.add(
+      this.quranService.getSuraList().subscribe((response) => {
+        this.suraList = response;
+      })
+    );
+  }
 
   goTo(url, pageNumber) {
     this.quranService.setCurrentPage(pageNumber - 1);
@@ -40,6 +49,7 @@ export class BookmarksPage {
 
   ionViewDidLeave() {
     this.mediaPlayerService.removePlayer();
+    this.subs.unsubscribe();
   }
 
   playAyah(ayahIndex) {
@@ -47,8 +57,7 @@ export class BookmarksPage {
     this.mediaPlayerService.playOneAyah(ayahIndex);
   }
 
-  shareAyah(ayah: TafsirAyah) {
-    this.nativePluginsService.shareAyah(ayah);
+  shareAyah(suraName: string, ayah: TafsirAyah) {
+    this.nativePluginsService.shareAyah(suraName, ayah);
   }
-
 }
