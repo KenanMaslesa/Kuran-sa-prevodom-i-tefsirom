@@ -1,0 +1,6 @@
+{
+	"appId": "com.coding.kuran",
+	"appName": "Kur'an",
+	"webDir": "www",
+	"bundledWebRuntime": false
+}

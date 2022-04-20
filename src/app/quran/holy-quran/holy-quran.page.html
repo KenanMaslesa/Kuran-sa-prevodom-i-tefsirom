@@ -3,36 +3,37 @@
   (click)="quranService.showHeaderAndTabs = true"></ion-icon>
 <!--exit fullscreen-->
 
-<ion-header class="{{quranService.showHeaderAndTabs?'show':'hide'}}">
 
-  <ion-toolbar color="primary" *ngIf="{sura: sura$ | async, juz: juz$ | async} as pageDetails">
-    <ion-buttons slot="start">
-      <ion-back-button defaultHref="/"></ion-back-button>
-    </ion-buttons>
-    <ion-title style="font-size: 16px; max-width: 60%;" slot="start">
-      <span *ngFor="let item of pageDetails.sura; let i = index">
-        {{item.name?.bosnianTranscription}}<span *ngIf="i+1 < pageDetails.sura.length">,</span>
-      </span>
-      <div>
-        <span style="font-size: 13px;">Stranica {{quranService.currentPage}}, Džuz {{pageDetails.juz?.id}}</span>
-      </div>
-    </ion-title>
-    <!--bookmarks-->
-    <ion-icon slot="end" name="bookmark-outline" *ngIf="!checkIsInBookmark()" (click)="addBookmark(pageDetails.sura);">
-    </ion-icon>
-    <ion-icon slot="end" name="bookmark" *ngIf="checkIsInBookmark()"
-      (click)="deleteBookmark(quranService.currentPage);">
-    </ion-icon>
-    <!--bookmarks-->
-
-    <!--fullscreen-->
-    <ion-icon slot="end" name="expand-outline" (click)="quranService.showHeaderAndTabs = false"></ion-icon>
-    <!--fullscreen-->
-
-  </ion-toolbar>
-</ion-header>
 
 <ion-content>
+  <ion-header class="{{quranService.showHeaderAndTabs?'show':'hide'}}">
+
+    <ion-toolbar color="primary" *ngIf="{sura: sura$ | async, juz: juz$ | async} as pageDetails">
+      <ion-buttons slot="start">
+        <ion-back-button defaultHref="/"></ion-back-button>
+      </ion-buttons>
+      <ion-title [class.android]='platformService.isAndroid' slot="start">
+        <span *ngFor="let item of pageDetails.sura; let i = index">
+          {{item.name?.bosnianTranscription}}<span *ngIf="i+1 < pageDetails.sura.length">,</span>
+        </span>
+        <div>
+          <span style="font-size: 13px;">Stranica {{quranService.currentPage}}, Džuz {{pageDetails.juz?.id}}</span>
+        </div>
+      </ion-title>
+      <!--bookmarks-->
+      <ion-icon slot="end" name="bookmark-outline" *ngIf="!checkIsInBookmark()" (click)="addBookmark(pageDetails.sura);">
+      </ion-icon>
+      <ion-icon slot="end" name="bookmark" *ngIf="checkIsInBookmark()"
+        (click)="deleteBookmark(quranService.currentPage);">
+      </ion-icon>
+      <!--bookmarks-->
+
+      <!--fullscreen-->
+      <ion-icon slot="end" name="expand-outline" (click)="quranService.showHeaderAndTabs = false"></ion-icon>
+      <!--fullscreen-->
+
+    </ion-toolbar>
+  </ion-header>
   <div class="main {{quranService.showHeaderAndTabs?'':'without-tabs'}}" *ngIf="quranWordsForCurrentPage$ | async">
     <ion-slides #slider (ionSlideNextStart)="loadNext()" (ionSlidePrevStart)="loadPrev()" [options]="slideOpts">
       <ion-slide class="page" [class.audioPlaying]="mediaPlayerService.player"

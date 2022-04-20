@@ -5,6 +5,7 @@ import { Observable, Subscription } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { MediaPlayerService } from 'src/app/shared/media-player.service';
 import { NativePluginsService } from 'src/app/shared/native-plugins.service';
+import { PlatformService } from 'src/app/shared/platform.service';
 import { StorageService } from 'src/app/shared/storage.service';
 import { BookmarksService } from '../bookmarks/bookmarks.service';
 import { Juz, Sura, TafsirAyah } from '../quran.models';
@@ -159,7 +160,8 @@ export class TranslationPage implements AfterViewInit {
     public bookmarkService: BookmarksService,
     public mediaPlayerService: MediaPlayerService,
     public storage: StorageService,
-    private nativePluginsService: NativePluginsService
+    private nativePluginsService: NativePluginsService,
+    public platformService: PlatformService
   ) {
     this.routeAyahIndex = +this.route.snapshot.params.ayah;
     this.routePageId = +this.route.snapshot.params.page;

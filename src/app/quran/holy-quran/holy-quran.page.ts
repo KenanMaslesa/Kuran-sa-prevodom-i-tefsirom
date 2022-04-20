@@ -4,6 +4,7 @@ import { IonSlides } from '@ionic/angular';
 import { Observable, Subscription } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { MediaPlayerService } from 'src/app/shared/media-player.service';
+import { PlatformService } from 'src/app/shared/platform.service';
 import { BookmarksService } from '../bookmarks/bookmarks.service';
 import { Juz, QuranWords, Sura } from '../quran.models';
 import { QuranService } from '../quran.service';
@@ -34,7 +35,8 @@ export class HolyQuranPage {
     public quranService: QuranService,
     private route: ActivatedRoute,
     public mediaPlayerService: MediaPlayerService,
-    public bookmarksService: BookmarksService
+    public bookmarksService: BookmarksService,
+    public platformService: PlatformService
   ) {
     this.suraList$ = this.quranService.getSuraList();
 

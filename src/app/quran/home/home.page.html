@@ -1,9 +1,15 @@
 <ion-header>
   <ion-toolbar color="primary">
     <ion-title>Kur'an</ion-title>
+    <ion-buttons slot="start">
+        <ion-icon style="margin-left: 5px;" name="heart-outline" (click)="donate()"></ion-icon>
+    </ion-buttons>
     <ion-buttons slot="end">
-      <ion-button (click)="presentPopover($event)">
-        <ion-icon slot="icon-only" ios="ellipsis-horizontal" md="ellipsis-vertical"></ion-icon>
+      <ion-button (click)="presentPopover($event)" *ngIf="platformService.isAndroid">
+        <ion-icon slot="icon-only" md="ellipsis-vertical"></ion-icon>
+      </ion-button>
+      <ion-button routerLink="/tabs/settings" *ngIf="platformService.isIOS">
+        <ion-icon name="settings-outline"></ion-icon>
       </ion-button>
     </ion-buttons>
   </ion-toolbar>

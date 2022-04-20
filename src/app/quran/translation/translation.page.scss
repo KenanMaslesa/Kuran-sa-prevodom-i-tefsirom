@@ -180,7 +180,13 @@ ion-header {
 
 .aboutSura {
   margin-bottom: 20px !important;
-  font-size: 4.5vw;
   border-bottom: 1px solid #bbb8b847;
   padding-bottom: 20px;
+}
+
+ion-title {
+  &.android {
+    font-size: 16px;
+    max-width: 60%;
+  }
 }
