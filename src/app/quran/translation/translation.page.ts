@@ -154,6 +154,7 @@ export class TranslationPage implements AfterViewInit {
     'Traženje zaštite kod Allaha od vidljivog zla.',
     'Zaštita kod Allaha od zla šejtana i njegovih došaptavanja i od skrivenog zla.'
   ];
+  showGoToPageButton = false;
   constructor(
     private route: ActivatedRoute,
     public quranService: QuranService,
@@ -347,5 +348,28 @@ export class TranslationPage implements AfterViewInit {
 
   shareAyah(suraTitle: any, ayah: TafsirAyah) {
     this.nativePluginsService.shareAyah(suraTitle.bosnianTranscription, ayah);
+  }
+
+  goToPage(pageNumber: any) {
+    pageNumber = +pageNumber;
+    if(pageNumber <= 0 || pageNumber > 604) {return;}
+
+    this.ayahList = [];
+    this.quranService.setCurrentPage(pageNumber);
+    this.setStream();
+
+    this.slides.slideTo(1, 50, false).then(()=> {
+      this.showGoToPageButton = false;
+    });
+  }
+
+  checkPage(pageNumber: any) {
+    pageNumber = +pageNumber;
+    if(pageNumber <= 0 || pageNumber > 604) {
+      this.showGoToPageButton = false;
+    }
+    else {
+      this.showGoToPageButton = true;
+    }
   }
 }

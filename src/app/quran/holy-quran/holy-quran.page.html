@@ -72,7 +72,10 @@
             <!--ayah-words-wrapper end-->
 
           </div>
-          <h6 class="currentPage">{{quranService.currentPage}}</h6>
+          <div>
+            <ion-input #currentPage (ionChange)="checkPage(currentPage.value)" [placeholder]="quranService.currentPage"></ion-input>
+            <ion-button *ngIf="showGoToPageButton" color="primary" (click)="goToPage(currentPage.value)">OK</ion-button>
+          </div>
         </div>
       </ion-slide>
 

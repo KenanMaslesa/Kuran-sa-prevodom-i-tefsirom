@@ -103,9 +103,13 @@
               </div>
             </ng-container>
           </div>
-          <footer class="currentPageFooter">
+          <!-- <footer class="currentPageFooter">
             {{quranService.currentPage}}
-          </footer>
+          </footer> -->
+          <div>
+            <ion-input #currentPage (ionChange)="checkPage(currentPage.value)" [placeholder]="quranService.currentPage"></ion-input>
+            <ion-button *ngIf="showGoToPageButton" color="primary" (click)="goToPage(currentPage.value)">OK</ion-button>
+          </div>
         </ion-slide>
       </ion-slides>
     </div>

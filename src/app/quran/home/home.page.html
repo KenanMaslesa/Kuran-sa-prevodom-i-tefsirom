@@ -1,7 +1,7 @@
 <ion-header>
   <ion-toolbar color="primary">
     <ion-title>Kur'an</ion-title>
-    <ion-buttons slot="start">
+    <ion-buttons slot="start" *ngIf="platformService.isIOS">
         <ion-icon style="margin-left: 5px;" name="heart-outline" (click)="donate()"></ion-icon>
     </ion-buttons>
     <ion-buttons slot="end">

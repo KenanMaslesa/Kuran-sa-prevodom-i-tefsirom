@@ -30,6 +30,7 @@ export class HolyQuranPage {
   ayahCounter: number;
   sura$: Observable<Sura[]>;
   juz$: Observable<Juz>;
+  showGoToPageButton = false;
 
   constructor(
     public quranService: QuranService,
@@ -181,5 +182,31 @@ export class HolyQuranPage {
     return this.bookmarksService.checkIsInBookmark(
       this.quranService.currentPage
     );
+  }
+
+  goToPage(pageNumber: any) {
+    pageNumber = +pageNumber;
+    if(pageNumber <= 0 || pageNumber > 604) {return;}
+
+    this.quranService.setCurrentPage(pageNumber);
+    this.quranWordsForCurrentPage = [];
+    this.getWordsForCurrentPage();
+    this.slider.slideTo(1, 50, false).then(()=> {
+      this.showGoToPageButton = false;
+      setTimeout(() => {
+        this.quranService.showLoader = false;
+      }, 200);
+    });
+
+  }
+
+  checkPage(pageNumber: any) {
+    pageNumber = +pageNumber;
+    if(pageNumber <= 0 || pageNumber > 604) {
+      this.showGoToPageButton = false;
+    }
+    else {
+      this.showGoToPageButton = true;
+    }
   }
 }
