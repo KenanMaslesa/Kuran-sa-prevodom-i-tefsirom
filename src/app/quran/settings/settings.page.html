@@ -15,4 +15,72 @@
       <ion-icon *ngIf="item.color === themeColor" name="checkmark-circle-outline"></ion-icon>
     </div>
   </div>
+
+  <ion-item>
+    <ion-label>Podesite veličinu harfova</ion-label>
+    <ion-toggle [(ngModel)]="showSegments" color="primary"></ion-toggle>
+  </ion-item>
+
+  <div style="padding-top: 20px;" *ngIf="showSegments">
+
+    <!--portrait segment-->
+    <ng-container *ngIf="nativePluginsService.isPortrait()">
+      <div class="align-center">
+        <ion-label>Veličina harfova</ion-label>
+
+        <ion-range [(ngModel)]="fontSize" #fontSizeRef (ngModelChange)="onFontChange(fontSizeRef.value)" min="5" pin="true" max="50" color="primary">
+          <ion-label slot="start">5</ion-label>
+          <ion-label slot="end">50</ion-label>
+        </ion-range>
+      </div>
+
+      <div class="align-center">
+        <ion-label>Razmak između redova </ion-label>
+
+        <ion-range [(ngModel)]="lineHeight" #lineHeightRef (ngModelChange)="onLineHeightChange(lineHeightRef.value)" min="5" pin="true" max="100" color="primary">
+          <ion-label slot="start">5</ion-label>
+          <ion-label slot="end">100</ion-label>
+        </ion-range>
+      </div>
+    </ng-container>
+    <!--portrait segment-->
+
+    <!--landscape segment-->
+    <ng-container *ngIf="nativePluginsService.isLandscape()">
+      <div class="align-center">
+        <ion-range [(ngModel)]="fontSizeLandscape" #fontSizeLandscapeRef (ngModelChange)="onLandscapeFontChange(fontSizeLandscapeRef.value)" min="15" pin="true" max="60" color="primary">
+          <ion-label slot="start">15</ion-label>
+          <ion-label slot="end">60</ion-label>
+        </ion-range>
+        <ion-label>Veličina harfova landspace</ion-label>
+      </div>
+
+      <div class="align-center">
+        <ion-range [(ngModel)]="lineHeightLandscape" #lineHeightLandscapeRef (ngModelChange)="onLandscapeLineHeightChange(lineHeightLandscapeRef.value)" min="15" pin="true" max="100" color="primary">
+          <ion-label slot="start">15</ion-label>
+          <ion-label slot="end">100</ion-label>
+        </ion-range>
+        <ion-label>Razmak između redova </ion-label>
+      </div>
+
+    </ng-container>
+    <!--landscape segment-->
+
+
+    <!--page start-->
+    <div class="page-orientation" [ngClass]="{'page-orientation__portrait': nativePluginsService.isPortrait(), 'page-orientation__landscape': nativePluginsService.isLandscape()}">
+      <div dir="rtl">
+        <div class="ayeLine" *ngFor="let ayah of page6; let ayahNumber = index">
+          <i *ngFor="let word of ayah;">
+            <i class="p6"
+               [innerHtml]="word"></i>
+          </i>
+        </div>
+      </div>
+    </div>
+
+    <!--page end-->
+  </div>
+
 </ion-content>
+<ng-container *ngIf="screenOrientation$|async"></ng-container>

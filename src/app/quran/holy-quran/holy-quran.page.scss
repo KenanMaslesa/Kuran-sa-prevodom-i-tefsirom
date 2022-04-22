@@ -6,7 +6,7 @@
   // height: 100%;
 
   &.without-tabs {
-    height: 100%;
+    // height: 100%;
     padding-top: 40px;
 
     @media(orientation: landscape) {
@@ -6085,6 +6085,7 @@ ion-slides {
     min-height: 85vh;
     width: 100% !important;
     // transition: all .3s;
+    padding-top: 10px;
 
     &:nth-child(1) {
       opacity: 0;
@@ -6100,64 +6101,6 @@ ion-slides {
 
       &.audioPlaying {
         padding-bottom: 50px;
-      }
-
-      .ayeLine {
-        cursor: default;
-        position: relative;
-        transition: 0.3s;
-        padding: 4px 0;
-        border: 1px solid transparent;
-        border-radius: 0.25rem;
-        color: #000;
-        min-height: 60px;
-
-        &:last-of-type {
-          margin-bottom: 5px;
-        }
-
-        @media (max-width: 768px) {
-          min-height: 40px;
-        }
-
-        i {
-          font-style: normal;
-          line-height: 49px;
-          font-size: 45px;
-          padding-left: 1px;
-
-          &.endAyah {
-            color: var(--ion-color-primary);
-          }
-
-          @media (max-width: 768px) {
-            font-size: 23px; //fallback
-            font-size: 6vw;
-            line-height: 29px;
-            height: 30px;
-          }
-
-          @media (min-width: 450px) and (orientation: landscape) {
-            font-size: 6vw;
-            line-height: 60px;
-          }
-
-          @media (min-width: 768px) {
-            line-height: 49px;
-            font-size: 45px;
-          }
-
-          &.active,
-          &.hover {
-            color: var(--ion-color-primary);
-            cursor: pointer;
-            background-color: rgb(81 84 91 / 5%);
-          }
-
-          &:hover {
-            color: var(--ion-color-primary);
-          }
-        }
       }
     }
   }

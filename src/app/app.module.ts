@@ -12,7 +12,7 @@ import { AppComponent } from './app.component';
 import { LocalNotifications } from '@awesome-cordova-plugins/local-notifications/ngx';
 import { SocialSharing } from '@awesome-cordova-plugins/social-sharing/ngx';
 import { Insomnia } from '@awesome-cordova-plugins/insomnia/ngx';
-
+import { ScreenOrientation } from '@awesome-cordova-plugins/screen-orientation/ngx';
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
@@ -26,7 +26,8 @@ import { Insomnia } from '@awesome-cordova-plugins/insomnia/ngx';
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     LocalNotifications,
     SocialSharing,
-    Insomnia
+    Insomnia,
+    ScreenOrientation
   ],
   bootstrap: [AppComponent],
 })

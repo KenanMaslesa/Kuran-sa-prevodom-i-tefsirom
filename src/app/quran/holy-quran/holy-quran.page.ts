@@ -1,9 +1,10 @@
-import { Component, ViewChild } from '@angular/core';
+import { ChangeDetectorRef, Component, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { IonSlides } from '@ionic/angular';
 import { Observable, Subscription } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { MediaPlayerService } from 'src/app/shared/media-player.service';
+import { NativePluginsService } from 'src/app/shared/native-plugins.service';
 import { PlatformService } from 'src/app/shared/platform.service';
 import { BookmarksService } from '../bookmarks/bookmarks.service';
 import { Juz, QuranWords, Sura } from '../quran.models';
@@ -18,6 +19,7 @@ export class HolyQuranPage {
   @ViewChild('slider') private slider: IonSlides;
   subs: Subscription = new Subscription();
   public suraList$: Observable<Sura[]>;
+  public screenOrientation$: Observable<any>;
   quranWordsForCurrentPage$: Observable<QuranWords>;
   quranWordsForCurrentPage: QuranWords[] = [];
   slideOpts = {
@@ -31,14 +33,15 @@ export class HolyQuranPage {
   sura$: Observable<Sura[]>;
   juz$: Observable<Juz>;
   showGoToPageButton = false;
-
   constructor(
     public quranService: QuranService,
     private route: ActivatedRoute,
     public mediaPlayerService: MediaPlayerService,
     public bookmarksService: BookmarksService,
     public platformService: PlatformService,
-    private router: Router
+    private router: Router,
+    public nativePluginsService: NativePluginsService,
+    private changeDetectorRef: ChangeDetectorRef
   ) {
     this.suraList$ = this.quranService.getSuraList();
 
@@ -59,6 +62,14 @@ export class HolyQuranPage {
         }, 1000);
       })
     );
+
+    //screen orientation
+    this.screenOrientation$ = this.nativePluginsService.screenOrientation.onChange().pipe(
+      tap(() => {
+        this.nativePluginsService.currentScreenOrientation = this.nativePluginsService.screenOrientation.type;
+        this.changeDetectorRef.detectChanges();
+      })
+   );
   }
 
   getWordsForCurrentPage() {

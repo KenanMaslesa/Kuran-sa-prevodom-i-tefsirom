@@ -22,3 +22,28 @@
     }
   }
 }
+
+.align-center {
+  text-align: center;
+}
+
+.p6 {
+  font-family: p6;
+}
+
+@font-face {
+  font-display: block;
+  font-family: p6;
+  src: url(fonts/p6.ttf) format("truetype");
+}
+
+ion-range {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.page-orientation {
+  border: 1px solid #adadad;
+  border-radius: 5px;
+  margin-top: 10px;
+}

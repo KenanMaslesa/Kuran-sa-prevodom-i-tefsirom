@@ -36,7 +36,7 @@
   </ion-header>
   <div class="main {{quranService.showHeaderAndTabs?'':'without-tabs'}}" *ngIf="quranWordsForCurrentPage$ | async">
     <ion-slides #slider (ionSlideNextStart)="loadNext()" (ionSlidePrevStart)="loadPrev()" [options]="slideOpts">
-      <ion-slide class="page" [class.audioPlaying]="mediaPlayerService.player"
+      <ion-slide class="page-orientation" [ngClass]="{'page-orientation__portrait': nativePluginsService.isPortrait(), 'page-orientation__landscape': nativePluginsService.isLandscape()}" [class.audioPlaying]="mediaPlayerService.player"
         *ngFor="let page of quranWordsForCurrentPage; let pageIndex = index">
         <div>
           <div class="ayeLine" *ngFor="let ayah of page.ayahs; let ayahNumber = index">
@@ -85,3 +85,5 @@
   <app-player></app-player>
   <!--global player end-->
 </ion-content>
+
+<ng-container *ngIf="screenOrientation$ | async"></ng-container>
