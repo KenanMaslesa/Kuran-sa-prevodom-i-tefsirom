@@ -352,7 +352,7 @@ export class TranslationPage implements AfterViewInit {
 
   goToPage(pageNumber: any) {
     pageNumber = +pageNumber;
-    if(pageNumber <= 0 || pageNumber > 604) {return;}
+    if(pageNumber <= 0 || pageNumber > 604 || isNaN(pageNumber)) {return;}
 
     this.ayahList = [];
     this.quranService.setCurrentPage(pageNumber);
@@ -365,7 +365,7 @@ export class TranslationPage implements AfterViewInit {
 
   checkPage(pageNumber: any) {
     pageNumber = +pageNumber;
-    if(pageNumber <= 0 || pageNumber > 604) {
+    if(pageNumber <= 0 || pageNumber > 604 || isNaN(pageNumber)) {
       this.showGoToPageButton = false;
     }
     else {

@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { IonSlides } from '@ionic/angular';
 import { Observable, Subscription } from 'rxjs';
 import { tap } from 'rxjs/operators';
@@ -37,7 +37,8 @@ export class HolyQuranPage {
     private route: ActivatedRoute,
     public mediaPlayerService: MediaPlayerService,
     public bookmarksService: BookmarksService,
-    public platformService: PlatformService
+    public platformService: PlatformService,
+    private router: Router
   ) {
     this.suraList$ = this.quranService.getSuraList();
 
@@ -186,7 +187,7 @@ export class HolyQuranPage {
 
   goToPage(pageNumber: any) {
     pageNumber = +pageNumber;
-    if(pageNumber <= 0 || pageNumber > 604) {return;}
+    if(pageNumber <= 0 || pageNumber > 604 || isNaN(pageNumber)) {return;}
 
     this.quranService.setCurrentPage(pageNumber);
     this.quranWordsForCurrentPage = [];
@@ -202,11 +203,17 @@ export class HolyQuranPage {
 
   checkPage(pageNumber: any) {
     pageNumber = +pageNumber;
-    if(pageNumber <= 0 || pageNumber > 604) {
+    if(pageNumber <= 0 || pageNumber > 604 || isNaN(pageNumber)) {
       this.showGoToPageButton = false;
     }
     else {
       this.showGoToPageButton = true;
     }
+  }
+
+  goToHomePage() {
+    this.router.navigateByUrl('/',{
+      replaceUrl : true
+     });
   }
 }

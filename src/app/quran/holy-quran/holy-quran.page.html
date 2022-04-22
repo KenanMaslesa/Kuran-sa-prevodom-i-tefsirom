@@ -10,7 +10,7 @@
 
     <ion-toolbar color="primary" *ngIf="{sura: sura$ | async, juz: juz$ | async} as pageDetails">
       <ion-buttons slot="start">
-        <ion-back-button defaultHref="/"></ion-back-button>
+        <ion-back-button (click)="goToHomePage()" defaultHref=""></ion-back-button>
       </ion-buttons>
       <ion-title [class.android]='platformService.isAndroid' slot="start">
         <span *ngFor="let item of pageDetails.sura; let i = index">
@@ -73,7 +73,7 @@
 
           </div>
           <div>
-            <ion-input #currentPage (ionChange)="checkPage(currentPage.value)" [placeholder]="quranService.currentPage"></ion-input>
+            <ion-input dir="ltr" #currentPage (ionChange)="checkPage(currentPage.value)" [placeholder]="quranService.currentPage"></ion-input>
             <ion-button *ngIf="showGoToPageButton" color="primary" (click)="goToPage(currentPage.value)">OK</ion-button>
           </div>
         </div>

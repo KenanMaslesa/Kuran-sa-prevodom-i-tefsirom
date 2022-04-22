@@ -13,12 +13,12 @@ import { NativePluginsService } from './native-plugins.service';
       </ion-item> -->
 
       <ion-item button (click)="nativePluginsService.shareApp()">
-        <ion-label>Podijeli sa drugima</ion-label>
+        <ion-label>Podijelite sa drugima</ion-label>
         <ion-icon slot="end" name="share-social-outline"></ion-icon>
       </ion-item>
 
       <ion-item button (click)="nativePluginsService.rateApp()">
-        <ion-label>Ocijeni nas na Google Play</ion-label>
+        <ion-label>Ocijenite nas na Google Play</ion-label>
         <ion-icon slot="end" name="star-outline"></ion-icon>
       </ion-item>
 
@@ -43,7 +43,9 @@ export class PopoverPage {
   constructor(public popoverCtrl: PopoverController, private router: Router, public nativePluginsService: NativePluginsService) {}
 
   goTo(url) {
-    this.router.navigate([url]);
+    this.router.navigateByUrl(`${url}`,{
+      replaceUrl : true
+     });
     this.popoverCtrl.dismiss();
   }
 }
