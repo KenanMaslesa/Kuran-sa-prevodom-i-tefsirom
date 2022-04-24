@@ -34,7 +34,7 @@
 
     </ion-toolbar>
   </ion-header>
-  <div class="main {{quranService.showHeaderAndTabs?'':'without-tabs'}}" *ngIf="quranWordsForCurrentPage$ | async">
+  <div class="main page-{{quranService.currentPage}} {{quranService.showHeaderAndTabs?'':'without-tabs'}}" *ngIf="quranWordsForCurrentPage$ | async">
     <ion-slides #slider (ionSlideNextStart)="loadNext()" (ionSlidePrevStart)="loadPrev()" [options]="slideOpts">
       <ion-slide class="page-orientation" [ngClass]="{'page-orientation__portrait': nativePluginsService.isPortrait(), 'page-orientation__landscape': nativePluginsService.isLandscape()}" [class.audioPlaying]="mediaPlayerService.player"
         *ngFor="let page of quranWordsForCurrentPage; let pageIndex = index">

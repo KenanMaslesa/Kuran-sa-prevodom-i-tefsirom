@@ -5,6 +5,10 @@
   text-align: center;
   padding-bottom: 45px;
 
+  &.page-1, &.page-2 {
+    height: 100%;
+  }
+
   @media(min-height: 800px) {
     height: 100%;
   }
@@ -6094,7 +6098,7 @@ ion-slides {
   direction: rtl;
 
   ion-slide {
-
+    height: 100%;
     width: 100% !important;
 
     @media(max-height: 800px) {
