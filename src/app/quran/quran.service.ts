@@ -49,10 +49,6 @@ export class QuranService {
       englishName: 'Ahmed ibn Ali al-Ajamy',
     },
     {
-      identifier: '128/ar.alafasy',
-      englishName: 'Mishary Alafasy',
-    },
-    {
       identifier: '64/ar.hanirifai',
       englishName: 'Hani Rifai',
     },
@@ -67,6 +63,10 @@ export class QuranService {
     {
       identifier: '128/ar.hudhaify',
       englishName: 'Hudhaify',
+    },
+    {
+      identifier: '128/ar.alafasy',
+      englishName: 'Mishary Alafasy',
     },
     {
       identifier: '128/ar.mahermuaiqly',

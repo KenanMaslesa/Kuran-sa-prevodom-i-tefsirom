@@ -67,6 +67,10 @@
     max-width: 40%;
     width: 40%;
   }
+
+  ion-progress-bar {
+    position: absolute; top: -3px;
+  }
 }
 
 .selects {
@@ -126,6 +130,7 @@ ion-popover {
     font-size: 14px;
     margin-right: 5px;
     max-width: 70%;
+    max-height: 35px;
     overflow-x: auto;
     text-align: center;
   }

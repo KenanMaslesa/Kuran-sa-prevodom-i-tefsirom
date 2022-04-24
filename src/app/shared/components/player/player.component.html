@@ -2,7 +2,10 @@
 <ng-container *ngIf="mediaPlayerService.player">
 
   <div class="global-player">
-
+    <!--progress-bar-->
+    <ion-progress-bar color="primary" [value]="mediaPlayerService.currentTime/mediaPlayerService.getPlayerDuration()">
+    </ion-progress-bar>
+    <!--progress-bar-->
     <div class="icon">
       <div class="left-part">
         <!--speed-->
@@ -20,6 +23,7 @@
         </div>
         <!--repeat-->
       </div>
+      <ion-spinner *ngIf="mediaPlayerService.isLoading" name="bubbles" color="white"></ion-spinner>
 
 
       <!--play-->
@@ -56,11 +60,11 @@
     <ion-item>
       <ion-label>Odaberite učača</ion-label>
       <ion-select class="right-select" interface="popover" #qari [(ngModel)]="quranService.qari"
-      (ngModelChange)="quranService.changeQari(qari.value)" name="qari">
-      <ion-select-option *ngFor="let item of quranService.qariList" value="{{item.identifier}}">
-        {{item.englishName}}
-      </ion-select-option>
-    </ion-select>
+        (ngModelChange)="quranService.changeQari(qari.value)" name="qari">
+        <ion-select-option *ngFor="let item of quranService.qariList" value="{{item.identifier}}">
+          {{item.englishName}}
+        </ion-select-option>
+      </ion-select>
     </ion-item>
 
     <!--qari-->
@@ -69,10 +73,10 @@
     <ion-item>
       <ion-label>Odaberite brzinu učenja</ion-label>
       <ion-select class="left-select" [(ngModel)]="mediaPlayerService.selectedSpeedOption" interface="popover"
-      #speedOptions>
-      <ion-select-option *ngFor="let option of mediaPlayerService.speedOptions" [value]="option.value">
-        {{option.value}}</ion-select-option>
-    </ion-select>
+        #speedOptions>
+        <ion-select-option *ngFor="let option of mediaPlayerService.speedOptions" [value]="option.value">
+          {{option.value}}</ion-select-option>
+      </ion-select>
     </ion-item>
     <!--speed-->
 
@@ -86,15 +90,16 @@
 <!--custom (not good) repeat options modal-->
 <div class="repeat-options-wrapper" [class.show]="showSpeedOptions">
   <div (click)="showSpeedOptions=false">
-    <div class="close-part1" ></div>
-    <div class="close-part2" ></div>
+    <div class="close-part1"></div>
+    <div class="close-part2"></div>
   </div>
   <div class="repeat-options">
     <ion-item>
       <ion-label>Unesite broj ponavljanja ajeta</ion-label>
     </ion-item>
     <ion-item (click)="showSpeedOptions = true">
-      <ion-input style="text-align: center;" [(ngModel)]="mediaPlayerService.selectedRepeatOption" [placeholder]="'Broj ponavljanja'"></ion-input>
+      <ion-input style="text-align: center;" [(ngModel)]="mediaPlayerService.selectedRepeatOption"
+        [placeholder]="'Broj ponavljanja'"></ion-input>
     </ion-item>
   </div>
 </div>
