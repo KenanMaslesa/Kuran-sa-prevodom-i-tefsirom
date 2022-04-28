@@ -220,6 +220,30 @@ export class MediaPlayerService {
     this.watchCurrentTime();
   }
 
+  play(audioUrl) {
+
+    if (this.player) {
+      this.stopAudio();
+      this.removePlayer();
+    }
+    this.player = new Howl({
+      html5: true,
+      src: [audioUrl],
+      onplay: () => {
+        this.isPlaying = true;
+        this.isPaused = false;
+        this.isLoading = false;
+      },
+      onend: () => {
+        this.isPlaying = false;
+        this.clearWatchCurrentTimeInterval();
+      },
+    });
+    this.player.rate(this.selectedSpeedOption);
+    this.player.play();
+    this.watchCurrentTime();
+  }
+
   stopAudio() {
     this.player.stop();
     this.isPlaying = false;
