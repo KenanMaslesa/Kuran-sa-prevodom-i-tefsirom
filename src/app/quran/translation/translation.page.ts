@@ -10,6 +10,7 @@ import { StorageService } from 'src/app/shared/storage.service';
 import { BookmarksService } from '../bookmarks/bookmarks.service';
 import { Juz, Sura, TafsirAyah } from '../quran.models';
 import { QuranService } from '../quran.service';
+import { SettingsService } from '../settings/settings.service';
 @Component({
   selector: 'app-translation',
   templateUrl: './translation.page.html',
@@ -162,7 +163,8 @@ export class TranslationPage implements AfterViewInit {
     public mediaPlayerService: MediaPlayerService,
     public storage: StorageService,
     private nativePluginsService: NativePluginsService,
-    public platformService: PlatformService
+    public platformService: PlatformService,
+    public settingsService: SettingsService
   ) {
     this.routeAyahIndex = +this.route.snapshot.params.ayah;
     this.routePageId = +this.route.snapshot.params.page;

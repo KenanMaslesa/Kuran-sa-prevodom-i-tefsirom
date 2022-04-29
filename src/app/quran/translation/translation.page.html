@@ -41,13 +41,7 @@
         <ion-slide class="slide" [class.playingAyah]="mediaPlayerService.player" *ngFor="let page of ayahList">
           <div>
             <ng-container *ngFor="let ayah of page; let i = index">
-              <div class="ayah" [class.active]="routeAyahIndex === ayah.index" id="{{ayah.index}}">
-                <!--progress-bar-->
-                <ion-progress-bar
-                  *ngIf="mediaPlayerService.playingCurrentAyah === ayah.index && (mediaPlayerService.isPlaying || mediaPlayerService.isPaused)"
-                  color="primary" [value]="mediaPlayerService.currentTime/mediaPlayerService.getPlayerDuration()">
-                </ion-progress-bar>
-                <!--progress-bar-->
+              <div class="ayah" [class.active]="routeAyahIndex === ayah.index || mediaPlayerService.playingCurrentAyah === ayah.index" id="{{ayah.index}}">
 
                 <!--sura title-->
             <div *ngIf="ayah.ayaNumber === 1">
@@ -90,7 +84,7 @@
                 </div>
 
                 <div class="ayah__info">
-                  <p class="arabic">{{ayah.aya}}</p>
+                  <p *ngIf="settingsService.showArabicTextInTranslation" class="arabic">{{ayah.aya}}</p>
                   <div class="item">
                     <span class="item__title">Prijevod:</span>
                     <p class="item__content">{{ayah.korkutsTranslation}}</p>
@@ -102,14 +96,15 @@
                 </div>
               </div>
             </ng-container>
+            <div>
+              <ion-input #currentPage (ionChange)="checkPage(currentPage.value)" [placeholder]="quranService.currentPage"></ion-input>
+              <ion-button *ngIf="showGoToPageButton" color="primary" (click)="goToPage(currentPage.value)">OK</ion-button>
+            </div>
           </div>
           <!-- <footer class="currentPageFooter">
             {{quranService.currentPage}}
           </footer> -->
-          <div>
-            <ion-input #currentPage (ionChange)="checkPage(currentPage.value)" [placeholder]="quranService.currentPage"></ion-input>
-            <ion-button *ngIf="showGoToPageButton" color="primary" (click)="goToPage(currentPage.value)">OK</ion-button>
-          </div>
+
         </ion-slide>
       </ion-slides>
     </div>

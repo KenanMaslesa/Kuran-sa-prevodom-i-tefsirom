@@ -8,7 +8,7 @@
 </ion-header>
 
 <ion-content>
-  <h4 style="text-align: center; margin-bottom: 0;">Izaberite temu</h4>
+  <h6 class="title">Izaberite temu</h6>
   <div class="color-wrapper">
     <div *ngFor="let item of colors" class="color" style="background: {{item.color}}"
       (click)="onColorChanged(item.color)">
@@ -16,6 +16,7 @@
     </div>
   </div>
 
+  <h6 class="title">Kur'an</h6>
   <ion-item>
     <ion-label>Podesite veličinu harfova</ion-label>
     <ion-toggle [(ngModel)]="showSegments" color="primary"></ion-toggle>
@@ -81,6 +82,12 @@
 
     <!--page end-->
   </div>
+
+  <h6 class="title">Prijevod i tefsir</h6>
+  <ion-item>
+    <ion-label>Prikaži ajete na arapskom jeziku</ion-label>
+    <ion-toggle [(ngModel)]="settingsService.showArabicTextInTranslation" #showArabicTextInTranslationRef (ngModelChange)="settingsService.showArabicTextInTranslationChanged(showArabicTextInTranslationRef.checked)" color="primary"></ion-toggle>
+  </ion-item>
 
 </ion-content>
 <ng-container *ngIf="screenOrientation$|async"></ng-container>

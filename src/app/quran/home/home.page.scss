@@ -76,6 +76,10 @@ ion-toolbar {
 }
 ion-segment {
   margin-bottom: 20px;
+  position: sticky;
+  top: 0;
+  z-index: 9999;
+  background: white
 }
 
 .search {

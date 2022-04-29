@@ -1,21 +1,24 @@
 import { Injectable } from '@angular/core';
 
+enum LocalStorageKeys {
+  showArabicTextInTranslation = 'showArabicTextInTranslation'
+}
 @Injectable({providedIn: 'root'})
 export class SettingsService {
-  dailyVird: number;
+  showArabicTextInTranslation: boolean;
 
   constructor() {
-    const dailyVirdFromStorage = localStorage.getItem('dailyVird');
-    if(dailyVirdFromStorage){
-      this.dailyVird = JSON.parse(dailyVirdFromStorage);
+    const showArabicTextInTranslationFromStorage = localStorage.getItem(LocalStorageKeys.showArabicTextInTranslation);
+    if(showArabicTextInTranslationFromStorage){
+      this.showArabicTextInTranslation = JSON.parse(showArabicTextInTranslationFromStorage);
     }
     else {
-      this.dailyVird = null;
+      this.showArabicTextInTranslation = true;
     }
    }
 
-  dailyVirdChanged(value){
-    this.dailyVird = +value;
-    localStorage.setItem('dailyVird', JSON.stringify(this.dailyVird));
+   showArabicTextInTranslationChanged(value: boolean){
+    this.showArabicTextInTranslation = value;
+    localStorage.setItem(LocalStorageKeys.showArabicTextInTranslation, JSON.stringify(this.showArabicTextInTranslation));
   }
 }

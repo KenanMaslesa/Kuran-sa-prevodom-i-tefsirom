@@ -116,6 +116,7 @@ ion-tab-bar {
   color: var(--ion-text-color);
   // border-top: 1px solid #29232347;
   border-top: 1px solid #bbb8b847;
+  transition: all .3s;
 
   @media (min-width: 1024px) {
     max-width: 60%;
@@ -126,7 +127,7 @@ ion-tab-bar {
     padding: 0px 0px 40px;
   }
   &.active {
-    border-top: 2px solid var(--ion-color-primary);
+    background-color: #f4f5f6;
   }
 
   &__header {
@@ -271,6 +272,21 @@ ion-tab-bar {
       i {
           font-size: var(--quran-landscape-font-size) !important;
           line-height: var(--quran-landscape-line-height) !important;
+      }
+    }
+
+    .suraTitle {
+      img {
+        width: 100%;
+      }
+      h3 {
+        font-size: 25px;
+      }
+    }
+
+    .bismillah {
+      div {
+        font-size: 70px;
       }
     }
   }

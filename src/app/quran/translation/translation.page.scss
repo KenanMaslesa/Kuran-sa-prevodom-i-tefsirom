@@ -2,7 +2,7 @@ main {
   padding: 0;
 
   &.fullscreen {
-    padding-top: 40px;
+    padding-top: 30px;
 
     .ayah {
       &:first-of-type {
@@ -81,11 +81,11 @@ ion-slides {
     direction: ltr !important;
     display: block;
     overflow-y: scroll;
-    padding-bottom: 20px;
+    padding-bottom: 110px;
     max-height: 100vh;
 
     &.playingAyah {
-      padding-bottom: 60px;
+      padding-bottom: 90px;
     }
 
     min-height: 85vh;
@@ -120,12 +120,6 @@ ion-content {
     align-items: center;
     color: white;
 }
-
-main {
-  height: 100%;
-  overflow: auto;
-}
-
 
 .swiper {
   position: fixed;
@@ -182,6 +176,7 @@ ion-header {
   margin-bottom: 20px !important;
   border-bottom: 1px solid #bbb8b847;
   padding-bottom: 20px;
+  font-size: 16px;
 }
 
 ion-title {
