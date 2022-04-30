@@ -1,13 +1,20 @@
-import { Component } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { PopoverController } from '@ionic/angular';
+import { PageInfo } from '../quran/quran.models';
+import { QuranService } from '../quran/quran.service';
+import { SettingsService } from '../quran/settings/settings.service';
 import { NativePluginsService } from './native-plugins.service';
 
+export enum PopoverTypes {
+  homepage = 'homepage',
+  quranPage = 'quranPage',
+}
 @Component({
   template: `
-    <ion-list>
-      <!-- <ion-item button>
+    <ion-list *ngIf="popoverType === popoverTypes.homepage">
+      <!-- <ion-item (click)="goToUrl('/tabs/settings')">
         <ion-label>O aplikaciji</ion-label>
         <ion-icon slot="end" name="information-circle-outline"></ion-icon>
       </ion-item> -->
@@ -32,20 +39,108 @@ import { NativePluginsService } from './native-plugins.service';
         <ion-icon slot="end" name="layers-outline"></ion-icon>
       </ion-item>
 
-      <ion-item button (click)="goTo('/tabs/settings')">
+      <ion-item button (click)="goToUrl('/settings')">
         <ion-label>Postavke</ion-label>
         <ion-icon slot="end" name="settings-outline"></ion-icon>
       </ion-item>
     </ion-list>
-  `
-})
-export class PopoverPage {
-  constructor(public popoverCtrl: PopoverController, private router: Router, public nativePluginsService: NativePluginsService) {}
 
-  goTo(url) {
-    this.router.navigateByUrl(`${url}`,{
-      replaceUrl : true
-     });
+    <ion-list *ngIf="popoverType === popoverTypes.quranPage">
+      <!--go to page -->
+      <ion-item>
+        <ion-label>Idi na stranicu</ion-label>
+        <ion-input
+          style="text-align: center;"
+          dir="ltr"
+          #currentPage
+          (ionChange)="checkPage(currentPage.value)"
+          [placeholder]="quranService.currentPage"
+        ></ion-input>
+        <ion-icon *ngIf="!showGoToPageButton" name="search-outline"></ion-icon>
+        <ion-button
+          *ngIf="showGoToPageButton"
+          color="primary"
+          (click)="goToQuranPage(currentPage.value)"
+          >OK</ion-button
+        >
+      </ion-item>
+      <!--go to page end -->
+
+      <!--night mode -->
+      <!-- <ion-item>
+        <ion-label>Noćni način</ion-label>
+        <ion-toggle
+          [(ngModel)]="nightMode"
+          (ngModelChange)="switchMode()"
+          color="primary"
+        ></ion-toggle>
+      </ion-item> -->
+      <!--night mode end -->
+
+      <ion-item button (click)="goToUrl('/settings')">
+        <ion-label>Postavke</ion-label>
+        <ion-icon slot="end" name="settings-outline"></ion-icon>
+      </ion-item>
+
+      <div class="page-info" style="text-align: center;font-size: 13px;padding: 5px;">
+        <p style="margin-bottom: 0;">Informacije o trenutnoj stranici ({{quranService.currentPage}})</p>
+        <div>Broj riječi: <strong>{{pageInfo.wordsNumber}}</strong></div>
+        <div>Broj harfova: <strong>{{pageInfo.lettersNumber}}</strong></div>
+      </div>
+    </ion-list>
+  `,
+})
+export class PopoverPage implements OnInit {
+  @Input() popoverType: PopoverTypes;
+  public readonly popoverTypes = PopoverTypes;
+  public showGoToPageButton = false;
+  public nightMode = false;
+  public pageInfo: PageInfo;
+
+  constructor(
+    public popoverCtrl: PopoverController,
+    private router: Router,
+    public nativePluginsService: NativePluginsService,
+    public quranService: QuranService,
+    private settingsService: SettingsService
+  ) {}
+
+  ngOnInit(): void {
+    this.pageInfo = this.quranService.getNumberOfWordsAndLettersPerPage(this.quranService.currentPage);
+  }
+
+  goToUrl(url) {
+    this.router.navigateByUrl(`${url}`, {
+      replaceUrl: true,
+    });
     this.popoverCtrl.dismiss();
+  }
+
+  goToQuranPage(pageNumber: any) {
+    pageNumber = +pageNumber;
+    if (pageNumber <= 0 || pageNumber > 604 || isNaN(pageNumber)) {
+      return;
+    }
+
+    this.quranService.setCurrentPage(pageNumber);
+    this.popoverCtrl.dismiss();
+  }
+
+  checkPage(pageNumber: any) {
+    pageNumber = +pageNumber;
+    if (pageNumber <= 0 || pageNumber > 604 || isNaN(pageNumber)) {
+      this.showGoToPageButton = false;
+    } else {
+      this.showGoToPageButton = true;
+    }
+  }
+
+  switchMode() {
+    this.settingsService.nightMode = this.nightMode;
+
+    // document.documentElement.style.setProperty(
+    //   `--ion-color-primary`,
+    //   `black`
+    // );
   }
 }

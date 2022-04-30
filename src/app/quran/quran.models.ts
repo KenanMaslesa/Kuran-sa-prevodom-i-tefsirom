@@ -124,3 +124,10 @@ export interface Surah {
   startAyah: number;
   endAyah: number;
 }
+
+//metadata
+export interface PageInfo {
+  page: number;
+  wordsNumber: number;
+  lettersNumber: number;
+}

@@ -5,6 +5,16 @@ ion-toolbar {
   }
 }
 
+section {
+  &.segment {
+    display: none;
+
+    &.show {
+      display: block;
+    }
+  }
+}
+
 .sura {
   margin-bottom: 20px;
 

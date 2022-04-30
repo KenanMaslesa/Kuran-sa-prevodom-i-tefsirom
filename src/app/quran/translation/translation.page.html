@@ -20,14 +20,17 @@
     <ion-icon slot="end" *ngIf="!checkIsPageInBookmarks()" name="bookmark-outline"
       (click)="addTafsirBookmark(pageDetails.sura);">
     </ion-icon>
-    <ion-icon slot="end" *ngIf="checkIsPageInBookmarks()" name="bookmark"
-      (click)="deleteTafsirBookmark();">
+    <ion-icon slot="end" *ngIf="checkIsPageInBookmarks()" name="bookmark" (click)="deleteTafsirBookmark();">
     </ion-icon>
     <!--bookmarks icons-->
 
     <!--fullscreen-->
     <ion-icon slot="end" name="expand-outline" (click)="quranService.showHeaderAndTabs = false"></ion-icon>
     <!--fullscreen-->
+    <!--popover icon-->
+    <ion-icon class="popover-icon" slot="end" (click)="presentPopover($event)" *ngIf="platformService.isAndroid"
+      md="ellipsis-vertical"></ion-icon>
+    <!--popover icon-->
   </ion-toolbar>
 
 </ion-header>
@@ -41,22 +44,24 @@
         <ion-slide class="slide" [class.playingAyah]="mediaPlayerService.player" *ngFor="let page of ayahList">
           <div>
             <ng-container *ngFor="let ayah of page; let i = index">
-              <div class="ayah" [class.active]="routeAyahIndex === ayah.index || mediaPlayerService.playingCurrentAyah === ayah.index" id="{{ayah.index}}">
+              <div class="ayah"
+                [class.active]="routeAyahIndex === ayah.index || mediaPlayerService.playingCurrentAyah === ayah.index"
+                id="{{ayah.index}}">
 
                 <!--sura title-->
-            <div *ngIf="ayah.ayaNumber === 1">
-              <section class="suraTitle">
-                <img src="assets/img/surah_title.gif" alt="Quran sura title">
-                <h3>{{ayah.suraTitle.bosnianTranscription}} - {{ayah.suraTitle.arabic}}</h3>
-              </section>
+                <div *ngIf="ayah.ayaNumber === 1">
+                  <section class="suraTitle">
+                    <img src="assets/img/surah_title.gif" alt="Quran sura title">
+                    <h3>{{ayah.suraTitle.bosnianTranscription}} - {{ayah.suraTitle.arabic}}</h3>
+                  </section>
 
-              <p class="aboutSura">{{surahsPurposes[ayah.sura-1]}}</p>
+                  <p class="aboutSura">{{surahsPurposes[ayah.sura-1]}}</p>
 
-              <section class="bismillah">
-                <div>﷽</div>
-              </section>
-            </div>
-            <!--sura title end-->
+                  <section class="bismillah">
+                    <div>﷽</div>
+                  </section>
+                </div>
+                <!--sura title end-->
 
                 <div class="ayah__header" (click)="ayah.showHeader = false">
                   <h4 class="title">
@@ -71,13 +76,13 @@
                       (click)="storage.removeFromFavorites(ayah)"></ion-icon>
                     <!--favorite icons-->
 
-                    <ion-icon class="share-social" name="share-social" (click)="shareAyah(ayah.suraTitle, ayah)"></ion-icon>
+                    <ion-icon class="share-social" name="share-social" (click)="shareAyah(ayah.suraTitle, ayah)">
+                    </ion-icon>
                   </div>
 
                   <!--player-->
                   <div class="player" [class.show]="ayah.showHeader">
-                    <ion-icon
-                      (click)="playAyah(ayah.index);" name="play"></ion-icon>
+                    <ion-icon (click)="playAyah(ayah.index);" name="play"></ion-icon>
 
                   </div>
                   <!--player-->
@@ -96,15 +101,8 @@
                 </div>
               </div>
             </ng-container>
-            <div>
-              <ion-input #currentPage (ionChange)="checkPage(currentPage.value)" [placeholder]="quranService.currentPage"></ion-input>
-              <ion-button *ngIf="showGoToPageButton" color="primary" (click)="goToPage(currentPage.value)">OK</ion-button>
-            </div>
+            <span class="currentPage">{{quranService.currentPage}}</span>
           </div>
-          <!-- <footer class="currentPageFooter">
-            {{quranService.currentPage}}
-          </footer> -->
-
         </ion-slide>
       </ion-slides>
     </div>

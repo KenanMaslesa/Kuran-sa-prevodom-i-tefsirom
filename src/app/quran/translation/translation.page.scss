@@ -14,42 +14,12 @@ main {
     // color: var(--ion-text-color);
     margin: 0 10px;
   }
-
-  header {
-    border-bottom: 1px solid #f4f5f6;
-    // color: var(--ion-text-color);
-    // background: white;
-    background: var(--ion-color-primary);
-    color: white;
-    text-align: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 5px;
-
-    position: fixed;
-    width: 100%;
-    z-index: 99;
-
-    .suraInfo {
-    padding: 0 10px;
-
-    h4 {
-      margin-bottom: 5px;
-      margin-top: 5px;
-    }
-    }
-
-    .currentPage {
-      font-size: 13px;
-      font-weight: bold;
-      font-style: italic;
-      margin-bottom: 5px;
-    }
-  }
 }
 
-
+.currentPage {
+  font-size: 15px;
+  font-style: italic;
+}
 
 .sura-info {
   color: var(--ion-text-color);
@@ -109,18 +79,6 @@ ion-content {
   width: 0px;
 }
 
-.currentPageFooter {
-  background: var(--ion-color-primary);
-    height: 40px;
-    width: 40px;
-    margin: 0 auto;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: white;
-}
-
 .swiper {
   position: fixed;
   border: 0;
@@ -166,22 +124,30 @@ ion-content {
 }
 
 ion-header {
+  ion-title {
+    font-size: 16px;
+  }
   ion-icon {
-    margin-right: 15px;
-    font-size: 25px;
+    margin-left: 15px;
+    font-size: 22px;
+
+    &.popover-icon {
+      margin-right: 10px;
+    }
   }
 }
+
 
 .aboutSura {
   margin-bottom: 20px !important;
   border-bottom: 1px solid #bbb8b847;
-  padding-bottom: 20px;
+  padding: 10px 5px 15px;
   font-size: 16px;
 }
 
 ion-title {
   &.android {
     font-size: 16px;
-    max-width: 60%;
+    max-width: 52%;
   }
 }

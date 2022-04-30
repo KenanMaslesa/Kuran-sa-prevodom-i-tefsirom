@@ -1,14 +1,19 @@
 import { ChangeDetectorRef, Component, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { IonSlides } from '@ionic/angular';
+import { IonContent, IonSlides, PopoverController } from '@ionic/angular';
 import { Observable, Subscription } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { MediaPlayerService } from 'src/app/shared/media-player.service';
-import { NativePluginsService } from 'src/app/shared/native-plugins.service';
+import {
+  NativePluginsService,
+  SCREEN_ORIENTATIONS,
+} from 'src/app/shared/native-plugins.service';
 import { PlatformService } from 'src/app/shared/platform.service';
+import { PopoverPage, PopoverTypes } from 'src/app/shared/popover';
 import { BookmarksService } from '../bookmarks/bookmarks.service';
 import { Juz, QuranWords, Sura } from '../quran.models';
 import { QuranService } from '../quran.service';
+import { SettingsService } from '../settings/settings.service';
 
 @Component({
   selector: 'app-holy-quran',
@@ -17,6 +22,7 @@ import { QuranService } from '../quran.service';
 })
 export class HolyQuranPage {
   @ViewChild('slider') private slider: IonSlides;
+  @ViewChild('content') private content: IonContent;
   subs: Subscription = new Subscription();
   public suraList$: Observable<Sura[]>;
   public screenOrientation$: Observable<any>;
@@ -41,14 +47,16 @@ export class HolyQuranPage {
     public platformService: PlatformService,
     private router: Router,
     public nativePluginsService: NativePluginsService,
-    private changeDetectorRef: ChangeDetectorRef
+    private changeDetectorRef: ChangeDetectorRef,
+    private popoverCtrl: PopoverController,
+    public settingsService: SettingsService
   ) {
     this.suraList$ = this.quranService.getSuraList();
 
     this.routePageId = +this.route.snapshot.params.page;
     this.routeAyahIndex = +this.route.snapshot.params.ayah;
     if (this.routePageId) {
-      this.quranService.setCurrentPage(this.routePageId-1);
+      this.quranService.setCurrentPage(this.routePageId - 1);
     }
     this.getWordsForCurrentPage();
 
@@ -64,12 +72,40 @@ export class HolyQuranPage {
     );
 
     //screen orientation
-    this.screenOrientation$ = this.nativePluginsService.screenOrientation.onChange().pipe(
-      tap(() => {
-        this.nativePluginsService.currentScreenOrientation = this.nativePluginsService.screenOrientation.type;
-        this.changeDetectorRef.detectChanges();
+    this.screenOrientation$ = this.nativePluginsService.screenOrientation
+      .onChange()
+      .pipe(
+        tap(() => {
+          this.nativePluginsService.currentScreenOrientation =
+            this.nativePluginsService.screenOrientation.type;
+          this.changeDetectorRef.detectChanges();
+        })
+      );
+
+    //page is changed
+    this.subs.add(
+      this.quranService.currentPageChanged.subscribe(() => {
+        this.quranWordsForCurrentPage = [];
+        this.getWordsForCurrentPage();
+        this.slider.slideTo(1, 50, false).then(() => {
+          this.showGoToPageButton = false;
+          setTimeout(() => {
+            this.quranService.showLoader = false;
+          }, 200);
+        });
       })
-   );
+    );
+
+    //scroll into playing ayah
+    this.subs.add(
+      this.mediaPlayerService.scrollIntoPlayingAyah.subscribe(
+        (activeAyahId) => {
+          if (this.nativePluginsService.isLandscape()) {
+            this.scroll(activeAyahId);
+          }
+        }
+      )
+    );
   }
 
   getWordsForCurrentPage() {
@@ -77,9 +113,11 @@ export class HolyQuranPage {
     this.getJuzByPageNumber(this.quranService.currentPage);
     this.quranWordsForCurrentPage$ = this.quranService
       .getQuranWordsByPage(this.quranService.currentPage)
-      .pipe(tap((response) => {
-        this.quranWordsForCurrentPage.push(response);
-      }));
+      .pipe(
+        tap((response) => {
+          this.quranWordsForCurrentPage.push(response);
+        })
+      );
   }
 
   getSuraByPageNumber(page) {
@@ -100,9 +138,18 @@ export class HolyQuranPage {
     setTimeout(() => {
       this.quranService.showLoader = false;
     }, 1000);
+    if (
+      this.mediaPlayerService.player &&
+      this.nativePluginsService.isLandscape()
+    ) {
+      setTimeout(() => {
+        this.scroll(this.mediaPlayerService.playingCurrentAyah);
+      }, 500);
+    }
   }
 
   loadPrev() {
+    this.scrollToTop();
     this.quranService.showLoader = true;
 
     if (this.quranService.currentPage <= 2) {
@@ -112,7 +159,7 @@ export class HolyQuranPage {
     this.quranService.setCurrentPage(this.quranService.currentPage - 1);
     this.quranWordsForCurrentPage = [];
     this.getWordsForCurrentPage();
-    this.slider.slideTo(1, 50, false).then(()=> {
+    this.slider.slideTo(1, 50, false).then(() => {
       setTimeout(() => {
         this.quranService.showLoader = false;
       }, 200);
@@ -120,6 +167,8 @@ export class HolyQuranPage {
   }
 
   loadNext() {
+    this.scrollToTop();
+
     this.quranService.showLoader = true;
     if (this.quranService.currentPage >= 1) {
       this.slider.lockSwipeToPrev(false);
@@ -128,7 +177,7 @@ export class HolyQuranPage {
     this.quranService.setCurrentPage(this.quranService.currentPage + 1);
     this.quranWordsForCurrentPage = [];
     this.getWordsForCurrentPage();
-    this.slider.slideTo(1, 50, false).then(()=> {
+    this.slider.slideTo(1, 50, false).then(() => {
       setTimeout(() => {
         this.quranService.showLoader = false;
       }, 200);
@@ -142,11 +191,11 @@ export class HolyQuranPage {
     audioUrl += url;
     const audio = new Audio(audioUrl);
     audio.play();
-    audio.onplay = (()=> {
+    audio.onplay = () => {
       setTimeout(() => {
         this.quranService.showLoader = false;
       }, 400);
-    });
+    };
   }
 
   playAyah(ayahIndex) {
@@ -171,12 +220,13 @@ export class HolyQuranPage {
   //bookmarks
   addBookmark(sura) {
     let bookmarkSuraName = '';
-    const names = sura.map(item => item.name.arabic && item.name.bosnianTranscription);
+    const names = sura.map(
+      (item) => item.name.arabic && item.name.bosnianTranscription
+    );
     names.forEach((name, index) => {
-      if(index+1 < names.length) {
+      if (index + 1 < names.length) {
         bookmarkSuraName += name + ', ';
-      }
-      else {
+      } else {
         bookmarkSuraName += name;
       }
     });
@@ -187,9 +237,7 @@ export class HolyQuranPage {
     });
   }
   deleteBookmark(page: number) {
-    this.bookmarksService.deleteBookmark(
-      page
-    );
+    this.bookmarksService.deleteBookmark(page);
   }
   checkIsInBookmark() {
     return this.bookmarksService.checkIsInBookmark(
@@ -197,35 +245,33 @@ export class HolyQuranPage {
     );
   }
 
-  goToPage(pageNumber: any) {
-    pageNumber = +pageNumber;
-    if(pageNumber <= 0 || pageNumber > 604 || isNaN(pageNumber)) {return;}
-
-    this.quranService.setCurrentPage(pageNumber);
-    this.quranWordsForCurrentPage = [];
-    this.getWordsForCurrentPage();
-    this.slider.slideTo(1, 50, false).then(()=> {
-      this.showGoToPageButton = false;
-      setTimeout(() => {
-        this.quranService.showLoader = false;
-      }, 200);
-    });
-
-  }
-
-  checkPage(pageNumber: any) {
-    pageNumber = +pageNumber;
-    if(pageNumber <= 0 || pageNumber > 604 || isNaN(pageNumber)) {
-      this.showGoToPageButton = false;
-    }
-    else {
-      this.showGoToPageButton = true;
-    }
-  }
-
   goToHomePage() {
-    this.router.navigateByUrl('/',{
-      replaceUrl : true
-     });
+    this.router.navigateByUrl('/', {
+      replaceUrl: true,
+    });
+  }
+
+  async presentPopover(event: Event) {
+    const popover = await this.popoverCtrl.create({
+      component: PopoverPage,
+      event,
+      componentProps: { popoverType: PopoverTypes.quranPage },
+    });
+    await popover.present();
+  }
+
+  scroll(id) {
+    const ayah = document.getElementById(id);
+    if (ayah) {
+      ayah.scrollIntoView({
+        behavior: 'smooth',
+      });
+    } else {
+      console.log('Nema ajeta sa ID: ' + id);
+    }
+  }
+
+  scrollToTop() {
+    this.content.scrollToTop(1000);
   }
 }

@@ -6,6 +6,7 @@ enum LocalStorageKeys {
 @Injectable({providedIn: 'root'})
 export class SettingsService {
   showArabicTextInTranslation: boolean;
+  nightMode = false;
 
   constructor() {
     const showArabicTextInTranslationFromStorage = localStorage.getItem(LocalStorageKeys.showArabicTextInTranslation);

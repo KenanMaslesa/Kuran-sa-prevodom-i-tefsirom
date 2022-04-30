@@ -1,11 +1,12 @@
 import { AfterViewInit, Component, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { IonContent, IonInfiniteScroll, IonSlides } from '@ionic/angular';
+import { IonContent, IonInfiniteScroll, IonSlides, PopoverController } from '@ionic/angular';
 import { Observable, Subscription } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { MediaPlayerService } from 'src/app/shared/media-player.service';
 import { NativePluginsService } from 'src/app/shared/native-plugins.service';
 import { PlatformService } from 'src/app/shared/platform.service';
+import { PopoverPage, PopoverTypes } from 'src/app/shared/popover';
 import { StorageService } from 'src/app/shared/storage.service';
 import { BookmarksService } from '../bookmarks/bookmarks.service';
 import { Juz, Sura, TafsirAyah } from '../quran.models';
@@ -164,7 +165,8 @@ export class TranslationPage implements AfterViewInit {
     public storage: StorageService,
     private nativePluginsService: NativePluginsService,
     public platformService: PlatformService,
-    public settingsService: SettingsService
+    public settingsService: SettingsService,
+    private popoverCtrl: PopoverController
   ) {
     this.routeAyahIndex = +this.route.snapshot.params.ayah;
     this.routePageId = +this.route.snapshot.params.page;
@@ -186,13 +188,22 @@ export class TranslationPage implements AfterViewInit {
     this.subs.add(
       this.mediaPlayerService.scrollIntoPlayingAyah.subscribe(
         (activeAyahId) => {
-          console.log(
-            'this.mediaPlayerService.scrollIntoPlayingAyah.subscribe: SCROL'
-          );
           this.scroll(activeAyahId);
         }
       )
     );
+
+  //page is changed
+   this.subs.add(
+    this.quranService.currentPageChanged.subscribe(() => {
+      this.ayahList = [];
+      this.setStream();
+
+      this.slides.slideTo(1, 50, false).then(()=> {
+        this.showGoToPageButton = false;
+      });
+    })
+  );
   }
   ngAfterViewInit(): void {
     if (this.routeAyahIndex) {
@@ -361,26 +372,12 @@ export class TranslationPage implements AfterViewInit {
     this.nativePluginsService.shareAyah(suraTitle.bosnianTranscription, ayah);
   }
 
-  goToPage(pageNumber: any) {
-    pageNumber = +pageNumber;
-    if(pageNumber <= 0 || pageNumber > 604 || isNaN(pageNumber)) {return;}
-
-    this.ayahList = [];
-    this.quranService.setCurrentPage(pageNumber);
-    this.setStream();
-
-    this.slides.slideTo(1, 50, false).then(()=> {
-      this.showGoToPageButton = false;
+  async presentPopover(event: Event) {
+    const popover = await this.popoverCtrl.create({
+      component: PopoverPage,
+      event,
+      componentProps: {popoverType: PopoverTypes.quranPage}
     });
-  }
-
-  checkPage(pageNumber: any) {
-    pageNumber = +pageNumber;
-    if(pageNumber <= 0 || pageNumber > 604 || isNaN(pageNumber)) {
-      this.showGoToPageButton = false;
-    }
-    else {
-      this.showGoToPageButton = true;
-    }
+    await popover.present();
   }
 }

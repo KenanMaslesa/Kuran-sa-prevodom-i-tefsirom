@@ -4,6 +4,20 @@
   align-items: center;
   text-align: center;
 
+  &.nightMode {
+    background-color: black;
+
+    .ayeLine i {
+      color: white;
+
+      &.active, &:hover {
+        i {
+          color: var(--ion-color-primary);
+        }
+      }
+    }
+  }
+
   // background-color: #f2f0db;
   // background-color: #fdfef8;
   // background-color: #fcfcf2;
@@ -6106,7 +6120,7 @@ ion-slides {
     width: 100% !important;
 
     @media(max-height: 800px) {
-      padding-top: 10px;
+      padding-top: 15px;
     }
 
     &:nth-child(1) {
@@ -6163,8 +6177,12 @@ ion-header {
     font-size: 16px;
   }
   ion-icon {
-    margin-right: 15px;
-    font-size: 25px;
+    margin-left: 15px;
+    font-size: 22px;
+
+    &.popover-icon {
+      margin-right: 10px;
+    }
   }
 }
 
@@ -6195,9 +6213,8 @@ ion-header {
 }
 
 .currentPage {
-  margin: 0;
-    font-style: italic;
-    font-size: 14px;
+  font-size: 15px;
+  font-style: italic;
 }
 
 .swiper {
@@ -6247,6 +6264,6 @@ ion-header {
 ion-title {
   &.android {
     font-size: 16px;
-    max-width: 60%;
+    max-width: 52%;
   }
 }

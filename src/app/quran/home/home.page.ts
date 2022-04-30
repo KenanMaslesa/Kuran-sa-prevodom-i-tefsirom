@@ -5,7 +5,7 @@ import { Observable, of } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { MediaPlayerService } from 'src/app/shared/media-player.service';
 import { PlatformService } from 'src/app/shared/platform.service';
-import { PopoverPage } from 'src/app/shared/popover';
+import { PopoverPage, PopoverTypes } from 'src/app/shared/popover';
 import { Juz, Sura, TafsirAyah } from '../quran.models';
 import { QuranService } from '../quran.service';
 import { ModalPage } from './modal/modal.page';
@@ -13,7 +13,7 @@ import { ModalPage } from './modal/modal.page';
 enum Segments {
   sura = 'sura',
   juz = 'juz',
-  page = 'page',
+  ayah = 'ayah',
 }
 
 enum SuraTypes {
@@ -161,11 +161,21 @@ export class HomePage {
     const popover = await this.popoverCtrl.create({
       component: PopoverPage,
       event,
+      componentProps: {popoverType: PopoverTypes.homepage}
     });
     await popover.present();
   }
 
   donate() {
     window.location.href = 'https://www.paypal.com/paypalme/coding97';
+  }
+
+  scrollIntoElement(id) {
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({
+        behavior: 'auto',
+      });
+    }
   }
 }

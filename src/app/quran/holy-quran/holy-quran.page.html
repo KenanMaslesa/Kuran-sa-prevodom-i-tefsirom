@@ -5,7 +5,7 @@
 
 
 
-<ion-content>
+<ion-content #content>
   <ion-header class="{{quranService.showHeaderAndTabs?'show':'hide'}}">
 
     <ion-toolbar color="primary" *ngIf="{sura: sura$ | async, juz: juz$ | async} as pageDetails">
@@ -32,15 +32,17 @@
       <ion-icon slot="end" name="expand-outline" (click)="quranService.showHeaderAndTabs = false"></ion-icon>
       <!--fullscreen-->
 
+      <!--popover icon-->
+      <ion-icon class="popover-icon" slot="end" (click)="presentPopover($event)" *ngIf="platformService.isAndroid" md="ellipsis-vertical"></ion-icon>
+      <!--popover icon-->
     </ion-toolbar>
   </ion-header>
-  <div class="main page-{{quranService.currentPage}} {{quranService.showHeaderAndTabs?'':'without-tabs'}}" *ngIf="quranWordsForCurrentPage$ | async">
+  <div class="main page-{{quranService.currentPage}} {{quranService.showHeaderAndTabs?'':'without-tabs'}}" [class.nightMode]="settingsService.nightMode" *ngIf="quranWordsForCurrentPage$ | async">
     <ion-slides #slider (ionSlideNextStart)="loadNext()" (ionSlidePrevStart)="loadPrev()" [options]="slideOpts">
       <ion-slide class="page-orientation" [ngClass]="{'page-orientation__portrait': nativePluginsService.isPortrait(), 'page-orientation__landscape': nativePluginsService.isLandscape()}" [class.audioPlaying]="mediaPlayerService.player"
         *ngFor="let page of quranWordsForCurrentPage; let pageIndex = index">
         <div>
           <div class="ayeLine" *ngFor="let ayah of page.ayahs; let ayahNumber = index">
-
             <!--sura title-->
             <div *ngIf="ayah.metaData">
               <section class="suraTitle" *ngIf="ayah.metaData.lineType === 'start_sura'">
@@ -58,24 +60,23 @@
             <!--sura title end-->
 
             <!--ayah-words-wrapper-->
-            <i *ngFor="let word of ayah.words;" [class.active]="mediaPlayerService.playingCurrentAyah === word.index">
+            <i id="{{wordIndex === 0? word.index:''}}" *ngFor="let word of ayah.words; let wordIndex = index" [class.active]="mediaPlayerService.playingCurrentAyah === word.index">
               <!--end znak - playAyat-->
-              <i class="p{{quranService.currentPage}} ayah{{word.index}} endAyah" *ngIf="word.charType === 'end'"
+              <i  class="p{{quranService.currentPage}} ayah{{word.index}} endAyah" *ngIf="word.charType === 'end'"
                 (click)="playAyah(word.index);" [innerHtml]="word.code"></i>
               <!--end znak - playAyat -->
 
               <!-- word - playWord-->
-              <i class="p{{quranService.currentPage}} ayah{{word.index}}" *ngIf="word.charType !== 'end'"
+              <i  class="p{{quranService.currentPage}} ayah{{word.index}}" *ngIf="word.charType !== 'end'"
                 (click)="playWord(word.audio)" [innerHtml]="word.code"></i>
               <!--word - playWord-->
             </i>
             <!--ayah-words-wrapper end-->
 
           </div>
-          <div>
-            <ion-input dir="ltr" #currentPage (ionChange)="checkPage(currentPage.value)" [placeholder]="quranService.currentPage"></ion-input>
-            <ion-button *ngIf="showGoToPageButton" color="primary" (click)="goToPage(currentPage.value)">OK</ion-button>
-          </div>
+          <span class="currentPage">
+            {{quranService.currentPage}}
+          </span>
         </div>
       </ion-slide>
 

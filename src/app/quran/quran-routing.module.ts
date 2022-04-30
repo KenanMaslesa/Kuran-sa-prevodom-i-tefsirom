@@ -29,10 +29,6 @@ const routes: Routes = [
         loadChildren: () => import('./bookmarks/bookmarks.module').then( m => m.BookmarksPageModule)
       },
       {
-        path: 'settings',
-        loadChildren: () => import('./settings/settings.module').then( m => m.SettingsPageModule)
-      },
-      {
         path: 'translation',
         loadChildren: () => import('./translation/translation.module').then( m => m.TranslationPageModule)
       },
@@ -59,7 +55,11 @@ const routes: Routes = [
     path: '',
     redirectTo: '/tabs/home',
     pathMatch: 'full',
-  }
+  },
+  {
+    path: 'settings',
+    loadChildren: () => import('./settings/settings.module').then( m => m.SettingsPageModule)
+  },
 ];
 
 @NgModule({

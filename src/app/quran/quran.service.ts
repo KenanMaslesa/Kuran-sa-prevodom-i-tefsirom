@@ -1,6 +1,6 @@
-import { Injectable } from '@angular/core';
+import { EventEmitter, Injectable } from '@angular/core';
 import { Observable, of, Subject } from 'rxjs';
-import { Juz, QuranWords, Sura, Tafsir, TafsirAyah } from './quran.models';
+import { Juz, PageInfo, QuranWords, Sura, Tafsir, TafsirAyah } from './quran.models';
 const tefsir = require('@kmaslesa/tefsir');
 const quranMetaData = require('@kmaslesa/quran-metadata');
 const quranWords = require('@kmaslesa/quran-word-by-word');
@@ -14,7 +14,8 @@ export class QuranService {
   showHeaderAndTabs = true;
   showLoader = false;
   currentPage = 0;
-  currentPageChanged = new Subject();
+  currentPageChanged: EventEmitter<any> = new EventEmitter();
+
   qari = {
     value: '128/ar.alafasy',
     name: 'Mishary Alafasy'
@@ -101,7 +102,6 @@ export class QuranService {
     } else {
       this.setCurrentPage(1);
     }
-    this.currentPageChanged.next(true);
     const qari = localStorage.getItem('qari');
     if(qari){
       const qariObj = JSON.parse(qari);
@@ -119,6 +119,7 @@ export class QuranService {
     else {
       this.currentPage = 1;
     }
+    this.currentPageChanged.next(true);
     localStorage.setItem('currentPage', JSON.stringify(+this.currentPage));
   }
 
@@ -190,6 +191,10 @@ export class QuranService {
     return of(quranMetaData.searchJuzListById(id));
   }
 
+  getNumberOfWordsAndLettersPerPage(page): PageInfo {
+    return quranMetaData.getNumberOfWordsAndLettersPerPage(page);
+  }
+
   // getQuranForPageWordByWord(page): Observable<any> {
   //   return this.http.get(`https://salamquran.com/en/api/v6/page/wbw?index=${page}`);
   // }
@@ -205,5 +210,6 @@ export class QuranService {
   searchAyahs(searchTerm): Observable<TafsirAyah[]>  {
     return of(tefsir.searchAyahs(searchTerm));
   }
+
 
 }

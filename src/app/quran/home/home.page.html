@@ -19,15 +19,15 @@
 <ion-content>
   <!--ion-segment-->
   <ion-segment [(ngModel)]="selectedSegment">
-    <ion-segment-button [value]="segments.sura">
+    <ion-segment-button [value]="segments.sura" (click)="scrollIntoElement('sura')">
       <ion-label>Sure</ion-label>
     </ion-segment-button>
 
-    <ion-segment-button [value]="segments.juz">
+    <ion-segment-button [value]="segments.juz" (click)="scrollIntoElement('juz')">
       <ion-label>Džuzevi</ion-label>
     </ion-segment-button>
 
-    <ion-segment-button [value]="segments.page">
+    <ion-segment-button [value]="segments.ayah" (click)="scrollIntoElement('ayah')">
       <ion-label>Ajeti</ion-label>
     </ion-segment-button>
   </ion-segment>
@@ -35,7 +35,7 @@
 
 
   <!--segments.sura-content-->
-  <ng-container *ngIf="selectedSegment === segments.sura">
+  <section id="sura" class="segment" [class.show]="selectedSegment === segments.sura">
     <div *ngIf="suraList$ | async as suralist">
       <!--search-->
       <ion-icon class="search-icon" name="search-outline" *ngIf="!showSearchForSuraSegment"
@@ -87,12 +87,12 @@
         </ion-card-header>
       </ion-card>
     </div>
-  </ng-container>
+  </section>
   <!--segments.sura-content-->
 
 
   <!--segments.juz-content-->
-  <ng-container *ngIf="selectedSegment === segments.juz">
+  <section id="juz" class="segment" [class.show]="selectedSegment === segments.juz">
     <div *ngIf="{juzList: juzList$ | async, suraList: suraList$ | async} as vm">
       <!--search-->
       <ion-icon class="search-icon" name="search-outline" *ngIf="!showSearchForJuzSegment"
@@ -131,11 +131,11 @@
         </ion-card-content>
       </ion-card>
     </div>
-  </ng-container>
+  </section>
   <!--segments.juz-content-->
 
-  <!--segments.page-content-->
-  <ng-container *ngIf="selectedSegment === segments.page">
+  <!--segments.ayah-content-->
+  <section id="ayah" class="segment" [class.show]="selectedSegment === segments.ayah">
     <ion-searchbar placeholder="Pretražite ajete" animated #search (ionInput)="searchAyahs(search.value)">
     </ion-searchbar>
 
@@ -165,7 +165,7 @@
       <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Loading more data...">
       </ion-infinite-scroll-content>
     </ion-infinite-scroll>
-  </ng-container>
-  <!--segments.page-content-->
+  </section>
+  <!--segments.ayah-content-->
 
 </ion-content>
