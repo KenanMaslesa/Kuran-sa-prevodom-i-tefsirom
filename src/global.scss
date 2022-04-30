@@ -128,6 +128,8 @@ ion-tab-bar {
   }
   &.active {
     background-color: #f4f5f6;
+    border: 1px solid #d3d3d359;
+    border-radius: 5px;
   }
 
   &__header {
@@ -211,9 +213,9 @@ ion-tab-bar {
 .suraTitle {
   position: relative;
   overflow: hidden;
-  //background-color: #f4f5f6;
-  padding: 10px;
-  margin-top: 5px;
+  padding: 0 10px;
+  margin-top: 10px;
+
 
   img {
     height: 100%;

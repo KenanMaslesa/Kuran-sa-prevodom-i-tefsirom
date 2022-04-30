@@ -1,5 +1,5 @@
 import { AfterViewInit, Component, ViewChild } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { IonContent, IonInfiniteScroll, IonSlides } from '@ionic/angular';
 import { Observable, Subscription } from 'rxjs';
 import { tap } from 'rxjs/operators';
@@ -208,12 +208,21 @@ export class TranslationPage implements AfterViewInit {
 
   ionViewWillLeave() {
     this.subs.unsubscribe();
-    this.mediaPlayerService.removePlayer();
+    // this.mediaPlayerService.removePlayer();
+    this.quranService.showHeaderAndTabs = true;
   }
 
   ionViewWillEnter() {
     this.quranService.showLoader = false;
     this.setStream();
+  }
+
+  ionViewDidEnter() {
+    if(this.mediaPlayerService.player) {
+        setTimeout(() => {
+        this.scroll(this.mediaPlayerService.playingCurrentAyah);
+      }, 500);
+      }
   }
 
   getSuraByPageNumber(page) {

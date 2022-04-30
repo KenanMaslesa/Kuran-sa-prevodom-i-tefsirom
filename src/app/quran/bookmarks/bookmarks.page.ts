@@ -44,11 +44,11 @@ export class BookmarksPage {
   }
 
   ionViewDidEnter() {
+    this.mediaPlayerService.removePlayer();
     this.quranService.showLoader = false;
   }
 
   ionViewDidLeave() {
-    this.mediaPlayerService.removePlayer();
     this.subs.unsubscribe();
   }
 

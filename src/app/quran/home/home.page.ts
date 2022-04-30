@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { ModalController, PopoverController } from '@ionic/angular';
 import { Observable, of } from 'rxjs';
 import { tap } from 'rxjs/operators';
+import { MediaPlayerService } from 'src/app/shared/media-player.service';
 import { PlatformService } from 'src/app/shared/platform.service';
 import { PopoverPage } from 'src/app/shared/popover';
 import { Juz, Sura, TafsirAyah } from '../quran.models';
@@ -55,7 +56,8 @@ export class HomePage {
     private quranService: QuranService,
     public popoverCtrl: PopoverController,
     private modalController: ModalController,
-    public platformService: PlatformService
+    public platformService: PlatformService,
+    private mediaPlayerService: MediaPlayerService
   ) {
     this.selectedSegment = this.segments.sura;
     this.suraList$ = this.quranService.getSuraList();
@@ -64,6 +66,7 @@ export class HomePage {
 
   ionViewDidEnter() {
     this.quranService.showLoader = false;
+    this.mediaPlayerService.removePlayer();
   }
 
   searchByTerm(searchTerm) {
@@ -115,7 +118,7 @@ export class HomePage {
     }
   }
 
-  loadData(event) {
+  loadAyahs(event) {
     event.target.complete();
     if (this.lazyLoadedAyahs.length >= this.allAyahs.length) {
       event.target.disabled = true;
