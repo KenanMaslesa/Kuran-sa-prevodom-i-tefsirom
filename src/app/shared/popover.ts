@@ -48,13 +48,13 @@ export enum PopoverTypes {
     <ion-list *ngIf="popoverType === popoverTypes.quranPage">
       <!--go to page -->
       <ion-item>
-        <ion-label>Idi na stranicu</ion-label>
+        <ion-label>Idi na</ion-label>
         <ion-input
           style="text-align: center;"
           dir="ltr"
           #currentPage
           (ionChange)="checkPage(currentPage.value)"
-          [placeholder]="quranService.currentPage"
+          placeholder="br stranice"
         ></ion-input>
         <ion-icon *ngIf="!showGoToPageButton" name="search-outline"></ion-icon>
         <ion-button
@@ -83,7 +83,7 @@ export enum PopoverTypes {
       </ion-item>
 
       <div class="page-info" style="text-align: center;font-size: 13px;padding: 5px;">
-        <p style="margin-bottom: 0;">Informacije o trenutnoj stranici ({{quranService.currentPage}})</p>
+        <p style="margin-bottom: 0;">Informacije o trenutnoj stranici</p>
         <div>Broj riječi: <strong>{{pageInfo.wordsNumber}}</strong></div>
         <div>Broj harfova: <strong>{{pageInfo.lettersNumber}}</strong></div>
       </div>
