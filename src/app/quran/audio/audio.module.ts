@@ -7,6 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { AudioPageRoutingModule } from './audio-routing.module';
 
 import { AudioPage } from './audio.page';
+import { AudioPlayerComponent } from './audio-player/audio-player.component';
 
 @NgModule({
   imports: [
@@ -15,6 +16,6 @@ import { AudioPage } from './audio.page';
     IonicModule,
     AudioPageRoutingModule
   ],
-  declarations: [AudioPage]
+  declarations: [AudioPage, AudioPlayerComponent]
 })
 export class AudioPageModule {}

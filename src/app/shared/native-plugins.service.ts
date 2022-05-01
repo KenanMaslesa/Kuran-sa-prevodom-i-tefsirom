@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { SocialSharing } from '@awesome-cordova-plugins/social-sharing/ngx';
 import { TafsirAyah } from '../quran/quran.models';
 import { ScreenOrientation } from '@awesome-cordova-plugins/screen-orientation/ngx';
+import { PlatformService } from './platform.service';
 
 export enum SCREEN_ORIENTATIONS {
   PORTRAIT_PRIMARY = 'portrait-primary',
@@ -16,21 +17,29 @@ export enum SCREEN_ORIENTATIONS {
 
 @Injectable({ providedIn: 'root' })
 export class NativePluginsService {
-  appUrl = 'https://play.google.com/store/apps/details?id=com.coding.kuran';
-  allApsUrl =
+  androidAppUrl = 'https://play.google.com/store/apps/details?id=com.coding.kuran';
+  iosAppUrl = 'https://apps.apple.com/us/app/kuran-sa-prevodom-i-tefsirom/id1619092709?platform=iphone';
+  allAndroidApsUrl =
     // eslint-disable-next-line max-len
     'https://play.google.com/store/apps/collection/cluster?clp=igM4ChkKEzg3ODY5NTcyOTM0MTczNDQ1MDMQCBgDEhkKEzg3ODY5NTcyOTM0MTczNDQ1MDMQCBgDGAA%3D:S:ANO1ljIGrkw&gsr=CjuKAzgKGQoTODc4Njk1NzI5MzQxNzM0NDUwMxAIGAMSGQoTODc4Njk1NzI5MzQxNzM0NDUwMxAIGAMYAA%3D%3D:S:ANO1ljLgMiE';
+    allIosApsUrl = 'https://apps.apple.com/us/developer/kenan-maslesa/id1619092711';
   donateUrl = 'https://www.paypal.com/paypalme/coding97';
   currentScreenOrientation: string;
   constructor(
     private socialSharing: SocialSharing,
-    public screenOrientation: ScreenOrientation
+    public screenOrientation: ScreenOrientation,
+    private platformService: PlatformService
   ) {
     this.currentScreenOrientation = this.screenOrientation.type;
   }
 
   shareApp() {
-    this.socialSharing.share('', '', '', this.appUrl);
+    if(this.platformService.isAndroid) {
+      this.socialSharing.share('', '', '', this.androidAppUrl);
+    }
+    if(this.platformService.isIOS) {
+      this.socialSharing.share('', '', '', this.iosAppUrl);
+    }
   }
 
   share(message?: string, subject?: string, file?: string, url?: string) {
@@ -38,11 +47,21 @@ export class NativePluginsService {
   }
 
   rateApp() {
-    window.location.href = this.appUrl;
+    if(this.platformService.isAndroid) {
+      window.location.href = this.androidAppUrl;
+    }
+    if(this.platformService.isIOS) {
+      window.location.href = this.iosAppUrl;
+    }
   }
 
   allAps() {
-    window.location.href = this.allApsUrl;
+    if(this.platformService.isAndroid) {
+      window.location.href = this.allAndroidApsUrl;
+    }
+    if(this.platformService.isIOS) {
+      window.location.href = this.allIosApsUrl;
+    }
   }
 
   donate() {

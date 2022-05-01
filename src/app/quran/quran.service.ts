@@ -183,6 +183,10 @@ export class QuranService {
     return of(quranMetaData.searchSuraByBosnianName(searchTerm));
   }
 
+  getSuraByIndex(index: number): Observable<Sura> {
+    return of(quranMetaData.getSuraByIndex(index));
+  }
+
   getJuzList(): Observable<Juz[]> {
     return of(quranMetaData.getJuzList());
   }

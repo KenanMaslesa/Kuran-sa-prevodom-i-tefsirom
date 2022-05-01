@@ -41,10 +41,6 @@ const routes: Routes = [
         loadChildren: () => import('./translation/translation.module').then( m => m.TranslationPageModule)
       },
       {
-        path: 'audio',
-        loadChildren: () => import('./audio/audio.module').then( m => m.AudioPageModule)
-      },
-      {
         path: '',
         redirectTo: '/tabs/home',
         pathMatch: 'full',
@@ -59,6 +55,10 @@ const routes: Routes = [
   {
     path: 'settings',
     loadChildren: () => import('./settings/settings.module').then( m => m.SettingsPageModule)
+  },
+  {
+    path: 'audio',
+    loadChildren: () => import('./audio/audio.module').then( m => m.AudioPageModule)
   },
 ];
 

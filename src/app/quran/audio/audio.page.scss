@@ -1,90 +1,11 @@
 
-.player {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  z-index: 999999;
-  width: 100%;
-  filter: drop-shadow(2px 4px 5px black);
-  background: hsl(240deg 2% 91%);
-  min-height: 88px;
-
-    .track {
-      font-size: 11px;
-      position: absolute;
-      top: 5px;
-      left: 10px;
-    }
-    .range {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-size: 10px;
-      padding: 0 5px;
-    }
-
-  .inner {
-    text-align: center;
-    font-size: 40px;
-    padding-top: 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    ion-icon {
-      color: #4c4a4a;
-    }
-
-    .shuffle-icon {
-      position: absolute;
-      left: 60px;
-      font-size: 25px;
-    }
-
-    .repeat-icon {
-      position: absolute;
-      right: 60px;
-      font-size: 25px;
-    }
-
-    .back-icon {
-      font-size: 30px;
-      margin-right: 10px;
-    }
-
-    .forward-icon {
-      font-size: 30px;
-      margin-left: 10px;
-    }
-
-    ion-spinner {
-      height: 40px;
-      padding: 15px;
-    }
-  }
-
-  .range {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-
-    ion-range {
-      max-height: 25px;
-      padding: 0 10px;
-      overflow: hidden;
-      margin-bottom: 5px;
-    }
-  }
-}
 ul {
   list-style: none;
   padding: 0px;
   margin: 0;
 
-  &.padding-bottom-100 {
-    padding-bottom: 100px;
+  &.padding-bottom-120 {
+    padding-bottom: 120px;
   }
 
   li {
@@ -92,12 +13,8 @@ ul {
     padding: 15px;
 
     &.active {
-      background: var(--ion-color-primary);;
+      background: #f4f5f6;
       position: relative;
-
-      p {
-        color: white;
-      }
     }
 
     ion-progress-bar {
@@ -113,7 +30,6 @@ ul {
       color: #585858;
     }
   }
-
 }
 
 ion-toolbar {
@@ -129,4 +45,70 @@ ion-toolbar {
   border-bottom: 1px solid gainsboro;
   padding-bottom: 18px;
   margin-bottom: 0;
+}
+
+//playing bars
+.playing {
+  background: var(--ion-color-primary);
+  width: 2rem;
+  height: 2rem;
+  border-radius: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding: .5rem;
+  box-sizing: border-box;
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+
+  &__bar {
+    display: inline-block;
+    background: white;
+    width: 30%;
+    height: 100%;
+    animation: up-and-down 1.3s ease infinite alternate;
+  }
+
+  &__bar1 {
+    height: 60%;
+  }
+
+  &__bar2 {
+    height: 30%;
+    animation-delay: -2.2s;
+  }
+
+  &__bar3 {
+    height: 75%;
+    animation-delay: -3.7s;
+  }
+}
+
+
+@keyframes up-and-down {
+  10% {
+    height: 30%;
+  }
+
+  30% {
+    height: 100%;
+  }
+
+  60% {
+    height: 50%;
+  }
+
+  80% {
+    height: 75%;
+  }
+
+  100% {
+    height: 60%;
+  }
+}
+
+ion-searchbar {
+  margin-top: 25px;
 }

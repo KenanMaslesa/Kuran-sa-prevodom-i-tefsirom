@@ -25,7 +25,7 @@ export enum PopoverTypes {
       </ion-item>
 
       <ion-item button (click)="nativePluginsService.rateApp()">
-        <ion-label>Ocijenite nas na Google Play</ion-label>
+        <ion-label>Ocijenite aplikaciju</ion-label>
         <ion-icon slot="end" name="star-outline"></ion-icon>
       </ion-item>
 
@@ -37,6 +37,15 @@ export enum PopoverTypes {
       <ion-item button (click)="nativePluginsService.allAps()">
         <ion-label>Druge aplikacije</ion-label>
         <ion-icon slot="end" name="layers-outline"></ion-icon>
+      </ion-item>
+
+      <div>
+        <hr>
+      </div>
+
+      <ion-item button (click)="goToUrl('/audio')">
+        <ion-label>Kur'an Audio</ion-label>
+        <ion-icon slot="end" name="headset-outline"></ion-icon>
       </ion-item>
 
       <ion-item button (click)="goToUrl('/settings')">

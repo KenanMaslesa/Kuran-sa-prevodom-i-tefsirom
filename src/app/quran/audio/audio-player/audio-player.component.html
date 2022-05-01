@@ -1,0 +1,48 @@
+<div class="player" [class.minimized]="audioPlayerService.isPlayerMinimized">
+  <ion-icon *ngIf="!audioPlayerService.isPlayerMinimized" (click)="audioPlayerService.isPlayerMinimized = true" class="minimize-icon" name="chevron-down-outline"></ion-icon>
+  <ion-icon *ngIf="audioPlayerService.isPlayerMinimized" (click)="audioPlayerService.isPlayerMinimized = false" class="maximize-icon" name="chevron-up-outline"></ion-icon>
+  <div class="track" (click)="audioPlayerService.isPlayerMinimized = true">
+    <p class="track__qari">{{audioPlayerService.selectedQari}}</p>
+    <p class="track__sura">
+      {{audioPlayerService.selectedSura.name.bosnianTranscription}}
+    </p>
+  </div>
+
+  <!--minimize-->
+  <p class="suraName">
+        {{audioPlayerService.selectedSura.name.bosnianTranscription}}
+      </p>
+    <p class="qariName">{{audioPlayerService.selectedQari}}</p>
+
+  <!--minimize-->
+  <div>
+    <div class="inner">
+      <div class="progressbar"
+          [class.playing]="audioPlayerService.isPlaying"
+          style="--value:{{audioPlayerService.player?audioPlayerService.getPlayerDurationInPercents(): 0}}"
+        >
+        </div>
+      <ion-icon [class.active]="audioPlayerService.isShuffleSelected" (click)="audioPlayerService.toggleShuffleOption()" class="shuffle-icon" name="shuffle-outline"></ion-icon>
+      <ion-icon (click)="playPrevSura()" class="back-icon" name="play-skip-back"></ion-icon>
+
+      <ion-icon name="pause" class="pause-icon" *ngIf="!audioPlayerService.isPaused && audioPlayerService.isPlaying && audioPlayerService.currentTime !== -1"
+        (click)="audioPlayerService.pauseAudio()"></ion-icon>
+      <ion-icon name="play" class="play-icon" *ngIf="audioPlayerService.isPaused && audioPlayerService.currentTime !== -1 || !audioPlayerService.player" (click)="playAudio()"></ion-icon>
+      <ion-spinner *ngIf="audioPlayerService.currentTime === -1 && audioPlayerService.player" name="bubbles"></ion-spinner>
+
+      <ion-icon (click)="playNextSura()" class="forward-icon" name="play-skip-forward"></ion-icon>
+      <ion-icon [class.active]="audioPlayerService.selectedRepeatOption === playerRepeatOptions.repeat" (click)="audioPlayerService.toggleRepeatOption()" class="repeat-icon" name="repeat-outline"></ion-icon>
+    </div>
+
+    <div class="range" *ngIf="audioPlayerService.player">
+      <span *ngIf="audioPlayerService.currentTime !== -1">{{audioPlayerService.getCurrentPlayerTimeAsString()}}</span>
+      <ion-range #range
+        (touchstart)="audioPlayerService.pauseAudio()"
+        (touchend)="audioPlayerService.setAudioCurrentTime(range.value)"
+        [(ngModel)]="audioPlayerService.currentTime" [max]="audioPlayerService.getPlayerDuration()" color="primary">
+      </ion-range>
+      <span *ngIf="audioPlayerService.currentTime !== -1">{{audioPlayerService.getPlayerDurationAsString()}}</span>
+    </div>
+  </div>
+
+</div>
