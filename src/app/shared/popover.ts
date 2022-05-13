@@ -63,7 +63,7 @@ export enum PopoverTypes {
           dir="ltr"
           #currentPage
           (ionChange)="checkPage(currentPage.value)"
-          placeholder="br stranice"
+          placeholder="broj stranice"
         ></ion-input>
         <ion-icon *ngIf="!showGoToPageButton" name="search-outline"></ion-icon>
         <ion-button

@@ -50,7 +50,7 @@ export class HomePage implements OnDestroy {
   public lazyLoadedAyahs: TafsirAyah[] = [];
   public selectedAyah: any;
   public loadMoreIndex = 0;
-  public readonly numberOfLoadedAyahsOnScroll = 5;
+  public readonly numberOfLoadedAyahsOnScroll = 10;
 
   constructor(
     private quranService: QuranService,
