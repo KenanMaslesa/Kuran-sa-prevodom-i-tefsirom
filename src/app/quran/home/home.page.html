@@ -14,11 +14,11 @@
 <ion-content>
   <!--ion-segment-->
   <ion-segment [(ngModel)]="selectedSegment">
-    <ion-segment-button [value]="segments.sura" (click)="scrollIntoElement('sura')">
+    <ion-segment-button [value]="segments.sura" (click)="scrollIntoElement('sura'); getSuraList()">
       <ion-label>Sure</ion-label>
     </ion-segment-button>
 
-    <ion-segment-button [value]="segments.juz" (click)="scrollIntoElement('juz')">
+    <ion-segment-button [value]="segments.juz" (click)="scrollIntoElement('juz'); getJuzList()">
       <ion-label>Džuzevi</ion-label>
     </ion-segment-button>
 
@@ -31,7 +31,6 @@
 
   <!--segments.sura-content-->
   <section id="sura" class="segment" [class.show]="selectedSegment === segments.sura">
-    <div *ngIf="suraList$ | async as suralist">
       <!--search-->
       <ion-icon class="search-icon" name="search-outline" *ngIf="!showSearchForSuraSegment"
         (click)="showSearchForSuraSegment = true"></ion-icon>
@@ -69,8 +68,8 @@
 
       <!--search end-->
 
-      <p class="ion-text-center">Broj sura: {{suralist.length}}</p>
-      <ion-card class="sura" *ngFor="let sura of suralist; let i = index"
+      <p class="ion-text-center">Broj sura: {{suraList.length}}</p>
+      <ion-card class="sura" *ngFor="let sura of suraList; let i = index"
       (click)="presentModal(sura.startPage, sura.startAyaIndex+1)">
         <ion-card-header>
           <ion-card-title>
@@ -81,14 +80,12 @@
           </p>
         </ion-card-header>
       </ion-card>
-    </div>
   </section>
   <!--segments.sura-content-->
 
 
   <!--segments.juz-content-->
   <section id="juz" class="segment" [class.show]="selectedSegment === segments.juz">
-    <div *ngIf="{juzList: juzList$ | async, suraList: suraList$ | async} as vm">
       <!--search-->
       <ion-icon class="search-icon" name="search-outline" *ngIf="!showSearchForJuzSegment"
         (click)="showSearchForJuzSegment = true"></ion-icon>
@@ -105,8 +102,8 @@
         </ion-list>
       </div>
 
-      <p class="ion-text-center">Broj džuzeva: {{vm.juzList.length}}</p>
-      <ion-card class="juz" *ngFor="let juz of vm.juzList; let i = index"
+      <p class="ion-text-center">Broj džuzeva: {{juzList.length}}</p>
+      <ion-card class="juz" *ngFor="let juz of juzList; let i = index"
       (click)="presentModal(juz.startPage)">
         <ion-card-header>
           <ion-card-title class="juz__title">{{juz.id}}. Dzuz <span class="startPage">{{juz.startPage}}</span>
@@ -117,7 +114,7 @@
           <ng-container *ngIf="juz.surahs">
             <div *ngFor="let sura of juz.surahs" class="juz__content">
               <p>
-                <strong>{{vm.suraList[sura.id-1]?.name.bosnianTranscription}}</strong> ({{sura.startAyah}}.ajet -
+                <strong>{{sura.name.bosnianTranscription}}</strong> ({{sura.startAyah}}.ajet -
                 {{sura.endAyah}}.ajet)
               </p>
               <span class="arabic-name icon-surah{{sura.id}}"></span>
@@ -125,23 +122,22 @@
           </ng-container>
         </ion-card-content>
       </ion-card>
-    </div>
   </section>
   <!--segments.juz-content-->
 
   <!--segments.ayah-content-->
   <section id="ayah" class="segment" [class.show]="selectedSegment === segments.ayah">
-    <ion-searchbar placeholder="Pretražite ajete" animated #search (ionInput)="searchAyahs(search.value)">
+    <ion-searchbar placeholder="Pretražite ajete" animated #searchAyahsRef (ionInput)="searchAyahs(searchAyahsRef.value)">
     </ion-searchbar>
 
-    <div *ngIf="{ayahs: dataStream$ | async, suraList: suraList$ | async} as vm">
+    <div *ngIf="{ayahs: dataStream$ | async} as vm">
       <div *ngIf="vm.ayahs" class="total-ayahs">Pronadjeno {{vm.ayahs.length}} ajeta</div>
 
       <div class="ayah" *ngFor="let ayah of lazyLoadedAyahs" (click)="presentModal(ayah.page, ayah.index)" > <!--[routerLink]="['/tabs/translation/', ayah.page, ayah.index]"-->
 
         <div class="ayah__header">
           <div class="title">
-            {{vm.suraList[ayah.sura-1].name.bosnianTranscription}} ({{vm.suraList[ayah.sura-1].name.bosnian}}) -
+            {{suraList[ayah.sura-1].name.bosnianTranscription}} ({{suraList[ayah.sura-1].name.bosnian}}) -
             {{ayah.ayaNumber}}. ajet
             <!-- <p>{{ayah.page}}. stranica - {{ayah.ayaNumber}}. ajet</p> -->
           </div>

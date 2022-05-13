@@ -9,8 +9,10 @@ ul {
   }
 
   li {
-    border-bottom: 1px solid gainsboro;
+    border: 1px solid #e5e7e9;
     padding: 15px;
+    margin: 5px;
+    border-radius: 5px;
 
     &.active {
       background: #f4f5f6;

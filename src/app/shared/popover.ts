@@ -86,6 +86,11 @@ export enum PopoverTypes {
       </ion-item> -->
       <!--night mode end -->
 
+      <ion-item button (click)="goToUrl('/audio')">
+        <ion-label>Kur'an Audio</ion-label>
+        <ion-icon slot="end" name="headset-outline"></ion-icon>
+      </ion-item>
+
       <ion-item button (click)="goToUrl('/settings')">
         <ion-label>Postavke</ion-label>
         <ion-icon slot="end" name="settings-outline"></ion-icon>

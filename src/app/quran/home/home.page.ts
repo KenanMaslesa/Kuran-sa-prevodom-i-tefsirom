@@ -1,7 +1,6 @@
-import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, OnDestroy } from '@angular/core';
 import { ModalController, PopoverController } from '@ionic/angular';
-import { Observable, of } from 'rxjs';
+import { Observable, of, Subscription } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { MediaPlayerService } from 'src/app/shared/media-player.service';
 import { PlatformService } from 'src/app/shared/platform.service';
@@ -32,7 +31,7 @@ enum SortOptions {
   templateUrl: './home.page.html',
   styleUrls: ['./home.page.scss'],
 })
-export class HomePage {
+export class HomePage implements OnDestroy {
   public readonly segments = Segments;
   public selectedSegment: Segments;
   public readonly suraTypes = SuraTypes;
@@ -41,8 +40,9 @@ export class HomePage {
   public selectedSortOptions = SortOptions.byOrderInMushaf;
   public showSearchForSuraSegment = false;
   public showSearchForJuzSegment = false;
-  public suraList$: Observable<Sura[]>;
-  public juzList$: Observable<Juz[]>;
+  public suraList: Sura[] = [];
+  public juzList: Juz[] = [];
+  public subs: Subscription = new Subscription();
 
   //search ayahs
   public dataStream$: Observable<any>;
@@ -60,8 +60,31 @@ export class HomePage {
     private mediaPlayerService: MediaPlayerService
   ) {
     this.selectedSegment = this.segments.sura;
-    this.suraList$ = this.quranService.getSuraList();
-    this.juzList$ = this.quranService.getJuzList();
+    this.getSuraList();
+  }
+
+  ngOnDestroy(): void {
+    this.subs.unsubscribe();
+  }
+
+  getSuraList() {
+    if(this.suraList.length === 0) {
+      this.subs.add(
+        this.quranService.getSuraList().subscribe(response => {
+          this.suraList = response;
+        })
+      );
+    }
+  }
+
+  getJuzList() {
+    if(this.juzList.length === 0) {
+      this.subs.add(
+        this.quranService.getJuzList().subscribe(response => {
+          this.juzList = response;
+        })
+      );
+    }
   }
 
   ionViewDidEnter() {
@@ -70,33 +93,51 @@ export class HomePage {
   }
 
   searchByTerm(searchTerm) {
-    this.suraList$ = this.quranService.searchSuraByBosnianName(searchTerm);
+    this.subs.add(
+      this.quranService.searchSuraByBosnianName(searchTerm).subscribe(response => {
+        this.suraList = response;
+      })
+    );
   }
 
   searchByCity(type: SuraTypes) {
     this.selectedSortOptions = SortOptions.byOrderInMushaf;
     if (type === this.suraTypes.meccan) {
-      this.suraList$ = this.quranService.getSuraListPublishedInMekka();
+      this.subs.add(this.quranService.getSuraListPublishedInMekka().subscribe(response => {
+        this.suraList = response;
+      }));
     } else if (type === this.suraTypes.medinan) {
-      this.suraList$ = this.quranService.getSuraListPublishedInMedina();
+      this.subs.add(this.quranService.getSuraListPublishedInMedina().subscribe(response => {
+        this.suraList = response;
+      }));
     } else if (type === this.suraTypes.both) {
-      this.suraList$ = this.quranService.getSuraList();
+      this.subs.add(this.quranService.getSuraList().subscribe(response => {
+        this.suraList = response;
+      }));
     }
   }
 
   sortSuraListByOrder(sortOption: SortOptions) {
     this.selectedSuraTypes = SuraTypes.both;
     if (sortOption === this.sortOptions.byFirstPublished) {
-      this.suraList$ = this.quranService.sortSuraListByFirstPublished();
+      this.subs.add(this.quranService.sortSuraListByFirstPublished().subscribe(response => {
+        this.suraList = response;
+      }));
     } else if (sortOption === this.sortOptions.byLastPublished) {
-      this.suraList$ = this.quranService.sortSuraListByLastPublished();
+      this.subs.add(this.quranService.sortSuraListByLastPublished().subscribe(response => {
+        this.suraList = response;
+      }));
     } else if (sortOption === this.sortOptions.byOrderInMushaf) {
-      this.suraList$ = this.quranService.getSuraList();
+      this.subs.add(this.quranService.getSuraList().subscribe(response => {
+        this.suraList = response;
+      }));
     }
   }
 
   searchJuzListById(juzId) {
-    this.juzList$ = this.quranService.searchJuzListById(juzId);
+    this.subs.add(this.quranService.searchJuzListById(juzId).subscribe(response => {
+      this.juzList = response;
+    }));
   }
 
   //search ayahs

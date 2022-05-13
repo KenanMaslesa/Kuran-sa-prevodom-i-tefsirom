@@ -26,23 +26,6 @@ export interface AboutSura {
   bosnian: string;
 }
 
-//juz
-export interface Juz {
-  id: number;
-  juzNumber: number;
-  surahs?: (SurahsEntity)[] | null;
-  firstAyahId: number;
-  lastAyahId: number;
-  numberOfAyahs: number;
-  startPage: number;
-  endPage: number;
-}
-export interface SurahsEntity {
-  id: number;
-  startAyah: number;
-  endAyah: number;
-}
-
 
 //tafsir
 export interface Tafsir {
@@ -123,6 +106,7 @@ export interface Surah {
   id: number;
   startAyah: number;
   endAyah: number;
+  name: Name;
 }
 
 //metadata

@@ -1059,7 +1059,7 @@
 @font-face {
   font-display: block;
   font-family: p166;
-  src: url(fonts/p166.ttf) format("truetype");
+  src: url(fonts/p166.woff2) format("truetype");
 }
 
 @font-face {
@@ -6118,6 +6118,7 @@ ion-slides {
   ion-slide {
     height: 100%;
     width: 100% !important;
+    min-height: 85vh;
 
     @media(max-height: 800px) {
       padding-top: 15px;
