@@ -61,6 +61,7 @@ export class HomePage implements OnDestroy {
   ) {
     this.selectedSegment = this.segments.sura;
     this.getSuraList();
+    this.getJuzList();
   }
 
   ngOnDestroy(): void {

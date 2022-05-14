@@ -14,11 +14,11 @@
 <ion-content>
   <!--ion-segment-->
   <ion-segment [(ngModel)]="selectedSegment">
-    <ion-segment-button [value]="segments.sura" (click)="scrollIntoElement('sura'); getSuraList()">
+    <ion-segment-button [value]="segments.sura" (click)="scrollIntoElement('sura');">
       <ion-label>Sure</ion-label>
     </ion-segment-button>
 
-    <ion-segment-button [value]="segments.juz" (click)="scrollIntoElement('juz'); getJuzList()">
+    <ion-segment-button [value]="segments.juz" (click)="scrollIntoElement('juz');">
       <ion-label>Džuzevi</ion-label>
     </ion-segment-button>
 
