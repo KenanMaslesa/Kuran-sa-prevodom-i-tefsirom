@@ -50,10 +50,16 @@
                 <h3>{{ayah.metaData.suraName}}</h3>
               </section>
 
+              <!--sura Tevbe-->
+              <section class="suraTitle" *ngIf="ayah.metaData.lineType === 'besmellah' && quranService.currentPage === 187">
+                <img src="assets/img/surah_title.gif" alt="Quran sura title">
+                <h3>Et-Tevbe - التوبة</h3>
+              </section>
+              <!--sura Tevbe-->
+
               <section class="bismillah"
                 *ngIf="quranService.currentPage !== 187 && quranService.currentPage !==1 && ayah.metaData.lineType === 'besmellah'">
                 <!-- quranService.currentPage !== 187" because of sura Tevba-->
-
                 <div>﷽</div>
               </section>
             </div>
