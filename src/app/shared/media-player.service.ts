@@ -48,75 +48,76 @@ export class MediaPlayerService {
   repeatAyahCounter = 1;
   playingCurrentPage: any;
   playingCurrentAyah: any;
+  playingBismillahEnded: EventEmitter<any> = new EventEmitter();
   switchSlide: EventEmitter<any> = new EventEmitter();
   slideSwitched: EventEmitter<any> = new EventEmitter();
   scrollIntoPlayingAyah: EventEmitter<number> = new EventEmitter();
 
   speedOptions = [
     {
-      value: PlayerSpeedOptions.slow1
+      value: PlayerSpeedOptions.slow1,
     },
     {
-      value: PlayerSpeedOptions.slow2
+      value: PlayerSpeedOptions.slow2,
     },
     {
-      value: PlayerSpeedOptions.slow3
+      value: PlayerSpeedOptions.slow3,
     },
     {
-      value: PlayerSpeedOptions.slow4
+      value: PlayerSpeedOptions.slow4,
     },
     {
-      value: PlayerSpeedOptions.slow5
+      value: PlayerSpeedOptions.slow5,
     },
     {
-      value: PlayerSpeedOptions.slow6
+      value: PlayerSpeedOptions.slow6,
     },
     {
-      value: PlayerSpeedOptions.slow7
+      value: PlayerSpeedOptions.slow7,
     },
     {
-      value: PlayerSpeedOptions.normal
+      value: PlayerSpeedOptions.normal,
     },
     {
-      value: PlayerSpeedOptions.fast1
+      value: PlayerSpeedOptions.fast1,
     },
     {
-      value: PlayerSpeedOptions.fast2
+      value: PlayerSpeedOptions.fast2,
     },
     {
-      value: PlayerSpeedOptions.fast3
+      value: PlayerSpeedOptions.fast3,
     },
     {
-      value: PlayerSpeedOptions.fast4
+      value: PlayerSpeedOptions.fast4,
     },
     {
-      value: PlayerSpeedOptions.fast5
+      value: PlayerSpeedOptions.fast5,
     },
     {
-      value: PlayerSpeedOptions.fast6
+      value: PlayerSpeedOptions.fast6,
     },
     {
-      value: PlayerSpeedOptions.fast7
+      value: PlayerSpeedOptions.fast7,
     },
     {
-      value: PlayerSpeedOptions.fast8
+      value: PlayerSpeedOptions.fast8,
     },
     {
-      value: PlayerSpeedOptions.fast9
+      value: PlayerSpeedOptions.fast9,
     },
     {
-      value: PlayerSpeedOptions.fast10
+      value: PlayerSpeedOptions.fast10,
     },
     {
-      value: PlayerSpeedOptions.fast11
+      value: PlayerSpeedOptions.fast11,
     },
     {
-      value: PlayerSpeedOptions.fast12
+      value: PlayerSpeedOptions.fast12,
     },
   ];
 
   selectedSpeedOption = PlayerSpeedOptions.normal;
-  selectedRepeatOption =  PlayerRepeatOptions.default;
+  selectedRepeatOption = PlayerRepeatOptions.default;
   constructor(private quranService: QuranService) {}
 
   playOneAyah(ayahIndexInHolyQuran) {
@@ -134,7 +135,7 @@ export class MediaPlayerService {
         this.isLoading = false;
       },
       onload: () => {
-          this.scrollIntoPlayingAyah.emit(this.playingCurrentAyah);
+        this.scrollIntoPlayingAyah.emit(this.playingCurrentAyah);
       },
       onend: () => {
         this.isPlaying = false;
@@ -146,7 +147,12 @@ export class MediaPlayerService {
     this.watchCurrentTime();
   }
 
-  playAudio(ayahIndexInHolyQuran, ordinalNumberOfAyahOnPage, currentPage, numberOfAyahsOnCurrentPage) {
+  playAudio(
+    ayahIndexInHolyQuran,
+    ordinalNumberOfAyahOnPage,
+    currentPage,
+    numberOfAyahsOnCurrentPage
+  ) {
     this.audioUrl = `https://cdn.islamic.network/quran/audio/${this.quranService.qari.value}/${ayahIndexInHolyQuran}.mp3`;
     this.playingCurrentAyah = ayahIndexInHolyQuran;
     this.isLoading = true;
@@ -163,20 +169,23 @@ export class MediaPlayerService {
         this.isLoading = false;
       },
       onload: () => {
-          this.scrollIntoPlayingAyah.emit(this.playingCurrentAyah);
+        this.scrollIntoPlayingAyah.emit(this.playingCurrentAyah);
       },
       onend: () => {
         this.isPlaying = false;
         this.clearWatchCurrentTimeInterval();
-        if(this.selectedRepeatOption === PlayerRepeatOptions.default || this.repeatAyahCounter >= this.selectedRepeatOption) {
+        if (
+          this.selectedRepeatOption === PlayerRepeatOptions.default ||
+          this.repeatAyahCounter >= this.selectedRepeatOption
+        ) {
           this.repeatAyahCounter = 1;
-        ayahIndexInHolyQuran = ayahIndexInHolyQuran + 1;
-        ordinalNumberOfAyahOnPage = ordinalNumberOfAyahOnPage + 1;
+          ayahIndexInHolyQuran = ayahIndexInHolyQuran + 1;
+          ordinalNumberOfAyahOnPage = ordinalNumberOfAyahOnPage + 1;
 
-          if(ordinalNumberOfAyahOnPage > numberOfAyahsOnCurrentPage) {
+          if (ordinalNumberOfAyahOnPage > numberOfAyahsOnCurrentPage) {
             currentPage++;
 
-            if(ayahIndexInHolyQuran > 6236 || currentPage > 604) {
+            if (ayahIndexInHolyQuran > 6236 || currentPage > 604) {
               alert('Zadnji ajet proučen');
               this.removePlayer();
               return;
@@ -184,23 +193,37 @@ export class MediaPlayerService {
             this.quranService.setCurrentPage(++this.quranService.currentPage);
             ordinalNumberOfAyahOnPage = 1;
 
-            this.quranService.getNumberOfAyahsByPage(currentPage).subscribe(numberOfAyahs => {
-              numberOfAyahsOnCurrentPage = numberOfAyahs;
-              this.switchSlide.emit(true);
-              this.slideSwitched.subscribe(()=> {
-                this.playAudio(ayahIndexInHolyQuran, ordinalNumberOfAyahOnPage, currentPage, numberOfAyahsOnCurrentPage);
+            this.quranService
+              .getNumberOfAyahsByPage(currentPage)
+              .subscribe((numberOfAyahs) => {
+                numberOfAyahsOnCurrentPage = numberOfAyahs;
+                this.switchSlide.emit(true);
+                this.slideSwitched.subscribe(() => {
+                  this.playNextAyah(
+                    ayahIndexInHolyQuran,
+                    ordinalNumberOfAyahOnPage,
+                    currentPage,
+                    numberOfAyahsOnCurrentPage
+                  );
+                });
               });
-            });
+          } else {
+            this.playNextAyah(
+              ayahIndexInHolyQuran,
+              ordinalNumberOfAyahOnPage,
+              currentPage,
+              numberOfAyahsOnCurrentPage
+            );
           }
-          else {
-            this.playAudio(ayahIndexInHolyQuran, ordinalNumberOfAyahOnPage, currentPage, numberOfAyahsOnCurrentPage);
-          }
-        }
-        else {
+        } else {
           this.repeatAyahCounter++;
-            this.playAudio(ayahIndexInHolyQuran, ordinalNumberOfAyahOnPage, currentPage, numberOfAyahsOnCurrentPage);
+          this.playAudio(
+            ayahIndexInHolyQuran,
+            ordinalNumberOfAyahOnPage,
+            currentPage,
+            numberOfAyahsOnCurrentPage
+          );
         }
-
       },
       onloaderror: (id, error) => {
         this.isLoading = false;
@@ -221,7 +244,6 @@ export class MediaPlayerService {
   }
 
   play(audioUrl) {
-
     if (this.player) {
       this.stopAudio();
       this.removePlayer();
@@ -242,6 +264,63 @@ export class MediaPlayerService {
     this.player.rate(this.selectedSpeedOption);
     this.player.play();
     this.watchCurrentTime();
+  }
+
+  playBismillah() {
+    if (this.player) {
+      this.stopAudio();
+      this.removePlayer();
+    }
+    this.player = new Howl({
+      html5: true,
+      src: [
+        `https://cdn.islamic.network/quran/audio/${this.quranService.qari.value}/1.mp3`,
+      ],
+      onplay: () => {
+        this.isPlaying = true;
+        this.isPaused = false;
+        this.isLoading = false;
+        this.playingBismillahEnded.emit(false);
+        this.playingCurrentAyah = this.playingCurrentAyah + 1;
+        this.scrollIntoPlayingAyah.emit(this.playingCurrentAyah);
+      },
+      onend: () => {
+        this.isPlaying = false;
+        this.clearWatchCurrentTimeInterval();
+        this.playingBismillahEnded.emit(true);
+      },
+    });
+    this.player.rate(this.selectedSpeedOption);
+    this.player.play();
+    this.watchCurrentTime();
+  }
+
+  playNextAyah(
+    ayahIndexInHolyQuran,
+    ordinalNumberOfAyahOnPage,
+    currentPage,
+    numberOfAyahsOnCurrentPage
+  ) {
+    if (this.quranService.playBismillahBeforeAyah(ayahIndexInHolyQuran)) {
+      this.playBismillah();
+      this.playingBismillahEnded.subscribe((ended) => {
+        if (ended) {
+          this.playAudio(
+            ayahIndexInHolyQuran,
+            ordinalNumberOfAyahOnPage,
+            currentPage,
+            numberOfAyahsOnCurrentPage
+          );
+        }
+      });
+    } else {
+      this.playAudio(
+        ayahIndexInHolyQuran,
+        ordinalNumberOfAyahOnPage,
+        currentPage,
+        numberOfAyahsOnCurrentPage
+      );
+    }
   }
 
   stopAudio() {
