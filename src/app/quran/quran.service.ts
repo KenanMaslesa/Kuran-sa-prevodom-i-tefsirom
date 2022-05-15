@@ -1,9 +1,10 @@
 import { EventEmitter, Injectable } from '@angular/core';
 import { Observable, of, Subject } from 'rxjs';
-import { Juz, PageInfo, QuranWords, Sura, Tafsir, TafsirAyah } from './quran.models';
+import { Ayah, Juz, PageInfo, QuranWords, Sura, Tafsir, TafsirAyah } from './quran.models';
 const tefsir = require('@kmaslesa/tefsir');
 const quranMetaData = require('@kmaslesa/quran-metadata');
 const quranWords = require('@kmaslesa/quran-word-by-word');
+const quranAyats = require('@kmaslesa/quran-ayats');
 export class QuranResponseData {
   result: any;
 }
@@ -103,7 +104,7 @@ export class QuranService {
       this.setCurrentPage(1);
     }
     const qari = localStorage.getItem('qari');
-    if(qari){
+    if(qari != null && qari !== undefined && qari !== 'undefined'){
       const qariObj = JSON.parse(qari);
       this.qari = {
         value: qariObj.identifier,
@@ -132,6 +133,14 @@ export class QuranService {
     };
   }
 
+   //ayahs
+   getAyahDetails(suraIndex: number, ayahNumber: number): Observable<Ayah[]> {
+     return of(quranAyats.getAyat(ayahNumber, suraIndex));
+   }
+
+   getAyatDetailsByAyahIndex(ayahIndex): Observable<Ayah[]> {
+     return of(quranAyats.getAyatByIndex(ayahIndex));
+   }
 
   //tafsir
   getTafsirAndTranslationForPage(page): Observable<Tafsir>{

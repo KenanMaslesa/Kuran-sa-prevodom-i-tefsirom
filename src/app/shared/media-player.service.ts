@@ -1,5 +1,6 @@
-import { EventEmitter, Injectable } from '@angular/core';
+import { EventEmitter, Injectable, OnDestroy } from '@angular/core';
 import { Howl } from 'howler';
+import { Subscription } from 'rxjs';
 import { QuranService } from '../quran/quran.service';
 
 export enum PlayerSpeedOptions {
@@ -118,7 +119,18 @@ export class MediaPlayerService {
 
   selectedSpeedOption = PlayerSpeedOptions.normal;
   selectedRepeatOption = PlayerRepeatOptions.default;
+
+  hifzRepeatEveryAyah = 0;
+  hifzRepeatGroupOfAyahs = 0;
+  hifzPlayFromAyah: number;
+  showHifzPlayer = false;
+  subs: Subscription = new Subscription();
   constructor(private quranService: QuranService) {}
+
+  unsubscribe(){
+    alert('MediaPlayerService unsubscribe');
+    this.subs.unsubscribe();
+  }
 
   playOneAyah(ayahIndexInHolyQuran) {
     this.audioUrl = `https://cdn.islamic.network/quran/audio/${this.quranService.qari.value}/${ayahIndexInHolyQuran}.mp3`;
@@ -303,7 +315,7 @@ export class MediaPlayerService {
   ) {
     if (this.quranService.playBismillahBeforeAyah(ayahIndexInHolyQuran)) {
       this.playBismillah();
-      this.playingBismillahEnded.subscribe((ended) => {
+      this.subs.add(this.playingBismillahEnded.subscribe((ended) => {
         if (ended) {
           this.playAudio(
             ayahIndexInHolyQuran,
@@ -312,7 +324,7 @@ export class MediaPlayerService {
             numberOfAyahsOnCurrentPage
           );
         }
-      });
+      }));
     } else {
       this.playAudio(
         ayahIndexInHolyQuran,
@@ -403,5 +415,78 @@ export class MediaPlayerService {
       this.isPlaying = false;
       this.isPaused = false;
     }
+  }
+
+  playHifzPlayer(fromAyah: number, fromAyahStatic: number, toAyah: number, repeatGroupOfAyahs: number = 3, repeatEveryAyah: number = 1) {
+    this.subs.add(
+      this.quranService.getAyatDetailsByAyahIndex(fromAyah).subscribe(ayah => {
+        if(this.quranService.currentPage !== ayah[0].page) {
+          this.quranService.setCurrentPage(ayah[0].page);
+        }
+      })
+    );
+    this.audioUrl = `https://cdn.islamic.network/quran/audio/${this.quranService.qari.value}/${fromAyah}.mp3`;
+    this.playingCurrentAyah = fromAyah;
+    this.hifzRepeatEveryAyah++;
+    this.hifzPlayFromAyah = fromAyahStatic;
+    this.isLoading = true;
+    if (this.player) {
+      this.stopAudio();
+      this.removePlayer();
+    }
+    this.player = new Howl({
+      html5: true,
+      src: [this.audioUrl],
+      onplay: () => {
+        this.isPlaying = true;
+        this.isPaused = false;
+        this.isLoading = false;
+      },
+      onload: () => {
+        this.scrollIntoPlayingAyah.emit(this.playingCurrentAyah);
+      },
+      onend: () => {
+        this.isPlaying = false;
+        this.clearWatchCurrentTimeInterval();
+        if(this.hifzRepeatEveryAyah >= repeatEveryAyah) {
+          fromAyah = fromAyah + 1;
+          this.hifzRepeatEveryAyah = 0;
+        }
+          if(fromAyah <= toAyah) {
+            this.playHifzPlayer(
+              fromAyah,
+              fromAyahStatic,
+              toAyah,
+            );
+          }
+          else {
+            this.hifzRepeatGroupOfAyahs++;
+            fromAyah = this.hifzPlayFromAyah;
+            if(this.hifzRepeatGroupOfAyahs >= repeatGroupOfAyahs) {
+              this.removePlayer();
+            }
+            else {
+              this.playHifzPlayer(
+                fromAyah,
+                fromAyahStatic,
+                toAyah,
+              );
+            }
+          }
+      },
+      onloaderror: () => {
+        this.isLoading = false;
+        this.isPlaying = false;
+        this.removePlayer();
+      },
+      onplayerror: (error) => {
+        this.isLoading = false;
+        this.isPlaying = false;
+        this.removePlayer();
+      },
+    });
+    this.player.rate(this.selectedSpeedOption);
+    this.player.play();
+    this.watchCurrentTime();
   }
 }

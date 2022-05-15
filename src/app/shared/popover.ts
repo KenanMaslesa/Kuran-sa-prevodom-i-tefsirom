@@ -61,6 +61,9 @@ export enum PopoverTypes {
         <ion-input
           style="text-align: center;"
           dir="ltr"
+          type="number"
+          min="1"
+          max="604"
           #currentPage
           (ionChange)="checkPage(currentPage.value)"
           placeholder="broj stranice"

@@ -115,3 +115,14 @@ export interface PageInfo {
   wordsNumber: number;
   lettersNumber: number;
 }
+
+//ayah
+export interface Ayah {
+  index: number;
+  sura: number;
+  ayaNumber: number;
+  aya: string;
+  juz: number;
+  hizb: number;
+  page: number;
+}

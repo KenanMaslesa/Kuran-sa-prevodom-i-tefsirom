@@ -1,0 +1,61 @@
+<main [class.show]="mediaPlayerService.showHifzPlayer">
+  <ion-icon (click)="mediaPlayerService.showHifzPlayer=false" name="close-circle-outline"></ion-icon>
+<ion-list>
+  <div class="player-item">
+    <ion-item>
+      <ion-label>Od sure</ion-label>
+      <ion-select [(ngModel)]="selectedFromSura" interface="popover" placeholder="Odaberite suru" #fromSura (ionChange)="getAyahsFromSura(fromSura.value)">
+        <ion-select-option *ngFor="let sura of suraList" [value]="sura">{{sura.name.bosnianTranscription}}</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label>Od ajeta</ion-label>
+      <ion-select [(ngModel)]="selectedFromSuraAyah" interface="popover" placeholder="Odaberite ajet">
+        <ion-select-option *ngFor="let ayah of fromSuraAyahs" [value]="ayah">{{ayah}}</ion-select-option>
+      </ion-select>
+    </ion-item>
+  </div>
+
+  <!--do-->
+  <div class="player-item">
+    <ion-item>
+      <ion-label>Do sure</ion-label>
+      <ion-select [(ngModel)]="selectedToSura" interface="popover" placeholder="Odaberite suru" #toSura (ionChange)="getAyahsToSura(toSura.value)">
+        <ion-select-option *ngFor="let sura of suraList" [value]="sura">{{sura.name.bosnianTranscription}}</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label>Do ajeta</ion-label>
+      <ion-select [(ngModel)]="selectedToSuraAyah" interface="popover" placeholder="Odaberite ajet">
+        <ion-select-option *ngFor="let ayah of toSuraAyahs" [value]="ayah">{{ayah}}</ion-select-option>
+      </ion-select>
+    </ion-item>
+  </div>
+
+  <!--pokreni skupinu ajeta-->
+  <div class="player-item">
+
+    <ion-item>
+      <ion-label>Pokreni skupinu ajeta</ion-label>
+      <ion-select interface="popover" placeholder="Select One">
+        <ion-select-option value="brown">Brown</ion-select-option>
+        <ion-select-option value="blonde">Blonde</ion-select-option>
+        <ion-select-option value="black">Black</ion-select-option>
+        <ion-select-option value="red">Red</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label>Pokreni svaki ajet</ion-label>
+      <ion-select interface="popover" placeholder="Select One">
+        <ion-select-option value="brown">Brown</ion-select-option>
+        <ion-select-option value="blonde">Blonde</ion-select-option>
+        <ion-select-option value="black">Black</ion-select-option>
+        <ion-select-option value="red">Red</ion-select-option>
+      </ion-select>
+    </ion-item>
+  </div>
+
+  <ion-button (click)="play(); mediaPlayerService.showHifzPlayer=false">Play</ion-button>
+
+</ion-list>
+</main>

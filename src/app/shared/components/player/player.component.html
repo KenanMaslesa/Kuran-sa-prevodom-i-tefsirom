@@ -44,10 +44,11 @@
       </ion-icon>
       <!--stop-->
 
-      <div class="right-part" (click)="openQari()">
+      <div class="right-part">
         <!--qari-->
-        <span>{{quranService.qari.name}}</span>
-        <ion-icon class="icon__qari" name="people-outline"></ion-icon>
+        <!-- <span>{{quranService.qari.name}}</span> -->
+        <ion-icon class="icon__qari" (click)="openQari()" name="people-outline"></ion-icon>
+        <ion-icon class="icon__qari" (click)="showHifzPlayer()" name="settings-outline"></ion-icon>
         <!--qari-->
       </div>
 
