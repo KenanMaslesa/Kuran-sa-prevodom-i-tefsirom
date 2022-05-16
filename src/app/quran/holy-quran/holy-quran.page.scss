@@ -27,10 +27,6 @@
     height: 100%;
   }
 
-  @media(min-height: 800px) {
-    height: 94%;
-  }
-
   @media(orientation: landscape) {
     padding-top: 10px;
   }
@@ -6263,6 +6259,7 @@ ion-header {
 }
 
 ion-title {
+  max-width: 94%;
   &.android {
     font-size: 16px;
     max-width: 52%;
