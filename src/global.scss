@@ -220,6 +220,10 @@ ion-tab-bar {
     height: 100%;
     max-width: 100%;
     width: 400px;
+
+    @media (min-height: 1700px) {
+      width: 100%;
+    }
   }
 
   h3 {
@@ -233,6 +237,10 @@ ion-tab-bar {
     font-size: 16px;
     line-height: 55px;
     margin: 0;
+
+    @media (min-height: 1700px) {
+      font-size: 30px;
+    }
   }
 }
 
@@ -251,6 +259,10 @@ ion-tab-bar {
 
   div {
     font-size: 40px;
+
+    @media (min-height: 1700px) {
+      font-size: 90px;
+    }
   }
 }
 
@@ -263,6 +275,10 @@ ion-tab-bar {
         @media (max-width: 768px) {
           font-size: var(--quran-font-size);
           line-height: var(--quran-line-height);
+        }
+        @media (min-height: 1700px) {
+          font-size: 65px !important;
+          line-height: 85px !important;
         }
       }
     }
