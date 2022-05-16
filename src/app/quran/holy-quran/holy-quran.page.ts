@@ -1,6 +1,6 @@
 import { ChangeDetectorRef, Component, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { IonContent, IonSlides, PopoverController } from '@ionic/angular';
+import { AlertController, IonContent, IonSlides, PopoverController } from '@ionic/angular';
 import { Observable, Subscription } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { MediaPlayerService } from 'src/app/shared/media-player.service';
@@ -49,7 +49,8 @@ export class HolyQuranPage {
     public nativePluginsService: NativePluginsService,
     private changeDetectorRef: ChangeDetectorRef,
     private popoverCtrl: PopoverController,
-    public settingsService: SettingsService
+    public settingsService: SettingsService,
+    private alertController: AlertController
   ) {
     this.suraList$ = this.quranService.getSuraList();
 
@@ -60,16 +61,6 @@ export class HolyQuranPage {
     }
     this.getWordsForCurrentPage();
 
-    //switch slide when last ayah on current page is played
-    this.subs.add(
-      this.mediaPlayerService.switchSlide.subscribe(() => {
-        this.quranService.setCurrentPage(this.quranService.currentPage - 1); //zato sto ce mi se povecati stranica u this.loadNext();
-        this.loadNext();
-        setTimeout(() => {
-          this.mediaPlayerService.slideSwitched.emit(true);
-        }, 1000);
-      })
-    );
 
     //screen orientation
     this.screenOrientation$ = this.nativePluginsService.screenOrientation
@@ -105,6 +96,15 @@ export class HolyQuranPage {
           }
         }
       )
+    );
+
+    //hifz player ended
+    this.subs.add(
+      this.mediaPlayerService.hifzPlayerEnded.subscribe(ended => {
+        if(ended) {
+          this.presentAlertConfirmHifzPlayerEnded();
+        }
+      })
     );
   }
 
@@ -199,22 +199,70 @@ export class HolyQuranPage {
   }
 
   playAyah(ayahIndex) {
-    this.subs.add(
-      this.quranService
-        .getOrdinalNumberOfAyahOnPage(ayahIndex, this.quranService.currentPage)
-        .subscribe((ordinalnumber) => {
-          this.quranService
-            .getNumberOfAyahsByPage(this.quranService.currentPage)
-            .subscribe((numberOfAyahs) => {
-              this.mediaPlayerService.playAudio(
-                ayahIndex,
-                ordinalnumber,
-                this.quranService.currentPage,
-                numberOfAyahs
-              );
-            });
-        })
-    );
+    if(this.mediaPlayerService.hifzIsPlaying) {
+      this.presentAlertConfirm(ayahIndex);
+      this.mediaPlayerService.pauseAudio();
+    }
+    else {
+      this.mediaPlayerService.playingCurrentAyahChanged.emit(true);
+      this.mediaPlayerService.playAudio(
+        ayahIndex
+      );
+    }
+
+  }
+
+  async presentAlertConfirm(ayahIndex) {
+    const alert = await this.alertController.create({
+      header: 'Prekidanje hifza',
+      message: 'Jeste li sigurni da želite prekinuti hifz?',
+      buttons: [
+        {
+          text: 'NE',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: () => {
+            this.mediaPlayerService.continueAudio();
+          },
+        },
+        {
+          text: 'Da',
+          handler: () => {
+            this.mediaPlayerService.hifzIsPlaying = false;
+            this.mediaPlayerService.playAudio(
+              ayahIndex
+            );
+          },
+        },
+      ],
+    });
+
+    await alert.present();
+  }
+
+  async presentAlertConfirmHifzPlayerEnded() {
+    const alert = await this.alertController.create({
+      header: 'Odabrani opseg proučen',
+      message: 'Želite li nastaviti učiti?',
+      buttons: [
+        {
+          text: 'NE',
+          handler: () => {
+            this.mediaPlayerService.showHifzPlayer = false;
+            this.mediaPlayerService.hifzIsPlaying = false;
+            this.mediaPlayerService.removePlayer();
+          },
+        },
+        {
+          text: 'Da',
+          handler: () => {
+            this.mediaPlayerService.showHifzPlayer = true;
+          },
+        },
+      ],
+    });
+
+    await alert.present();
   }
 
   //bookmarks

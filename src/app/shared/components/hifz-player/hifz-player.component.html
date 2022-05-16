@@ -1,16 +1,17 @@
 <main [class.show]="mediaPlayerService.showHifzPlayer">
-  <ion-icon (click)="mediaPlayerService.showHifzPlayer=false" name="close-circle-outline"></ion-icon>
+  <ion-icon (click)="hideHifzPlayer()" name="close-circle-outline"></ion-icon>
 <ion-list>
   <div class="player-item">
+    <h6>Od</h6>
     <ion-item>
       <ion-label>Od sure</ion-label>
-      <ion-select [(ngModel)]="selectedFromSura" interface="popover" placeholder="Odaberite suru" #fromSura (ionChange)="getAyahsFromSura(fromSura.value)">
+      <ion-select [disabled]="mediaPlayerService.hifzIsPlaying" [(ngModel)]="selectedFromSura" interface="popover" placeholder="Odaberite suru" #fromSura (ionChange)="getAyahsFromSura(fromSura.value)">
         <ion-select-option *ngFor="let sura of suraList" [value]="sura">{{sura.name.bosnianTranscription}}</ion-select-option>
       </ion-select>
     </ion-item>
     <ion-item>
       <ion-label>Od ajeta</ion-label>
-      <ion-select [(ngModel)]="selectedFromSuraAyah" interface="popover" placeholder="Odaberite ajet">
+      <ion-select [disabled]="mediaPlayerService.hifzIsPlaying" [(ngModel)]="selectedFromSuraAyah" (ngModelChange)="selectedFromSuraAyahChanged()" interface="popover" placeholder="Odaberite ajet">
         <ion-select-option *ngFor="let ayah of fromSuraAyahs" [value]="ayah">{{ayah}}</ion-select-option>
       </ion-select>
     </ion-item>
@@ -18,44 +19,84 @@
 
   <!--do-->
   <div class="player-item">
+    <h6>Do</h6>
     <ion-item>
       <ion-label>Do sure</ion-label>
-      <ion-select [(ngModel)]="selectedToSura" interface="popover" placeholder="Odaberite suru" #toSura (ionChange)="getAyahsToSura(toSura.value)">
-        <ion-select-option *ngFor="let sura of suraList" [value]="sura">{{sura.name.bosnianTranscription}}</ion-select-option>
+      <ion-select [disabled]="mediaPlayerService.hifzIsPlaying" [(ngModel)]="selectedToSura" interface="popover" placeholder="Odaberite suru" #toSura (ionChange)="getAyahsToSura(toSura.value)">
+        <ion-select-option *ngFor="let sura of suraListTo" [value]="sura">{{sura.name.bosnianTranscription}}</ion-select-option>
       </ion-select>
     </ion-item>
     <ion-item>
       <ion-label>Do ajeta</ion-label>
-      <ion-select [(ngModel)]="selectedToSuraAyah" interface="popover" placeholder="Odaberite ajet">
+      <ion-select [disabled]="mediaPlayerService.hifzIsPlaying" [(ngModel)]="selectedToSuraAyah" interface="popover" placeholder="Odaberite ajet">
         <ion-select-option *ngFor="let ayah of toSuraAyahs" [value]="ayah">{{ayah}}</ion-select-option>
       </ion-select>
     </ion-item>
   </div>
 
-  <!--pokreni skupinu ajeta-->
+  <!--Ponovi-->
   <div class="player-item">
+    <h6>Ponavljanje</h6>
+    <ion-item>
+      <ion-label position="floating">Ponovi skupinu odabranih ajeta</ion-label>
+      <ion-input [disabled]="mediaPlayerService.hifzIsPlaying" placeholder="Unesite broj ponavljanja" type="number" [(ngModel)]="mediaPlayerService.hifzRepeatGroupOfAyahs"></ion-input>
+    </ion-item>
 
     <ion-item>
-      <ion-label>Pokreni skupinu ajeta</ion-label>
-      <ion-select interface="popover" placeholder="Select One">
-        <ion-select-option value="brown">Brown</ion-select-option>
-        <ion-select-option value="blonde">Blonde</ion-select-option>
-        <ion-select-option value="black">Black</ion-select-option>
-        <ion-select-option value="red">Red</ion-select-option>
-      </ion-select>
-    </ion-item>
-    <ion-item>
-      <ion-label>Pokreni svaki ajet</ion-label>
-      <ion-select interface="popover" placeholder="Select One">
-        <ion-select-option value="brown">Brown</ion-select-option>
-        <ion-select-option value="blonde">Blonde</ion-select-option>
-        <ion-select-option value="black">Black</ion-select-option>
-        <ion-select-option value="red">Red</ion-select-option>
-      </ion-select>
+      <ion-label position="floating">Ponovi pojedinačni ajet iz skupine</ion-label>
+      <ion-input [disabled]="mediaPlayerService.hifzIsPlaying" placeholder="Unesite broj ponavljanja" type="number" [(ngModel)]="mediaPlayerService.hifzRepeatEveryAyah"></ion-input>
     </ion-item>
   </div>
+  <!--Ponovi-->
 
-  <ion-button (click)="play(); mediaPlayerService.showHifzPlayer=false">Play</ion-button>
+  <!--delay-->
+  <div class="player-item">
+    <h6>Pauza</h6>
+    <ion-item>
+      <ion-label position="floating">Pauza izmedju skupine ajeta</ion-label>
+      <ion-input [disabled]="mediaPlayerService.hifzIsPlaying" placeholder="Unesite broj sekundi" type="number" [(ngModel)]="mediaPlayerService.hifzDelayBetweenGroupOfAyahs"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Pauza izmedju pojedinačnih ajeta</ion-label>
+      <ion-input [disabled]="mediaPlayerService.hifzIsPlaying" placeholder="Unesite broj sekundi" type="number" [(ngModel)]="mediaPlayerService.hifzDelayBetweenAyahs"></ion-input>
+    </ion-item>
+  </div>
+  <!--delay-->
+
+  <div class="player-item">
+    <h6>Učač i brzina učenja</h6>
+
+      <!--qari-->
+      <ion-item>
+        <ion-label>Odaberite učača</ion-label>
+        <ion-select [disabled]="mediaPlayerService.hifzIsPlaying" class="right-select" interface="popover" #qari [(ngModel)]="quranService.qari.value"
+          (ngModelChange)="quranService.changeQari(qari.value)" name="qari">
+          <ion-select-option *ngFor="let item of quranService.qariList" value="{{item.identifier}}">
+            {{item.englishName}}
+          </ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <!--qari-->
+
+      <!--speed-->
+      <ion-item>
+        <ion-label>Odaberite brzinu učenja</ion-label>
+        <ion-select [disabled]="mediaPlayerService.hifzIsPlaying" class="left-select" [(ngModel)]="mediaPlayerService.selectedHifzSpeedOption" interface="popover"
+          #speedOptions>
+          <ion-select-option *ngFor="let option of mediaPlayerService.speedOptions" [value]="option.value">
+            {{option.value}}</ion-select-option>
+        </ion-select>
+      </ion-item>
+      <!--speed-->
+
+  </div>
+
+  <div style="text-align: center;">
+    <ion-button *ngIf="!mediaPlayerService.hifzIsPlaying" (click)="play();">Play</ion-button>
+    <ion-button *ngIf="mediaPlayerService.hifzIsPlaying" (click)="stop()">Stop</ion-button>
+  </div>
 
 </ion-list>
 </main>

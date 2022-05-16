@@ -49,6 +49,12 @@
       font-size: 18px;
     }
 
+    &__hifz {
+      padding: 1px 2px 2px;
+      font-size: 18px;
+      margin-left: 10px;
+    }
+
     &__play-next {
       &--disabled {
         opacity: 0.3;
@@ -127,9 +133,9 @@ ion-popover {
   max-width: 36%;
 
   span {
-    font-size: 14px;
+    font-size: 12px;
     margin-right: 5px;
-    max-width: 70%;
+    max-width: 55%;
     max-height: 35px;
     overflow-x: auto;
     text-align: center;
@@ -175,4 +181,10 @@ ion-popover {
     z-index: 999;
     left: 0;
     right: 0;
+}
+
+.hifz-delay {
+  font-size: 23px;
+  min-width: 100px;
+  text-align: center;
 }

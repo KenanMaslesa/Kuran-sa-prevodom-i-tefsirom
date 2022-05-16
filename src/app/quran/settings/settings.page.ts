@@ -11,6 +11,7 @@ export enum LocalStorageKeysSettings {
   lineHeight = 'lineHeight',
   fontSizeLandscape = 'fontSizeLandscape',
   lineHeightLandscape = 'lineHeightLandscape',
+  spaceBetweenWords = 'spaceBetweenWords',
 }
 @Component({
   selector: 'app-settings',
@@ -64,9 +65,10 @@ export class SettingsPage {
   showSegments = false;
   themeColor: string;
   fontSize = 22;
-  lineHeight = 30;
+  lineHeight = 28;
   fontSizeLandscape = 45;
   lineHeightLandscape = 60;
+  spaceBetweenWords = 1;
 
   page6 = [
     [
@@ -264,6 +266,7 @@ export class SettingsPage {
 
     const themeColor = localStorage.getItem(LocalStorageKeysSettings.theme);
     const fontSize = localStorage.getItem(LocalStorageKeysSettings.fontSize);
+    const spaceBetweenWords = localStorage.getItem(LocalStorageKeysSettings.spaceBetweenWords);
     const fontSizeLandscape = localStorage.getItem(
       LocalStorageKeysSettings.fontSizeLandscape
     );
@@ -290,6 +293,9 @@ export class SettingsPage {
     }
     if (lineHeightLandscape) {
       this.lineHeightLandscape = JSON.parse(lineHeightLandscape);
+    }
+    if(spaceBetweenWords) {
+      this.spaceBetweenWords = JSON.parse(spaceBetweenWords);
     }
 
     this.screenOrientation$ = this.nativePluginsService.screenOrientation.onChange().pipe(
@@ -333,6 +339,14 @@ export class SettingsPage {
     );
   }
 
+  onLandscapeLineHeightChange(lineHeight) {
+    this.lineHeightLandscape = lineHeight;
+    document.documentElement.style.setProperty(
+      `--quran-landscape-line-height`,
+      `${lineHeight}px`
+    );
+  }
+
   onLandscapeFontChange(fontSize) {
     this.fontSizeLandscape = fontSize;
     document.documentElement.style.setProperty(
@@ -341,11 +355,11 @@ export class SettingsPage {
     );
   }
 
-  onLandscapeLineHeightChange(lineHeight) {
-    this.lineHeightLandscape = lineHeight;
+  onSpaceBetweenWords(spaceBetweenWords) {
+    this.spaceBetweenWords = spaceBetweenWords;
     document.documentElement.style.setProperty(
-      `--quran-landscape-line-height`,
-      `${lineHeight}px`
+      `--quran-space-between-words`,
+      `${spaceBetweenWords}px`
     );
   }
 
@@ -371,6 +385,11 @@ export class SettingsPage {
     localStorage.setItem(
       LocalStorageKeysSettings.lineHeightLandscape,
       JSON.stringify(this.lineHeightLandscape)
+    );
+
+    localStorage.setItem(
+      LocalStorageKeysSettings.spaceBetweenWords,
+      JSON.stringify(this.spaceBetweenWords)
     );
   }
 }

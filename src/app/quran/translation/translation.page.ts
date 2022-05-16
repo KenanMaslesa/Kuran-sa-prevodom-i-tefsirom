@@ -174,16 +174,6 @@ export class TranslationPage implements AfterViewInit {
       this.quranService.setCurrentPage(this.routePageId - 1);
     }
 
-    this.subs.add(
-      this.mediaPlayerService.switchSlide.subscribe(() => {
-        this.quranService.setCurrentPage(this.quranService.currentPage - 1); //zato sto ce mi se povecati stranica u this.loadNext();
-        this.loadNext();
-        setTimeout(() => {
-          this.mediaPlayerService.slideSwitched.emit(true);
-        }, 1000);
-      })
-    );
-
     //scroll into playing ayah
     this.subs.add(
       this.mediaPlayerService.scrollIntoPlayingAyah.subscribe(
@@ -296,21 +286,8 @@ export class TranslationPage implements AfterViewInit {
   }
 
   playAyah(ayahIndex) {
-    this.subs.add(
-      this.quranService
-        .getOrdinalNumberOfAyahOnPage(ayahIndex, this.quranService.currentPage)
-        .subscribe((ordinalnumber) => {
-          this.quranService
-            .getNumberOfAyahsByPage(this.quranService.currentPage)
-            .subscribe((numberOfAyahs) => {
-              this.mediaPlayerService.playAudio(
-                ayahIndex,
-                ordinalnumber,
-                this.quranService.currentPage,
-                numberOfAyahs
-              );
-            });
-        })
+    this.mediaPlayerService.playAudio(
+      ayahIndex,
     );
   }
 

@@ -97,7 +97,7 @@ ion-header {
   z-index: 999;
   font-size: 20px;
 
-  @media(min-width: 768px) {
+  @media (min-width: 768px) {
     right: 15px;
   }
 }
@@ -116,7 +116,7 @@ ion-tab-bar {
   color: var(--ion-text-color);
   // border-top: 1px solid #29232347;
   border-top: 1px solid #bbb8b847;
-  transition: all .3s;
+  transition: all 0.3s;
 
   @media (min-width: 1024px) {
     max-width: 60%;
@@ -216,7 +216,6 @@ ion-tab-bar {
   padding: 0 10px;
   margin-top: 10px;
 
-
   img {
     height: 100%;
     max-width: 100%;
@@ -272,8 +271,8 @@ ion-tab-bar {
   &__landscape {
     .ayeLine {
       i {
-          font-size: var(--quran-landscape-font-size) !important;
-          line-height: var(--quran-landscape-line-height) !important;
+        font-size: var(--quran-landscape-font-size) !important;
+        line-height: var(--quran-landscape-line-height) !important;
       }
     }
 
@@ -308,10 +307,10 @@ ion-tab-bar {
 
     i {
       font-style: normal;
-      padding-left: 1px;
+      padding-left: var(--quran-space-between-words);
       display: inline-block;
 
-      &.endAyah {
+      &.endAyahColor {
         color: var(--ion-color-primary);
       }
 
@@ -322,18 +321,24 @@ ion-tab-bar {
 
       &.active,
       &.hover {
-        color: var(--ion-color-primary);
+        // color: var(--ion-color-primary);
+        // background-color: rgb(81 84 91 / 5%);
+        background-color: #e9e8e8;
         cursor: pointer;
-        background-color: rgb(81 84 91 / 5%);
       }
 
       &:hover {
-        color: var(--ion-color-primary);
+        // color: var(--ion-color-primary);
+
+        &:not(.endAyah, .endAyahColor) {
+          color: var(--ion-color-primary);
+          background: #e9e8e8;
+          border-radius: 5px;
+        }
       }
     }
   }
 }
-
 
 //platform specific
 .plt-android {

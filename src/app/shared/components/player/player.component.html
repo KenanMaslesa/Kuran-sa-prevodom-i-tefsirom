@@ -8,6 +8,7 @@
     <!--progress-bar-->
     <div class="icon">
       <div class="left-part">
+        <ng-container *ngIf="!mediaPlayerService.hifzIsPlaying && !mediaPlayerService.isLoading">
         <!--speed-->
         <div class="speed">
           <span>{{mediaPlayerService.selectedSpeedOption}}x</span>
@@ -22,9 +23,22 @@
           <ion-icon name="repeat-outline"></ion-icon>
         </div>
         <!--repeat-->
+      </ng-container>
+
+      <ng-container *ngIf="mediaPlayerService.hifzIsPlaying">
+        <div style="display: block;">
+            <p *ngIf="mediaPlayerService.hifzRepeatGroupOfAyahs>1" style="font-size: 12px; margin: 1px;">skupina ajeta: {{mediaPlayerService.hifzRepeatGroupOfAyahsCounter+1}}/{{mediaPlayerService.hifzRepeatGroupOfAyahs}}</p>
+            <p *ngIf="mediaPlayerService.hifzRepeatEveryAyah>1" style="font-size: 12px; margin: 1px;">pojedinačni ajet: {{mediaPlayerService.hifzRepeatEveryAyahCounter}}/{{mediaPlayerService.hifzRepeatEveryAyah}}</p>
+        </div>
+      </ng-container>
       </div>
       <ion-spinner *ngIf="mediaPlayerService.isLoading" name="bubbles" color="white"></ion-spinner>
 
+      <!--hifz delay-->
+      <p class="hifz-delay" *ngIf="mediaPlayerService.currentHifzDelayTime !== -1">{{mediaPlayerService.currentHifzDelayTime/1000}}</p>
+      <!--hifz delay-->
+
+      <ng-container *ngIf="mediaPlayerService.currentHifzDelayTime === -1">
 
       <!--play-->
       <ion-icon class="icon__play" name="play" *ngIf="mediaPlayerService.isPaused"
@@ -40,16 +54,22 @@
 
       <!--stop-->
       <ion-icon class="icon__stop" *ngIf="mediaPlayerService.isPlaying || mediaPlayerService.isPaused"
-        (click)="mediaPlayerService.removePlayer(); mediaPlayerService.playingCurrentAyah = null" name="stop">
+        (click)="stopPlayer()" name="stop">
       </ion-icon>
       <!--stop-->
+    </ng-container>
 
       <div class="right-part">
         <!--qari-->
-        <!-- <span>{{quranService.qari.name}}</span> -->
-        <ion-icon class="icon__qari" (click)="openQari()" name="people-outline"></ion-icon>
-        <ion-icon class="icon__qari" (click)="showHifzPlayer()" name="settings-outline"></ion-icon>
+        <ng-container *ngIf="!mediaPlayerService.hifzIsPlaying && !mediaPlayerService.isLoading">
+          <span (click)="openQari()">{{quranService.qari.name}}</span>
+          <ion-icon class="icon__qari" (click)="openQari()" name="people-outline"></ion-icon>
+        </ng-container>
         <!--qari-->
+
+        <!--hifz-->
+        <ion-icon class="icon__hifz" (click)="showHifzPlayer()" name="settings-outline"></ion-icon>
+        <!--hifz-->
       </div>
 
 
@@ -60,7 +80,7 @@
     <!--qari-->
     <ion-item>
       <ion-label>Odaberite učača</ion-label>
-      <ion-select class="right-select" interface="popover" #qari [(ngModel)]="quranService.qari"
+      <ion-select class="right-select" interface="popover" #qari [(ngModel)]="quranService.qari.value"
         (ngModelChange)="quranService.changeQari(qari.value)" name="qari">
         <ion-select-option *ngFor="let item of quranService.qariList" value="{{item.identifier}}">
           {{item.englishName}}

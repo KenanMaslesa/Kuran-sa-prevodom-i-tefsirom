@@ -66,9 +66,9 @@
             <!--sura title end-->
 
             <!--ayah-words-wrapper-->
-            <i id="{{wordIndex === 0? word.index:''}}" *ngFor="let word of ayah.words; let wordIndex = index" [class.active]="mediaPlayerService.playingCurrentAyah === word.index">
+            <i class="endAyah" id="{{wordIndex === 0? word.index:''}}" *ngFor="let word of ayah.words; let wordIndex = index" [class.active]="mediaPlayerService.playingCurrentAyah === word.index">
               <!--end znak - playAyat-->
-              <i  class="p{{quranService.currentPage}} ayah{{word.index}} endAyah" *ngIf="word.charType === 'end'"
+              <i  class="p{{quranService.currentPage}} ayah{{word.index}} endAyahColor" *ngIf="word.charType === 'end'"
                 (click)="playAyah(word.index);" [innerHtml]="word.code"></i>
               <!--end znak - playAyat -->
 
@@ -92,7 +92,7 @@
   <app-player></app-player>
   <!--global player end-->
 
-  <app-hifz-player></app-hifz-player>
+  <app-hifz-player *ngIf="mediaPlayerService.player"></app-hifz-player>
 </ion-content>
 
 <ng-container *ngIf="screenOrientation$ | async"></ng-container>

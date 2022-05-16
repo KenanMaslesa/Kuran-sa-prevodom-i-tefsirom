@@ -67,7 +67,14 @@
     </ng-container>
     <!--landscape segment-->
 
+    <div class="align-center">
+      <ion-label>Razmak između riječi </ion-label>
 
+      <ion-range [(ngModel)]="spaceBetweenWords" #spaceBetweenWordsRef (ngModelChange)="onSpaceBetweenWords(spaceBetweenWordsRef.value)" min="0" pin="true" max="5" color="primary">
+        <ion-label slot="start">0</ion-label>
+        <ion-label slot="end">5</ion-label>
+      </ion-range>
+    </div>
     <!--page start-->
     <div class="page-orientation" [ngClass]="{'page-orientation__portrait': nativePluginsService.isPortrait(), 'page-orientation__landscape': nativePluginsService.isLandscape()}">
       <div dir="rtl">

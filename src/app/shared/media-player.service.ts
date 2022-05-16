@@ -22,8 +22,16 @@ export enum PlayerSpeedOptions {
   fast8 = 1.8,
   fast9 = 1.9,
   fast10 = 2,
-  fast11 = 2.5,
-  fast12 = 3,
+  fast11 = 2.1,
+  fast12 = 2.2,
+  fast13 = 2.3,
+  fast14 = 2.4,
+  fast15 = 2.5,
+  fast16 = 2.6,
+  fast17 = 2.7,
+  fast18 = 2.8,
+  fast19 = 2.9,
+  fast20 = 3,
 }
 
 export enum PlayerRepeatOptions {
@@ -45,15 +53,14 @@ export class MediaPlayerService {
   watchCurrentTimeInterval;
   isPaused = false;
   isLoading = false;
+  subs: Subscription = new Subscription();
   audioUrl: string;
   repeatAyahCounter = 1;
   playingCurrentPage: any;
   playingCurrentAyah: any;
   playingBismillahEnded: EventEmitter<any> = new EventEmitter();
-  switchSlide: EventEmitter<any> = new EventEmitter();
-  slideSwitched: EventEmitter<any> = new EventEmitter();
   scrollIntoPlayingAyah: EventEmitter<number> = new EventEmitter();
-
+  playingCurrentAyahChanged: EventEmitter<boolean> = new EventEmitter();
   speedOptions = [
     {
       value: PlayerSpeedOptions.slow1,
@@ -115,20 +122,53 @@ export class MediaPlayerService {
     {
       value: PlayerSpeedOptions.fast12,
     },
+    {
+      value: PlayerSpeedOptions.fast13,
+    },
+    {
+      value: PlayerSpeedOptions.fast14,
+    },
+    {
+      value: PlayerSpeedOptions.fast15,
+    },
+    {
+      value: PlayerSpeedOptions.fast16,
+    },
+    {
+      value: PlayerSpeedOptions.fast17,
+    },
+    {
+      value: PlayerSpeedOptions.fast18,
+    },
+    {
+      value: PlayerSpeedOptions.fast19,
+    },
+    {
+      value: PlayerSpeedOptions.fast20,
+    },
   ];
 
   selectedSpeedOption = PlayerSpeedOptions.normal;
   selectedRepeatOption = PlayerRepeatOptions.default;
 
-  hifzRepeatEveryAyah = 0;
-  hifzRepeatGroupOfAyahs = 0;
+  //hifz
+  hifzRepeatEveryAyahCounter = 0;
+  hifzRepeatGroupOfAyahsCounter = 0;
+  hifzRepeatEveryAyah = 1;
+  hifzRepeatGroupOfAyahs = 1;
+  hifzDelayBetweenAyahs = 0;
+  hifzDelayBetweenGroupOfAyahs = 0;
   hifzPlayFromAyah: number;
   showHifzPlayer = false;
-  subs: Subscription = new Subscription();
+  hifzIsPlaying = false;
+  currentHifzDelayTime = -1;
+  watchHifzDelayInterval;
+  selectedHifzSpeedOption = PlayerSpeedOptions.normal;
+  hifzPlayerEnded: EventEmitter<boolean> = new EventEmitter();
+
   constructor(private quranService: QuranService) {}
 
-  unsubscribe(){
-    alert('MediaPlayerService unsubscribe');
+  unsubscribe() {
     this.subs.unsubscribe();
   }
 
@@ -159,12 +199,20 @@ export class MediaPlayerService {
     this.watchCurrentTime();
   }
 
-  playAudio(
-    ayahIndexInHolyQuran,
-    ordinalNumberOfAyahOnPage,
-    currentPage,
-    numberOfAyahsOnCurrentPage
-  ) {
+  changeQuranPageIfNeeded(ayahIndexInHolyQuran) {
+    this.subs.add(
+      this.quranService
+        .getAyatDetailsByAyahIndex(ayahIndexInHolyQuran)
+        .subscribe((ayah) => {
+          if (this.quranService.currentPage !== ayah[0].page) {
+            this.quranService.setCurrentPage(ayah[0].page);
+          }
+        })
+    );
+  }
+
+  playAudio(ayahIndexInHolyQuran) {
+    this.changeQuranPageIfNeeded(ayahIndexInHolyQuran);
     this.audioUrl = `https://cdn.islamic.network/quran/audio/${this.quranService.qari.value}/${ayahIndexInHolyQuran}.mp3`;
     this.playingCurrentAyah = ayahIndexInHolyQuran;
     this.isLoading = true;
@@ -179,6 +227,7 @@ export class MediaPlayerService {
         this.isPlaying = true;
         this.isPaused = false;
         this.isLoading = false;
+        this.playingCurrentAyahChanged.emit(true);
       },
       onload: () => {
         this.scrollIntoPlayingAyah.emit(this.playingCurrentAyah);
@@ -192,49 +241,30 @@ export class MediaPlayerService {
         ) {
           this.repeatAyahCounter = 1;
           ayahIndexInHolyQuran = ayahIndexInHolyQuran + 1;
-          ordinalNumberOfAyahOnPage = ordinalNumberOfAyahOnPage + 1;
 
-          if (ordinalNumberOfAyahOnPage > numberOfAyahsOnCurrentPage) {
-            currentPage++;
-
-            if (ayahIndexInHolyQuran > 6236 || currentPage > 604) {
-              alert('Zadnji ajet proučen');
-              this.removePlayer();
-              return;
-            }
-            this.quranService.setCurrentPage(++this.quranService.currentPage);
-            ordinalNumberOfAyahOnPage = 1;
-
-            this.quranService
-              .getNumberOfAyahsByPage(currentPage)
-              .subscribe((numberOfAyahs) => {
-                numberOfAyahsOnCurrentPage = numberOfAyahs;
-                this.switchSlide.emit(true);
-                this.slideSwitched.subscribe(() => {
-                  this.playNextAyah(
-                    ayahIndexInHolyQuran,
-                    ordinalNumberOfAyahOnPage,
-                    currentPage,
-                    numberOfAyahsOnCurrentPage
-                  );
-                });
-              });
-          } else {
-            this.playNextAyah(
-              ayahIndexInHolyQuran,
-              ordinalNumberOfAyahOnPage,
-              currentPage,
-              numberOfAyahsOnCurrentPage
-            );
+          if (ayahIndexInHolyQuran > 6236) {
+            alert('Zadnji ajet proučen');
+            this.removePlayer();
+            return;
           }
+          //play next ayah or bismillah START
+          if (this.quranService.playBismillahBeforeAyah(ayahIndexInHolyQuran)) {
+            this.changeQuranPageIfNeeded(ayahIndexInHolyQuran);
+            this.playBismillah();
+            this.subs.add(
+              this.playingBismillahEnded.subscribe((ended) => {
+                if (ended) {
+                  this.playAudio(ayahIndexInHolyQuran);
+                }
+              })
+            );
+          } else {
+            this.playAudio(ayahIndexInHolyQuran);
+          }
+          //play next ayah or bismillah END
         } else {
           this.repeatAyahCounter++;
-          this.playAudio(
-            ayahIndexInHolyQuran,
-            ordinalNumberOfAyahOnPage,
-            currentPage,
-            numberOfAyahsOnCurrentPage
-          );
+          this.playAudio(ayahIndexInHolyQuran);
         }
       },
       onloaderror: (id, error) => {
@@ -305,34 +335,6 @@ export class MediaPlayerService {
     this.player.rate(this.selectedSpeedOption);
     this.player.play();
     this.watchCurrentTime();
-  }
-
-  playNextAyah(
-    ayahIndexInHolyQuran,
-    ordinalNumberOfAyahOnPage,
-    currentPage,
-    numberOfAyahsOnCurrentPage
-  ) {
-    if (this.quranService.playBismillahBeforeAyah(ayahIndexInHolyQuran)) {
-      this.playBismillah();
-      this.subs.add(this.playingBismillahEnded.subscribe((ended) => {
-        if (ended) {
-          this.playAudio(
-            ayahIndexInHolyQuran,
-            ordinalNumberOfAyahOnPage,
-            currentPage,
-            numberOfAyahsOnCurrentPage
-          );
-        }
-      }));
-    } else {
-      this.playAudio(
-        ayahIndexInHolyQuran,
-        ordinalNumberOfAyahOnPage,
-        currentPage,
-        numberOfAyahsOnCurrentPage
-      );
-    }
   }
 
   stopAudio() {
@@ -417,17 +419,16 @@ export class MediaPlayerService {
     }
   }
 
-  playHifzPlayer(fromAyah: number, fromAyahStatic: number, toAyah: number, repeatGroupOfAyahs: number = 3, repeatEveryAyah: number = 1) {
-    this.subs.add(
-      this.quranService.getAyatDetailsByAyahIndex(fromAyah).subscribe(ayah => {
-        if(this.quranService.currentPage !== ayah[0].page) {
-          this.quranService.setCurrentPage(ayah[0].page);
-        }
-      })
-    );
+  //hifz
+  playHifzPlayer(
+    fromAyah: number,
+    fromAyahStatic: number,
+    toAyah: number
+  ) {
+    this.changeQuranPageIfNeeded(fromAyah);
     this.audioUrl = `https://cdn.islamic.network/quran/audio/${this.quranService.qari.value}/${fromAyah}.mp3`;
     this.playingCurrentAyah = fromAyah;
-    this.hifzRepeatEveryAyah++;
+    this.hifzRepeatEveryAyahCounter++;
     this.hifzPlayFromAyah = fromAyahStatic;
     this.isLoading = true;
     if (this.player) {
@@ -438,41 +439,51 @@ export class MediaPlayerService {
       html5: true,
       src: [this.audioUrl],
       onplay: () => {
+        this.hifzIsPlaying = true;
         this.isPlaying = true;
         this.isPaused = false;
         this.isLoading = false;
+        this.hifzPlayerEnded.emit(false);
       },
       onload: () => {
         this.scrollIntoPlayingAyah.emit(this.playingCurrentAyah);
       },
       onend: () => {
         this.isPlaying = false;
+        this.hifzIsPlaying = false;
         this.clearWatchCurrentTimeInterval();
-        if(this.hifzRepeatEveryAyah >= repeatEveryAyah) {
+        if (this.hifzRepeatEveryAyahCounter >= this.hifzRepeatEveryAyah) {
           fromAyah = fromAyah + 1;
-          this.hifzRepeatEveryAyah = 0;
+          this.hifzRepeatEveryAyahCounter = 0;
         }
-          if(fromAyah <= toAyah) {
-            this.playHifzPlayer(
-              fromAyah,
-              fromAyahStatic,
-              toAyah,
-            );
+        if (fromAyah <= toAyah) {
+          this.isPlaying = true;
+          this.hifzIsPlaying = true;
+          if(this.hifzDelayBetweenAyahs !== 0) {
+            this.countdownHizfDelay(this.hifzDelayBetweenAyahs*1000);
           }
-          else {
-            this.hifzRepeatGroupOfAyahs++;
-            fromAyah = this.hifzPlayFromAyah;
-            if(this.hifzRepeatGroupOfAyahs >= repeatGroupOfAyahs) {
-              this.removePlayer();
+          setTimeout(() => {
+            this.playHifzPlayer(fromAyah, fromAyahStatic, toAyah);
+          }, this.hifzDelayBetweenAyahs*1000);
+        } else {
+          this.hifzRepeatGroupOfAyahsCounter++;
+          fromAyah = this.hifzPlayFromAyah;
+          if (this.hifzRepeatGroupOfAyahsCounter >= this.hifzRepeatGroupOfAyahs) {
+            this.hifzIsPlaying = false;
+            this.hifzRepeatGroupOfAyahsCounter = 0;
+            this.hifzPlayerEnded.emit(true);
+            this.playingCurrentAyah = null;
+          } else {
+            this.isPlaying = true;
+            this.hifzIsPlaying = true;
+            if(this.hifzDelayBetweenGroupOfAyahs !== 0) {
+              this.countdownHizfDelay(this.hifzDelayBetweenGroupOfAyahs*1000);
             }
-            else {
-              this.playHifzPlayer(
-                fromAyah,
-                fromAyahStatic,
-                toAyah,
-              );
-            }
+            setTimeout(() => {
+              this.playHifzPlayer(fromAyah, fromAyahStatic, toAyah);
+            }, this.hifzDelayBetweenGroupOfAyahs*1000);
           }
+        }
       },
       onloaderror: () => {
         this.isLoading = false;
@@ -485,8 +496,24 @@ export class MediaPlayerService {
         this.removePlayer();
       },
     });
-    this.player.rate(this.selectedSpeedOption);
+    this.player.rate(this.selectedHifzSpeedOption);
     this.player.play();
     this.watchCurrentTime();
+  }
+
+  countdownHizfDelay(time) {
+    this.currentHifzDelayTime = time;
+    this.watchHifzDelayInterval = setInterval(() => {
+      this.currentHifzDelayTime -= 100;
+      if(this.currentHifzDelayTime <= 0) {
+        this.clearWatchHizfDelayInterval();
+      }
+      console.log('countdownHizfDelay watching interval');
+    }, 100);
+  }
+
+  clearWatchHizfDelayInterval() {
+    clearInterval(this.watchHifzDelayInterval);
+    this.currentHifzDelayTime = -1;
   }
 }
