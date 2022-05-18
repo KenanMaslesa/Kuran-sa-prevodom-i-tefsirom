@@ -447,6 +447,7 @@ export class MediaPlayerService {
         this.isPaused = false;
         this.isLoading = false;
         this.hifzPlayerEnded.emit(false);
+        this.playingCurrentAyahChanged.emit(true);
       },
       onload: () => {
         this.scrollIntoPlayingAyah.emit(this.playingCurrentAyah);

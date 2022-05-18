@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { QuranService } from 'src/app/quran/quran.service';
 import { MediaPlayerService } from '../../media-player.service';
@@ -8,11 +8,15 @@ import { MediaPlayerService } from '../../media-player.service';
   templateUrl: './translation-modal.component.html',
   styleUrls: ['./translation-modal.component.scss'],
 })
-export class TranslationModalComponent implements OnInit, OnDestroy {
+export class TranslationModalComponent implements OnInit, OnDestroy, AfterViewInit {
   ayahList = [];
   subs: Subscription = new Subscription();
 
   constructor(public quranService: QuranService, public mediaPlayerService: MediaPlayerService) { }
+
+  ngAfterViewInit(): void {
+    this.scroll(this.mediaPlayerService.playingCurrentAyah);
+  }
 
   ngOnInit() {
     this.subs.add(
