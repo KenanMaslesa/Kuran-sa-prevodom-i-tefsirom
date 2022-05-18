@@ -1,4 +1,5 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { Ayah, Sura } from 'src/app/quran/quran.models';
 import { QuranService } from 'src/app/quran/quran.service';
@@ -10,6 +11,7 @@ import { MediaPlayerService } from '../../media-player.service';
   styleUrls: ['./hifz-player.component.scss'],
 })
 export class HifzPlayerComponent implements OnInit, OnDestroy {
+  @Input() goToUrl: string = null;
   subs: Subscription = new Subscription();
 
   suraList: Sura[] = [];
@@ -26,7 +28,8 @@ export class HifzPlayerComponent implements OnInit, OnDestroy {
 
   constructor(
     public quranService: QuranService,
-    public mediaPlayerService: MediaPlayerService
+    public mediaPlayerService: MediaPlayerService,
+    private router: Router
   ) {}
 
   ngOnDestroy(): void {
@@ -111,12 +114,18 @@ export class HifzPlayerComponent implements OnInit, OnDestroy {
       .subscribe((response) => {
         toSura = response[0];
       });
-    this.quranService.setCurrentPage(fromSura.page);
     this.mediaPlayerService.playHifzPlayer(
       fromSura.index,
       fromSura.index,
       toSura.index
     );
+    if(this.goToUrl !== null) {
+      this.quranService.setCurrentPage(fromSura.page-1);
+      this.router.navigate([this.goToUrl]);
+    }
+    else {
+    this.quranService.setCurrentPage(fromSura.page);
+    }
   }
 
   stop() {

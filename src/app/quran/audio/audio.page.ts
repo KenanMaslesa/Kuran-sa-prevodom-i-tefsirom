@@ -22,8 +22,11 @@ export class AudioPage implements OnInit {
 
   ngOnInit() {
     this.getSuraList();
-    this.audioPlayerService.removePlayer();
     this.quranService.showLoader = false;
+  }
+
+  ionViewDidLeave() {
+    this.audioPlayerService.removePlayer();
   }
 
   getSuraList() {

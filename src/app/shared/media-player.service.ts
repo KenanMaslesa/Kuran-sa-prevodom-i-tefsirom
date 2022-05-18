@@ -215,6 +215,7 @@ export class MediaPlayerService {
     this.changeQuranPageIfNeeded(ayahIndexInHolyQuran);
     this.audioUrl = `https://cdn.islamic.network/quran/audio/${this.quranService.qari.value}/${ayahIndexInHolyQuran}.mp3`;
     this.playingCurrentAyah = ayahIndexInHolyQuran;
+    this.quranService.markedAyah = ayahIndexInHolyQuran;
     this.isLoading = true;
     if (this.player) {
       this.stopAudio();
@@ -324,6 +325,7 @@ export class MediaPlayerService {
         this.isLoading = false;
         this.playingBismillahEnded.emit(false);
         this.playingCurrentAyah = this.playingCurrentAyah + 1;
+        this.quranService.markedAyah = this.playingCurrentAyah;
         this.scrollIntoPlayingAyah.emit(this.playingCurrentAyah);
       },
       onend: () => {
@@ -428,6 +430,7 @@ export class MediaPlayerService {
     this.changeQuranPageIfNeeded(fromAyah);
     this.audioUrl = `https://cdn.islamic.network/quran/audio/${this.quranService.qari.value}/${fromAyah}.mp3`;
     this.playingCurrentAyah = fromAyah;
+    this.quranService.markedAyah = this.playingCurrentAyah;
     this.hifzRepeatEveryAyahCounter++;
     this.hifzPlayFromAyah = fromAyahStatic;
     this.isLoading = true;

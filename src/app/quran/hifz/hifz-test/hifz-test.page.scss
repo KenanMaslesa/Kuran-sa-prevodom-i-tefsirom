@@ -1,0 +1,59 @@
+.ayah-wrapper {
+  opacity: 0;
+
+  &.show {
+    opacity: 1;
+  }
+
+  &.answer {
+    &--show {
+      opacity: 1;
+      background-color: #d3d3d366;
+    }
+  }
+}
+
+ion-list {
+  margin-top: 100px;
+
+  &.hide {
+    display: none;
+  }
+
+  .player-item {
+    border: 1px solid #80808042;
+    border-radius: 5px;
+    padding: 5px;
+    margin-bottom: 20px;
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: whitesmoke;
+
+    h6 {
+      text-align: center;
+      margin-top: 5px;
+    }
+  }
+}
+
+.page {
+  border: 1px solid lightgray;
+  border-color: var(--ion-color-primary);
+  border-radius: 5px;
+  padding: 10px 0;
+  margin-top: 5px;
+  width: 98%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+ion-button {
+  font-size: 11px;
+}
+
+
+.ayeLine i:hover:not(.endAyah, .endAyahColor) {
+  background-color: white;
+  color: black;
+}

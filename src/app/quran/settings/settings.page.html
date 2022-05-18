@@ -49,19 +49,19 @@
     <!--landscape segment-->
     <ng-container *ngIf="nativePluginsService.isLandscape()">
       <div class="align-center">
+        <ion-label>Veličina harfova: <strong>landscape mode</strong></ion-label>
         <ion-range [(ngModel)]="fontSizeLandscape" #fontSizeLandscapeRef (ngModelChange)="onLandscapeFontChange(fontSizeLandscapeRef.value)" min="15" pin="true" max="60" color="primary">
           <ion-label slot="start">15</ion-label>
           <ion-label slot="end">60</ion-label>
         </ion-range>
-        <ion-label>Veličina harfova: <strong>landscape mode</strong></ion-label>
       </div>
 
       <div class="align-center">
+        <ion-label>Razmak između redova </ion-label>
         <ion-range [(ngModel)]="lineHeightLandscape" #lineHeightLandscapeRef (ngModelChange)="onLandscapeLineHeightChange(lineHeightLandscapeRef.value)" min="15" pin="true" max="100" color="primary">
           <ion-label slot="start">15</ion-label>
           <ion-label slot="end">100</ion-label>
         </ion-range>
-        <ion-label>Razmak između redova </ion-label>
       </div>
 
     </ng-container>

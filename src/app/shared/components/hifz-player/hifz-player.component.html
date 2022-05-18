@@ -11,7 +11,7 @@
     </ion-item>
     <ion-item>
       <ion-label>Od ajeta</ion-label>
-      <ion-select [disabled]="mediaPlayerService.hifzIsPlaying" [(ngModel)]="selectedFromSuraAyah" (ngModelChange)="selectedFromSuraAyahChanged()" interface="popover" placeholder="Odaberite ajet">
+      <ion-select [disabled]="mediaPlayerService.hifzIsPlaying || !selectedFromSura" [(ngModel)]="selectedFromSuraAyah" (ngModelChange)="selectedFromSuraAyahChanged()" interface="popover" placeholder="Odaberite ajet">
         <ion-select-option *ngFor="let ayah of fromSuraAyahs" [value]="ayah">{{ayah}}</ion-select-option>
       </ion-select>
     </ion-item>
@@ -28,7 +28,7 @@
     </ion-item>
     <ion-item>
       <ion-label>Do ajeta</ion-label>
-      <ion-select [disabled]="mediaPlayerService.hifzIsPlaying" [(ngModel)]="selectedToSuraAyah" interface="popover" placeholder="Odaberite ajet">
+      <ion-select [disabled]="mediaPlayerService.hifzIsPlaying || !selectedToSura" [(ngModel)]="selectedToSuraAyah" interface="popover" placeholder="Odaberite ajet">
         <ion-select-option *ngFor="let ayah of toSuraAyahs" [value]="ayah">{{ayah}}</ion-select-option>
       </ion-select>
     </ion-item>

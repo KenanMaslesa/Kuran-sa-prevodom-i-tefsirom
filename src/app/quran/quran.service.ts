@@ -14,8 +14,11 @@ export class QuranResponseData {
 export class QuranService {
   showHeaderAndTabs = true;
   showLoader = false;
+  showTranslationModal = false;
   currentPage = 0;
+  markedAyah = -1;
   currentPageChanged: EventEmitter<any> = new EventEmitter();
+  scrollToAyah: EventEmitter<number> = new EventEmitter();
 
   qari = {
     value: '128/ar.alafasy',

@@ -1,0 +1,3 @@
+  <div class="ayahs-wrapper" *ngFor="let item of ayahList" [class.isPlaying]="mediaPlayerService.player">
+    <p id="translated-ayah{{ayah.index}}" *ngFor="let ayah of item" [class.active]="quranService.markedAyah === ayah.index" (click)="markAyah(ayah.index)">{{ayah.ayaNumber}}. {{ayah.korkutsTranslation}}</p>
+  </div>

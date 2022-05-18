@@ -44,9 +44,14 @@ export enum PopoverTypes {
       </div>
 
       <ion-item button (click)="goToUrl('/audio')">
-        <ion-label>Kur'an Audio</ion-label>
+        <ion-label>Kur'an audio</ion-label>
         <ion-icon slot="end" name="headset-outline"></ion-icon>
       </ion-item>
+
+      <!-- <ion-item button (click)="goToUrl('/hifz')">
+        <ion-label>Hifz</ion-label>
+        <ion-icon slot="end" name="bulb-outline"></ion-icon>
+      </ion-item> -->
 
       <ion-item button (click)="goToUrl('/settings')">
         <ion-label>Postavke</ion-label>
@@ -76,6 +81,11 @@ export enum PopoverTypes {
           >OK</ion-button
         >
       </ion-item>
+
+      <ion-item button (click)="randomQuranPage()">
+        <ion-label>Random stranica</ion-label>
+        <ion-icon slot="end" name="shuffle-outline"></ion-icon>
+      </ion-item>
       <!--go to page end -->
 
       <!--night mode -->
@@ -89,8 +99,17 @@ export enum PopoverTypes {
       </ion-item> -->
       <!--night mode end -->
 
+      <ion-item>
+        <ion-label>Prikaži prijevod</ion-label>
+        <ion-checkbox (click)="popoverCtrl.dismiss()" color="primary" [(ngModel)]="quranService.showTranslationModal"></ion-checkbox>
+      </ion-item>
+
+      <div>
+        <hr>
+      </div>
+
       <ion-item button (click)="goToUrl('/audio')">
-        <ion-label>Kur'an Audio</ion-label>
+        <ion-label>Kur'an audio</ion-label>
         <ion-icon slot="end" name="headset-outline"></ion-icon>
       </ion-item>
 
@@ -99,11 +118,11 @@ export enum PopoverTypes {
         <ion-icon slot="end" name="settings-outline"></ion-icon>
       </ion-item>
 
-      <div class="page-info" style="text-align: center;font-size: 13px;padding: 5px;">
+      <!-- <div class="page-info" style="text-align: center;font-size: 13px;padding: 5px;">
         <p style="margin-bottom: 0;">Informacije o trenutnoj stranici</p>
         <div>Broj riječi: <strong>{{pageInfo.wordsNumber}}</strong></div>
         <div>Broj harfova: <strong>{{pageInfo.lettersNumber}}</strong></div>
-      </div>
+      </div> -->
     </ion-list>
   `,
 })
@@ -123,7 +142,7 @@ export class PopoverPage implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.pageInfo = this.quranService.getNumberOfWordsAndLettersPerPage(this.quranService.currentPage);
+    // this.pageInfo = this.quranService.getNumberOfWordsAndLettersPerPage(this.quranService.currentPage);
   }
 
   goToUrl(url) {
@@ -159,5 +178,11 @@ export class PopoverPage implements OnInit {
     //   `--ion-color-primary`,
     //   `black`
     // );
+  }
+
+  randomQuranPage() {
+    const randomNumber = Math.floor(Math.random() * (604 - 1)) + 1;
+    this.quranService.setCurrentPage(randomNumber);
+    this.popoverCtrl.dismiss();
   }
 }

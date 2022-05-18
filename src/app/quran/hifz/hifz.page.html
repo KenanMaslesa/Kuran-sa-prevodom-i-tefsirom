@@ -1,0 +1,14 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Hifz</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref='/'></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-button style="width: 100%;margin-top: 40px;" routerLink="/hifz/hifz-test">Hifz test</ion-button>
+  <ion-button style="width: 100%;margin-top: 40px;" (click)="mediaPlayerService.showHifzPlayer = true">Ponavljanje/ucenje Kur'ana</ion-button>
+  <app-hifz-player [goToUrl]="'/tabs/holy-quran'"></app-hifz-player>
+</ion-content>

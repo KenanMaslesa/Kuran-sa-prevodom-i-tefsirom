@@ -1,0 +1,26 @@
+  .ayahs-wrapper {
+    overflow: scroll;
+    height: 25%;
+    position: fixed;
+    bottom: 0;
+    z-index: 9999;
+    background: #ffffff;
+
+    &.isPlaying {
+      bottom: 45px;
+    }
+
+    p {
+      margin: 0;
+      padding: 10px;
+      scroll-margin-top: 0px !important;
+
+      &:nth-child(odd) {
+        background-color: hsl(240deg 7% 97%);
+      }
+
+      &.active {
+        background-color: hsl(240deg 6% 87%);
+      }
+    }
+  }

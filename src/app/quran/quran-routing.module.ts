@@ -60,6 +60,10 @@ const routes: Routes = [
     path: 'audio',
     loadChildren: () => import('./audio/audio.module').then( m => m.AudioPageModule)
   },
+  {
+    path: 'hifz',
+    loadChildren: () => import('./hifz/hifz.module').then( m => m.HifzPageModule)
+  },
 ];
 
 @NgModule({

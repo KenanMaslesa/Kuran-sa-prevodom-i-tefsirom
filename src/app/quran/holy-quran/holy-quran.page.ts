@@ -50,7 +50,7 @@ export class HolyQuranPage {
     private changeDetectorRef: ChangeDetectorRef,
     private popoverCtrl: PopoverController,
     public settingsService: SettingsService,
-    private alertController: AlertController
+    private alertController: AlertController,
   ) {
     this.suraList$ = this.quranService.getSuraList();
 
@@ -91,8 +91,10 @@ export class HolyQuranPage {
     this.subs.add(
       this.mediaPlayerService.scrollIntoPlayingAyah.subscribe(
         (activeAyahId) => {
-          if (this.nativePluginsService.isLandscape()) {
-            this.scroll(activeAyahId);
+          if (this.nativePluginsService.isLandscape() || this.quranService.showTranslationModal) {
+            setTimeout(() => {
+              this.scroll(activeAyahId);
+            }, 100);
           }
         }
       )
@@ -104,6 +106,13 @@ export class HolyQuranPage {
         if(ended) {
           this.presentAlertConfirmHifzPlayerEnded();
         }
+      })
+    );
+
+    //scroll to ayah (when ayah is clicked on transcription modal)
+    this.subs.add(
+      this.quranService.scrollToAyah.subscribe(ayahId => {
+        this.scroll(ayahId);
       })
     );
   }
