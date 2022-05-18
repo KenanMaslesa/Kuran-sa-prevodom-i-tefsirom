@@ -95,6 +95,10 @@ ion-slides {
 
     &.showTranslationModal {
       padding-bottom: 170px;
+
+      @media(min-height: 1700px) {
+        padding-bottom: 450px;
+      }
     }
   }
 }
