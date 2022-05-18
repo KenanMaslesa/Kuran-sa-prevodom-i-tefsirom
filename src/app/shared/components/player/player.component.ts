@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, Input, ViewChild } from '@angular/core';
 import { AlertController, IonSelect, ModalController } from '@ionic/angular';
 import { QuranService } from 'src/app/quran/quran.service';
 import { MediaPlayerService } from '../../media-player.service';
@@ -12,6 +12,7 @@ import { HifzPlayerComponent } from '../hifz-player/hifz-player.component';
 export class PlayerComponent {
   @ViewChild('speedOptions', { static: false }) speedOptions: IonSelect;
   @ViewChild('qari', { static: false }) qari: IonSelect;
+  @Input() showHifzIcon: boolean;
   showSpeedOptions = false;
   constructor(public mediaPlayerService: MediaPlayerService, public quranService: QuranService, private alertController: AlertController) {
   }
