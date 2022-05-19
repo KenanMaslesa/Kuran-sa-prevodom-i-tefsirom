@@ -1,4 +1,3 @@
-/* eslint-disable no-underscore-dangle */
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
@@ -9,7 +8,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
-import { LocalNotifications } from '@awesome-cordova-plugins/local-notifications/ngx';
 import { SocialSharing } from '@awesome-cordova-plugins/social-sharing/ngx';
 import { Insomnia } from '@awesome-cordova-plugins/insomnia/ngx';
 import { ScreenOrientation } from '@awesome-cordova-plugins/screen-orientation/ngx';
@@ -24,7 +22,6 @@ import { ScreenOrientation } from '@awesome-cordova-plugins/screen-orientation/n
   ],
   providers: [
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
-    LocalNotifications,
     SocialSharing,
     Insomnia,
     ScreenOrientation
