@@ -1,15 +1,12 @@
 import { Component } from '@angular/core';
 import { Insomnia } from '@awesome-cordova-plugins/insomnia/ngx';
-import { QuranService } from './quran/quran.service';
 import { LocalStorageKeysSettings } from './quran/settings/settings.page';
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
 })
 export class AppComponent {
-  constructor(private quranService: QuranService, private insomnia: Insomnia) {
-    this.quranService.showLoader = true;
-
+  constructor(private insomnia: Insomnia) {
     //keep app awake
     this.insomnia.keepAwake().then(
       () => console.log('app is awake'),
