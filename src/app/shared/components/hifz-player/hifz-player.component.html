@@ -70,7 +70,7 @@
       <!--qari-->
       <ion-item>
         <ion-label>Odaberite učača</ion-label>
-        <ion-select [disabled]="mediaPlayerService.hifzIsPlaying" class="right-select" interface="popover" #qari [(ngModel)]="quranService.qari.value"
+        <ion-select [disabled]="mediaPlayerService.hifzIsPlaying" class="right-select" interface="action-sheet" #qari [(ngModel)]="quranService.qari.value"
           (ngModelChange)="quranService.changeQari(qari.value)" name="qari">
           <ion-select-option *ngFor="let item of quranService.qariList" value="{{item.identifier}}">
             {{item.englishName}}
