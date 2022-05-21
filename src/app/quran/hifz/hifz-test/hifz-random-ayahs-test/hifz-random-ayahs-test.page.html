@@ -1,0 +1,58 @@
+
+<ion-content>
+  <div style="text-align: center;">
+    <ion-button *ngIf="!showAnswer && isTestInProgress" (click)="showAnswer = true">Prikazi odgovor</ion-button>
+    <ion-button *ngIf="showAnswer && isTestInProgress" (click)="showAnswer = false">Sakrij odgovor</ion-button>
+    <ion-button *ngIf="isTestInProgress" (click)="startTest()">Sljedece pitanje</ion-button>
+  </div>
+
+  <!--page-->
+  <div class="main page-{{testPage}}" *ngIf="quranWordsForCurrentPage$ | async">
+      <div class="page-orientation" [ngClass]="{'page-orientation__portrait': nativePluginsService.isPortrait(), 'page-orientation__landscape': nativePluginsService.isLandscape()}"
+        *ngFor="let page of quranWordsForCurrentPage; let pageIndex = index">
+        <div dir="rtl" class="page">
+          <div class="ayeLine" *ngFor="let ayah of page.ayahs; let ayahNumber = index">
+            <!--sura title-->
+            <div *ngIf="ayah.metaData">
+              <section class="suraTitle" *ngIf="ayah.metaData.lineType === 'start_sura'">
+                <img src="assets/img/surah_title.gif" alt="Quran sura title">
+                <h3>{{ayah.metaData.suraName}}</h3>
+              </section>
+
+              <!--sura Tevbe-->
+              <section class="suraTitle" *ngIf="ayah.metaData.lineType === 'besmellah' && quranService.currentPage === 187">
+                <img src="assets/img/surah_title.gif" alt="Quran sura title">
+                <h3>Et-Tevbe - التوبة</h3>
+              </section>
+              <!--sura Tevbe-->
+
+              <section class="bismillah"
+                *ngIf="quranService.currentPage !== 187 && quranService.currentPage !==1 && ayah.metaData.lineType === 'besmellah'">
+                <!-- quranService.currentPage !== 187" because of sura Tevba-->
+                <div>﷽</div>
+              </section>
+            </div>
+            <!--sura title end-->
+
+            <!--ayah-words-wrapper-->
+            <i class="endAyah" id="{{wordIndex === 0? word.index:''}}" *ngFor="let word of ayah.words; let wordIndex = index">
+              <!--end znak - playAyat-->
+              <i  class="p{{testPage}} ayah{{word.index}} endAyahColor" *ngIf="word.charType === 'end'"
+                [innerHtml]="word.code"></i>
+              <!--end znak - playAyat -->
+
+              <!-- word - playWord-->
+              <i [class.answer--show]="word.index === answerAyah && showAnswer" [class.answer]="word.index === answerAyah" [class.show]="testAyah === word.index" #wordRef (click)="wordRef.classList.toggle('show')" class="word p{{testPage}} ayah{{word.index}}" *ngIf="word.charType !== 'end'"
+               [innerHtml]="word.code"></i>
+              <!--word - playWord-->
+            </i>
+            <!--ayah-words-wrapper end-->
+
+          </div>
+          <span class="currentPage">
+            {{testPage}}
+          </span>
+        </div>
+      </div>
+  </div>
+</ion-content>

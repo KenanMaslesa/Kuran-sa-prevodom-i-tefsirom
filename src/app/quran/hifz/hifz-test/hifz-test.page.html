@@ -1,21 +1,25 @@
 <ion-header>
   <ion-toolbar color="primary">
-    <ion-title>Testiranje hifza</ion-title>
+    <ion-title *ngIf="!isTestInProgress">Testiranje hifza</ion-title>
+    <ion-title style="font-size: 13px;" *ngIf="isTestInProgress">
+      {{selectedFromSura.name.bosnianTranscription}} ({{selectedFromSuraAyah}}.) - {{selectedToSura.name.bosnianTranscription}} ({{selectedToSuraAyah}}.)
+      </ion-title>
     <ion-buttons slot="start">
       <ion-back-button defaultHref></ion-back-button>
     </ion-buttons>
-  <ion-button slot="end" style="margin-right: 10px;height: 30px;" color="danger" *ngIf="isTestInProgress" (click)="isTestInProgress=false">Zavrsi</ion-button>
+      <ion-button style="height: 30px;" *ngIf="isTestInProgress" color="danger" slot="end" (click)="finishTest()">Zavrsi</ion-button>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <ion-list [class.hide]="isTestInProgress">
+  <ng-container *ngIf="!isTestInProgress">
+  <ion-list >
     <div class="player-item">
       <h6>Od</h6>
       <ion-item>
         <ion-label>Od sure</ion-label>
         <ion-select [(ngModel)]="selectedFromSura" interface="popover" placeholder="Odaberite suru" #fromSura (ionChange)="getAyahsFromSura(fromSura.value)">
-          <ion-select-option *ngFor="let sura of suraList" [value]="sura">{{sura.name.bosnianTranscription}}</ion-select-option>
+          <ion-select-option *ngFor="let sura of suraList" [value]="sura">{{sura.index}}. {{sura.name.bosnianTranscription}}</ion-select-option>
         </ion-select>
       </ion-item>
       <ion-item>
@@ -32,7 +36,7 @@
       <ion-item>
         <ion-label>Do sure</ion-label>
         <ion-select [(ngModel)]="selectedToSura" interface="popover" placeholder="Odaberite suru" #toSura (ionChange)="getAyahsToSura(toSura.value)">
-          <ion-select-option *ngFor="let sura of suraListTo" [value]="sura">{{sura.name.bosnianTranscription}}</ion-select-option>
+          <ion-select-option *ngFor="let sura of suraListTo" [value]="sura">{{sura.index}}. {{sura.name.bosnianTranscription}}</ion-select-option>
         </ion-select>
       </ion-item>
       <ion-item>
@@ -45,64 +49,22 @@
     </div>
   </ion-list>
   <div style="text-align: center;">
-    <div style="padding: 10px;" *ngIf="isTestInProgress">
-      {{selectedFromSura.name.bosnianTranscription}} {{selectedFromSuraAyah}}. ajet - {{selectedToSura.name.bosnianTranscription}} {{selectedToSuraAyah}}. ajet
-    </div>
-    <ion-button color="success" *ngIf="!isTestInProgress" [disabled]="!selectedFromSura || !selectedToSura" (click)="startTest()">Započni test</ion-button>
-    <ion-button *ngIf="!showAnswer && isTestInProgress" (click)="showAnswer = true">Prikazi odgovor</ion-button>
-    <ion-button *ngIf="showAnswer && isTestInProgress" (click)="showAnswer = false">Sakrij odgovor</ion-button>
-    <ion-button *ngIf="isTestInProgress" (click)="startTest()">Sljedece pitanje</ion-button>
-  </div>
 
-  <!--page-->
-  <ng-container *ngIf="isTestInProgress">
-  <div class="main page-{{testPage}}" *ngIf="quranWordsForCurrentPage$ | async">
-      <div class="page-orientation" [ngClass]="{'page-orientation__portrait': nativePluginsService.isPortrait(), 'page-orientation__landscape': nativePluginsService.isLandscape()}"
-        *ngFor="let page of quranWordsForCurrentPage; let pageIndex = index">
-        <div dir="rtl" class="page">
-          <div class="ayeLine" *ngFor="let ayah of page.ayahs; let ayahNumber = index">
-            <!--sura title-->
-            <div *ngIf="ayah.metaData">
-              <section class="suraTitle" *ngIf="ayah.metaData.lineType === 'start_sura'">
-                <img src="assets/img/surah_title.gif" alt="Quran sura title">
-                <h3>{{ayah.metaData.suraName}}</h3>
-              </section>
+    <ion-item>
+      <ion-label>Random poredani ajeti</ion-label>
+      <ion-checkbox [(ngModel)]="randomAyahTest"></ion-checkbox>
+    </ion-item>
 
-              <!--sura Tevbe-->
-              <section class="suraTitle" *ngIf="ayah.metaData.lineType === 'besmellah' && quranService.currentPage === 187">
-                <img src="assets/img/surah_title.gif" alt="Quran sura title">
-                <h3>Et-Tevbe - التوبة</h3>
-              </section>
-              <!--sura Tevbe-->
-
-              <section class="bismillah"
-                *ngIf="quranService.currentPage !== 187 && quranService.currentPage !==1 && ayah.metaData.lineType === 'besmellah'">
-                <!-- quranService.currentPage !== 187" because of sura Tevba-->
-                <div>﷽</div>
-              </section>
-            </div>
-            <!--sura title end-->
-
-            <!--ayah-words-wrapper-->
-            <i class="endAyah ayah-wrapper" [class.answer--show]="word.index === answerAyah && showAnswer" [class.answer]="word.index === answerAyah" [class.show]="testAyah === word.index" id="{{wordIndex === 0? word.index:''}}" *ngFor="let word of ayah.words; let wordIndex = index">
-              <!--end znak - playAyat-->
-              <i  class="p{{testPage}} ayah{{word.index}} endAyahColor" *ngIf="word.charType === 'end'"
-                [innerHtml]="word.code"></i>
-              <!--end znak - playAyat -->
-
-              <!-- word - playWord-->
-              <i  class="p{{testPage}} ayah{{word.index}}" *ngIf="word.charType !== 'end'"
-               [innerHtml]="word.code"></i>
-              <!--word - playWord-->
-            </i>
-            <!--ayah-words-wrapper end-->
-
-          </div>
-          <span class="currentPage">
-            {{testPage}}
-          </span>
-        </div>
-      </div>
+    <ion-button color="success" [disabled]="!selectedFromSura || !selectedToSura" (click)="startTest()">Započni test</ion-button>
   </div>
 </ng-container>
+
+<!--tests-->
+  <ng-container *ngIf="!randomAyahTest && isTestInProgress">
+    <app-hifz-ayah-by-ayah-test (testIsFinished)="finishTest()" [selectedFromSura]="selectedFromSura" [selectedToSura]="selectedToSura" [selectedFromSuraAyah]="selectedFromSuraAyah" [selectedToSuraAyah]="selectedToSuraAyah"></app-hifz-ayah-by-ayah-test>
+  </ng-container>
+
+  <ng-container *ngIf="randomAyahTest && isTestInProgress">
+    <app-hifz-random-ayahs-test (testIsFinished)="finishTest()" [selectedFromSura]="selectedFromSura" [selectedToSura]="selectedToSura" [selectedFromSuraAyah]="selectedFromSuraAyah" [selectedToSuraAyah]="selectedToSuraAyah"></app-hifz-random-ayahs-test>
+  </ng-container>
 </ion-content>

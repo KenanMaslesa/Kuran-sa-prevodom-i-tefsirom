@@ -48,10 +48,10 @@ export enum PopoverTypes {
         <ion-icon slot="end" name="headset-outline"></ion-icon>
       </ion-item>
 
-      <!-- <ion-item button (click)="goToUrl('/hifz')">
+      <ion-item button (click)="goToUrl('/hifz')">
         <ion-label>Hifz</ion-label>
         <ion-icon slot="end" name="bulb-outline"></ion-icon>
-      </ion-item> -->
+      </ion-item>
 
       <ion-item button (click)="goToUrl('/settings')">
         <ion-label>Postavke</ion-label>

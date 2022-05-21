@@ -11,7 +11,7 @@ const routes: Routes = [
   {
     path: 'hifz-test',
     loadChildren: () => import('./hifz-test/hifz-test.module').then( m => m.HifzTestPageModule)
-  }
+  },
 ];
 
 @NgModule({
