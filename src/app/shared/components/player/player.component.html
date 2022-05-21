@@ -93,7 +93,7 @@
     <!--speed-->
     <ion-item>
       <ion-label>Odaberite brzinu učenja</ion-label>
-      <ion-select class="left-select" [(ngModel)]="mediaPlayerService.selectedSpeedOption" interface="popover"
+      <ion-select class="left-select" (ngModelChange)="speedChanged()" [(ngModel)]="mediaPlayerService.selectedSpeedOption" interface="popover"
         #speedOptions>
         <ion-select-option *ngFor="let option of mediaPlayerService.speedOptions" [value]="option.value">
           {{option.value}}</ion-select-option>

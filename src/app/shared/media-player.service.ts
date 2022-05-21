@@ -228,11 +228,16 @@ export class MediaPlayerService {
   }
 
   playAudio(ayahIndexInHolyQuran) {
-    this.changeQuranPageIfNeeded(ayahIndexInHolyQuran);
     // this.audioUrl = `https://cdn.islamic.network/quran/audio/${this.quranService.qari.value}/${ayahIndexInHolyQuran}.mp3`;
+    this.changeQuranPageIfNeeded(ayahIndexInHolyQuran);
     this.playingCurrentAyah = ayahIndexInHolyQuran;
     this.quranService.markedAyah = ayahIndexInHolyQuran;
     this.isLoading = true;
+
+    this.quranService.qariChanged.subscribe(() => {
+      this.playAudio(ayahIndexInHolyQuran);
+    });
+
     if (this.player) {
       this.stopAudio();
       this.removePlayer();
@@ -288,7 +293,7 @@ export class MediaPlayerService {
         this.isLoading = false;
         this.isPlaying = false;
         this.removePlayer();
-        // alert('onloaderror:' + error);
+        alert('onloaderror:' + error);
       },
       onplayerror: (id, error) => {
         this.isLoading = false;

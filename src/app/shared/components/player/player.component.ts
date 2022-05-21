@@ -69,4 +69,10 @@ export class PlayerComponent {
 
     await alert.present();
   }
+
+  speedChanged() {
+    setTimeout(() => {
+      this.mediaPlayerService.playAudio(this.mediaPlayerService.playingCurrentAyah);
+    }, 100);
+  }
 }
