@@ -24,7 +24,6 @@ export class QuranService {
   currentPage = 0;
   markedAyah = -1;
   currentPageChanged: EventEmitter<any> = new EventEmitter();
-  qariChanged: EventEmitter<any> = new EventEmitter();
   scrollToAyah: EventEmitter<number> = new EventEmitter();
 
   qari = {
@@ -308,7 +307,6 @@ export class QuranService {
       value: qariObj.identifier,
       name: qariObj.englishName,
     };
-    this.qariChanged.emit(true);
   }
 
   //ayahs

@@ -72,6 +72,45 @@ html {
   }
 }
 
+#intro-ayah {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  top: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  text-align: center;
+  z-index: -99;
+
+  div {
+    animation: scale-in-center 0.45s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+    font-family: Montserrat,sans-serif;
+    color: #5d5959;
+  }
+
+  p {
+    margin-bottom: 10px;
+    font-size: 23px;
+    font-weight: 600;
+  }
+}
+
+@keyframes scale-in-center {
+  0% {
+    -webkit-transform: scale(0);
+            transform: scale(0);
+    opacity: 1;
+  }
+  100% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+    opacity: 1;
+  }
+}
+
 ion-tab-bar,
 ion-header {
   transition: all 0.3s;

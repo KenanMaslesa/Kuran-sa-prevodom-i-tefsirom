@@ -234,10 +234,6 @@ export class MediaPlayerService {
     this.quranService.markedAyah = ayahIndexInHolyQuran;
     this.isLoading = true;
 
-    this.quranService.qariChanged.subscribe(() => {
-      this.playAudio(ayahIndexInHolyQuran);
-    });
-
     if (this.player) {
       this.stopAudio();
       this.removePlayer();
