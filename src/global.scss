@@ -58,7 +58,7 @@ html {
   height: 100%;
   background-size: cover;
   background-position: center;
-  // background-image: url("/assets/img/background.jpeg");
+  background-image: url("/assets/img/background.jpeg");
 
   &::before {
     content: "";
@@ -83,6 +83,9 @@ ion-header {
     height: 0 !important;
     opacity: 0;
   }
+}
+.action-sheet-group-cancel {
+  background: #eaeaea !important;
 }
 * {
   scroll-margin-top: 75px;

@@ -209,7 +209,6 @@ export class TranslationPage implements AfterViewInit {
 
   ionViewWillLeave() {
     this.subs.unsubscribe();
-    // this.mediaPlayerService.removePlayer();
     this.quranService.showHeaderAndTabs = true;
   }
 

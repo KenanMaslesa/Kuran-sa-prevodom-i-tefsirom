@@ -1,4 +1,4 @@
-import { EventEmitter, Injectable, OnDestroy } from '@angular/core';
+import { EventEmitter, Injectable } from '@angular/core';
 import { Howl } from 'howler';
 import { Subscription } from 'rxjs';
 import { QuranService } from '../quran/quran.service';
@@ -169,11 +169,22 @@ export class MediaPlayerService {
   constructor(private quranService: QuranService) {}
 
   unsubscribe() {
+    console.log('MediaPlayerService unsubscribe');
     this.subs.unsubscribe();
   }
 
   playOneAyah(ayahIndexInHolyQuran) {
-    this.audioUrl = `https://cdn.islamic.network/quran/audio/${this.quranService.qari.value}/${ayahIndexInHolyQuran}.mp3`;
+    this.subs.add(
+      this.quranService
+        .getAyatDetailsByAyahIndex(ayahIndexInHolyQuran)
+        .subscribe((ayah) => {
+          const response = ayah[0];
+          this.audioUrl = `https://www.everyayah.com/data/${this.quranService.qari.value}/${this.formatNumberForAudioUrl(
+            response.sura,
+            response.ayaNumber
+          )}.mp3`;
+        })
+    );
     if (this.player) {
       this.stopAudio();
       this.removePlayer();
@@ -204,16 +215,21 @@ export class MediaPlayerService {
       this.quranService
         .getAyatDetailsByAyahIndex(ayahIndexInHolyQuran)
         .subscribe((ayah) => {
-          if (this.quranService.currentPage !== ayah[0].page) {
-            this.quranService.setCurrentPage(ayah[0].page);
+          const response = ayah[0];
+          if (this.quranService.currentPage !== response.page) {
+            this.quranService.setCurrentPage(response.page);
           }
+          this.audioUrl = `https://www.everyayah.com/data/${this.quranService.qari.value}/${this.formatNumberForAudioUrl(
+            response.sura,
+            response.ayaNumber
+          )}.mp3`;
         })
     );
   }
 
   playAudio(ayahIndexInHolyQuran) {
     this.changeQuranPageIfNeeded(ayahIndexInHolyQuran);
-    this.audioUrl = `https://cdn.islamic.network/quran/audio/${this.quranService.qari.value}/${ayahIndexInHolyQuran}.mp3`;
+    // this.audioUrl = `https://cdn.islamic.network/quran/audio/${this.quranService.qari.value}/${ayahIndexInHolyQuran}.mp3`;
     this.playingCurrentAyah = ayahIndexInHolyQuran;
     this.quranService.markedAyah = ayahIndexInHolyQuran;
     this.isLoading = true;
@@ -286,6 +302,25 @@ export class MediaPlayerService {
     this.watchCurrentTime();
   }
 
+  formatNumberForAudioUrl(suraNumber, ayahNumber) {
+    const sura = this.formatSuraAndAyahNumber(suraNumber);
+    const ayah = this.formatSuraAndAyahNumber(ayahNumber);
+    const result = sura + ayah;
+    return result;
+  }
+
+  formatSuraAndAyahNumber(suraNumber) {
+    let tempNumber;
+    if (suraNumber >= 100) {
+      tempNumber = suraNumber;
+    } else if (suraNumber >= 10 && suraNumber < 100) {
+      tempNumber = '0' + suraNumber;
+    } else if (suraNumber < 10) {
+      tempNumber = '00' + suraNumber;
+    }
+    return tempNumber;
+  }
+
   play(audioUrl) {
     if (this.player) {
       this.stopAudio();
@@ -317,7 +352,7 @@ export class MediaPlayerService {
     this.player = new Howl({
       html5: true,
       src: [
-        `https://cdn.islamic.network/quran/audio/${this.quranService.qari.value}/1.mp3`,
+        `https://www.everyayah.com/data/${this.quranService.qari.value}/001001.mp3`,
       ],
       onplay: () => {
         this.isPlaying = true;
@@ -349,6 +384,7 @@ export class MediaPlayerService {
     this.player.pause();
     this.isPaused = true;
     this.isPlaying = false;
+    this.clearWatchCurrentTimeInterval();
   }
 
   continueAudio() {
@@ -356,6 +392,7 @@ export class MediaPlayerService {
       this.player.play();
       this.isPaused = false;
       this.isPlaying = true;
+      this.watchCurrentTime();
     }
   }
 
@@ -428,7 +465,7 @@ export class MediaPlayerService {
     toAyah: number
   ) {
     this.changeQuranPageIfNeeded(fromAyah);
-    this.audioUrl = `https://cdn.islamic.network/quran/audio/${this.quranService.qari.value}/${fromAyah}.mp3`;
+    // this.audioUrl = `https://cdn.islamic.network/quran/audio/${this.quranService.qari.value}/${fromAyah}.mp3`;
     this.playingCurrentAyah = fromAyah;
     this.quranService.markedAyah = this.playingCurrentAyah;
     this.hifzRepeatEveryAyahCounter++;

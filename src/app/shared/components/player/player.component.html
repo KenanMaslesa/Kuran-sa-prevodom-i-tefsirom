@@ -80,7 +80,7 @@
     <!--qari-->
     <ion-item>
       <ion-label>Odaberite učača</ion-label>
-      <ion-select class="right-select" interface="popover" #qari [(ngModel)]="quranService.qari.value"
+      <ion-select [cancelText]="'Zatvori'" class="right-select" interface="action-sheet" #qari [(ngModel)]="quranService.qari.value"
         (ngModelChange)="quranService.changeQari(qari.value)" name="qari">
         <ion-select-option *ngFor="let item of quranService.qariList" value="{{item.identifier}}">
           {{item.englishName}}
@@ -119,7 +119,7 @@
       <ion-label>Unesite broj ponavljanja ajeta</ion-label>
     </ion-item>
     <ion-item (click)="showSpeedOptions = true">
-      <ion-input style="text-align: center;" [(ngModel)]="mediaPlayerService.selectedRepeatOption"
+      <ion-input style="text-align: center;" type="number" [(ngModel)]="mediaPlayerService.selectedRepeatOption"
         [placeholder]="'Broj ponavljanja'"></ion-input>
     </ion-item>
   </div>

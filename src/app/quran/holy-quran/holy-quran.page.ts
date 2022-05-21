@@ -139,7 +139,6 @@ export class HolyQuranPage {
 
   ionViewWillLeave() {
     this.subs.unsubscribe();
-    // this.mediaPlayerService.removePlayer();
     this.quranService.showHeaderAndTabs = true;
   }
 

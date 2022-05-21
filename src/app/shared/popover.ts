@@ -30,7 +30,7 @@ export enum PopoverTypes {
       </ion-item>
 
       <ion-item button (click)="nativePluginsService.donate()">
-        <ion-label>Podržite naš rad</ion-label>
+        <ion-label>Podržite moj rad</ion-label>
         <ion-icon slot="end" name="gift-outline"></ion-icon>
       </ion-item>
 
