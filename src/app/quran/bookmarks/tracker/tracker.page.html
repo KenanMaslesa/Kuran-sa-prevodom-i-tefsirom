@@ -22,7 +22,7 @@
 <ion-list  *ngIf="quranTrackerService.suraList">
   <ion-item *ngFor="let sura of quranTrackerService.suraList" (click)="presentModal(sura)">
     <ion-label class="ion-text-wrap">
-      <p style="font-weight: 500;">
+      <p style="font-weight: 500; color: black;">
         {{sura.index}}. {{sura.name}}
       </p>
     </ion-label>
