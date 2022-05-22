@@ -25,7 +25,7 @@ const routes: Routes = [
         loadChildren: () => import('./holy-quran/holy-quran.module').then( m => m.HolyQuranPageModule)
       },
       {
-        path: 'bookmarks',
+        path: 'tracker',
         loadChildren: () => import('./bookmarks/bookmarks.module').then( m => m.BookmarksPageModule)
       },
       {

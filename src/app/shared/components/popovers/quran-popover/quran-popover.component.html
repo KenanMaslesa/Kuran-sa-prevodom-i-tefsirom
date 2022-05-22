@@ -1,0 +1,69 @@
+<ion-list>
+  <!--go to page -->
+  <ion-item>
+    <ion-label>Idi na</ion-label>
+    <ion-input
+      style="text-align: center;"
+      dir="ltr"
+      type="number"
+      min="1"
+      max="604"
+      #currentPage
+      (ionChange)="checkPage(currentPage.value)"
+      placeholder="broj stranice"
+    ></ion-input>
+    <ion-icon *ngIf="!showGoToPageButton" name="search-outline"></ion-icon>
+    <ion-button
+      *ngIf="showGoToPageButton"
+      color="primary"
+      (click)="goToQuranPage(currentPage.value)"
+      >OK</ion-button
+    >
+  </ion-item>
+
+  <ion-item button (click)="randomQuranPage()">
+    <ion-label>Random stranica</ion-label>
+    <ion-icon slot="end" name="shuffle-outline"></ion-icon>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>Prikaži prijevod</ion-label>
+    <ion-toggle
+      (click)="popoverCtrl.dismiss()"
+      color="primary"
+      [(ngModel)]="quranService.showTranslationModal"
+    ></ion-toggle>
+  </ion-item>
+
+  <!--go to page end -->
+
+  <!--night mode -->
+  <!-- <ion-item>
+    <ion-label>Noćni način</ion-label>
+    <ion-toggle
+      [(ngModel)]="nightMode"
+      (ngModelChange)="switchMode()"
+      color="primary"
+    ></ion-toggle>
+  </ion-item> -->
+  <!--night mode end -->
+
+  <div>
+    <hr />
+  </div>
+
+  <ion-item button (click)="goToUrl('/audio')">
+    <ion-label>Kur'an audio</ion-label>
+    <ion-icon slot="end" name="headset-outline"></ion-icon>
+  </ion-item>
+
+  <ion-item button (click)="goToUrl('/hifz')">
+    <ion-label>Hifz</ion-label>
+    <ion-icon slot="end" name="bulb-outline"></ion-icon>
+  </ion-item>
+
+  <ion-item button (click)="goToUrl('/settings')">
+    <ion-label>Postavke</ion-label>
+    <ion-icon slot="end" name="settings-outline"></ion-icon>
+  </ion-item>
+</ion-list>

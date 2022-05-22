@@ -8,7 +8,13 @@
 </ion-header>
 
 <ion-content>
-  <ion-button style="width: 100%;margin-top: 40px;" routerLink="/hifz/hifz-test">Hifz test</ion-button>
-  <ion-button style="width: 100%;margin-top: 40px;" (click)="mediaPlayerService.showHifzPlayer = true">Ponavljanje/ucenje Kur'ana</ion-button>
-  <app-hifz-player [goToUrl]="'/tabs/holy-quran'"></app-hifz-player>
+  <p style="text-align: center;position: absolute;top: 10%;left: 50%;transform: translateX(-50%);">U fazi izrade..</p>
+  <main>
+    <div class="hifz-items">
+      <div class="hifz-item" routerLink="/hifz/hifz-test">Hifz test</div>
+      <div class="hifz-item" routerLink="/hifz/hifz-tracker">Hifz tracker</div>
+      <div class="hifz-item" (click)="mediaPlayerService.showHifzPlayer = true">Ponavljanje/hifz Kur'ana</div>
+      <app-hifz-player [goToUrl]="'/tabs/holy-quran'"></app-hifz-player>
+    </div>
+  </main>
 </ion-content>

@@ -80,7 +80,7 @@ export class HifzAyahByAyahTestPage implements OnInit ,OnDestroy {
 
   showNextAyah() {
     if(this.testAyah >= this.toAyah) {
-      this.finishTest();
+      this.isTestInProgress = false;
     }
     this.showAyahs.push(this.testAyah);
     this.getAyahDetails(this.testAyah);

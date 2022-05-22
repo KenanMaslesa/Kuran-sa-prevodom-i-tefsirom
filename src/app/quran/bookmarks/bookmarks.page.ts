@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { PopoverController } from '@ionic/angular';
 import { Subscription } from 'rxjs';
+import { HomePopoverComponent } from 'src/app/shared/components/popovers/home-popover/home-popover.component';
 import { MediaPlayerService } from 'src/app/shared/media-player.service';
 import { NativePluginsService } from 'src/app/shared/native-plugins.service';
 import { StorageService } from 'src/app/shared/storage.service';
@@ -11,6 +13,7 @@ import { BookmarksService } from './bookmarks.service';
 enum Segments {
   bookmark = 'bookmark',
   favorite = 'favorite',
+  tracker = 'tracker',
 }
 @Component({
   selector: 'app-bookmarks',
@@ -28,7 +31,8 @@ export class BookmarksPage {
     private router: Router,
     public storageService: StorageService, //rename service
     public mediaPlayerService: MediaPlayerService,
-    public nativePluginsService: NativePluginsService
+    public nativePluginsService: NativePluginsService,
+    private popoverCtrl: PopoverController
   ) {
     this.subs.add(
       this.quranService.getSuraList().subscribe((response) => {
@@ -59,5 +63,13 @@ export class BookmarksPage {
 
   shareAyah(suraName: string, ayah: TafsirAyah) {
     this.nativePluginsService.shareAyah(suraName, ayah);
+  }
+
+  async presentPopover(event: Event) {
+    const popover = await this.popoverCtrl.create({
+      component: HomePopoverComponent,
+      event,
+    });
+    await popover.present();
   }
 }

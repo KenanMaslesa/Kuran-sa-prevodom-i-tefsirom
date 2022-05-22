@@ -7,6 +7,8 @@ import { IonicModule } from '@ionic/angular';
 import { BookmarksPageRoutingModule } from './bookmarks-routing.module';
 
 import { BookmarksPage } from './bookmarks.page';
+import { TrackerPage } from './tracker/tracker.page';
+import { TrackerModalComponent } from './tracker/tracker-modal/tracker-modal.component';
 
 @NgModule({
   imports: [
@@ -15,6 +17,6 @@ import { BookmarksPage } from './bookmarks.page';
     IonicModule,
     BookmarksPageRoutingModule,
   ],
-  declarations: [BookmarksPage]
+  declarations: [BookmarksPage, TrackerPage, TrackerModalComponent]
 })
 export class BookmarksPageModule {}

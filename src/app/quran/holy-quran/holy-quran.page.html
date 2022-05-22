@@ -80,7 +80,9 @@
             <!--ayah-words-wrapper end-->
 
           </div>
-          <span class="currentPage">
+          <span class="currentPage"
+            [class.completed]="quranTrackerService.isCurrentPageCompleted"
+            (click)="trackerAddOrRemovePage()">
             {{quranService.currentPage}}
           </span>
         </div>

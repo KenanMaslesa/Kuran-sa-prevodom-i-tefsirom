@@ -78,17 +78,19 @@ export class HifzPlayerComponent implements OnInit, OnDestroy {
   }
 
   getAyahDetails(ayahIndexInHolyQuran) {
-    this.subs.add(
-      this.quranService
-        .getAyatDetailsByAyahIndex(ayahIndexInHolyQuran)
-        .subscribe((ayah) => {
-          const ayahObj = ayah[0];
-          this.getAyahsFromSura(this.suraList[ayahObj.sura - 1]);
-          this.selectedFromSura = this.suraList[ayahObj.sura - 1];
-          this.selectedFromSuraAyah = ayahObj.ayaNumber;
-          this.toSuraAyahs = this.fromSuraAyahs.filter((item) => item >= this.selectedFromSuraAyah);;
-        })
-    );
+    if(ayahIndexInHolyQuran) {
+      this.subs.add(
+        this.quranService
+          .getAyatDetailsByAyahIndex(ayahIndexInHolyQuran)
+          .subscribe((ayah) => {
+            const ayahObj = ayah[0];
+            this.getAyahsFromSura(this.suraList[ayahObj.sura - 1]);
+            this.selectedFromSura = this.suraList[ayahObj.sura - 1];
+            this.selectedFromSuraAyah = ayahObj.ayaNumber;
+            this.toSuraAyahs = this.fromSuraAyahs.filter((item) => item >= this.selectedFromSuraAyah);;
+          })
+      );
+    }
   }
 
   getArray(length) {

@@ -3,14 +3,14 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { AlertController, IonContent, IonSlides, PopoverController } from '@ionic/angular';
 import { Observable, Subscription } from 'rxjs';
 import { tap } from 'rxjs/operators';
+import { QuranPopoverComponent } from 'src/app/shared/components/popovers/quran-popover/quran-popover.component';
 import { MediaPlayerService } from 'src/app/shared/media-player.service';
 import {
   NativePluginsService,
-  SCREEN_ORIENTATIONS,
 } from 'src/app/shared/native-plugins.service';
 import { PlatformService } from 'src/app/shared/platform.service';
-import { PopoverPage, PopoverTypes } from 'src/app/shared/popover';
 import { BookmarksService } from '../bookmarks/bookmarks.service';
+import { QuranTrackerService } from '../bookmarks/tracker/quran-tracker.service';
 import { Juz, QuranWords, Sura } from '../quran.models';
 import { QuranService } from '../quran.service';
 import { SettingsService } from '../settings/settings.service';
@@ -51,6 +51,7 @@ export class HolyQuranPage {
     private popoverCtrl: PopoverController,
     public settingsService: SettingsService,
     private alertController: AlertController,
+    public quranTrackerService: QuranTrackerService
   ) {
     this.suraList$ = this.quranService.getSuraList();
 
@@ -309,9 +310,8 @@ export class HolyQuranPage {
 
   async presentPopover(event: Event) {
     const popover = await this.popoverCtrl.create({
-      component: PopoverPage,
+      component: QuranPopoverComponent,
       event,
-      componentProps: { popoverType: PopoverTypes.quranPage },
     });
     await popover.present();
   }
@@ -329,5 +329,9 @@ export class HolyQuranPage {
 
   scrollToTop() {
     this.content.scrollToTop(1000);
+  }
+
+  trackerAddOrRemovePage() {
+    this.quranTrackerService.addOrRemovePage(this.quranTrackerService.isCurrentPageCompleted? false : true, this.quranService.currentPage);
   }
 }

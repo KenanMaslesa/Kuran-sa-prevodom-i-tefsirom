@@ -7,7 +7,7 @@ enum Tabs {
   home = 'home',
   holyQuran = 'holy-quran',
   translation = 'translation',
-  bookmarks = 'bookmarks',
+  tracker = 'tracker',
 }
 @Component({
   selector: 'app-quran',

@@ -1,0 +1,33 @@
+<div>
+  <div class="progressbar"
+    style="--value:{{getPercentsFixed(quranTrackerService.completedPages.length, 604)}}; width: 6rem; height: 6rem;">
+    <div class="percents">{{getPercentsFixed(quranTrackerService.completedPages.length, 604)}}%</div>
+  </div>
+  <div class="progress-wrapper">
+
+    <div>
+      <h6>Stranice</h6>
+      <strong>{{quranTrackerService.completedPages.length}}/604</strong>
+    </div>
+
+    <div style="margin-left: 40px;">
+      <h6>Džuzevi</h6>
+      <strong>{{getPercentsForJuzFixed(quranTrackerService.completedPages.length, 20.1)}}/30</strong>
+    </div>
+  </div>
+</div>
+
+  <hr>
+
+<ion-list  *ngIf="quranTrackerService.suraList">
+  <ion-item *ngFor="let sura of quranTrackerService.suraList" (click)="presentModal(sura)">
+    <ion-label class="ion-text-wrap">
+      <p style="font-weight: 500;">
+        {{sura.index}}. {{sura.name}}
+      </p>
+    </ion-label>
+    <div class="progressbar" style="--value:{{getPercents(sura.completedPages, sura.totalPages)}}">
+      <div class="percents">{{getPercents(sura.completedPages, sura.totalPages)}}%</div>
+    </div>
+  </ion-item>
+</ion-list>

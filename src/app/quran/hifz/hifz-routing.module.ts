@@ -12,6 +12,10 @@ const routes: Routes = [
     path: 'hifz-test',
     loadChildren: () => import('./hifz-test/hifz-test.module').then( m => m.HifzTestPageModule)
   },
+  {
+    path: 'hifz-tracker',
+    loadChildren: () => import('./hifz-tracker/hifz-tracker.module').then( m => m.HifzTrackerPageModule)
+  },
 ];
 
 @NgModule({

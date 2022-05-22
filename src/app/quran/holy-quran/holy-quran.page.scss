@@ -10,7 +10,8 @@
     .ayeLine i {
       color: white;
 
-      &.active, &:hover {
+      &.active,
+      &:hover {
         i {
           color: var(--ion-color-primary);
         }
@@ -23,11 +24,12 @@
   // background-color: #fcfcf2;
   // background-color: #FAF1E3;
 
-  &.page-1, &.page-2 {
+  &.page-1,
+  &.page-2 {
     height: 100%;
   }
 
-  @media(orientation: landscape) {
+  @media (orientation: landscape) {
     padding-top: 10px;
   }
 
@@ -35,7 +37,7 @@
     height: auto;
     padding-top: 10px;
 
-    @media(orientation: landscape) {
+    @media (orientation: landscape) {
       padding-top: 10px;
     }
 
@@ -62,7 +64,6 @@
   font-family: "p2-v1";
 }
 
-
 //Quran slider - words (START)
 ion-slides {
   direction: rtl;
@@ -72,7 +73,7 @@ ion-slides {
     width: 100% !important;
     min-height: 85vh;
 
-    @media(max-height: 800px) {
+    @media (max-height: 800px) {
       padding-top: 15px;
     }
 
@@ -96,7 +97,7 @@ ion-slides {
     &.showTranslationModal {
       padding-bottom: 180px;
 
-      @media(min-height: 1700px) {
+      @media (min-height: 1700px) {
         padding-bottom: 450px;
       }
     }
@@ -176,6 +177,23 @@ ion-header {
 .currentPage {
   font-size: 15px;
   font-style: italic;
+  margin-bottom: 15px;
+  border-radius: 50%;
+  transition: all 0.5s;
+  border: 1px solid #ececec;
+  padding: 0;
+  height: 35px;
+  width: 35px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: auto;
+  margin-right: auto;
+
+  &.completed {
+    background: var(--ion-color-primary);
+    color: white;
+  }
 }
 
 .swiper {

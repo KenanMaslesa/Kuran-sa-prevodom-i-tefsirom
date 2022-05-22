@@ -6469,3 +6469,37 @@ ion-tab-bar {
 .p604 {
   font-family: p604;
 }
+
+//hifz tracker
+@property --pgPercentage {
+  syntax: "<number>";
+  inherits: false;
+  initial-value: 0;
+}
+
+.progressbar {
+  position: relative;
+  --size: 3rem;
+  --fg: var(--ion-color-primary);
+  --bg: #def;
+  --pgPercentage: var(--value);
+  animation: growProgressBar 1.5s 1 forwards;
+  width: var(--size);
+  height: var(--size);
+  border-radius: 50%;
+  background: radial-gradient(closest-side, white 85%, transparent 0 99.9%, white 0),
+    conic-gradient(var(--fg) calc(var(--pgPercentage) * 1%), var(--bg) 0);
+  transition: 0.3s;
+  margin: 5px;
+  margin-left: auto;
+  margin-right: auto;
+
+  .percents {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 13px;
+    font-weight: 500;
+  }
+}

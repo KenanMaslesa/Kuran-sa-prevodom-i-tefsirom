@@ -1,0 +1,38 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>{{sura.name}}</ion-title>
+    <div slot="end" class="progressbar" style="--value:{{getPercents(sura.learnedAyahs, sura.numberOfAyas)}}">
+      <div class="percents">{{getPercents(sura.learnedAyahs, sura.numberOfAyas)}}%</div>
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <!-- Broj ajeta: {{sura.numberOfAyas}}
+
+  <ion-item>
+    <ion-label position="stacked">Broj naučenih ajeta</ion-label>
+    <ion-input #learnedAyahs (ionChange)="saveLearnedAyahs(learnedAyahs.value, sura.index)" placeholder="33"></ion-input>
+  </ion-item> -->
+  <main>
+    <p style="text-align: center;">Kliknite na ajet koji/do kojeg ste naučili</p>
+
+  <!-- <ion-item>
+    <ion-label>Označi suru kao naučenu</ion-label>
+    <ion-checkbox #checkbox (ionChange)="saveCheckbox(checkbox.checked, sura.numberOfAyas, sura.index)" color="primary"></ion-checkbox>
+  </ion-item> -->
+
+
+  <!-- <ion-item>
+    <ion-label>Broj naučenih ajeta</ion-label>
+    <ion-select [(ngModel)]="sura.learnedAyahs" interface="popover" placeholder="{{sura.learnedAyahs}}" #learnedAyahs (ionChange)="saveLearnedAyahs(learnedAyahs.value, sura.index)">
+      <ion-select-option *ngFor="let number of getArray(sura.numberOfAyas)" value="{{number}}">{{number}}</ion-select-option>
+    </ion-select>
+  </ion-item> -->
+
+  <div class="ayah" *ngFor="let ayah of ayahs; let i = index" [class.active]="sura.learnedAyahs > i" (click)="saveLearnedAyahs(i+1, sura.index)">
+    .{{i+1}} {{ayah.aya}}
+  </div>
+</main>
+
+</ion-content>

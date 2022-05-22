@@ -1,0 +1,25 @@
+ion-title {
+  font-size: 15px;
+  text-align: center;
+}
+
+main {
+  margin-top: 40px;
+  padding-bottom: 100px;
+
+  .progressbar {
+    width: 15rem;
+    height: 15rem;
+    margin-top: 30px;
+  }
+}
+
+.ayah {
+  direction: rtl;
+  padding: 5px;
+  font-family: quran;
+
+  &.active {
+    background-color: hsl(240deg 8% 93%);
+  }
+}

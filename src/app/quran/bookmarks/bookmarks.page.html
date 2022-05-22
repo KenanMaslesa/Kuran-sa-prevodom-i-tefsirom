@@ -3,13 +3,15 @@
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/"></ion-back-button>
     </ion-buttons>
-    <ion-title style="font-size: 16px;">Bilješke i omiljeni ajeti</ion-title>
+    <ion-buttons slot="end">
+      <ion-icon (click)="presentPopover($event)" slot="icon-only" name="ellipsis-vertical"></ion-icon>
+  </ion-buttons>
+    <ion-title>Tracker</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
 
-  <ion-content>
     <!--ion-segment-->
     <ion-segment [(ngModel)]="selectedSegment">
       <ion-segment-button [value]="segments.bookmark">
@@ -18,6 +20,10 @@
 
       <ion-segment-button [value]="segments.favorite">
         <ion-label>Omiljeno</ion-label>
+      </ion-segment-button>
+
+      <ion-segment-button [value]="segments.tracker">
+        <ion-label>Tracker</ion-label>
       </ion-segment-button>
     </ion-segment>
     <!--ion-segment-->
@@ -113,5 +119,10 @@
           </div>
         </div>
       </div>
+    </ng-container>
+
+
+    <ng-container *ngIf="selectedSegment === segments.tracker">
+     <app-tracker></app-tracker>
     </ng-container>
   </ion-content>

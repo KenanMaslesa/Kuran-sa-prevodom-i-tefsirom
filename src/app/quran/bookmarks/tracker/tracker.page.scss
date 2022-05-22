@@ -1,0 +1,33 @@
+ion-toolbar {
+  .progressbar {
+    position: absolute;
+    right: 5px;
+    top: -4px;
+    color: black;
+  }
+}
+
+.progress-wrapper {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  h6 {
+    margin: 0;
+    color: #767373;
+  }
+
+  strong {
+    letter-spacing: 1px;
+    font-size: 14px;
+  }
+}
+
+ion-list {
+  padding-top: 0;
+}
+
+hr {
+  border-bottom: 1px solid #f1eded; padding: 10px; margin-bottom: 0;
+}

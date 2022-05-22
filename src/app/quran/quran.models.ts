@@ -14,6 +14,7 @@ export interface Sura {
   startPage: number;
   endPage: number;
   totalPages: number;
+  learnedAyahs: number;
 }
 export interface Name {
   arabic: string;
@@ -125,4 +126,22 @@ export interface Ayah {
   juz: number;
   hizb: number;
   page: number;
+}
+
+//Quran tracker
+export class SuraQuranTracker {
+  completedPages: number;
+  endPage: number;
+  index: number;
+  name: string;
+  pages: PageQuranTracker[];
+  startPage: number;
+  totalPages: number;
+}
+
+export class PageQuranTracker {
+  page: number;
+  completed: boolean;
+  numberOfLetters: number;
+  numberOfWords: number;
 }

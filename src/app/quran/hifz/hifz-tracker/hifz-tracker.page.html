@@ -1,0 +1,33 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="primary">
+    <ion-title>
+      Hifz tracker
+    </ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref></ion-back-button>
+    </ion-buttons>
+    <div class="progressbar" style="--value:{{getPercents(hifzTrackerService.getNumberOfLearnedSurahs(), hifzTrackerService.suraList.length)}}">
+      <div class="percents">{{getPercents(hifzTrackerService.getNumberOfLearnedSurahs(), hifzTrackerService.suraList.length)}}%</div>
+    </div>
+    <span slot="end" style="margin-right: 60px;">{{hifzTrackerService.getNumberOfLearnedSurahs()}}/{{hifzTrackerService.suraList.length}}</span>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-refresher slot="fixed" (ionRefresh)="refresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
+  <ion-list *ngIf="hifzTrackerService.suraList">
+    <ion-item *ngFor="let sura of hifzTrackerService.suraList" (click)="presentModal(sura)">
+      <ion-label class="ion-text-wrap">
+        <p style="font-weight: 500;">
+          {{sura.index}}. {{sura.name}}
+        </p>
+      </ion-label>
+      <div class="progressbar" style="--value:{{getPercents(sura.learnedAyahs, sura.numberOfAyas)}}">
+        <div class="percents">{{getPercents(sura.learnedAyahs, sura.numberOfAyas)}}%</div>
+      </div>
+    </ion-item>
+  </ion-list>
+</ion-content>
