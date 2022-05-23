@@ -5,17 +5,17 @@
   </div>
   <h5 class="description">Proučene stranice: <strong>{{sura.completedPages}}/{{sura.totalPages}}</strong></h5>
 <ion-list slot="content">
-  <ion-item-sliding *ngFor="let pageObj of sura.pages">
+  <ion-item-sliding *ngFor="let pageObj of sura.pages; let i = index">
     <ion-item (click)="goToPage(pageObj.page)">
       <ion-label>
-        <h2>{{pageObj.page}}. stranica</h2>
-        <p style="font-size: 11px; margin: 0;">Broj riječi: {{pageObj.numberOfWords}} - Broj harfova: {{pageObj.numberOfLetters}}</p>
+        <h2>{{i+1}}. stranica</h2>
       </ion-label>
       <ion-note slot="end">
         <ion-icon class="success" *ngIf="pageObj.completed" name="checkmark-done-outline"></ion-icon>
         <ion-icon class="danger" *ngIf="!pageObj.completed" name="close-circle-outline"></ion-icon>
       </ion-note>
     </ion-item>
+
 
     <ion-item-options side="end">
       <ion-item-option color="danger" *ngIf="pageObj.completed" (click)="addOrRemovePage(false, pageObj.page)">
@@ -29,13 +29,4 @@
   </ion-item-sliding>
 
 </ion-list>
-
-<div class="reward">
-  <p>Ukupno proučenih harfova: <strong>{{lettersCounter}}</strong></p>
-  <p>Minimalna nagrada: <strong>{{lettersCounter*10}} sevapa</strong></p>
-  <br>
-  <span>Prema hadisu minimalna nagrada za jedan harf je 10 sevapa</span>
-  <ion-button (click)="presentArgumentModal()">Pročitaje hadis</ion-button>
-</div>
-
 </main>

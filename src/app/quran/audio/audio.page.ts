@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PopoverController } from '@ionic/angular';
-import { HomePopoverComponent } from 'src/app/shared/components/popovers/home-popover/home-popover.component';
+import { MainPopoverComponent } from 'src/app/shared/components/popovers/main-popover/main-popover.component';
 import { PlatformService } from 'src/app/shared/platform.service';
 import { QuranService } from '../quran.service';
 import { AudioPlayerService } from './audio-player.service';
@@ -49,8 +49,11 @@ export class AudioPage implements OnInit {
 
   async presentPopover(event: Event) {
     const popover = await this.popoverCtrl.create({
-      component: HomePopoverComponent,
+      component: MainPopoverComponent,
       event,
+      componentProps: {
+        showExternalLinks: true
+      }
     });
     await popover.present();
   }

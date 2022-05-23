@@ -1,0 +1,66 @@
+<main>
+  <div style="height: 100%; width: 100%;">
+    <div class="focus">
+
+    <div>
+      <h5 class="title">Današnji progres ({{getTodaysDate()}})</h5>
+      <div class="progressbar"
+        style="--value:{{getPercentsFixed(todaysData.length, settingsService.dailyVirdPagesNumber)}}; width: 8.5rem; height: 8.5rem;">
+        <div class="percents">{{getPercentsFixed(todaysData.length, settingsService.dailyVirdPagesNumber)}}%</div>
+      </div>
+      <div class="progress-wrapper">
+
+        <div>
+          <h6>Stranice</h6>
+          <strong>{{todaysData.length}}/{{settingsService.dailyVirdPagesNumber}}</strong>
+        </div>
+
+        <div style="margin-left: 40px;">
+          <h6>Džuzevi</h6>
+          <strong>{{getPercentsForJuzFixed(todaysData.length,
+            20.1)}}/{{getPercentsForJuzFixed(settingsService.dailyVirdPagesNumber, 20.1)}}</strong>
+        </div>
+      </div>
+    </div>
+
+    <div style="text-align: center;" *ngIf="timeTrackingService.trackTimeSpendInApp">
+      <p style="margin-bottom: 3px;">Provedeno vrijeme na aplikaciji:</p>
+      <strong>{{timeTrackingService.getCurrentTime()}}</strong>
+    </div>
+  </div>
+
+    <div style="text-align: center;" *ngIf="todaysData.length === 0">
+      <ion-button color="danger" style="font-size: 11px;margin-top: 60px;" (click)="presentHowtoUseModal()">Naučite kako koristiti tracker</ion-button>
+    </div>
+
+
+    <ng-container *ngIf="todaysData.length >= 1">
+      <p style="text-align: center;margin-bottom: 0;">Proučene stranice: {{todaysData.length}}</p>
+
+      <ion-list slot="content">
+        <ion-item-sliding *ngFor="let pageObj of todaysData">
+          <ion-item>
+            <ion-label>
+              <h2>{{pageObj.page}}. stranica</h2>
+              <p style="font-size: 11px; margin: 0;">Broj riječi: {{pageObj.wordsNumber}} - Broj harfova:
+                {{pageObj.lettersNumber}}</p>
+            </ion-label>
+            <ion-note slot="end">
+              <ion-icon class="success" name="checkmark-done-outline"></ion-icon>
+            </ion-note>
+          </ion-item>
+        </ion-item-sliding>
+
+      </ion-list>
+
+      <div class="reward">
+        <p>Ukupno proučenih harfova: <strong>{{lettersCounter}}</strong></p>
+        <p>Minimalna nagrada: <strong>{{lettersCounter*10}} sevapa</strong></p>
+        <br>
+        <span>Prema hadisu minimalna nagrada za jedan harf je 10 sevapa</span>
+        <ion-button (click)="presentArgumentModal()">Pročitaje hadis</ion-button>
+      </div>
+    </ng-container>
+  </div>
+
+</main>

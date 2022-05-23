@@ -26,34 +26,4 @@ main {
       background: #f65757;
     }
   }
-
-  .reward {
-    text-align: center;
-    background: #f4f5f6;
-    padding: 20px;
-    border-radius: 5px;
-    width: 97%;
-    margin: 0 auto;
-    margin-bottom: 10px;
-    position: relative;
-    color: black;
-
-    p {
-      margin: 0;
-      margin-bottom: 5px;
-    }
-
-    span {
-      display: block;
-      font-style: italic;
-      font-size: 12px;
-    }
-
-    ion-button {
-      font-size: 10px;
-      height: 30px;
-      margin-top: 5px;
-    }
-
-  }
 }

@@ -1,0 +1,105 @@
+
+main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .title, .description {
+    text-align: center;
+    font-size: 16px;
+    position: relative;
+    color: black;
+  }
+
+  .description {
+    font-weight: 400;
+  }
+  ion-icon {
+    padding: 5px;
+    border-radius: 50%;
+    color: white;
+    font-size: 18px;
+
+    &.success {
+      background: #1ece1e;
+    }
+
+    &.danger {
+      background: #f65757;
+    }
+  }
+
+  .reward {
+    text-align: center;
+    background: #f4f5f6;
+    padding: 20px;
+    border-radius: 5px;
+    width: 97%;
+    margin: 0 auto;
+    margin-bottom: 10px;
+    position: relative;
+    color: black;
+
+    p {
+      margin: 0;
+      margin-bottom: 5px;
+    }
+
+    span {
+      display: block;
+      font-style: italic;
+      font-size: 12px;
+    }
+
+    ion-button {
+      font-size: 10px;
+      height: 30px;
+      margin-top: 5px;
+    }
+
+  }
+}
+
+.dailyVirdPagesNumber {
+  color: var(--ion-color-primary);
+  font-weight: bold
+}
+
+.progress-wrapper {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  h6 {
+    margin: 0;
+    color: #767373;
+  }
+
+  strong {
+    letter-spacing: 1px;
+    font-size: 14px;
+  }
+}
+
+hr {
+  border-bottom: 1px solid #f1eded;
+    padding: 5px;
+    margin-bottom: 0;
+}
+
+img {
+  height: 260px;
+    border: 1px solid lightgray;
+    border-radius: 3px;
+}
+
+.focus {
+  background-color: #f4f5f6;
+  padding: 10px;
+  padding-bottom: 25px;
+}
+
+ion-list {
+  margin-bottom: 20px;
+}

@@ -15,12 +15,17 @@ export class AudioPlayerComponent implements OnInit {
 
   playNextSura() {
     this.audioPlayerService.currentTime = -1;
-
     let suraNumber;
-    if (this.audioPlayerService.selectedSuraIndex >= 114) {
-      suraNumber = 1;
-    } else {
-      suraNumber = this.audioPlayerService.selectedSuraIndex + 1;
+
+    if(this.audioPlayerService.isShuffleSelected) {
+      suraNumber = this.audioPlayerService.randomNumberInRange(1, 114);
+    }
+    else {
+      if (this.audioPlayerService.selectedSuraIndex >= 114) {
+        suraNumber = 1;
+      } else {
+        suraNumber = this.audioPlayerService.selectedSuraIndex + 1;
+      }
     }
     this.audioPlayerService.play(this.audioPlayerService.qari, suraNumber);
   }

@@ -13,7 +13,12 @@
 <ion-content>
 
     <!--ion-segment-->
-    <ion-segment [(ngModel)]="selectedSegment">
+    <ion-segment [(ngModel)]="selectedSegment" class="sticky">
+
+      <ion-segment-button [value]="segments.tracker">
+        <ion-label>Progres</ion-label>
+      </ion-segment-button>
+
       <ion-segment-button [value]="segments.bookmark">
         <ion-label>Bilješke</ion-label>
       </ion-segment-button>
@@ -22,9 +27,6 @@
         <ion-label>Omiljeno</ion-label>
       </ion-segment-button>
 
-      <ion-segment-button [value]="segments.tracker">
-        <ion-label>Tracker</ion-label>
-      </ion-segment-button>
     </ion-segment>
     <!--ion-segment-->
 
@@ -121,8 +123,20 @@
       </div>
     </ng-container>
 
-
+    <!--ion-segment tracker-->
     <ng-container *ngIf="selectedSegment === segments.tracker">
-     <app-tracker></app-tracker>
+      <div class="segment-wrapper">
+        <div class="segment" [class.active]="selectedTrackerValue === trackerValue.todays" (click)="selectedTrackerValue = trackerValue.todays">Današnji</div>
+        <div class="segment" [class.active]="selectedTrackerValue === trackerValue.total" (click)="selectedTrackerValue = trackerValue.total">Ukupni</div>
+      </div>
+    <!--ion-segment tracker-->
+
+
+      <ng-container *ngIf="selectedTrackerValue === trackerValue.todays">
+        <app-todays-tracker-modal></app-todays-tracker-modal>
+      </ng-container>
+      <ng-container *ngIf="selectedTrackerValue === trackerValue.total">
+        <app-tracker></app-tracker>
+      </ng-container>
     </ng-container>
   </ion-content>

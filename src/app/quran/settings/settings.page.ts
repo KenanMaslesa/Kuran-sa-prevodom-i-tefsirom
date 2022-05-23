@@ -1,7 +1,10 @@
 import { ChangeDetectorRef, Component } from '@angular/core';
+import { PopoverController } from '@ionic/angular';
 import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
+import { MainPopoverComponent } from 'src/app/shared/components/popovers/main-popover/main-popover.component';
 import { NativePluginsService, SCREEN_ORIENTATIONS } from 'src/app/shared/native-plugins.service';
+import { TimeTrackingService } from 'src/app/shared/time-tracking.service';
 import { QuranService } from '../quran.service';
 import { SettingsService } from './settings.service';
 
@@ -260,7 +263,9 @@ export class SettingsPage {
     public settingsService: SettingsService,
     private quranService: QuranService,
     public nativePluginsService: NativePluginsService,
-    private changeDetectorRef: ChangeDetectorRef
+    private changeDetectorRef: ChangeDetectorRef,
+    private popoverCtrl: PopoverController,
+    public timeTrackingService: TimeTrackingService
   ) {
     this.quranService.showLoader = false;
 
@@ -391,5 +396,16 @@ export class SettingsPage {
       LocalStorageKeysSettings.spaceBetweenWords,
       JSON.stringify(this.spaceBetweenWords)
     );
+  }
+
+  async presentPopover(event: Event) {
+    const popover = await this.popoverCtrl.create({
+      component: MainPopoverComponent,
+      event,
+      componentProps: {
+        showExternalLinks: true
+      }
+    });
+    await popover.present();
   }
 }

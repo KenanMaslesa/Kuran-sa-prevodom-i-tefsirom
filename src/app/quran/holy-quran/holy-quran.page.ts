@@ -3,7 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { AlertController, IonContent, IonSlides, PopoverController } from '@ionic/angular';
 import { Observable, Subscription } from 'rxjs';
 import { tap } from 'rxjs/operators';
-import { QuranPopoverComponent } from 'src/app/shared/components/popovers/quran-popover/quran-popover.component';
+import { MainPopoverComponent } from 'src/app/shared/components/popovers/main-popover/main-popover.component';
 import { MediaPlayerService } from 'src/app/shared/media-player.service';
 import {
   NativePluginsService,
@@ -310,8 +310,11 @@ export class HolyQuranPage {
 
   async presentPopover(event: Event) {
     const popover = await this.popoverCtrl.create({
-      component: QuranPopoverComponent,
+      component: MainPopoverComponent,
       event,
+      componentProps: {
+        showTranslationToggle: true
+      }
     });
     await popover.present();
   }

@@ -24,10 +24,24 @@ ion-toolbar {
   }
 }
 
+h5.title {
+  text-align: center;
+  font-size: 16px;
+  position: relative;
+  color: black;
+}
+
 ion-list {
   padding-top: 0;
 }
 
 hr {
   border-bottom: 1px solid #f1eded; padding: 10px; margin-bottom: 0;
+}
+
+
+.focus {
+  background-color: #f4f5f6;
+  padding: 10px;
+  padding-bottom: 25px;
 }

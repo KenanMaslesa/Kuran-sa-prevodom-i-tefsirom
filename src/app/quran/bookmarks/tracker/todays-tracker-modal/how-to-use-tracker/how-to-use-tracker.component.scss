@@ -1,0 +1,23 @@
+.step-wrapper {
+  height: 70%;
+  overflow: scroll;
+  padding: 10px;
+
+  .step {
+    border: 1px solid lightgray;
+    border-radius: 5px;
+    margin-bottom: 20px;
+
+    &__title {
+      text-align: center;
+      font-size: 18px;
+      color: black;
+    }
+
+    &__body {
+      padding: 10px;
+      text-align: center;
+      color: black;
+    }
+  }
+}

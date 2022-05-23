@@ -1,12 +1,16 @@
 import { Component } from '@angular/core';
 import { Insomnia } from '@awesome-cordova-plugins/insomnia/ngx';
 import { LocalStorageKeysSettings } from './quran/settings/settings.page';
+import { TimeTrackingService } from './shared/time-tracking.service';
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
 })
 export class AppComponent {
-  constructor(private insomnia: Insomnia) {
+  constructor(private insomnia: Insomnia, private timeTrackingService: TimeTrackingService) {
+    if(this.timeTrackingService.trackTimeSpendInApp) {
+      this.timeTrackingService.trackTime();
+    }
     //keep app awake
     this.insomnia.keepAwake().then(
       () => console.log('app is awake'),

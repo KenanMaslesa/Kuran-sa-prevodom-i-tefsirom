@@ -1,24 +1,26 @@
-import { Component } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { PopoverController } from '@ionic/angular';
 import { QuranService } from 'src/app/quran/quran.service';
 import { NativePluginsService } from 'src/app/shared/native-plugins.service';
 
 @Component({
-  selector: 'app-quran-popover',
-  templateUrl: './quran-popover.component.html',
-  styleUrls: ['./quran-popover.component.scss'],
+  selector: 'app-main-popover',
+  templateUrl: './main-popover.component.html',
+  styleUrls: ['./main-popover.component.scss'],
 })
-export class QuranPopoverComponent {
-  public showGoToPageButton = false;
-  public nightMode = false;
-
+export class MainPopoverComponent implements OnInit {
+  @Input() showExternalLinks: boolean;
+  @Input() showTranslationToggle: boolean;
+  showGoToPageButton: boolean;
   constructor(
-    public popoverCtrl: PopoverController,
-    private router: Router,
     public nativePluginsService: NativePluginsService,
-    public quranService: QuranService,
+    private router: Router,
+    public popoverCtrl: PopoverController,
+    public quranService: QuranService
   ) {}
+
+  ngOnInit() {}
 
   goToUrl(url) {
     this.router.navigateByUrl(`${url}`, {
@@ -27,6 +29,16 @@ export class QuranPopoverComponent {
     this.popoverCtrl.dismiss();
   }
 
+  randomQuranPage() {
+    const randomNumber = Math.floor(Math.random() * (604 - 1)) + 1;
+    this.quranService.setCurrentPage(randomNumber);
+    if(this.showExternalLinks) {
+      this.router.navigate(['/tabs/holy-quran']);
+    }
+    this.popoverCtrl.dismiss();
+  }
+
+
   goToQuranPage(pageNumber: any) {
     pageNumber = +pageNumber;
     if (pageNumber <= 0 || pageNumber > 604 || isNaN(pageNumber)) {
@@ -34,6 +46,9 @@ export class QuranPopoverComponent {
     }
 
     this.quranService.setCurrentPage(pageNumber);
+    if(this.showExternalLinks) {
+      this.router.navigate(['/tabs/holy-quran']);
+    }
     this.popoverCtrl.dismiss();
   }
 
@@ -45,20 +60,4 @@ export class QuranPopoverComponent {
       this.showGoToPageButton = true;
     }
   }
-
-  switchMode() {
-    // this.settingsService.nightMode = this.nightMode;
-
-    // document.documentElement.style.setProperty(
-    //   `--ion-color-primary`,
-    //   `black`
-    // );
-  }
-
-  randomQuranPage() {
-    const randomNumber = Math.floor(Math.random() * (604 - 1)) + 1;
-    this.quranService.setCurrentPage(randomNumber);
-    this.popoverCtrl.dismiss();
-  }
-
 }

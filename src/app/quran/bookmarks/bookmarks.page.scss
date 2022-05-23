@@ -1,7 +1,7 @@
 .title {
   text-align: center;
-    padding-bottom: 10px;
-    font-size: 16px;
+  padding-bottom: 10px;
+  font-size: 16px;
 }
 h5.title {
   border-bottom: 1px solid #f1eded;
@@ -14,14 +14,40 @@ h5.title {
 }
 ion-segment {
   margin-bottom: 20px;
+
+  &.sticky {
     position: sticky;
-  top: 0;
-  z-index: 9999;
-  background: white
+    top: 0;
+    z-index: 9999;
+    background: white;
+  }
 }
 
 .ayah {
   &:first-child {
     border-top: 1px solid #f0e9e9;
+  }
+}
+
+.segment-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10px;
+
+  .segment {
+    background: #f4f5f6;
+    padding: 5px 10px;
+    margin: 10px;
+    border-radius: 5px;
+    min-width: 81px;
+    text-align: center;
+    transition: all .5s;
+
+    &.active {
+      background: var(--ion-color-primary);
+      color: white;
+    box-shadow: hsl(240deg 6% 87%) 1px 1px 6px 0px;
+    }
   }
 }

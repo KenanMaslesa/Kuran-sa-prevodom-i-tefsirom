@@ -4,6 +4,9 @@
     <ion-buttons slot="start">
       <ion-back-button defaultHref='/'></ion-back-button>
     </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-icon (click)="presentPopover($event)" slot="icon-only" name="ellipsis-vertical"></ion-icon>
+  </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
@@ -94,6 +97,18 @@
   <ion-item>
     <ion-label>Prikaži ajete na arapskom jeziku</ion-label>
     <ion-toggle [(ngModel)]="settingsService.showArabicTextInTranslation" #showArabicTextInTranslationRef (ngModelChange)="settingsService.showArabicTextInTranslationChanged(showArabicTextInTranslationRef.checked)" color="primary"></ion-toggle>
+  </ion-item>
+
+  <h6 class="title">Tracker</h6>
+
+  <ion-item>
+    <ion-label>Prati vrijeme provedeno na aplikaciji</ion-label>
+    <ion-toggle type="number" [(ngModel)]="timeTrackingService.trackTimeSpendInApp" (ngModelChange)="timeTrackingService.trackTimeSpendInAppChanged()"></ion-toggle>
+  </ion-item>
+
+  <ion-item>
+    <ion-label >Dnevni vird (broj stranica)</ion-label>
+    <ion-input style="text-align: center;" type="number" placeholder="broj stranica" [(ngModel)]="settingsService.dailyVirdPagesNumber" (ngModelChange)="settingsService.dailyVirdChanged()"></ion-input>
   </ion-item>
 
 </ion-content>

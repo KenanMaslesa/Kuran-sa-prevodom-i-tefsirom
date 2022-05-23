@@ -5,8 +5,7 @@ import { IonicModule } from '@ionic/angular';
 import { HifzPlayerComponent } from './components/hifz-player/hifz-player.component';
 import { LoaderComponent } from './components/loader/loader.component';
 import { PlayerComponent } from './components/player/player.component';
-import { HomePopoverComponent } from './components/popovers/home-popover/home-popover.component';
-import { QuranPopoverComponent } from './components/popovers/quran-popover/quran-popover.component';
+import { MainPopoverComponent } from './components/popovers/main-popover/main-popover.component';
 import { TranslationModalComponent } from './components/translation-modal/translation-modal.component';
 @NgModule({
   imports: [IonicModule, FormsModule, CommonModule],
@@ -17,16 +16,14 @@ import { TranslationModalComponent } from './components/translation-modal/transl
     CommonModule,
     HifzPlayerComponent,
     TranslationModalComponent,
-    HomePopoverComponent,
-    QuranPopoverComponent
+    MainPopoverComponent
   ],
   declarations: [
     LoaderComponent,
     PlayerComponent,
     HifzPlayerComponent,
     TranslationModalComponent,
-    HomePopoverComponent,
-    QuranPopoverComponent
+    MainPopoverComponent
   ],
   providers: [],
 })

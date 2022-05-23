@@ -2,7 +2,7 @@ import { Component, OnDestroy } from '@angular/core';
 import { ModalController, PopoverController } from '@ionic/angular';
 import { Observable, of, Subscription } from 'rxjs';
 import { tap } from 'rxjs/operators';
-import { HomePopoverComponent } from 'src/app/shared/components/popovers/home-popover/home-popover.component';
+import { MainPopoverComponent } from 'src/app/shared/components/popovers/main-popover/main-popover.component';
 import { MediaPlayerService } from 'src/app/shared/media-player.service';
 import { PlatformService } from 'src/app/shared/platform.service';
 import { Juz, Sura, TafsirAyah } from '../quran.models';
@@ -201,8 +201,11 @@ export class HomePage implements OnDestroy {
 
   async presentPopover(event: Event) {
     const popover = await this.popoverCtrl.create({
-      component: HomePopoverComponent,
+      component: MainPopoverComponent,
       event,
+      componentProps : {
+        showExternalLinks: true
+      }
     });
     await popover.present();
   }

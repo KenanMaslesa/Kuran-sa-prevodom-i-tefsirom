@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { PopoverController } from '@ionic/angular';
 import { Subscription } from 'rxjs';
-import { HomePopoverComponent } from 'src/app/shared/components/popovers/home-popover/home-popover.component';
+import { MainPopoverComponent } from 'src/app/shared/components/popovers/main-popover/main-popover.component';
 import { MediaPlayerService } from 'src/app/shared/media-player.service';
 import { NativePluginsService } from 'src/app/shared/native-plugins.service';
 import { StorageService } from 'src/app/shared/storage.service';
@@ -15,6 +15,11 @@ enum Segments {
   favorite = 'favorite',
   tracker = 'tracker',
 }
+
+enum TrackerValue {
+  todays = 'todays',
+  total = 'total',
+}
 @Component({
   selector: 'app-bookmarks',
   templateUrl: './bookmarks.page.html',
@@ -22,8 +27,10 @@ enum Segments {
 })
 export class BookmarksPage {
   public readonly segments = Segments;
-  public selectedSegment = Segments.bookmark;
+  public selectedSegment = Segments.tracker;
   public suraList = [];
+  public selectedTrackerValue = TrackerValue.todays;
+  public readonly trackerValue = TrackerValue;
   subs: Subscription = new Subscription();
   constructor(
     public bookmarksService: BookmarksService,
@@ -67,8 +74,11 @@ export class BookmarksPage {
 
   async presentPopover(event: Event) {
     const popover = await this.popoverCtrl.create({
-      component: HomePopoverComponent,
+      component: MainPopoverComponent,
       event,
+      componentProps: {
+        showExternalLinks: true
+      }
     });
     await popover.present();
   }
