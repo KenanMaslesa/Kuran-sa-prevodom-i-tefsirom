@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Insomnia } from '@awesome-cordova-plugins/insomnia/ngx';
-import { LocalStorageKeysSettings } from './quran/settings/settings.page';
-import { TimeTrackingService } from './shared/time-tracking.service';
+import { LocalStorageKeysSettings } from './quran/screens/settings/settings.page';
+import { TimeTrackingService } from './quran/shared/services/time-tracking.service';
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',

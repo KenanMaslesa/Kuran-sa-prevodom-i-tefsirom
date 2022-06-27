@@ -10,35 +10,35 @@ const routes: Routes = [
     children: [
       {
         path: 'home',
-        loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
+        loadChildren: () => import('./screens/home/home.module').then( m => m.HomePageModule)
       },
       {
         path: 'holy-quran',
-        loadChildren: () => import('./holy-quran/holy-quran.module').then( m => m.HolyQuranPageModule)
+        loadChildren: () => import('./screens/holy-quran/holy-quran.module').then( m => m.HolyQuranPageModule)
       },
       {
         path: 'holy-quran/:page',
-        loadChildren: () => import('./holy-quran/holy-quran.module').then( m => m.HolyQuranPageModule)
+        loadChildren: () => import('./screens/holy-quran/holy-quran.module').then( m => m.HolyQuranPageModule)
       },
       {
         path: 'holy-quran/:page/:ayah',
-        loadChildren: () => import('./holy-quran/holy-quran.module').then( m => m.HolyQuranPageModule)
+        loadChildren: () => import('./screens/holy-quran/holy-quran.module').then( m => m.HolyQuranPageModule)
       },
       {
         path: 'tracker',
-        loadChildren: () => import('./bookmarks/bookmarks.module').then( m => m.BookmarksPageModule)
+        loadChildren: () => import('./screens/bookmarks/bookmarks.module').then( m => m.BookmarksPageModule)
       },
       {
         path: 'translation',
-        loadChildren: () => import('./translation/translation.module').then( m => m.TranslationPageModule)
+        loadChildren: () => import('./screens/translation/translation.module').then( m => m.TranslationPageModule)
       },
       {
         path: 'translation/:page',
-        loadChildren: () => import('./translation/translation.module').then( m => m.TranslationPageModule)
+        loadChildren: () => import('./screens/translation/translation.module').then( m => m.TranslationPageModule)
       },
       {
         path: 'translation/:page/:ayah',
-        loadChildren: () => import('./translation/translation.module').then( m => m.TranslationPageModule)
+        loadChildren: () => import('./screens/translation/translation.module').then( m => m.TranslationPageModule)
       },
       {
         path: '',
@@ -54,15 +54,15 @@ const routes: Routes = [
   },
   {
     path: 'settings',
-    loadChildren: () => import('./settings/settings.module').then( m => m.SettingsPageModule)
+    loadChildren: () => import('./screens/settings/settings.module').then( m => m.SettingsPageModule)
   },
   {
     path: 'audio',
-    loadChildren: () => import('./audio/audio.module').then( m => m.AudioPageModule)
+    loadChildren: () => import('./screens/audio/audio.module').then( m => m.AudioPageModule)
   },
   {
     path: 'hifz',
-    loadChildren: () => import('./hifz/hifz.module').then( m => m.HifzPageModule)
+    loadChildren: () => import('./screens/hifz/hifz.module').then( m => m.HifzPageModule)
   },
 ];
 

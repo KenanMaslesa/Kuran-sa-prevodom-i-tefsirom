@@ -1,7 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { IonTabs } from '@ionic/angular';
-import { QuranService } from './quran.service';
+import { QuranService } from './shared/services/quran.service';
 
 enum Tabs {
   home = 'home',
