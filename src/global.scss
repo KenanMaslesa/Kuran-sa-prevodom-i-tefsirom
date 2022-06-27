@@ -27,7 +27,7 @@
 
 @font-face {
   font-family: quran;
-  src: url(me_quran-2.ttf) format("truetype");
+  src: url(assets/fonts/me_quran-2.ttf) format("truetype");
   font-display: block;
 }
 
@@ -86,8 +86,8 @@ html {
   z-index: -99;
 
   div {
-    animation: scale-in-center 0.45s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
-    font-family: Montserrat,sans-serif;
+    animation: scale-in-center 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+    font-family: Montserrat, sans-serif;
     color: #5d5959;
   }
 
@@ -101,12 +101,12 @@ html {
 @keyframes scale-in-center {
   0% {
     -webkit-transform: scale(0);
-            transform: scale(0);
+    transform: scale(0);
     opacity: 1;
   }
   100% {
     -webkit-transform: scale(1);
-            transform: scale(1);
+    transform: scale(1);
     opacity: 1;
   }
 }
@@ -288,9 +288,9 @@ ion-tab-bar {
 
 @font-face {
   font-family: bismillah;
-  src: url(bismillah.eot);
-  src: url(bismillah.eot) format("embedded-opentype"), url(bismillah.ttf) format("truetype"),
-    url(bismillah.woff) format("woff");
+  src: url(assets/fonts/bismillah.eot);
+  src: url(assets/fonts/bismillah.eot) format("embedded-opentype"), url(assets/fonts/bismillah.ttf) format("truetype"),
+    url(assets/fonts/bismillah.woff) format("woff");
   font-weight: 400;
   font-display: block;
 }
@@ -422,3635 +422,3634 @@ ion-tab-bar {
   }
 }
 
-
 //Kur'an fonts
 @font-face {
   font-display: block;
   font-family: p1;
-  src: url(quran-pages-fonts/p1.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p1.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p2;
-  src: url(quran-pages-fonts/p2.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p2.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p3;
-  src: url(quran-pages-fonts/p3.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p3.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p4;
-  src: url(quran-pages-fonts/p4.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p4.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p5;
-  src: url(quran-pages-fonts/p5.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p5.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p6;
-  src: url(quran-pages-fonts/p6.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p6.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p7;
-  src: url(quran-pages-fonts/p7.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p7.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p8;
-  src: url(quran-pages-fonts/p8.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p8.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p9;
-  src: url(quran-pages-fonts/p9.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p9.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p10;
-  src: url(quran-pages-fonts/p10.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p10.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p11;
-  src: url(quran-pages-fonts/p11.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p11.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p12;
-  src: url(quran-pages-fonts/p12.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p12.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p13;
-  src: url(quran-pages-fonts/p13.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p13.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p14;
-  src: url(quran-pages-fonts/p14.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p14.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p15;
-  src: url(quran-pages-fonts/p15.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p15.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p16;
-  src: url(quran-pages-fonts/p16.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p16.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p17;
-  src: url(quran-pages-fonts/p17.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p17.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p18;
-  src: url(quran-pages-fonts/p18.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p18.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p19;
-  src: url(quran-pages-fonts/p19.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p19.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p20;
-  src: url(quran-pages-fonts/p20.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p20.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p21;
-  src: url(quran-pages-fonts/p21.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p21.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p22;
-  src: url(quran-pages-fonts/p22.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p22.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p23;
-  src: url(quran-pages-fonts/p23.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p23.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p24;
-  src: url(quran-pages-fonts/p24.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p24.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p25;
-  src: url(quran-pages-fonts/p25.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p25.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p26;
-  src: url(quran-pages-fonts/p26.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p26.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p27;
-  src: url(quran-pages-fonts/p27.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p27.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p28;
-  src: url(quran-pages-fonts/p28.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p28.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p29;
-  src: url(quran-pages-fonts/p29.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p29.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p30;
-  src: url(quran-pages-fonts/p30.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p30.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p31;
-  src: url(quran-pages-fonts/p31.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p31.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p32;
-  src: url(quran-pages-fonts/p32.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p32.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p33;
-  src: url(quran-pages-fonts/p33.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p33.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p34;
-  src: url(quran-pages-fonts/p34.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p34.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p35;
-  src: url(quran-pages-fonts/p35.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p35.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p36;
-  src: url(quran-pages-fonts/p36.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p36.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p37;
-  src: url(quran-pages-fonts/p37.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p37.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p38;
-  src: url(quran-pages-fonts/p38.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p38.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p39;
-  src: url(quran-pages-fonts/p39.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p39.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p40;
-  src: url(quran-pages-fonts/p40.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p40.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p41;
-  src: url(quran-pages-fonts/p41.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p41.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p42;
-  src: url(quran-pages-fonts/p42.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p42.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p43;
-  src: url(quran-pages-fonts/p43.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p43.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p44;
-  src: url(quran-pages-fonts/p44.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p44.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p45;
-  src: url(quran-pages-fonts/p45.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p45.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p46;
-  src: url(quran-pages-fonts/p46.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p46.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p47;
-  src: url(quran-pages-fonts/p47.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p47.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p48;
-  src: url(quran-pages-fonts/p48.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p48.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p49;
-  src: url(quran-pages-fonts/p49.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p49.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p50;
-  src: url(quran-pages-fonts/p50.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p50.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p51;
-  src: url(quran-pages-fonts/p51.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p51.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p52;
-  src: url(quran-pages-fonts/p52.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p52.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p53;
-  src: url(quran-pages-fonts/p53.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p53.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p54;
-  src: url(quran-pages-fonts/p54.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p54.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p55;
-  src: url(quran-pages-fonts/p55.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p55.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p56;
-  src: url(quran-pages-fonts/p56.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p56.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p57;
-  src: url(quran-pages-fonts/p57.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p57.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p58;
-  src: url(quran-pages-fonts/p58.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p58.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p59;
-  src: url(quran-pages-fonts/p59.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p59.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p60;
-  src: url(quran-pages-fonts/p60.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p60.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p61;
-  src: url(quran-pages-fonts/p61.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p61.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p62;
-  src: url(quran-pages-fonts/p62.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p62.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p63;
-  src: url(quran-pages-fonts/p63.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p63.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p64;
-  src: url(quran-pages-fonts/p64.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p64.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p65;
-  src: url(quran-pages-fonts/p65.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p65.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p66;
-  src: url(quran-pages-fonts/p66.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p66.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p67;
-  src: url(quran-pages-fonts/p67.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p67.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p68;
-  src: url(quran-pages-fonts/p68.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p68.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p69;
-  src: url(quran-pages-fonts/p69.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p69.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p70;
-  src: url(quran-pages-fonts/p70.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p70.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p71;
-  src: url(quran-pages-fonts/p71.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p71.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p72;
-  src: url(quran-pages-fonts/p72.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p72.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p73;
-  src: url(quran-pages-fonts/p73.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p73.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p74;
-  src: url(quran-pages-fonts/p74.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p74.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p75;
-  src: url(quran-pages-fonts/p75.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p75.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p76;
-  src: url(quran-pages-fonts/p76.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p76.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p77;
-  src: url(quran-pages-fonts/p77.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p77.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p78;
-  src: url(quran-pages-fonts/p78.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p78.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p79;
-  src: url(quran-pages-fonts/p79.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p79.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p80;
-  src: url(quran-pages-fonts/p80.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p80.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p81;
-  src: url(quran-pages-fonts/p81.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p81.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p82;
-  src: url(quran-pages-fonts/p82.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p82.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p83;
-  src: url(quran-pages-fonts/p83.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p83.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p84;
-  src: url(quran-pages-fonts/p84.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p84.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p85;
-  src: url(quran-pages-fonts/p85.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p85.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p86;
-  src: url(quran-pages-fonts/p86.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p86.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p87;
-  src: url(quran-pages-fonts/p87.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p87.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p88;
-  src: url(quran-pages-fonts/p88.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p88.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p89;
-  src: url(quran-pages-fonts/p89.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p89.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p90;
-  src: url(quran-pages-fonts/p90.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p90.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p91;
-  src: url(quran-pages-fonts/p91.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p91.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p92;
-  src: url(quran-pages-fonts/p92.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p92.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p93;
-  src: url(quran-pages-fonts/p93.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p93.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p94;
-  src: url(quran-pages-fonts/p94.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p94.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p95;
-  src: url(quran-pages-fonts/p95.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p95.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p96;
-  src: url(quran-pages-fonts/p96.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p96.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p97;
-  src: url(quran-pages-fonts/p97.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p97.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p98;
-  src: url(quran-pages-fonts/p98.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p98.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p99;
-  src: url(quran-pages-fonts/p99.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p99.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p100;
-  src: url(quran-pages-fonts/p100.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p100.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p101;
-  src: url(quran-pages-fonts/p101.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p101.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p102;
-  src: url(quran-pages-fonts/p102.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p102.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p103;
-  src: url(quran-pages-fonts/p103.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p103.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p104;
-  src: url(quran-pages-fonts/p104.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p104.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p105;
-  src: url(quran-pages-fonts/p105.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p105.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p106;
-  src: url(quran-pages-fonts/p106.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p106.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p107;
-  src: url(quran-pages-fonts/p107.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p107.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p108;
-  src: url(quran-pages-fonts/p108.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p108.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p109;
-  src: url(quran-pages-fonts/p109.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p109.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p110;
-  src: url(quran-pages-fonts/p110.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p110.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p111;
-  src: url(quran-pages-fonts/p111.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p111.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p112;
-  src: url(quran-pages-fonts/p112.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p112.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p113;
-  src: url(quran-pages-fonts/p113.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p113.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p114;
-  src: url(quran-pages-fonts/p114.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p114.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p115;
-  src: url(quran-pages-fonts/p115.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p115.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p116;
-  src: url(quran-pages-fonts/p116.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p116.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p117;
-  src: url(quran-pages-fonts/p117.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p117.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p118;
-  src: url(quran-pages-fonts/p118.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p118.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p119;
-  src: url(quran-pages-fonts/p119.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p119.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p120;
-  src: url(quran-pages-fonts/p120.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p120.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p121;
-  src: url(quran-pages-fonts/p121.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p121.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p122;
-  src: url(quran-pages-fonts/p122.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p122.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p123;
-  src: url(quran-pages-fonts/p123.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p123.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p124;
-  src: url(quran-pages-fonts/p124.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p124.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p125;
-  src: url(quran-pages-fonts/p125.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p125.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p126;
-  src: url(quran-pages-fonts/p126.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p126.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p127;
-  src: url(quran-pages-fonts/p127.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p127.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p128;
-  src: url(quran-pages-fonts/p128.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p128.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p129;
-  src: url(quran-pages-fonts/p129.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p129.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p130;
-  src: url(quran-pages-fonts/p130.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p130.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p131;
-  src: url(quran-pages-fonts/p131.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p131.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p132;
-  src: url(quran-pages-fonts/p132.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p132.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p133;
-  src: url(quran-pages-fonts/p133.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p133.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p134;
-  src: url(quran-pages-fonts/p134.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p134.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p135;
-  src: url(quran-pages-fonts/p135.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p135.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p136;
-  src: url(quran-pages-fonts/p136.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p136.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p137;
-  src: url(quran-pages-fonts/p137.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p137.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p138;
-  src: url(quran-pages-fonts/p138.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p138.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p139;
-  src: url(quran-pages-fonts/p139.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p139.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p140;
-  src: url(quran-pages-fonts/p140.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p140.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p141;
-  src: url(quran-pages-fonts/p141.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p141.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p142;
-  src: url(quran-pages-fonts/p142.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p142.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p143;
-  src: url(quran-pages-fonts/p143.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p143.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p144;
-  src: url(quran-pages-fonts/p144.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p144.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p145;
-  src: url(quran-pages-fonts/p145.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p145.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p146;
-  src: url(quran-pages-fonts/p146.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p146.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p147;
-  src: url(quran-pages-fonts/p147.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p147.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p148;
-  src: url(quran-pages-fonts/p148.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p148.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p149;
-  src: url(quran-pages-fonts/p149.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p149.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p150;
-  src: url(quran-pages-fonts/p150.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p150.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p151;
-  src: url(quran-pages-fonts/p151.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p151.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p152;
-  src: url(quran-pages-fonts/p152.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p152.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p153;
-  src: url(quran-pages-fonts/p153.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p153.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p154;
-  src: url(quran-pages-fonts/p154.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p154.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p155;
-  src: url(quran-pages-fonts/p155.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p155.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p156;
-  src: url(quran-pages-fonts/p156.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p156.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p157;
-  src: url(quran-pages-fonts/p157.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p157.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p158;
-  src: url(quran-pages-fonts/p158.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p158.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p159;
-  src: url(quran-pages-fonts/p159.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p159.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p160;
-  src: url(quran-pages-fonts/p160.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p160.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p161;
-  src: url(quran-pages-fonts/p161.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p161.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p162;
-  src: url(quran-pages-fonts/p162.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p162.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p163;
-  src: url(quran-pages-fonts/p163.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p163.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p164;
-  src: url(quran-pages-fonts/p164.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p164.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p165;
-  src: url(quran-pages-fonts/p165.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p165.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p166;
-  src: url(quran-pages-fonts/p166.woff2) format("truetype");
+  src: url(assets/fonts/quran-pages/p166.woff2) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p167;
-  src: url(quran-pages-fonts/p167.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p167.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p168;
-  src: url(quran-pages-fonts/p168.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p168.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p169;
-  src: url(quran-pages-fonts/p169.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p169.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p170;
-  src: url(quran-pages-fonts/p170.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p170.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p171;
-  src: url(quran-pages-fonts/p171.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p171.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p172;
-  src: url(quran-pages-fonts/p172.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p172.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p173;
-  src: url(quran-pages-fonts/p173.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p173.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p174;
-  src: url(quran-pages-fonts/p174.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p174.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p175;
-  src: url(quran-pages-fonts/p175.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p175.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p176;
-  src: url(quran-pages-fonts/p176.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p176.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p177;
-  src: url(quran-pages-fonts/p177.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p177.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p178;
-  src: url(quran-pages-fonts/p178.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p178.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p179;
-  src: url(quran-pages-fonts/p179.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p179.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p180;
-  src: url(quran-pages-fonts/p180.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p180.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p181;
-  src: url(quran-pages-fonts/p181.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p181.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p182;
-  src: url(quran-pages-fonts/p182.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p182.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p183;
-  src: url(quran-pages-fonts/p183.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p183.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p184;
-  src: url(quran-pages-fonts/p184.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p184.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p185;
-  src: url(quran-pages-fonts/p185.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p185.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p186;
-  src: url(quran-pages-fonts/p186.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p186.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p187;
-  src: url(quran-pages-fonts/p187.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p187.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p188;
-  src: url(quran-pages-fonts/p188.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p188.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p189;
-  src: url(quran-pages-fonts/p189.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p189.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p190;
-  src: url(quran-pages-fonts/p190.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p190.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p191;
-  src: url(quran-pages-fonts/p191.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p191.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p192;
-  src: url(quran-pages-fonts/p192.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p192.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p193;
-  src: url(quran-pages-fonts/p193.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p193.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p194;
-  src: url(quran-pages-fonts/p194.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p194.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p195;
-  src: url(quran-pages-fonts/p195.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p195.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p196;
-  src: url(quran-pages-fonts/p196.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p196.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p197;
-  src: url(quran-pages-fonts/p197.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p197.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p198;
-  src: url(quran-pages-fonts/p198.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p198.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p199;
-  src: url(quran-pages-fonts/p199.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p199.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p200;
-  src: url(quran-pages-fonts/p200.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p200.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p201;
-  src: url(quran-pages-fonts/p201.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p201.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p202;
-  src: url(quran-pages-fonts/p202.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p202.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p203;
-  src: url(quran-pages-fonts/p203.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p203.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p204;
-  src: url(quran-pages-fonts/p204.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p204.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p205;
-  src: url(quran-pages-fonts/p205.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p205.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p206;
-  src: url(quran-pages-fonts/p206.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p206.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p207;
-  src: url(quran-pages-fonts/p207.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p207.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p208;
-  src: url(quran-pages-fonts/p208.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p208.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p209;
-  src: url(quran-pages-fonts/p209.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p209.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p210;
-  src: url(quran-pages-fonts/p210.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p210.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p211;
-  src: url(quran-pages-fonts/p211.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p211.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p212;
-  src: url(quran-pages-fonts/p212.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p212.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p213;
-  src: url(quran-pages-fonts/p213.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p213.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p214;
-  src: url(quran-pages-fonts/p214.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p214.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p215;
-  src: url(quran-pages-fonts/p215.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p215.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p216;
-  src: url(quran-pages-fonts/p216.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p216.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p217;
-  src: url(quran-pages-fonts/p217.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p217.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p218;
-  src: url(quran-pages-fonts/p218.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p218.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p219;
-  src: url(quran-pages-fonts/p219.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p219.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p220;
-  src: url(quran-pages-fonts/p220.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p220.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p221;
-  src: url(quran-pages-fonts/p221.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p221.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p222;
-  src: url(quran-pages-fonts/p222.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p222.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p223;
-  src: url(quran-pages-fonts/p223.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p223.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p224;
-  src: url(quran-pages-fonts/p224.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p224.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p225;
-  src: url(quran-pages-fonts/p225.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p225.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p226;
-  src: url(quran-pages-fonts/p226.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p226.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p227;
-  src: url(quran-pages-fonts/p227.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p227.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p228;
-  src: url(quran-pages-fonts/p228.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p228.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p229;
-  src: url(quran-pages-fonts/p229.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p229.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p230;
-  src: url(quran-pages-fonts/p230.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p230.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p231;
-  src: url(quran-pages-fonts/p231.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p231.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p232;
-  src: url(quran-pages-fonts/p232.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p232.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p233;
-  src: url(quran-pages-fonts/p233.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p233.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p234;
-  src: url(quran-pages-fonts/p234.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p234.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p235;
-  src: url(quran-pages-fonts/p235.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p235.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p236;
-  src: url(quran-pages-fonts/p236.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p236.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p237;
-  src: url(quran-pages-fonts/p237.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p237.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p238;
-  src: url(quran-pages-fonts/p238.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p238.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p239;
-  src: url(quran-pages-fonts/p239.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p239.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p240;
-  src: url(quran-pages-fonts/p240.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p240.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p241;
-  src: url(quran-pages-fonts/p241.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p241.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p242;
-  src: url(quran-pages-fonts/p242.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p242.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p243;
-  src: url(quran-pages-fonts/p243.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p243.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p244;
-  src: url(quran-pages-fonts/p244.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p244.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p245;
-  src: url(quran-pages-fonts/p245.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p245.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p246;
-  src: url(quran-pages-fonts/p246.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p246.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p247;
-  src: url(quran-pages-fonts/p247.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p247.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p248;
-  src: url(quran-pages-fonts/p248.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p248.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p249;
-  src: url(quran-pages-fonts/p249.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p249.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p250;
-  src: url(quran-pages-fonts/p250.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p250.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p251;
-  src: url(quran-pages-fonts/p251.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p251.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p252;
-  src: url(quran-pages-fonts/p252.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p252.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p253;
-  src: url(quran-pages-fonts/p253.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p253.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p254;
-  src: url(quran-pages-fonts/p254.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p254.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p255;
-  src: url(quran-pages-fonts/p255.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p255.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p256;
-  src: url(quran-pages-fonts/p256.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p256.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p257;
-  src: url(quran-pages-fonts/p257.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p257.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p258;
-  src: url(quran-pages-fonts/p258.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p258.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p259;
-  src: url(quran-pages-fonts/p259.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p259.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p260;
-  src: url(quran-pages-fonts/p260.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p260.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p261;
-  src: url(quran-pages-fonts/p261.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p261.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p262;
-  src: url(quran-pages-fonts/p262.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p262.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p263;
-  src: url(quran-pages-fonts/p263.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p263.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p264;
-  src: url(quran-pages-fonts/p264.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p264.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p265;
-  src: url(quran-pages-fonts/p265.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p265.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p266;
-  src: url(quran-pages-fonts/p266.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p266.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p267;
-  src: url(quran-pages-fonts/p267.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p267.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p268;
-  src: url(quran-pages-fonts/p268.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p268.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p269;
-  src: url(quran-pages-fonts/p269.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p269.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p270;
-  src: url(quran-pages-fonts/p270.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p270.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p271;
-  src: url(quran-pages-fonts/p271.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p271.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p272;
-  src: url(quran-pages-fonts/p272.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p272.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p273;
-  src: url(quran-pages-fonts/p273.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p273.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p274;
-  src: url(quran-pages-fonts/p274.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p274.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p275;
-  src: url(quran-pages-fonts/p275.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p275.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p276;
-  src: url(quran-pages-fonts/p276.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p276.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p277;
-  src: url(quran-pages-fonts/p277.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p277.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p278;
-  src: url(quran-pages-fonts/p278.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p278.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p279;
-  src: url(quran-pages-fonts/p279.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p279.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p280;
-  src: url(quran-pages-fonts/p280.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p280.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p281;
-  src: url(quran-pages-fonts/p281.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p281.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p282;
-  src: url(quran-pages-fonts/p282.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p282.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p283;
-  src: url(quran-pages-fonts/p283.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p283.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p284;
-  src: url(quran-pages-fonts/p284.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p284.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p285;
-  src: url(quran-pages-fonts/p285.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p285.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p286;
-  src: url(quran-pages-fonts/p286.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p286.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p287;
-  src: url(quran-pages-fonts/p287.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p287.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p288;
-  src: url(quran-pages-fonts/p288.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p288.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p289;
-  src: url(quran-pages-fonts/p289.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p289.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p290;
-  src: url(quran-pages-fonts/p290.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p290.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p291;
-  src: url(quran-pages-fonts/p291.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p291.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p292;
-  src: url(quran-pages-fonts/p292.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p292.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p293;
-  src: url(quran-pages-fonts/p293.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p293.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p294;
-  src: url(quran-pages-fonts/p294.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p294.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p295;
-  src: url(quran-pages-fonts/p295.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p295.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p296;
-  src: url(quran-pages-fonts/p296.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p296.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p297;
-  src: url(quran-pages-fonts/p297.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p297.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p298;
-  src: url(quran-pages-fonts/p298.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p298.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p299;
-  src: url(quran-pages-fonts/p299.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p299.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p300;
-  src: url(quran-pages-fonts/p300.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p300.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p301;
-  src: url(quran-pages-fonts/p301.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p301.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p302;
-  src: url(quran-pages-fonts/p302.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p302.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p303;
-  src: url(quran-pages-fonts/p303.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p303.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p304;
-  src: url(quran-pages-fonts/p304.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p304.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p305;
-  src: url(quran-pages-fonts/p305.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p305.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p306;
-  src: url(quran-pages-fonts/p306.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p306.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p307;
-  src: url(quran-pages-fonts/p307.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p307.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p308;
-  src: url(quran-pages-fonts/p308.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p308.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p309;
-  src: url(quran-pages-fonts/p309.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p309.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p310;
-  src: url(quran-pages-fonts/p310.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p310.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p311;
-  src: url(quran-pages-fonts/p311.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p311.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p312;
-  src: url(quran-pages-fonts/p312.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p312.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p313;
-  src: url(quran-pages-fonts/p313.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p313.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p314;
-  src: url(quran-pages-fonts/p314.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p314.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p315;
-  src: url(quran-pages-fonts/p315.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p315.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p316;
-  src: url(quran-pages-fonts/p316.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p316.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p317;
-  src: url(quran-pages-fonts/p317.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p317.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p318;
-  src: url(quran-pages-fonts/p318.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p318.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p319;
-  src: url(quran-pages-fonts/p319.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p319.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p320;
-  src: url(quran-pages-fonts/p320.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p320.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p321;
-  src: url(quran-pages-fonts/p321.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p321.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p322;
-  src: url(quran-pages-fonts/p322.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p322.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p323;
-  src: url(quran-pages-fonts/p323.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p323.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p324;
-  src: url(quran-pages-fonts/p324.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p324.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p325;
-  src: url(quran-pages-fonts/p325.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p325.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p326;
-  src: url(quran-pages-fonts/p326.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p326.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p327;
-  src: url(quran-pages-fonts/p327.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p327.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p328;
-  src: url(quran-pages-fonts/p328.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p328.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p329;
-  src: url(quran-pages-fonts/p329.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p329.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p330;
-  src: url(quran-pages-fonts/p330.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p330.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p331;
-  src: url(quran-pages-fonts/p331.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p331.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p332;
-  src: url(quran-pages-fonts/p332.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p332.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p333;
-  src: url(quran-pages-fonts/p333.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p333.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p334;
-  src: url(quran-pages-fonts/p334.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p334.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p335;
-  src: url(quran-pages-fonts/p335.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p335.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p336;
-  src: url(quran-pages-fonts/p336.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p336.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p337;
-  src: url(quran-pages-fonts/p337.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p337.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p338;
-  src: url(quran-pages-fonts/p338.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p338.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p339;
-  src: url(quran-pages-fonts/p339.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p339.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p340;
-  src: url(quran-pages-fonts/p340.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p340.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p341;
-  src: url(quran-pages-fonts/p341.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p341.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p342;
-  src: url(quran-pages-fonts/p342.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p342.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p343;
-  src: url(quran-pages-fonts/p343.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p343.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p344;
-  src: url(quran-pages-fonts/p344.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p344.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p345;
-  src: url(quran-pages-fonts/p345.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p345.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p346;
-  src: url(quran-pages-fonts/p346.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p346.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p347;
-  src: url(quran-pages-fonts/p347.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p347.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p348;
-  src: url(quran-pages-fonts/p348.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p348.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p349;
-  src: url(quran-pages-fonts/p349.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p349.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p350;
-  src: url(quran-pages-fonts/p350.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p350.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p351;
-  src: url(quran-pages-fonts/p351.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p351.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p352;
-  src: url(quran-pages-fonts/p352.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p352.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p353;
-  src: url(quran-pages-fonts/p353.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p353.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p354;
-  src: url(quran-pages-fonts/p354.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p354.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p355;
-  src: url(quran-pages-fonts/p355.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p355.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p356;
-  src: url(quran-pages-fonts/p356.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p356.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p357;
-  src: url(quran-pages-fonts/p357.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p357.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p358;
-  src: url(quran-pages-fonts/p358.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p358.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p359;
-  src: url(quran-pages-fonts/p359.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p359.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p360;
-  src: url(quran-pages-fonts/p360.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p360.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p361;
-  src: url(quran-pages-fonts/p361.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p361.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p362;
-  src: url(quran-pages-fonts/p362.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p362.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p363;
-  src: url(quran-pages-fonts/p363.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p363.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p364;
-  src: url(quran-pages-fonts/p364.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p364.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p365;
-  src: url(quran-pages-fonts/p365.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p365.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p366;
-  src: url(quran-pages-fonts/p366.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p366.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p367;
-  src: url(quran-pages-fonts/p367.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p367.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p368;
-  src: url(quran-pages-fonts/p368.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p368.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p369;
-  src: url(quran-pages-fonts/p369.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p369.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p370;
-  src: url(quran-pages-fonts/p370.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p370.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p371;
-  src: url(quran-pages-fonts/p371.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p371.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p372;
-  src: url(quran-pages-fonts/p372.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p372.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p373;
-  src: url(quran-pages-fonts/p373.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p373.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p374;
-  src: url(quran-pages-fonts/p374.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p374.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p375;
-  src: url(quran-pages-fonts/p375.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p375.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p376;
-  src: url(quran-pages-fonts/p376.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p376.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p377;
-  src: url(quran-pages-fonts/p377.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p377.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p378;
-  src: url(quran-pages-fonts/p378.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p378.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p379;
-  src: url(quran-pages-fonts/p379.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p379.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p380;
-  src: url(quran-pages-fonts/p380.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p380.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p381;
-  src: url(quran-pages-fonts/p381.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p381.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p382;
-  src: url(quran-pages-fonts/p382.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p382.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p383;
-  src: url(quran-pages-fonts/p383.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p383.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p384;
-  src: url(quran-pages-fonts/p384.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p384.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p385;
-  src: url(quran-pages-fonts/p385.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p385.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p386;
-  src: url(quran-pages-fonts/p386.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p386.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p387;
-  src: url(quran-pages-fonts/p387.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p387.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p388;
-  src: url(quran-pages-fonts/p388.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p388.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p389;
-  src: url(quran-pages-fonts/p389.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p389.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p390;
-  src: url(quran-pages-fonts/p390.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p390.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p391;
-  src: url(quran-pages-fonts/p391.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p391.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p392;
-  src: url(quran-pages-fonts/p392.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p392.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p393;
-  src: url(quran-pages-fonts/p393.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p393.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p394;
-  src: url(quran-pages-fonts/p394.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p394.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p395;
-  src: url(quran-pages-fonts/p395.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p395.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p396;
-  src: url(quran-pages-fonts/p396.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p396.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p397;
-  src: url(quran-pages-fonts/p397.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p397.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p398;
-  src: url(quran-pages-fonts/p398.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p398.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p399;
-  src: url(quran-pages-fonts/p399.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p399.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p400;
-  src: url(quran-pages-fonts/p400.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p400.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p401;
-  src: url(quran-pages-fonts/p401.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p401.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p402;
-  src: url(quran-pages-fonts/p402.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p402.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p403;
-  src: url(quran-pages-fonts/p403.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p403.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p404;
-  src: url(quran-pages-fonts/p404.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p404.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p405;
-  src: url(quran-pages-fonts/p405.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p405.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p406;
-  src: url(quran-pages-fonts/p406.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p406.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p407;
-  src: url(quran-pages-fonts/p407.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p407.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p408;
-  src: url(quran-pages-fonts/p408.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p408.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p409;
-  src: url(quran-pages-fonts/p409.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p409.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p410;
-  src: url(quran-pages-fonts/p410.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p410.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p411;
-  src: url(quran-pages-fonts/p411.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p411.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p412;
-  src: url(quran-pages-fonts/p412.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p412.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p413;
-  src: url(quran-pages-fonts/p413.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p413.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p414;
-  src: url(quran-pages-fonts/p414.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p414.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p415;
-  src: url(quran-pages-fonts/p415.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p415.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p416;
-  src: url(quran-pages-fonts/p416.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p416.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p417;
-  src: url(quran-pages-fonts/p417.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p417.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p418;
-  src: url(quran-pages-fonts/p418.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p418.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p419;
-  src: url(quran-pages-fonts/p419.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p419.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p420;
-  src: url(quran-pages-fonts/p420.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p420.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p421;
-  src: url(quran-pages-fonts/p421.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p421.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p422;
-  src: url(quran-pages-fonts/p422.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p422.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p423;
-  src: url(quran-pages-fonts/p423.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p423.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p424;
-  src: url(quran-pages-fonts/p424.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p424.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p425;
-  src: url(quran-pages-fonts/p425.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p425.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p426;
-  src: url(quran-pages-fonts/p426.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p426.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p427;
-  src: url(quran-pages-fonts/p427.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p427.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p428;
-  src: url(quran-pages-fonts/p428.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p428.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p429;
-  src: url(quran-pages-fonts/p429.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p429.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p430;
-  src: url(quran-pages-fonts/p430.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p430.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p431;
-  src: url(quran-pages-fonts/p431.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p431.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p432;
-  src: url(quran-pages-fonts/p432.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p432.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p433;
-  src: url(quran-pages-fonts/p433.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p433.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p434;
-  src: url(quran-pages-fonts/p434.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p434.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p435;
-  src: url(quran-pages-fonts/p435.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p435.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p436;
-  src: url(quran-pages-fonts/p436.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p436.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p437;
-  src: url(quran-pages-fonts/p437.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p437.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p438;
-  src: url(quran-pages-fonts/p438.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p438.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p439;
-  src: url(quran-pages-fonts/p439.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p439.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p440;
-  src: url(quran-pages-fonts/p440.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p440.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p441;
-  src: url(quran-pages-fonts/p441.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p441.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p442;
-  src: url(quran-pages-fonts/p442.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p442.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p443;
-  src: url(quran-pages-fonts/p443.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p443.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p444;
-  src: url(quran-pages-fonts/p444.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p444.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p445;
-  src: url(quran-pages-fonts/p445.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p445.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p446;
-  src: url(quran-pages-fonts/p446.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p446.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p447;
-  src: url(quran-pages-fonts/p447.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p447.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p448;
-  src: url(quran-pages-fonts/p448.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p448.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p449;
-  src: url(quran-pages-fonts/p449.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p449.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p450;
-  src: url(quran-pages-fonts/p450.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p450.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p451;
-  src: url(quran-pages-fonts/p451.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p451.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p452;
-  src: url(quran-pages-fonts/p452.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p452.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p453;
-  src: url(quran-pages-fonts/p453.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p453.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p454;
-  src: url(quran-pages-fonts/p454.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p454.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p455;
-  src: url(quran-pages-fonts/p455.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p455.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p456;
-  src: url(quran-pages-fonts/p456.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p456.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p457;
-  src: url(quran-pages-fonts/p457.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p457.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p458;
-  src: url(quran-pages-fonts/p458.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p458.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p459;
-  src: url(quran-pages-fonts/p459.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p459.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p460;
-  src: url(quran-pages-fonts/p460.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p460.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p461;
-  src: url(quran-pages-fonts/p461.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p461.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p462;
-  src: url(quran-pages-fonts/p462.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p462.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p463;
-  src: url(quran-pages-fonts/p463.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p463.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p464;
-  src: url(quran-pages-fonts/p464.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p464.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p465;
-  src: url(quran-pages-fonts/p465.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p465.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p466;
-  src: url(quran-pages-fonts/p466.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p466.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p467;
-  src: url(quran-pages-fonts/p467.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p467.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p468;
-  src: url(quran-pages-fonts/p468.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p468.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p469;
-  src: url(quran-pages-fonts/p469.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p469.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p470;
-  src: url(quran-pages-fonts/p470.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p470.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p471;
-  src: url(quran-pages-fonts/p471.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p471.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p472;
-  src: url(quran-pages-fonts/p472.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p472.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p473;
-  src: url(quran-pages-fonts/p473.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p473.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p474;
-  src: url(quran-pages-fonts/p474.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p474.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p475;
-  src: url(quran-pages-fonts/p475.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p475.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p476;
-  src: url(quran-pages-fonts/p476.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p476.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p477;
-  src: url(quran-pages-fonts/p477.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p477.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p478;
-  src: url(quran-pages-fonts/p478.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p478.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p479;
-  src: url(quran-pages-fonts/p479.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p479.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p480;
-  src: url(quran-pages-fonts/p480.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p480.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p481;
-  src: url(quran-pages-fonts/p481.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p481.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p482;
-  src: url(quran-pages-fonts/p482.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p482.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p483;
-  src: url(quran-pages-fonts/p483.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p483.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p484;
-  src: url(quran-pages-fonts/p484.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p484.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p485;
-  src: url(quran-pages-fonts/p485.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p485.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p486;
-  src: url(quran-pages-fonts/p486.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p486.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p487;
-  src: url(quran-pages-fonts/p487.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p487.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p488;
-  src: url(quran-pages-fonts/p488.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p488.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p489;
-  src: url(quran-pages-fonts/p489.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p489.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p490;
-  src: url(quran-pages-fonts/p490.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p490.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p491;
-  src: url(quran-pages-fonts/p491.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p491.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p492;
-  src: url(quran-pages-fonts/p492.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p492.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p493;
-  src: url(quran-pages-fonts/p493.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p493.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p494;
-  src: url(quran-pages-fonts/p494.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p494.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p495;
-  src: url(quran-pages-fonts/p495.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p495.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p496;
-  src: url(quran-pages-fonts/p496.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p496.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p497;
-  src: url(quran-pages-fonts/p497.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p497.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p498;
-  src: url(quran-pages-fonts/p498.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p498.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p499;
-  src: url(quran-pages-fonts/p499.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p499.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p500;
-  src: url(quran-pages-fonts/p500.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p500.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p501;
-  src: url(quran-pages-fonts/p501.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p501.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p502;
-  src: url(quran-pages-fonts/p502.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p502.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p503;
-  src: url(quran-pages-fonts/p503.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p503.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p504;
-  src: url(quran-pages-fonts/p504.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p504.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p505;
-  src: url(quran-pages-fonts/p505.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p505.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p506;
-  src: url(quran-pages-fonts/p506.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p506.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p507;
-  src: url(quran-pages-fonts/p507.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p507.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p508;
-  src: url(quran-pages-fonts/p508.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p508.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p509;
-  src: url(quran-pages-fonts/p509.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p509.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p510;
-  src: url(quran-pages-fonts/p510.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p510.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p511;
-  src: url(quran-pages-fonts/p511.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p511.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p512;
-  src: url(quran-pages-fonts/p512.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p512.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p513;
-  src: url(quran-pages-fonts/p513.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p513.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p514;
-  src: url(quran-pages-fonts/p514.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p514.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p515;
-  src: url(quran-pages-fonts/p515.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p515.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p516;
-  src: url(quran-pages-fonts/p516.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p516.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p517;
-  src: url(quran-pages-fonts/p517.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p517.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p518;
-  src: url(quran-pages-fonts/p518.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p518.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p519;
-  src: url(quran-pages-fonts/p519.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p519.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p520;
-  src: url(quran-pages-fonts/p520.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p520.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p521;
-  src: url(quran-pages-fonts/p521.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p521.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p522;
-  src: url(quran-pages-fonts/p522.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p522.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p523;
-  src: url(quran-pages-fonts/p523.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p523.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p524;
-  src: url(quran-pages-fonts/p524.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p524.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p525;
-  src: url(quran-pages-fonts/p525.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p525.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p526;
-  src: url(quran-pages-fonts/p526.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p526.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p527;
-  src: url(quran-pages-fonts/p527.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p527.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p528;
-  src: url(quran-pages-fonts/p528.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p528.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p529;
-  src: url(quran-pages-fonts/p529.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p529.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p530;
-  src: url(quran-pages-fonts/p530.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p530.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p531;
-  src: url(quran-pages-fonts/p531.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p531.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p532;
-  src: url(quran-pages-fonts/p532.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p532.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p533;
-  src: url(quran-pages-fonts/p533.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p533.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p534;
-  src: url(quran-pages-fonts/p534.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p534.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p535;
-  src: url(quran-pages-fonts/p535.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p535.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p536;
-  src: url(quran-pages-fonts/p536.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p536.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p537;
-  src: url(quran-pages-fonts/p537.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p537.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p538;
-  src: url(quran-pages-fonts/p538.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p538.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p539;
-  src: url(quran-pages-fonts/p539.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p539.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p540;
-  src: url(quran-pages-fonts/p540.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p540.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p541;
-  src: url(quran-pages-fonts/p541.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p541.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p542;
-  src: url(quran-pages-fonts/p542.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p542.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p543;
-  src: url(quran-pages-fonts/p543.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p543.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p544;
-  src: url(quran-pages-fonts/p544.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p544.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p545;
-  src: url(quran-pages-fonts/p545.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p545.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p546;
-  src: url(quran-pages-fonts/p546.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p546.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p547;
-  src: url(quran-pages-fonts/p547.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p547.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p548;
-  src: url(quran-pages-fonts/p548.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p548.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p549;
-  src: url(quran-pages-fonts/p549.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p549.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p550;
-  src: url(quran-pages-fonts/p550.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p550.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p551;
-  src: url(quran-pages-fonts/p551.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p551.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p552;
-  src: url(quran-pages-fonts/p552.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p552.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p553;
-  src: url(quran-pages-fonts/p553.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p553.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p554;
-  src: url(quran-pages-fonts/p554.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p554.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p555;
-  src: url(quran-pages-fonts/p555.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p555.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p556;
-  src: url(quran-pages-fonts/p556.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p556.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p557;
-  src: url(quran-pages-fonts/p557.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p557.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p558;
-  src: url(quran-pages-fonts/p558.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p558.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p559;
-  src: url(quran-pages-fonts/p559.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p559.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p560;
-  src: url(quran-pages-fonts/p560.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p560.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p561;
-  src: url(quran-pages-fonts/p561.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p561.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p562;
-  src: url(quran-pages-fonts/p562.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p562.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p563;
-  src: url(quran-pages-fonts/p563.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p563.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p564;
-  src: url(quran-pages-fonts/p564.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p564.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p565;
-  src: url(quran-pages-fonts/p565.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p565.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p566;
-  src: url(quran-pages-fonts/p566.woff2) format("truetype");
+  src: url(assets/fonts/quran-pages/p566.woff2) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p567;
-  src: url(quran-pages-fonts/p567.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p567.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p568;
-  src: url(quran-pages-fonts/p568.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p568.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p569;
-  src: url(quran-pages-fonts/p569.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p569.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p570;
-  src: url(quran-pages-fonts/p570.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p570.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p571;
-  src: url(quran-pages-fonts/p571.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p571.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p572;
-  src: url(quran-pages-fonts/p572.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p572.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p573;
-  src: url(quran-pages-fonts/p573.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p573.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p574;
-  src: url(quran-pages-fonts/p574.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p574.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p575;
-  src: url(quran-pages-fonts/p575.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p575.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p576;
-  src: url(quran-pages-fonts/p576.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p576.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p577;
-  src: url(quran-pages-fonts/p577.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p577.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p578;
-  src: url(quran-pages-fonts/p578.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p578.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p579;
-  src: url(quran-pages-fonts/p579.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p579.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p580;
-  src: url(quran-pages-fonts/p580.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p580.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p581;
-  src: url(quran-pages-fonts/p581.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p581.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p582;
-  src: url(quran-pages-fonts/p582.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p582.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p583;
-  src: url(quran-pages-fonts/p583.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p583.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p584;
-  src: url(quran-pages-fonts/p584.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p584.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p585;
-  src: url(quran-pages-fonts/p585.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p585.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p586;
-  src: url(quran-pages-fonts/p586.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p586.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p587;
-  src: url(quran-pages-fonts/p587.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p587.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p588;
-  src: url(quran-pages-fonts/p588.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p588.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p589;
-  src: url(quran-pages-fonts/p589.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p589.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p590;
-  src: url(quran-pages-fonts/p590.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p590.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p591;
-  src: url(quran-pages-fonts/p591.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p591.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p592;
-  src: url(quran-pages-fonts/p592.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p592.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p593;
-  src: url(quran-pages-fonts/p593.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p593.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p594;
-  src: url(quran-pages-fonts/p594.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p594.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p595;
-  src: url(quran-pages-fonts/p595.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p595.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p596;
-  src: url(quran-pages-fonts/p596.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p596.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p597;
-  src: url(quran-pages-fonts/p597.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p597.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p598;
-  src: url(quran-pages-fonts/p598.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p598.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p599;
-  src: url(quran-pages-fonts/p599.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p599.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p600;
-  src: url(quran-pages-fonts/p600.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p600.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p601;
-  src: url(quran-pages-fonts/p601.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p601.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p602;
-  src: url(quran-pages-fonts/p602.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p602.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p603;
-  src: url(quran-pages-fonts/p603.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p603.ttf) format("truetype");
 }
 
 @font-face {
   font-display: block;
   font-family: p604;
-  src: url(quran-pages-fonts/p604.ttf) format("truetype");
+  src: url(assets/fonts/quran-pages/p604.ttf) format("truetype");
 }
 
 @font-face {
   font-family: Noorehuda;
-  src: url(https://salamquran.com/static/quran-pages-fonts/noorehuda/noorehuda_latest.ttf);
+  src: url(https://salamquran.com/static/assets/fonts/quran-pages/noorehuda/noorehuda_latest.ttf);
   font-display: block;
 }
 
