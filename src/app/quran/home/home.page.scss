@@ -131,11 +131,10 @@ ion-segment {
   z-index: 999;
 }
 
-/////////////////
 @font-face {
   font-family: surah_names;
-  src: url(fonts/surah_names.eot);
-  src: url(fonts/surah_names.eot) format("embedded-opentype") , url(fonts/surah_names.ttf) format("truetype") , url(fonts/surah_names.woff) format("woff");
+  src: url(../../../assets/fonts/surah_names.eot);
+  src: url(../../../assets/fonts/surah_names.eot) format("embedded-opentype") , url(../../../assets/fonts/surah_names.ttf) format("truetype") , url(../../../assets/fonts/surah_names.woff) format("woff");
   font-weight: 400;
   font-display: block
 }
