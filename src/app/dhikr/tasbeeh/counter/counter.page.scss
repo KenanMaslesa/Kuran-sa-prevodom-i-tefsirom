@@ -1,0 +1,129 @@
+@font-face {
+  font-family: digital;
+  src: url(digital.ttf);
+  font-weight: 400;
+}
+
+@keyframes growProgressBar {
+  0%,
+  33% {
+    --pgPercentage: 0;
+  }
+  100% {
+    --pgPercentage: var(--value);
+  }
+}
+
+@property --pgPercentage {
+  syntax: "<number>";
+  inherits: false;
+  initial-value: 0;
+}
+
+main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+  background-image: url(/assets/img/background.jpeg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  z-index: 9;
+
+  &::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background: rgba(255, 255, 255, 0.9);
+    z-index: -1;
+  }
+
+  .counter-wrapper {
+
+    &:active {
+      div[role="progressbar"] {
+        box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.25);
+      }
+    }
+
+    .counter {
+
+      div[role="progressbar"] {
+        --size: 18rem;
+        --fg: var(--ion-color-primary);
+        --bg: #def;
+        --pgPercentage: var(--value);
+        animation: growProgressBar 1.5s 1 forwards;
+        width: var(--size);
+        height: var(--size);
+        border-radius: 50%;
+        background: radial-gradient(closest-side, white 92%, transparent 0 99.9%, white 0),
+          conic-gradient(var(--fg) calc(var(--pgPercentage) * 1%), var(--bg) 0);
+        font-family: Helvetica, Arial, sans-serif;
+        font-size: calc(var(--size) / 5);
+        color: var(--fg);
+        margin: 10px auto;
+        font-family: digital;
+        font-size: 120px;
+        overflow-x: auto;
+        transition: 0.8s;
+        position: relative;
+
+        span {
+          position: absolute;
+          top: 45%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+        }
+      }
+    }
+
+    .selectedDhikr {
+      z-index: 9;
+      text-align: center;
+      padding: 0 5px;
+      overflow: auto;
+      justify-content: center;
+      margin-top: 10px;
+      display: flex;
+      align-items: flex-start;
+      border-radius: 30px;
+      width: 95%;
+      margin-left: auto;
+      margin-right: auto;
+
+      h1 {
+        font-size: 28px;
+        margin: 8px 0;
+        line-height: 35px;
+      }
+      p {
+        font-size: 16px;
+        font-style: italic;
+      }
+    }
+  }
+}
+
+.icons {
+  position: absolute;
+  top: 10px;
+  z-index: 99;
+  left: 50%;
+  transform: translate(-50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 50px;
+  color: var(--ion-color-primary);
+
+  .reset-icon {
+    margin-right: 10px;
+  }
+}

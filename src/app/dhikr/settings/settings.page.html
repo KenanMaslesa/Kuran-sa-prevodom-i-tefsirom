@@ -1,0 +1,66 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Postavke</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item>
+      <ion-label>Prikaži arapski jezik u zikrovima</ion-label>
+      <ion-toggle [(ngModel)]="dhikrService.showArabicDhikr"
+        (ngModelChange)="dhikrService.onModelChange(dhikrLocalStoarge.showArabicDhikr, dhikrService.showArabicDhikr)">
+      </ion-toggle>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Prikaži transkripciju u zikrovima</ion-label>
+      <ion-toggle [(ngModel)]="dhikrService.showDhikrTranslation"
+        (ngModelChange)="dhikrService.onModelChange(dhikrLocalStoarge.showDhikrTranslation, dhikrService.showDhikrTranslation)">
+      </ion-toggle>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Prikaži bosanski jezik u zikrovima</ion-label>
+      <ion-toggle [(ngModel)]="dhikrService.showBosnianDhikr"
+        (ngModelChange)="dhikrService.onModelChange(dhikrLocalStoarge.showBosnianDhikr, dhikrService.showBosnianDhikr)">
+      </ion-toggle>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Prikaži koristi zikrova</ion-label>
+      <ion-toggle [(ngModel)]="dhikrService.showDhikrBenefits"
+        (ngModelChange)="dhikrService.onModelChange(dhikrLocalStoarge.showDhikrBenefits, dhikrService.showDhikrBenefits)">
+      </ion-toggle>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Prikaži izvor zikrova</ion-label>
+      <ion-toggle [(ngModel)]="dhikrService.showDhikrSource"
+        (ngModelChange)="dhikrService.onModelChange(dhikrLocalStoarge.showDhikrSource, dhikrService.showDhikrSource)">
+      </ion-toggle>
+    </ion-item>
+  </ion-list>
+
+  <!-- <h4 style="text-align: center;">Notifikacije</h4>
+
+  <ion-item>
+    <ion-label>Prikaži notifikacije za zikr</ion-label>
+    <ion-toggle #isNotificationEnabled [(ngModel)]="notificationsService.isNotificationEnabled"
+      (ngModelChange)="notificationsService.isNotificationEnabledChanged(isNotificationEnabled.checked);">
+    </ion-toggle>
+  </ion-item> -->
+
+  <h4 style="text-align: center; margin-bottom: 0;">Izaberite temu</h4>
+  <div class="color-wrapper">
+    <div *ngFor="let item of colors" class="color" style="background: {{item.color}}" (click)="onColorChanged(item.color)">
+      <ion-icon *ngIf="item.color === themeColor" name="checkmark-circle-outline"></ion-icon>
+    </div>
+  </div>
+</ion-content>

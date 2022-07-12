@@ -1,0 +1,185 @@
+ion-content {
+  ion-slides {
+    background-image: url('/assets/img/background.jpeg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100%;
+    padding-bottom: 55px;
+
+    &::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        background: rgba(255,255,255,.92);
+    }
+
+    .slide {
+        display: block;
+        overflow-y: scroll;
+        padding-bottom: 20px;
+
+        &.firstSlide, &.lastSlide {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+
+        &__player {
+          padding-top: 10px;
+          text-align: center;
+
+          ion-icon {
+            font-size: 35px;
+            padding: 5px;
+          }
+        }
+
+        &__card {
+            padding: 10px;
+            background: hsl(240deg 8% 93% / 67%);
+            border-radius: 10px;
+            width: 95%;
+            margin: 0 auto;
+            margin-bottom: 10px;
+
+            &__header {
+              h2 {
+                margin-top: 5px;
+                color: #111;
+                text-transform: uppercase;
+                text-align: center;
+                font-weight: 700;
+                position: relative;
+                padding-bottom: 10px;
+                font-size: 17px;
+
+                &::before {
+                  content: "";
+                  position: absolute;
+                  display: block;
+                  width: 120px;
+                  height: 1px;
+                  background: #ddd;
+                  bottom: 1px;
+                  left: calc(50% - 60px);
+                }
+
+                &::after {
+                  content: "";
+                  position: absolute;
+                  display: block;
+                  width: 40px;
+                  height: 3px;
+                  background: var(--ion-color-primary);
+                  bottom: 0;
+                  left: calc(50% - 20px);
+                }
+              }
+            }
+
+            &--arabic {
+                direction: rtl;
+                font-family: quran;
+            }
+
+            &--active {
+                color: var(--ion-color-primary);
+                filter: drop-shadow(0px 0px 0px var(--ion-color-primary));
+            }
+
+            &--benefits {
+              p {
+                font-style: italic;
+                display: block !important;
+                margin-top: 0px;
+              }
+
+              h5 {
+                margin-bottom: 5px;
+                font-weight: bold;
+                font-style: italic;
+              }
+            }
+
+            &--source {
+              font-size: 16px;
+              font-style: italic;
+            }
+
+            p {
+                cursor: pointer;
+                display: inline;
+                margin-right: 4px;
+                transition: all 0.3s;
+
+                &:hover {
+                  @media(min-width: 768px){
+                    color: var(--ion-color-primary);
+                  }
+                }
+            }
+        }
+
+        .recitate-counter-wrapper {
+          text-align: center;
+
+          .recitate-counter {
+            text-align: center;
+            background: var(--ion-color-primary);
+            padding: 5px;
+            color: white;
+            border-radius: 50%;
+            min-width: 50px;
+            min-height: 50px;
+            width: 55px;
+            height: 55px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0 auto 10px;
+            font-size: 16px;
+
+            &.done {
+              background: #4fb74f;
+            }
+          }
+        }
+    }
+
+  }
+
+  ion-toolbar {
+    &.swiper{
+        position: fixed;
+        bottom: 0;
+
+        ion-buttons {
+            ion-icon {
+                font-size: 25px;
+                padding: 0 30px;
+            }
+        }
+        ion-text {
+            position: absolute;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 20px;
+            font-weight: bold;
+        }
+    }
+  }
+}
+
+@font-face {
+  font-family: arabic;
+  src: url(arabic.ttf);
+}
+.quran-page {
+  background: #ffffff;
+  border-radius: 10px;
+  padding: 20px 0 10px 0;
+  margin-bottom: 10px;
+}

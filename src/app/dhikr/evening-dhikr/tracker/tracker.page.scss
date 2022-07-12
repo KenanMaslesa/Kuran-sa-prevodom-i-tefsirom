@@ -1,0 +1,29 @@
+.no-dhikrs {
+  padding: 10px;
+  text-align: center;
+}
+ion-card {
+  margin-top: 50px;
+
+  ion-card-header {
+    padding-bottom: 0;
+    text-align: center;
+  }
+
+  .graph-wrapper {
+    width: 100%;
+    overflow: auto;
+
+    .graph {
+      width: 1000px;
+    }
+  }
+}
+
+.segment {
+  display: none;
+
+  &.active {
+    display: block;
+  }
+}

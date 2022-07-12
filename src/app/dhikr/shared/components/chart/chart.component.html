@@ -1,0 +1,12 @@
+<ion-card>
+  <ion-card-header>
+    <ion-card-subtitle>{{selectedDhikr.title??selectedDhikr.arabic}}</ion-card-subtitle>
+  </ion-card-header>
+  <ion-card-content>
+    <div style="width: 100%; overflow-x: auto; overflow-y: hidden">
+      <div style="width: 1000px; height: 300px">
+        <canvas #barChart height="300" width="0"></canvas>
+      </div>
+    </div>
+  </ion-card-content>
+</ion-card>

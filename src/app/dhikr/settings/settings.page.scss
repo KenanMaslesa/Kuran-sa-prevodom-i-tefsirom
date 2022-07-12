@@ -1,0 +1,24 @@
+.color-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 15px;
+  flex-wrap: wrap;
+
+  .color {
+    width: 45px;
+    height: 45px;
+    display: inline-block;
+    margin: 5px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    ion-icon {
+      color: white;
+      font-size: 30px;
+
+    }
+  }
+}

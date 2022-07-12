@@ -1,0 +1,41 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>
+      Jutarnji zikr
+    </ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-icon routerLink="/dhikr/morning-dhikr/tracker" class="tracker-icon" name="stats-chart-outline"></ion-icon>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <app-dhikr-template [dhikrType]="dhikrType" [dhikrs]="morningDhikrs">
+    <ng-container firstSlide>
+      <header class="slide__header">
+        <h2>Jutarnji zikr</h2>
+      </header>
+      <div class="content" style="padding: 0 5px;">
+      <p style="font-weight: 500;">Najbolje vrijeme za učenje jutarnjeg zikra je od pojave zore pa do izlaska sunca.</p>
+      <p>Ako iskreno i sa ubjeđenjem proučimo sljedeće zikrove imat ćemo mnogo nagrada od kojih su:</p>
+      <ul>
+        <li>Ako se vratimo Gospodaru u toku dana (prije nego omrknemo) obećan nam je ulazak u Džennet</li>
+        <li>Zaštita od uroka, zavidnosti, sihra, džinskog opsjedanja</li>
+        <li>Spas od svih nesreća</li>
+        <li>Otklanjanje briga dunjaluka i ahireta</li>
+        <li>Oprost grijeha pa makar ih bilo poput morske pjene</li>
+      </ul>
+      <img src="../assets/db/dhikr.json" alt="">
+      </div>
+    </ng-container>
+
+    <ng-container lastSlide>
+    </ng-container>
+  </app-dhikr-template>
+</ion-content>

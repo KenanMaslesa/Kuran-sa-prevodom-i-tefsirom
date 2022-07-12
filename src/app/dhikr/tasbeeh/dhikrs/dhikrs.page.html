@@ -1,0 +1,39 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Lista zikrova</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item>
+    <ion-label>Promijeni raspored zikrova</ion-label>
+    <ion-toggle #isNotificationEnabled [(ngModel)]="isReorderingEnabled">
+    </ion-toggle>
+  </ion-item>
+  <!-- The reorder gesture is disabled by default, enable it to drag and drop items -->
+<ion-reorder-group disabled="{{!isReorderingEnabled}}" (ionItemReorder)="reorderItems($event)">
+  <!-- Default reorder icon, end aligned items -->
+  <ion-reorder *ngFor="let dhikr of tasbeehService.dhikrs">
+  <ion-item  (click)="tasbeehService.setSelectedDhikr(dhikr)" routerLink="/dhikr/tasbeeh/tabs/counter">
+    <ion-label>
+      <h2>{{dhikr.arabic}}</h2>
+      <p>{{dhikr.bosnian}}</p>
+    </ion-label>
+    <ion-note slot="end">
+      {{dhikr.counter}}
+    </ion-note>
+    <ion-reorder slot="start">
+      <!-- <ion-icon name="move"></ion-icon> -->
+      <ion-icon class="move-icon" name="swap-vertical-outline"></ion-icon>
+    </ion-reorder>
+  </ion-item>
+</ion-reorder>
+
+</ion-reorder-group>
+</ion-content>

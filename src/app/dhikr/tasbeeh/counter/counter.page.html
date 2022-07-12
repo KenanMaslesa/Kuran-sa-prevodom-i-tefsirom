@@ -1,0 +1,45 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Zikrilo</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="icons">
+    <ion-icon
+      (click)="resetCounter()"
+      name="refresh-circle-outline"
+      class="reset-icon"
+    ></ion-icon>
+    <ion-icon *ngIf="vibrate" (click)="toggleVibrate()" name="volume-high-outline"></ion-icon>
+    <ion-icon *ngIf="!vibrate" (click)="toggleVibrate()" name="volume-mute-outline"></ion-icon>
+  </div>
+  <main (click)="increaseCounter()">
+    <div class="counter-wrapper" *ngIf="tasbeehService.selectedDhikr">
+      <div class="counter">
+        <div
+          role="progressbar"
+          aria-valuenow="65"
+          aria-valuemin="0"
+          aria-valuemax="100"
+          style="--value:{{tasbeehService.selectedDhikr.counter>100?tasbeehService.selectedDhikr.counter%100:tasbeehService.selectedDhikr.counter}}"
+        >
+          <span> {{tasbeehService.selectedDhikr.counter}} </span>
+        </div>
+      </div>
+
+      <div class="selectedDhikr" *ngIf="tasbeehService.selectedDhikr.arabic">
+        <div>
+          <h1>{{tasbeehService.selectedDhikr.arabic}}</h1>
+          <p>{{tasbeehService.selectedDhikr.bosnian}}</p>
+        </div>
+      </div>
+    </div>
+  </main>
+</ion-content>

@@ -1,0 +1,39 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>
+      Zikr prije spavanja
+    </ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-icon routerLink="/dhikr/dhikr-before-sleeping/tracker" class="tracker-icon" name="stats-chart-outline"></ion-icon>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <app-dhikr-template [dhikrType]="dhikrType" [dhikrs]="dhikrs">
+    <ng-container firstSlide>
+      <header class="slide__header">
+        <h2>Zikr prije spavanja</h2>
+      </header>
+      <div class="content" style="padding: 0 5px;">
+        <p>Ako iskreno i sa ubjeđenjem proučimo sljedeće zikrove i sure imat ćemo mnogo nagrada od kojih su:</p>
+        <ul>
+          <li>Štititi će nas od Allaha (poslan) zaštitnik i šejtan nam se neće primaći</li>
+          <li>Nećemo osjećati nemoć zbog posla i drugih obaveza</li>
+          <li>Osjetiti ćemo snagu u toku dana koja nam je dovoljna da nemamo potrebe za slugom/pomoćnikom</li>
+          <li>Oprost grijeha</li>
+          <li>Zaštita od kaburske patnje</li>
+        </ul>
+      </div>
+    </ng-container>
+
+    <ng-container lastSlide>
+    </ng-container>
+  </app-dhikr-template>
+</ion-content>

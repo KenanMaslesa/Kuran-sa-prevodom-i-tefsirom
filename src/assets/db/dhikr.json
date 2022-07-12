@@ -1,0 +1,1844 @@
+[
+  {
+    "arabic": "للَّهُمَّ أَنْتَ رَبِّى، لَا إِلَهَ إِلاَّ أَنْتَ، خَلَقْتَنِى وَأَنَا عَبْدُكَ، وَأَنَا عَلَى عَهْدِكَ وَوَعْدِكَ مَا اسْتَطَعْتُ، أَعُوذُ بِكَ مِنْ شَرِّ مَا صَنَعْتُ، أَبُوءُ لَكَ بِنِعْمَتِكَ عَلَىَّ، وَأَبُوءُ بِذَنْبِى، اغْفِرْ لِي؛ فَإِنَّهُ لَا يَغْفِرُ الذُّنُوبَ إِلاَّ أَنْتَ",
+    "audio": "assets/audio/sejjidul-istigfar.mp3",
+    "category": "MORNING&EVENING",
+    "recitate": 1,
+    "counter": 0,
+    "id": 1,
+    "translation": {
+      "bosnian": "Allahu, Ti si Gospodar moj, nema boga osim Tebe. Stvorio si me i ja sam Tvoj rob. Ja sam na tragu zavjeta i obećanja datom Tebi, koliko sam u mogućnosti. Tebi se sklanjam pred zlom koje sam počinio. Priznajem blagodati Tvoje prema meni i Tebi priznajem svoje grijehe. Stoga, oprosti mi, jer osim Tebe niko drugi grijehe ne oprašta.",
+      "english": "O Allah, You are my Lord, there is none worthy of worship but You. You created me and I am your slave. I keep Your covenant, and my pledge to You so far as I am able. I seek refuge in You from the evil of what I have done. I admit to Your blessings upon me, and I admit to my misdeeds. Forgive me, for there is none who may forgive sins but You."
+    },
+    "transcription": {
+      "bosnian": "ALLĀHUMME ENTE RABBĪ,LĀ ILĀHE ILLĀ ENTE,HALEKTENĪ VE ENE ‘ABDUKE ( žene će reći: HALEKTENĪ VE ENE EMETUKE),VE ENE ‘ALĀ ‘AHDIKE VE VA‘DIKE MESTETA‘TU,E‘ŪZU BIKE MIN ŠERRI MĀ SANA‘TU,EBŪ-U LEKE BI NI‘METIKE ‘ALEJJE,VE EBŪ-U BIZENBĪ,FAGFIRLĪ FE INNEHU LĀ JAGFIRU-Z-ZUNŪBE ILLĀ ENTE.",
+      "english": "Allaahumma 'Anta Rabbee laa 'ilaaha 'illaa 'Anta, khalaqtanee wa 'anaa 'abduka, wa 'anaa 'alaa 'ahdika wa wa'dika mas-tata'tu, 'a'oothu bika min sharri maa sana'tu, 'aboo'u laka bini'matika 'alayya, wa 'aboo'u bithanbee faghfir lee fa'innahu laa yaghfiruth-thunooba 'illaa 'Anta."
+    },
+    "benefits": {
+      "bosnian": [
+        {
+          "title": "Obecan je ulazak u Džennet",
+          "source": "„Ko izgovori ovaj istigfar (dovu) ujutro, čvrsto vjerujući u njegove riječi, te umre tog dana prije nego omrkne, on je od stanovnika Dženneta, ako ga kaže u toku noći čvrsto uvjeren u te riječi, i umre prije nego svane, pa i on je od stanovnika Dženneta.“"
+        }
+      ],
+      "english": [
+        {
+          "title": "",
+          "source": "Whoever recites this with conviction in the evening and dies during that night shall enter Paradise, and whoever recites it with conviction in the morning and dies during that day shall enter Paradise."
+        }
+      ]
+    },
+    "source": {
+      "bosnian": "Buhari, Nesai, Tirmizi",
+      "english": "Al-Bukhari 7/150. Other reports are in An-Nasa'i and At-Tirmithi."
+    },
+    "sentences": [
+      {
+        "arabic": "للَّهُمَّ",
+        "bosnian": "Allahu,",
+        "transcription": "ALLĀHUMME",
+        "startSecond": 0.1,
+        "endSecond": 1.3
+      },
+      {
+        "arabic": "أَنْتَ",
+        "bosnian": "Ti si",
+        "transcription": "ENTE",
+        "startSecond": 1.4,
+        "endSecond": 1.8
+      },
+      {
+        "arabic": "رَبِّى،",
+        "bosnian": "Gospodar moj,",
+        "transcription": "RABBĪ,",
+        "startSecond": 1.9,
+        "endSecond": 2.7
+      },
+      {
+        "arabic": "لَا",
+        "bosnian": "nema",
+        "transcription": "LĀ",
+        "startSecond": 2.8,
+        "endSecond": 4.4
+      },
+      {
+        "arabic": "إِلَهَ",
+        "bosnian": "boga",
+        "transcription": "ILĀHE",
+        "startSecond": 4.5,
+        "endSecond": 5.4
+      },
+      {
+        "arabic": "إِلاَّ",
+        "bosnian": "osim",
+        "transcription": "ILLĀ",
+        "startSecond": 5.5,
+        "endSecond": 6.2
+      },
+      {
+        "arabic": "أَنْتَ،",
+        "bosnian": "Tebe.",
+        "transcription": "ENTE,",
+        "startSecond": 6.3,
+        "endSecond": 7.6
+      },
+
+      {
+        "arabic": "خَلَقْتَنِى",
+        "bosnian": "Stvorio si me",
+        "transcription": "HALEKTENĪ",
+        "startSecond": 7.7,
+        "endSecond": 8.8
+      },
+      {
+        "arabic": "وَأَنَا",
+        "bosnian": "i ja sam",
+        "transcription": "VE ENE",
+        "startSecond": 8.9,
+        "endSecond": 9.5
+      },
+      {
+        "arabic": "عَبْدُكَ،",
+        "bosnian": "Tvoj rob.",
+        "transcription": "‘ABDUKE ( žene će reći: EMETUKE),",
+        "startSecond": 9.6,
+        "endSecond": 10.2
+      },
+
+      {
+        "arabic": "وَأَنَا",
+        "bosnian": "Ja sam",
+        "transcription": "VE ENE",
+        "startSecond": 10.4,
+        "endSecond": 11
+      },
+      {
+        "arabic": " عَلَى عَهْدِكَ وَوَعْدِكَ",
+        "bosnian": "na tragu zavjeta i obećanja datom Tebi,",
+        "transcription": "‘ALĀ ‘AHDIKE VE VA‘DIKE",
+        "startSecond": 11.1,
+        "endSecond": 13.7
+      },
+      {
+        "arabic": "اسْتَطَعْتُ،",
+        "bosnian": "koliko sam u mogućnosti.",
+        "transcription": "MESTETA‘TU,",
+        "startSecond": 13.8,
+        "endSecond": 15.1
+      },
+
+      {
+        "arabic": "أَعُوذُ بِكَ",
+        "bosnian": "Tebi se sklanjam",
+        "transcription": "E‘ŪZU BIKE",
+        "startSecond": 15.3,
+        "endSecond": 16.6
+      },
+      {
+        "arabic": "مِنْ شَرِّ",
+        "bosnian": "od zla",
+        "transcription": "MIN ŠERRI",
+        "startSecond": 16.7,
+        "endSecond": 18.3
+      },
+      {
+        "arabic": "مَا صَنَعْتُ،",
+        "bosnian": "koje sam počinio.",
+        "transcription": "MĀ SANA‘TU,",
+        "startSecond": 18.4,
+        "endSecond": 19.9
+      },
+
+      {
+        "arabic": "أَبُوءُ لَكَ",
+        "bosnian": "Priznajem Tvoje",
+        "transcription": "EBŪ-U LEKE",
+        "startSecond": 20,
+        "endSecond": 22.8
+      },
+      {
+        "arabic": "بِنِعْمَتِكَ عَلَىَّ،",
+        "bosnian": "blagodati prema meni",
+        "transcription": "BI NI‘METIKE ‘ALEJJE,",
+        "startSecond": 22.9,
+        "endSecond": 24.8
+      },
+
+      {
+        "arabic": "وَأَبُوءُ",
+        "bosnian": "i Tebi priznajem",
+        "transcription": "VE EBŪ-U",
+        "startSecond": 24.9,
+        "endSecond": 28
+      },
+      {
+        "arabic": "بِذَنْبِى،",
+        "bosnian": "svoje grijehe.",
+        "transcription": "BIZENBĪ,",
+        "startSecond": 28.1,
+        "endSecond": 30
+      },
+
+      {
+        "arabic": "اغْفِرْ لِي،",
+        "bosnian": "Stoga, oprosti mi,",
+        "transcription": "FAGFIRLĪ",
+        "startSecond": 30.2,
+        "endSecond": 31.8
+      },
+      {
+        "arabic": "فَإِنَّهُ لَا يَغْفِرُ الذُّنُوبَ",
+        "bosnian": "jer niko drugi grijehe ne oprašta,",
+        "transcription": "FE INNEHU LĀ JAGFIRU-Z-ZUNŪBE",
+        "startSecond": 31.85,
+        "endSecond": 36.4
+      },
+      {
+        "arabic": "إِلاَّ أَنْتَ",
+        "bosnian": "osim Tebe.",
+        "transcription": "ILLĀ ENTE.",
+        "startSecond": 36.5,
+        "endSecond": 38.5
+      }
+    ]
+  },
+  {
+    "arabic": "رَضِيتُ بِاللهِ رَبًّا، وَ بِالإسْلاَمِ دِينًا، وَ بِمُحَمَّدٍ صَلَّى اللهُ عَلَيْهِ وَ آلِهِ وَ سَلَّمَ نَبِيًّا",
+    "audio": "assets/audio/raditu.mp3",
+    "category": "MORNING&EVENING",
+    "recitate": 3,
+    "counter": 0,
+    "id": 2,
+    "translation": {
+      "bosnian": "Zadovoljan sam da mi je Allah Gospodar, vjera islam, Muhammed, sallallahu alejhi ve sellem, vjerovjesnik.",
+      "english": "I am pleased with Allah as my Lord, with Islam as my religion and with Muhammad (peace and blessings of Allah be upon him) as my Prophet."
+    },
+    "transcription": {
+      "bosnian": "REDĪTU BILLĀHI RABBĀ, VE BI-L-ISLĀMI DĪNĀ, VE BI MUHAMMEDIN SALLĀLLAHU ‘ALEJHI VE SELLEME NEBIJJĀ.",
+      "english": "Radheetu billaahi Rabban, wa bil-'Islaami deenan, wa bi-Muhammadin (sallallaahu 'alayhi wa sallama) Nabiyyan."
+    },
+    "source": {
+      "bosnian": "Ahmed, Tirmizi, Ebu Dawud",
+      "english": "Ahmad 4/ 337, Abu Dawud 4/318, An-Nasa'i, 'Amalul-Yawm wal-Laylah p. 4, Ibn As-Sunni (no. 68), At-Tirmithi 5/465. Its chain of transmission is good (Hasan), Ibn Baz, p. 39."
+    },
+    "benefits": {
+      "bosnian": [
+        {
+          "title": "Obecan je ulazak u Džennet",
+          "source": "Rekao je Allahov Poslanik sallallahu alejhi ve sellem: „Ko ujutro ustane i kaže ove riječi, ja sam mu garant, odnosno ja ću ga uzeti za ruku i uvesti u Džennet.”"
+        }
+      ],
+      "english": [
+        {
+          "title": "",
+          "source": "Allah has promised that anyone who says this three times every morning or evening will be pleased on the Day of Resurrection."
+        }
+      ]
+    },
+    "sentences": [
+      {
+        "bosnian": "Zadovoljan sam",
+        "arabic": "رَضِيتُ",
+        "transcription": "REDĪTU",
+        "startSecond": 0.1,
+        "endSecond": 1.2
+      },
+      {
+        "bosnian": "da mi je Allah Gospodar,",
+        "arabic": "بِاللهِ رَبًّا،",
+        "transcription": "BILLĀHI RABBĀ,",
+        "startSecond": 1.3,
+        "endSecond": 3
+      },
+      {
+        "bosnian": "vjera islam,",
+        "arabic": "وَ بِالإسْلاَمِ دِينًا،",
+        "transcription": "VE BI-L-ISLĀMI DĪNĀ,",
+        "startSecond": 3.3,
+        "endSecond": 5.9
+      },
+      {
+        "bosnian": "Muhammed, sallallahu alejhi ve sellem, vjerovjesnik.",
+        "arabic": "وَ بِمُحَمَّدٍ صَلَّى اللهُ عَلَيْهِ وَ آلِهِ وَ سَلَّمَ نَبِيًّا",
+        "transcription": "VE BI MUHAMMEDIN SALLĀLLAHU ‘ALEJHI VE SELLEME NEBIJJĀ.",
+        "startSecond": 6,
+        "endSecond": 12.5
+      }
+    ]
+  },
+  {
+    "arabic": "بِسْمِ اللَّهِ الَّذِي لاَ يَضُرُّ مَعَ اسْمِهِ شَيْءٌ فِي الْأَرْضِ وَلاَ فِي السّمَاءِ, وَهُوَ السَّمِيعُ الْعَلِيمُِ",
+    "audio": "assets/audio/bismillahillezi.mp3",
+    "category": "MORNING&EVENING",
+    "recitate": 3,
+    "counter": 0,
+    "id": 3,
+    "translation": {
+      "bosnian": "U ime Onoga s čijim imenom ništa ne može naštetiti ni na Zemlji, ni na nebu, a On sve čuje i sve zna.",
+      "english": "In the Name of Allah, Who with His Name nothing can cause harm in the earth nor in the heavens, and He is the All-Hearing, the All-Knowing."
+    },
+    "transcription": {
+      "bosnian": "BISMILLĀHILLEZĪ LĀ JEDURRU ME‘ASMIHI ŠEJ-UN FI-L-ERDI VE LĀ FI-S-SEMĀI VE HUVE-S-SEMĪ‘U-L-‘ALĪM.",
+      "english": "Bismillaahil-lathee laa yadhurru ma'as-mihi shay'un fil-'ardhi wa laa fis-samaa'i wa Huwas-Samee 'ul- 'Aleem."
+    },
+    "source": {
+      "bosnian": "Ebu Dawud, Tirmizi, Ibn Madze, Ahmed",
+      "english": "Abu Dawud 4/323, At-Tirmithi 5/465, Ibn Majah 2/332, Ahmad. Ibn Majah's chain of transmission is good (Hasan), Ibn Baz, p. 39."
+    },
+    "benefits": {
+      "bosnian": [
+        {
+          "title": "Zastita od nesreca",
+          "source": "Allahov Poslanik sallallahu alejhi ve sellem je rekao: „Koji god vjernik ujutro svakog dana, i u akšam svake noći, tri puta kaže: ”Bismillahillezi la jedurru me‘asmihi šej’un fil erdi ve la fis-semai ve huves- semi‘ul-‘alim – U ime Allaha s čijim imenom ništa ne može nauditi ni na Zemlji ni na nebu, i On sve čuje i zna, toga dana ili noći mu se neće dogoditi nikakva nesreća.”"
+        }
+      ],
+      "english": [
+        {
+          "title": "",
+          "source": "Whoever recites it three times in the morning will not be afflicted by any calamity before evening, and whoever recites it three times in the evening will not be overtaken by any calamity before morning."
+        }
+      ]
+    },
+    "sentences": [
+      {
+        "bosnian": "U ime Onoga s čijim imenom ništa ne može naštetiti",
+        "arabic": "بِسْمِ اللَّهِ الَّذِي لاَ يَضُرُّ مَعَ اسْمِهِ شَيْءٌ",
+        "transcription": "BISMILLĀHILLEZĪ LĀ JEDURRU ME‘ASMIHI ŠEJ-UN",
+        "startSecond": 0.1,
+        "endSecond": 5.5
+      },
+      {
+        "bosnian": "ni na Zemlji,",
+        "arabic": "فِي الْأَرْضِ",
+        "transcription": "FI-L-ERDI",
+        "startSecond": 5.6,
+        "endSecond": 6.5
+      },
+      {
+        "bosnian": "ni na nebu,",
+        "arabic": "وَلاَ فِي السّمَاءِ,",
+        "transcription": "VE LĀ FI-S-SEMĀI,",
+        "startSecond": 6.6,
+        "endSecond": 9.5
+      },
+      {
+        "bosnian": "a On sve čuje i sve zna.",
+        "arabic": " وَهُوَ السَّمِيعُ الْعَلِيمُِ",
+        "transcription": "VE HUVE-S-SEMĪ‘U-L-‘ALĪM.",
+        "startSecond": 9.6,
+        "endSecond": 13
+      }
+    ]
+  },
+  {
+    "arabic": "حَسْبِيَ الله لاَ إِلهَ إِلاَّ هُوَ عَلَيْهِ تَوَكَّلتُ وَهُوَ رَبُّ الْعَرشِ الْعَظِيمِ",
+    "audio": "assets/audio/hasbijallahu.mp3",
+    "category": "MORNING&EVENING",
+    "recitate": 7,
+    "counter": 0,
+    "id": 4,
+    "translation": {
+      "bosnian": "Allah mi je dovoljan, nema boga osim Njega! Na Njega se oslanjam, i On je Gospodar Arša veličanstvenog!",
+      "english": ""
+    },
+    "transcription": {
+      "bosnian": "",
+      "english": ""
+    },
+    "source": {
+      "bosnian": "Ebu Davud",
+      "english": "Abu Davud 5081"
+    },
+    "benefits": {
+      "bosnian": [
+        {
+          "title": "Zastita i spas od svih briga",
+          "source": "Allahov Poslanik sallallahu alejhi ve sellem je rekao: „Čovjeku koji ujutro i navečer sedam puta izgovori: “Hasbijallahu la ilahe illa huve alejhi tevekkeltu ve huve Rabbul-Aršil-azim! – Dovoljan mi je Allah, nema boga osim Njega, na Njega sam se oslonio, a On je Gospodar Arša veličanstvenog!”, Allah će otkloniti brige dunjaluka i ahireta!”"
+        }
+      ],
+      "english": [
+        {
+          "title": "",
+          "source": ""
+        }
+      ]
+    },
+    "sentences": [
+      {
+        "bosnian": "Allah mi je dovoljan,",
+        "arabic": "حَسْبِيَ الله",
+        "transcription": "HASBIJALLAH,",
+        "startSecond": 0.1,
+        "endSecond": 1.5
+      },
+      {
+        "bosnian": "nema boga osim Njega!",
+        "arabic": "لاَ إِلهَ إِلاَّ هُوَ",
+        "transcription": "LA ILAHE ILLA HUVE",
+        "startSecond": 1.6,
+        "endSecond": 5.3
+      },
+      {
+        "bosnian": "Na Njega se oslanjam,",
+        "arabic": "عَلَيْهِ تَوَكَّلتُ",
+        "transcription": "ALEJHI TEVEKELTU,",
+        "startSecond": 5.4,
+        "endSecond": 7.2
+      },
+      {
+        "bosnian": "i On je Gospodar Arša veličanstvenog!",
+        "arabic": "وَهُوَ رَبُّ الْعَرشِ الْعَظِيمِ",
+        "transcription": "VE HUVE RABBUL ARŠIL AZIM",
+        "startSecond": 7.3,
+        "endSecond": 11.5
+      }
+    ]
+  },
+  {
+    "arabic": "اللهُمَّ إِنِّي أَسْأَلُكَ الْعَفْوَ وَالْعَافِيَةَ فِي الدُّنْيَا وَالْآخِرَةِ، اللهُمَّ إِنِّي أَسْأَلُكَ الْعَفْوَ وَالْعَافِيَةَ فِي دِينِي وَدُنْيَايَ وَأَهْلِي وَمَالِي، اللهُمَّ اسْتُرْ عَوْرَاتِي، وَآمِنْ رَوْعَاتِي، اللهُمَّ احْفَظْنِي مِنْ بَيْنِ يَدَيَّ، وَمِنْ خَلْفِي، وَعَنْ يَمِينِي، وَعَنْ شِمَالِي، وَمِنْ فَوْقِي، وَأَعُوذُ بِعَظَمَتِكَ أَنْ أُغْتَالَ مِنْ تَحْتِي",
+    "audio": "assets/audio/afve.mp3",
+    "category": "MORNING&EVENING",
+    "recitate": 1,
+    "counter": 0,
+    "id": 5,
+    "translation": {
+      "bosnian": "Allahu, molim Te za oprost i zaštitu Tvojuna dunjaluku i na ahiretu. Allahu, molim Te za oprost i zaštitu Tvojuu vjeri, na dunjaluku, u porodici i mojoj imovini. Allahu, zakloni moja sramna djela, a umiri moju bojazan. Allahu, sačuvaj me sa moje prednje strane, te od svega što me može zadesiti sa leđa, sa desne ili lijeve strane i odozgo. Prizivam Tvoju Veličinu da ne budem ščepan odozdo.",
+      "english": "O Allah, I seek Your forgiveness and Your protection in this world and the next. O Allah, I seek Your forgiveness and Your protection in my religion, in my worldly affairs, in my family and in my wealth. O Allah, conceal my secrets and preserve me from anguish. O Allah, guard me from what is in front of me and behind me, from my left, and from my right, and from above me. I seek refuge in Your Greatness from being struck down from beneath me."
+    },
+    "transcription": {
+      "bosnian": "ALLĀHUMME INNĪ ES ELUKE-L-‘AFVE VE-L-‘ĀFIJEH,FI-D-DUNJĀ VE-L-ĀHIREH.ALLĀHUMME INNĪ ES‘ELUKE-L-‘AFVE VE-L-‘ĀFIJEH,FĪ DĪNĪ VE DUNJĀJE,VE EHLĪ VE MĀLĪ.ALLĀHUMME- STUR ‘AVRĀTĪ,VE ĀMIN REV‘ĀTĪ.ALLĀHUMME-HFAZNĪ MIN BEJNI JEDEJJE VE MIN HALFĪ,VE ‘AN JEMĪNĪ VE ‘AN ŠIMĀLĪ,VE MINFEVKĪ,VE E‘ŪZU BI‘AZAMETIKE EN UGTĀLE MIN TAHTĪ.",
+      "english": "Allaahumma 'innee 'as'alukal-'afwa wal'aafiyata fid-dunyaa wal'aakhirati, Allaahumma 'innee 'as'alukal-'afwa wal'aafiyata fee deenee wa dunyaaya wa 'ahlee, wa maalee , Allaahum-mastur 'awraatee, wa 'aamin raw'aatee, Allaahum-mahfadhnee min bayni yadayya, wa min khalfee, wa 'an yameenee, wa 'an shimaalee, wa min fawqee, wa 'a'oothu bi'adhamatika 'an 'ughtaala min tahtee."
+    },
+    "benefits": {},
+    "source": {
+      "bosnian": "Ebu Dawud, Ibn Madže",
+      "english": "Abu Daud 5074 and Sahih Ibn Majah 2/332"
+    },
+    "sentences": [
+      {
+        "bosnian": "Allahu, molim Te za oprost i zaštitu Tvoju",
+        "arabic": "اللهُمَّ إِنِّي أَسْأَلُكَ الْعَفْوَ وَالْعَافِيَةَ،",
+        "transcription": "ALLĀHUMME INNĪ ES ELUKE-L-‘AFVE VE-L-‘ĀFIJEH,",
+        "startSecond": 0.1,
+        "endSecond": 5
+      },
+      {
+        "bosnian": "na dunjaluku i na ahiretu.",
+        "arabic": "فِي الدُّنْيَا وَالْآخِرَةِ،",
+        "transcription": "FI-D-DUNJĀ VE-L-ĀHIREH.",
+        "startSecond": 5.1,
+        "endSecond": 7.8
+      },
+      {
+        "bosnian": "Allahu, molim Te za oprost i zaštitu Tvoju",
+        "arabic": "اللهُمَّ إِنِّي أَسْأَلُكَ الْعَفْوَ وَالْعَافِيَةَ،",
+        "transcription": "ALLĀHUMME INNĪ ES‘ELUKE-L-‘AFVE VE-L-‘ĀFIJEH,",
+        "startSecond": 8.1,
+        "endSecond": 13
+      },
+      {
+        "bosnian": "u vjeri, na dunjaluku,",
+        "arabic": "فِي دِينِي وَدُنْيَايَ",
+        "transcription": "FĪ DĪNĪ VE DUNJĀJE,",
+        "startSecond": 14,
+        "endSecond": 17.3
+      },
+      {
+        "bosnian": "u porodici i mojoj imovini.",
+        "arabic": "وَأَهْلِي وَمَالِي،",
+        "transcription": "VE EHLĪ VE MĀLĪ.",
+        "startSecond": 17.4,
+        "endSecond": 20.2
+      },
+      {
+        "bosnian": "Allahu, zakloni moja sramna djela,",
+        "arabic": "اللهُمَّ اسْتُرْ عَوْرَاتِي،",
+        "transcription": "ALLĀHUMME- STUR ‘AVRĀTĪ,",
+        "startSecond": 20.3,
+        "endSecond": 23.3
+      },
+      {
+        "bosnian": "a umiri moju bojazan.",
+        "arabic": "وَآمِنْ رَوْعَاتِي،",
+        "transcription": "VE ĀMIN REV‘ĀTĪ.",
+        "startSecond": 24,
+        "endSecond": 26.8
+      },
+      {
+        "bosnian": "Allahu, sačuvaj me sa moje prednje strane, te od svega što me može zadesiti sa leđa,",
+        "arabic": "اللهُمَّ احْفَظْنِي مِنْ بَيْنِ يَدَيَّ، وَمِنْ خَلْفِي،",
+        "transcription": "ALLĀHUMME-HFAZNĪ MIN BEJNI JEDEJJE VE MIN HALFĪ,",
+        "startSecond": 27,
+        "endSecond": 32.5
+      },
+      {
+        "bosnian": "sa desne ili lijeve strane",
+        "arabic": "وَعَنْ يَمِينِي، وَعَنْ شِمَالِي،",
+        "transcription": "VE ‘AN JEMĪNĪ VE ‘AN ŠIMĀLĪ,",
+        "startSecond": 32.6,
+        "endSecond": 36.2
+      },
+      {
+        "bosnian": "i odozgo.",
+        "arabic": "وَمِنْ فَوْقِي،",
+        "transcription": "VE MINFEVKĪ,",
+        "startSecond": 36.3,
+        "endSecond": 37.5
+      },
+      {
+        "bosnian": "Prizivam Tvoju Veličinu da ne budem ščepan odozdo.",
+        "arabic": "وَأَعُوذُ بِعَظَمَتِكَ أَنْ أُغْتَالَ مِنْ تَحْتِي",
+        "transcription": "VE E‘ŪZU BI‘AZAMETIKE EN UGTĀLE MIN TAHTĪ.",
+        "startSecond": 38,
+        "endSecond": 43
+      }
+    ]
+  },
+  {
+    "arabic": "أَصْبَحْنَا وَأَصْبَحَ الْمُلْكُ لِلَّهِ، وَالْحَمْدُ لِلَّهِ،لَا إِلَهَ إِلَّا اللهُ، وَحْدَهُ لَا شَرِيكَ لَهُ،لَهُ الْمُلْكُ وَلَهُ الْحَمْدُ وَهُوَ عَلَى كُلِّ شَيْءٍ قَدِيرٌ،رَبِّ أَسْأَلُكَ خَيْرَ مَا فِي هذا اليوموَخَيْرَ مَا بَعْدَهَ،وَأَعُوذُ بِكَ مِنْ شَرِّ مَا فِي هذا اليوم وَشَرِّ مَا بَعْدَهَ،رَبِّ أَعُوذُ بِكَ مِنَ الْكَسَلِ وَسُوءِ الْكِبَرِ،رَبِّ أَعُوذُ بِكَ مِنْ عَذَابٍ فِي النَّارِوَعَذَابٍ فِي الْقَبْرِ",
+    "audio": "assets/audio/asbahna.mp3",
+    "category": "MORNING",
+    "recitate": 1,
+    "counter": 0,
+    "id": 6,
+    "translation": {
+      "bosnian": "Osvanusmo i osvanu svekolika Allahova vlast. Hvala Allahu i nema boga osim Njega Jedinog, Koji druga nema. Njemu pripada sva vlast i svaka pohvala i on nad svačim ima moć. Allahu, molim Te za sva dobra ovog dana i za dobra poslije njega. I utječem ti se od zla ovog dana i zla poslije njega. Gospodaru moj, Tebi se sklanjam pred lijenošću i zlohudom ohološću. Tebi se sklanjam pred kaznom Džehennema i kaburskom kaznom.",
+      "english": "We have entered a new day and with it all dominion is Allah's. Praise is to Allah. None has the right to be worshipped but Allah alone, Who has no partner. To Allah belongs the dominion, and to Him is the praise and He is Able to do all things. My Lord, I ask You for the goodness of this day and of the days that come after it, and I seek refuge in You from the evil of this day and of the days that come after it. My Lord, I seek refuge in You from laziness and helpless old age. My Lord, I seek refuge in You from the punishment of Hell-fire , and from the punishment of the grave."
+    },
+    "transcription": {
+      "bosnian": "ASBAHNĀ VE ASBEHAL MULKU LILLĀH,VEL HAMDU LILLĀH, LĀ ILĀHE ILLALLĀHU VAHDEHU LĀ ŠERĪKE LEHU, LEHU-L-MULKU VE LEHU-L-HAMDU VE HUVE ‘ALĀ KULLI ŠEJ-IN KADĪR. RABBI ESELUKE HAJRE MĀ FĪ HĀZE-L-JEVMI, VE HAJRE MĀ BA‘DEHU. VE E‘ŪZU BIKE MIN ŠERRI MĀ FĪ HĀZEL JEVMI, VE ŠERRI MĀ BA‘DEHU. RABBI E‘ŪZU BIKE MINEL KESELI VE SŪIL KIBER, RABBI E‘ŪZU BIKE MIN ‘AZĀBIN FI-N-NĀR, VE ‘AZĀBIN FI-L-KABR.",
+      "english": "Asbahnaa wa 'asbahal-mulku lillaahi walhamdu lillaahi, laa 'ilaaha 'illallaahu wahdahu laa shareeka lahu, lahul-mulku wa lahul-hamdu wa Huwa 'alaa kulli shay'in Qadeer. Rabbi 'as'aluka khayra maa fee haathal-yawmi wa khayra maa ba'dahu wa 'a'oothu bika min sharri maa fee haathal-yawmi wa sharri maa ba'dahu, Rabbi 'a'oothu bika minal-kasali, wa soo'il-kibari, Rabbi 'a'oothu bika min 'athaabin fin-naari wa 'athaabin fil-qabri."
+    },
+    "source": {
+      "bosnian": "Muslim",
+      "english": "Muslim 4/2088"
+    },
+    "benefits": {},
+    "sentences": [
+      {
+        "arabic": "أَصْبَحْنَا وَأَصْبَحَ الْمُلْكُ لِلَّهِ، وَالْحَمْدُ لِلَّهِ،",
+        "bosnian": "Osvanusmo i osvanu svekolika Allahova vlast. Hvala Allahu.",
+        "transcription": "ASBAHNĀ VE ASBEHAL MULKU LILLĀHI, VEL HAMDU LILLĀH,",
+        "startSecond": 0.1,
+        "endSecond": 7
+      },
+      {
+        "arabic": "لَا إِلَهَ إِلَّا اللهُ، وَحْدَهُ لَا شَرِيكَ لَهُ،",
+        "bosnian": "Nema boga osim Njega Jedinog, Koji druga nema.",
+        "transcription": "LĀ ILĀHE ILLALLĀHU VAHDEHU LĀ ŠERĪKE LEH,",
+        "startSecond": 7.2,
+        "endSecond": 12
+      },
+      {
+        "arabic": "لَهُ الْمُلْكُ وَلَهُ الْحَمْدُ وَهُوَ عَلَى كُلِّ شَيْءٍ قَدِيرٌ،",
+        "bosnian": "Njemu pripada sva vlast i svaka pohvala i on nad svačim ima moć.",
+        "transcription": "LEHU-L-MULKU VE LEHU-L-HAMDU VE HUVE ‘ALĀ KULLI ŠEJ-IN KADĪR.",
+        "startSecond": 12.2,
+        "endSecond": 20
+      },
+      {
+        "arabic": "رَبِّ أَسْأَلُكَ خَيْرَ مَا فِي هذا اليوم",
+        "bosnian": "Allahu, molim Te za sva dobra ovog dana",
+        "transcription": "RABBI ESELUKE HAJRE MĀ FĪ HĀZE-L-JEVMI",
+        "startSecond": 20.2,
+        "endSecond": 26
+      },
+      {
+        "arabic": "وَخَيْرَ مَا بَعْدَهَ،",
+        "bosnian": "i za dobra poslije njega.",
+        "transcription": "VE HAJRE MĀ BA‘DEH,",
+        "startSecond": 26.2,
+        "endSecond": 28.5
+      },
+      {
+        "arabic": "وَأَعُوذُ بِكَ مِنْ شَرِّ مَا فِي هذا اليوم وَشَرِّ مَا بَعْدَهَ،",
+        "bosnian": "I utječem ti se od zla ovog dana i zla poslije njega.",
+        "transcription": "VE E‘ŪZU BIKE MIN ŠERRI MĀ FĪ HĀZEL JEVMI VE ŠERRI MĀ BA‘DEH.",
+        "startSecond": 28.6,
+        "endSecond": 35.5
+      },
+      {
+        "arabic": "رَبِّ أَعُوذُ بِكَ مِنَ الْكَسَلِ وَسُوءِ الْكِبَرِ،",
+        "bosnian": "Gospodaru moj, Tebi se sklanjam pred lijenošću i zlohudom ohološću.",
+        "transcription": "RABBI E‘ŪZU BIKE MINEL KESELI VE SŪIL KIBER,",
+        "startSecond": 35.6,
+        "endSecond": 42.2
+      },
+      {
+        "arabic": "رَبِّ أَعُوذُ بِكَ مِنْ عَذَابٍ فِي النَّارِوَعَذَابٍ فِي الْقَبْرِ",
+        "bosnian": "Tebi se sklanjam pred kaznom Džehennema i kaburskom kaznom.",
+        "transcription": "RABBI E‘ŪZU BIKE MIN ‘AZĀBIN FI-N-NĀR, VE ‘AZĀBIN FI-L-KABR.",
+        "startSecond": 42.5,
+        "endSecond": 50
+      }
+    ]
+  },
+  {
+    "arabic": "اللَّهُمَّ بِكَ أَصْبَحْنَا وبِكَ أَمْسَيْنَا، وَبِكَ نَحْيَا وَبِكَ نَمُوتُ، وَإِلَيْكَ النُشور",
+    "audio": "assets/audio/asbahna2.mp3",
+    "category": "MORNING",
+    "recitate": 1,
+    "counter": 0,
+    "id": 7,
+    "translation": {
+      "bosnian": "Allahu, Tvojom voljom dočekasmo jutro i Tvojom voljom uđosmo u noć. Tvojom voljom živimo, prema Tvojoj volji umiremo i prema Tvojoj volji bivamo ponovo proživljeni.",
+      "english": "O Allah , by You we enter the morning and by You we enter the evening, by You we live and and by You we die, and to You is the Final Return."
+    },
+    "transcription": {
+      "bosnian": "ALLĀHUMME BIKE ASBAHNĀ VE BIKE EMSEJNĀ VE BIKE NAHJĀ VE BIKE NEMŪT VE ILEJKEL NUŠŪR.",
+      "english": "Allaahumma bika 'asbahnaa, wa bika 'amsaynaa, wa bika nahyaa, wa bika namootu wa 'ilaykan-nushoor."
+    },
+    "benefits": {},
+    "source": {
+      "bosnian": "Tirmizi",
+      "english": "At-Tirmithi 5/466"
+    },
+    "sentences": [
+      {
+        "arabic": "اللَّهُمَّ بِكَ أَصْبَحْنَا",
+        "bosnian": "Allahu, Tvojom voljom dočekasmo jutro",
+        "transcription": "ALLĀHUMME BIKE ASBAHNĀ",
+        "startSecond": 0.1,
+        "endSecond": 4
+      },
+      {
+        "arabic": "وبِكَ أَمْسَيْنَا،",
+        "bosnian": "i Tvojom voljom uđosmo u noć.",
+        "transcription": "VE BIKE EMSEJNĀ,",
+        "startSecond": 4.2,
+        "endSecond": 6.5
+      },
+      {
+        "arabic": "وَبِكَ نَحْيَا",
+        "bosnian": "Tvojom voljom živimo,",
+        "transcription": "VE BIKE NAHJĀ",
+        "startSecond": 6.6,
+        "endSecond": 8.2
+      },
+      {
+        "arabic": "وَبِكَ نَمُوتُ،",
+        "bosnian": "prema Tvojoj volji umiremo",
+        "transcription": "VE BIKE NEMŪTU,",
+        "startSecond": 8.5,
+        "endSecond": 10
+      },
+      {
+        "arabic": "وَإِلَيْكَ النُشور",
+        "bosnian": "i prema Tvojoj volji bivamo ponovo proživljeni.",
+        "transcription": "VE ILEJKEN- NUŠŪR.",
+        "startSecond": 10.1,
+        "endSecond": 14
+      }
+    ]
+  },
+  {
+    "arabic": "أَصْبَحْنَا عَلَى فِطْرَةِ الْإِسْلَامِ، وَعَلَى كَلِمَةِ الْإِخْلَاصِ، وَعَلَى دِينِ نَبِيِّنَا مُحَمَّدٍ صَلَّى اللهُ عَلَيْهِ وَسَلَّمَ، وَعَلَى مِلَّةِ أَبِينَا إِبْرَاهِيمَ حَنِيفًا مُسْلِمًا، وَمَا كَانَ مِنَ الْمُشْرِكِينَ",
+    "audio": "assets/audio/asbahna'ala fitreti-l-islami.mp3",
+    "category": "MORNING",
+    "recitate": 1,
+    "counter": 0,
+    "id": 8,
+    "translation": {
+      "bosnian": "Jutro smo dočekali u krilu islama, na principima šehadeta (riječi: la ilahe illellah), u vjeri vjerovjesnika našega Muhammeda sallallahu ’alejhi ve sellem i u vjeri praoca našeg Ibrahima, a.s., iskrenog monoteiste, muslimana, koji nije bio idolopoklonik.",
+      "english": "We have entered a new day upon the natural religion of Islam, the word of sincere devotion, the religion of our Prophet Muhammad (peace and blessings of Allah be upon him), and the faith of our father Ibrahim. He was upright (in worshipping Allah), and a Muslim. He was not of those who worship others besides Allah."
+    },
+    "transcription": {
+      "bosnian": "ASBAHNA ‘ALĀ FITRETIL-ISLĀM,VE ALA KELIMETIL-IHLĀS,VE ALA DÎNI NEBIJJINĀ MUHAMMEDIN SALLALLĀHU ‘ALEJHI VE SELLEM, VE ALA MILLETI EBÎNĀ IBRĀHÎME HANIFEN MUSLIMEN,VE MĀ KĀNE MINEL-MUŠRIKÎN.",
+      "english": "Asbahnaa 'alaa fitratil-'Islaami wa 'alaa kalimatil-'ikhlaasi, wa 'alaa deeni Nabiyyinaa Muhammadin (sallallaahu 'alayhi wa sallama), wa 'alaa millati 'abeenaa 'Ibraaheema, haneefan Musliman wa maa kaana minal-mushrikeen."
+    },
+    "benefits": {},
+    "source": {
+      "bosnian": "Ahmed, Tirmizi",
+      "english": "Ahmad 3/406-7, 5/123, An-Nasa'i, 'Amalul- Yawm wal-Laylah (no. 34), At-Tirmithi 4/209."
+    },
+    "sentences": [
+      {
+        "arabic": "أَصْبَحْنَا عَلَى فِطْرَةِ الْإِسْلَامِ،",
+        "bosnian": "Jutro smo dočekali u krilu islama,",
+        "transcription": "ASBAHNA ‘ALĀ FITRETIL-ISLĀM,",
+        "startSecond": 0.1,
+        "endSecond": 5
+      },
+      {
+        "arabic": "وَعَلَى كَلِمَةِ الْإِخْلَاصِ،",
+        "bosnian": "na principima šehadeta (riječi: la ilahe illellah),",
+        "transcription": "VE ALA KELIMETIL-IHLĀS,",
+        "startSecond": 5.1,
+        "endSecond": 9.8
+      },
+      {
+        "arabic": "وَعَلَى دِينِ نَبِيِّنَا مُحَمَّدٍ صَلَّى اللهُ عَلَيْهِ وَسَلَّمَ،",
+        "bosnian": "u vjeri vjerovjesnika našega Muhammeda sallallahu ’alejhi ve sellem",
+        "transcription": "VE ALA DÎNI NEBIJJINĀ MUHAMMEDIN SALLALLĀHU ‘ALEJHI VE SELLEM, ",
+        "startSecond": 9.9,
+        "endSecond": 17.8
+      },
+      {
+        "arabic": "وَعَلَى مِلَّةِ أَبِينَا إِبْرَاهِيمَ حَنِيفًا مُسْلِمًا،",
+        "bosnian": "i u vjeri praoca našeg Ibrahima, a.s., iskrenog monoteiste, muslimana,",
+        "transcription": "VE ALA MILLETI EBÎNĀ IBRĀHÎME HANIFEN MUSLIMEN,",
+        "startSecond": 18,
+        "endSecond": 26.9
+      },
+      {
+        "arabic": "وَمَا كَانَ مِنَ الْمُشْرِكِينَ",
+        "bosnian": "koji nije bio idolopoklonik.",
+        "transcription": "VE MĀ KĀNE MINEL-MUŠRIKÎN.",
+        "startSecond": 27,
+        "endSecond": 33
+      }
+    ]
+  },
+  {
+    "arabic": "سُبْحَانَ اللَّهِ وَبِحَمْدِهِ، عَدَدَ خَلْقِهِ، وَرِضَا نَفْسِهِ، وَزِنَةَ عَرْشِهِ، وَمِدَادَ كَلِمَاتِهِ",
+    "audio": "assets/audio/adede-halkih.mp3",
+    "category": "MORNING",
+    "recitate": 3,
+    "counter": 0,
+    "id": 9,
+    "translation": {
+      "bosnian": "Neka je slavljen i hvaljen Allah u razmjerama brojnosti Njegovih stvorenih bića, u razmjeri Njegovog zadovoljstva, težine Njegova prijestolja (Arša) i mnoštva osebujnosti Njegovih riječi.",
+      "english": "Glory is to Allah and praise is to Him, by the multitude of His creation, by His Pleasure, by the weight of His Throne, and by the extent of His Words."
+    },
+    "transcription": {
+      "bosnian": "SUBHĀNALLĀHI VE BI HAMDIH, ‘ADEDE HALKIH, VE RIDĀ NEFSIH, VE ZINETE ‘ARŠIH, VE MIDĀDE KELIMĀTIH.",
+      "english": "Subhaanallaahi wa bihamdihi: 'Adada khalqihi, wa ridhaa nafsihi, wa zinata 'arshihi wa midaada kalimaatihi."
+    },
+    "benefits": {
+      "bosnian": [
+        {
+          "title": "Medju najvrijednijim zikrovima",
+          "source": "Od majke pravovjernih Džuvejrije r.a. se prenosi da je Allahov Poslanik sallallahu alejhi ve sellem izašao od nje rano, nakon što je klanjao sabah, a ona je ostala na mjestu gdje je klanjala. Zatim se vratio kada ja nastupilo vrijeme duha (namaza), a ona je i dalje sjedila na svom mjestu, pa joj je rekao: “Još uvijek si ondje gdje sam te ostavio?” Rekla sam: da. Tada je Allahov Poslanik sallallahu alejhi ve sellem rekao: “Nakon što sam otišao rekao sam četiri riječi tri puta, kada bi ih vagali s onim što si rekla (proučila) od jutros bile bi teže od njih, a te riječi su: Neka je slavljen i hvaljen Allah u razmjerama brojnosti Njegovih stvorenih bića, u razmjeri Njegovog zadovoljstva, težine Njegova prijestolja (Arša) i mnoštva osebujnosti Njegovih riječi."
+        }
+      ],
+      "english": [
+        {
+          "title": "",
+          "source": "Juwairiyah bint Al-Harith (May Allah be pleased with her) reported, the Mother of the Believers:The Prophet (sallallaahu ’alayhi wa sallam) came out from my apartment in the morning as I was busy in performing the dawn prayer. He came back in the forenoon and found me sitting there. The Prophet (sallallaahu ’alayhi wa sallam) said, “Are you still in the same position as I left you.” I replied in the affirmative. Thereupon the Prophet said, “I recited four words three times after I had left you. If these are to be weighed against all you have recited since morning, these will be heavier. These are: Subhan-Allahi wa bihamdihi, `adada khalqihi, wa rida nafsihi, wa zinatah `arshihi, wa midada kalimatihi"
+        }
+      ]
+    },
+    "source": {
+      "bosnian": "Muslim",
+      "english": "Muslim 4/2090"
+    },
+    "sentences": [
+      {
+        "bosnian": "Neka je slavljen i hvaljen Allah",
+        "arabic": "سُبْحَانَ اللَّهِ وَبِحَمْدِهِ،",
+        "transcription": "SUBHĀNALLĀHI VE BI HAMDIH,",
+        "startSecond": 0.1,
+        "endSecond": 2.8
+      },
+      {
+        "bosnian": "u razmjerama brojnosti Njegovih stvorenih bića,",
+        "arabic": "عَدَدَ خَلْقِهِ،",
+        "transcription": "‘ADEDE HALKIH,",
+        "startSecond": 3,
+        "endSecond": 5
+      },
+      {
+        "bosnian": "u razmjeri Njegovog zadovoljstva,",
+        "arabic": "وَرِضَا نَفْسِهِ،",
+        "transcription": "VE RIDĀ NEFSIH,",
+        "startSecond": 5.1,
+        "endSecond": 7
+      },
+      {
+        "bosnian": "težine Njegova prijestolja (Arša)",
+        "arabic": "وَزِنَةَ عَرْشِهِ،",
+        "transcription": "VE ZINETE ‘ARŠIH,",
+        "startSecond": 7.1,
+        "endSecond": 8.9
+      },
+      {
+        "bosnian": "i mnoštva osebujnosti Njegovih riječi.",
+        "arabic": "وَمِدَادَ كَلِمَاتِهِ",
+        "transcription": "VE MIDĀDE KELIMĀTIH.",
+        "startSecond": 9,
+        "endSecond": 11
+      }
+    ]
+  },
+  {
+    "arabic": "أَعُوذُ بِكَلِمَاتِ اللَّهِ التَّامَّاتِ مِنْ شَرِّ مَا خَلَقَ",
+    "audio": "assets/audio/euzubikellimatillahi.mp3",
+    "category": "EVENING",
+    "recitate": 3,
+    "counter": 0,
+    "id": 10,
+    "translation": {
+      "bosnian": "Utječem se savršenim Allahovim riječima od zla onoga što je stvorio.",
+      "english": "I seek refuge in the Perfect Words of Allah from the evil of what He has created."
+    },
+    "transcription": {
+      "bosnian": "E‘ŪZU BIKELIMĀTILLĀHI-T-TĀMMĀTI MIN ŠERRI MĀ HALEK.",
+      "english": "A'oothu bikalimaatil-laahit-taammaati min sharri maa khalaqa"
+    },
+    "benefits": {
+      "bosnian": [
+        {
+          "title": "Zastita od insekata",
+          "source": "Muslim u svom Sahihu bilježi predanje Ebu Hurejre r.a., koji prenosi da je jedan čovjek došao Allahovom Poslaniku sallallahu alejhi ve sellem i rekao: “Allahov Poslaniče, kakve sam samo bolove podnio sinoć nakon što me ujeo akrep „Allahov Poslanik sallallahu alejhi ve sellem mu reče: “Da si, kada si omrknuo, rekao: „Euzu bi kelimatillahit-tamati min šerri ma halek“ (Utječem se Allahu savršenim riječima od zla svega što je stvorio), ne bi ti akrep mogao nauditi.“"
+        },
+        {
+          "title": "Osiguranje u nekom mjestu",
+          "source": "Kaže Allahov Poslanik sallallahu alejhi ve sellem: “Ko dođe u neko mjesto pa prouči ‘Euzu bi kelimatillahi tammati min šerri ma halek’ – ‘Utječem se sa Allahovim potpunim riječima od zla koje je stvorio’ – ništa mu neće moći nauditi dok boravi na tom mjestu.“"
+        }
+      ],
+      "english": [
+        {
+          "title": "",
+          "source": "Whoever recites this three times in the evening will be protected from insect stings."
+        }
+      ]
+    },
+    "source": {
+      "bosnian": "Muslim, Ahmed, Tirmizi",
+      "english": "Ahmad 2/290, An-Nasa'i, 'Amalul-Yawm wal-Laylah no. 590, At-Tirmithi 3/187, Ibn As-Sunni no. 68. According to Al-Albani, Ibn Majah's (2/266) chain of transmission is sound (Sahih), and following Ibn Baz 45, At-Tirmithi's report is good (Hasan)."
+    },
+    "sentences": [
+      {
+        "bosnian": "Utječem se savršenim Allahovim riječima",
+        "arabic": "أَعُوذُ بِكَلِمَاتِ اللَّهِ التَّامَّاتِ",
+        "transcription": "E‘ŪZU BIKELIMĀTILLĀHI-T-TĀMMĀTI",
+        "startSecond": 0.1,
+        "endSecond": 3.85
+      },
+      {
+        "bosnian": "od zla onoga što je stvorio.",
+        "arabic": "مِنْ شَرِّ مَا خَلَقَ",
+        "transcription": "MIN ŠERRI MĀ HALEK.",
+        "startSecond": 3.9,
+        "endSecond": 6
+      }
+    ]
+  },
+
+  {
+    "arabic": "أَمْسَيْنَا وَأَمْسَى الْمُلْكُ لِلَّهِ، وَالْحَمْدُ لِلَّهِ لَا إِلَهَ إِلَّا اللهُ، وَحْدَهُ لَا شَرِيكَ لَهُ الْمُلْكُ وَلَهُ الْحَمْدُ وَهُوَ عَلَى كُلِّ شَيْءٍ قَدِيرٌ، رَبِّ أَسْأَلُكَ خَيْرَ مَا فِي هَذِهِ اللَّيْلَةِ وَخَيْرَ مَا بَعْدَهَا، وَأَعُوذُ بِكَ مِنْ شَرِّ مَا فِي هَذِهِ اللَّيْلَةِ وَشَرِّ مَا بَعْدَهَا، رَبِّ أَعُوذُ بِكَ مِنَ الْكَسَلِ وَسُوءِ الْكِبَرِ، رَبِّ أَعُوذُ بِكَ مِنْ عَذَابٍ فِي النَّارِ وَعَذَابٍ فِي الْقَبْرِ",
+    "audio": "assets/audio/emsejna.mp3",
+    "category": "EVENING",
+    "recitate": 1,
+    "counter": 0,
+    "id": 11,
+    "translation": {
+      "bosnian": "U noć uđosmo i noć dočeka svekolika Allahova vlast. Hvala Allahu i nema boga osim Njega Jedinog, Koji druga nema. Njemu pripada sva vlast i svaka pohvala i on nad svačim ima moć. Allahu, molim Te za sva dobra ove noći i za dobra poslije nje. I utječem Ti se od zla ove noći i zla poslije nje. Gospodaru moj, Tebi se sklanjam pred lijenošću i zlohudom ohološću. Tebi se sklanjam pred kaznom Džehennema i kaburskom kaznom.",
+      "english": "We have entered a new day and with it all dominion is Allah's. Praise is to Allah. None has the right to be worshipped but Allah alone, Who has no partner. To Allah belongs the dominion, and to Him is the praise and He is Able to do all things. My Lord, I ask You for the goodness of this day and of the days that come after it, and I seek refuge in You from the evil of this day and of the days that come after it. My Lord, I seek refuge in You from laziness and helpless old age. My Lord, I seek refuge in You from the punishment of Hell-fire , and from the punishment of the grave."
+    },
+    "transcription": {
+      "bosnian": "EMSEJNĀ VE EMSEL MULKU LILLĀH, VEL HAMDU LILLĀH, LĀ ILĀHE ILLALLĀHU VAHDEHU LĀ ŠERĪKE LEHU, LEHU-L-MULKU VE LEHU-L-HAMDU VE HUVE ‘ALĀ KULLI ŠEJ-IN KADIR. RABBI ES-ELUKE HAJRE MĀ FĪ HĀZIHI-L-LEJLETI VE HAJRE MĀ BA‘DEHĀ VE E‘ŪZU BIKE MIN ŠERRI MĀ FĪ HĀZIHI-L-LEJLETI VE ŠERRI MĀ BA‘DEHĀ RABBI E‘ŪZU BIKE MINE-L-KESELI VE SŪIL KIBER, RABBI E‘ŪZU BIKE MIN ‘AZĀBIN FI-N-NĀR, VE ‘AZĀBIN FI-L-KABR.",
+      "english": "Amsaynaa wa'amsal-mulku lillaah walhamdu lillaahi, laa 'ilaaha 'illallaahu wahdahu laa shareeka lahu, lahul-mulku wa lahul-hamdu wa Huwa 'alaa kulli shay'in Qadeer. Rabbi 'as'aluka khayra maa fee haathihil-laylati, wa khayra maa ba'dahaa, wa 'a'oothu bika min sharri maa fee haathihil-laylati wa sharri maa ba'dahaa, Rabbi 'a'oothu bika minal-kasali, wa soo'il-kibari, Rabbi 'a'oothu bika min 'athaabin fin-naari wa 'athaabin fil-qabri."
+    },
+    "source": {
+      "bosnian": "Muslim",
+      "english": "Muslim 4/2088"
+    },
+    "benefits": {},
+    "sentences": [
+      {
+        "arabic": "أَمْسَيْنَا وَأَمْسَى الْمُلْكُ لِلَّهِ،",
+        "bosnian": "U noć uđosmo i noć dočeka svekolika Allahova vlast.",
+        "transcription": "EMSEJNĀ VE EMSEL MULKU LILLĀH,",
+        "startSecond": 0.1,
+        "endSecond": 5.9
+      },
+      {
+        "arabic": "وَالْحَمْدُ لِلهِ،",
+        "bosnian": "Hvala Allahu",
+        "transcription": "VEL HAMDU LILLĀH.",
+        "startSecond": 6,
+        "endSecond": 9.5
+      },
+      {
+        "arabic": "لَا إِلَهَ إِلَّا اللهُ وَحْدَهُ لَا شَرِيكَ لَهُ،",
+        "bosnian": "i nema boga osim Njega Jedinog, Koji druga nema.",
+        "transcription": "LĀ ILĀHE ILLALLĀHU VAHDEHU LĀ ŠERĪKE LEH,",
+        "startSecond": 10,
+        "endSecond": 17.9
+      },
+      {
+        "arabic": "لَهُ الْمُلْكُ ولَهُ الْحَمْدُ، وَهُوَ عَلَى كُلِّ شَيْءٍ قَدِيرٌ،",
+        "bosnian": "Njemu pripada sva vlast i svaka pohvala i on nad svačim ima moć.",
+        "transcription": "LEHU-L-MULKU VE LEHU-L-HAMDU VE HUVE ‘ALĀ KULLI ŠEJ-IN KADIR.",
+        "startSecond": 18,
+        "endSecond": 26.9
+      },
+      {
+        "arabic": "رَبِّ أَسْأَلُكَ خَيْرَ مَا فِي هَذِهِ اللَّيْلَةِ،",
+        "bosnian": "Allahu, molim Te za sva dobra ove noći",
+        "transcription": "RABBI ES-ELUKE HAJRE MĀ FĪ HĀZIHI-L-LEJLEH,",
+        "startSecond": 27,
+        "endSecond": 32.4
+      },
+      {
+        "arabic": "وَخَيْرَ مَا بَعْدَهَا،",
+        "bosnian": "i za dobra poslije nje.",
+        "transcription": "VE HAJRE MĀ BA‘DEHĀ.",
+        "startSecond": 32.5,
+        "endSecond": 36
+      },
+      {
+        "arabic": "وَأَعُوذُ بِكَ مِنْ شَرِّ مَا فِي هَذِهِ اللَّيْلَةِ،",
+        "bosnian": "I utječem Ti se od zla ove noći",
+        "transcription": "VE E‘ŪZU BIKE MIN ŠERRI MA FI HĀZIHI-L-LEJLEH,",
+        "startSecond": 36.1,
+        "endSecond": 41.9
+      },
+      {
+        "arabic": "وَشَرِّ مَا بَعْدَهَا،",
+        "bosnian": "i zla poslije nje.",
+        "transcription": "VE ŠERRI MĀ BA‘DEHĀ.",
+        "startSecond": 42,
+        "endSecond": 44.9
+      },
+      {
+        "arabic": "رَبِّ أَعُوذُ بِكَ مِنَ الْكَسَلِ،",
+        "bosnian": "Gospodaru moj, Tebi se sklanjam pred lijenošću",
+        "transcription": "RABBI E‘ŪZU BIKE MINEL KESEL,",
+        "startSecond": 45,
+        "endSecond": 48.8
+      },
+      {
+        "arabic": "وَسُوءِ الْكِبَرِ،",
+        "bosnian": "i zlohudom ohološću.",
+        "transcription": "VE SŪIL KIBER.",
+        "startSecond": 48.9,
+        "endSecond": 52.1
+      },
+      {
+        "arabic": "رَبِّ أَعُوذُ بِكَ مِنْ عَذَابٍ فِي النَّارِوَعَذَابٍ فِي الْقَبْرِ",
+        "bosnian": "Tebi se sklanjam pred kaznom Džehennema i kaburskom kaznom.",
+        "transcription": "RABBI E‘ŪZU BIKE MIN ‘AZĀBIN FI-N-NĀR, VE ‘AZĀBIN FI-L-KABR.",
+        "startSecond": 52.2,
+        "endSecond": 60
+      }
+    ]
+  },
+  {
+    "arabic": "اللَّهُمَّ بِكَ أَمْسَيْنَا وَبِكَ أَصْبَحْنَا، وَبِكَ نَحْيَا وَبِكَ نَمُوتُ، وَإِلَيْكَ الْمَصِيرُ",
+    "audio": "assets/audio/emsejna2.mp3",
+    "category": "EVENING",
+    "recitate": 1,
+    "counter": 0,
+    "id": 12,
+    "translation": {
+      "bosnian": "Allahu, Tvojom voljom u noć ulazimo i jutro dočekujemo, Tvojom voljom živimo i umiremo i Tebi se vraćamo.",
+      "english": "O Allah, You bring us the end of the day as You bring us its beginning, You bring us life and you bring us death, and to You is our fate."
+    },
+    "transcription": {
+      "bosnian": "ALLĀHUMME BIKE EMSEJNĀ VE BIKE ASBAHNĀ VE BIKE NAHJĀ VE BIKE NEMŪT VE ILEJKE-L-MESĪR.",
+      "english": "Allaahumma bika 'amsaynaa wa bika 'asbahnaa, wa bika nahyaa, wa bika namoot, wa 'ilaykal-maseer"
+    },
+    "source": {
+      "bosnian": "Tirmizi",
+      "english": "Sahih At-Tirmithi 3/142"
+    },
+    "benefits": {},
+    "sentences": [
+      {
+        "bosnian": "Allahu, Tvojom voljom u noć ulazimo",
+        "arabic": "اللَّهُمَّ بِكَ أَمْسَيْنَا،",
+        "transcription": "ALLĀHUMME BIKE EMSEJNĀ,",
+        "startSecond": 0.1,
+        "endSecond": 3.5
+      },
+      {
+        "bosnian": "i jutro dočekujemo,",
+        "arabic": "وَبِكَ أَصْبَحْنَا،",
+        "transcription": "VE BIKE ASBAHNĀ,",
+        "startSecond": 3.6,
+        "endSecond": 6
+      },
+      {
+        "bosnian": "Tvojom voljom živimo",
+        "arabic": "وَبِكَ نَحْيَا،",
+        "transcription": "VE BIKE NAHJĀ,",
+        "startSecond": 6.3,
+        "endSecond": 8.8
+      },
+      {
+        "bosnian": "i umiremo",
+        "arabic": "وَبِكَ نَمُوتُ،",
+        "transcription": "VE BIKE NEMŪT,",
+        "startSecond": 8.9,
+        "endSecond": 10.75
+      },
+      {
+        "bosnian": "i Tebi se vraćamo.",
+        "arabic": "وَإِلَيْكَ الْمَصِيرُ",
+        "transcription": "VE ILEJKE-L-MESĪR.",
+        "startSecond": 10.8,
+        "endSecond": 15
+      }
+    ]
+  },
+  {
+    "arabic": "أَمْسَيْنا عَلَى فِطْرَةِ الْإِسْلَامِ، وَعَلَى كَلِمَةِ الْإِخْلَاصِ، وَعَلَى دِينِ نَبِيِّنَا مُحَمَّدٍ صَلَّى اللهُ عَلَيْهِ وَسَلَّمَ، وَعَلَى مِلَّةِ أَبِينَا إِبْرَاهِيمَ حَنِيفًا مُسْلِمًا، وَمَا كَانَ مِنَ الْمُشْرِكِينَ",
+    "audio": "assets/audio/emsejna'ala-fitreti-l-islam.mp3",
+    "category": "EVENING",
+    "recitate": 1,
+    "counter": 0,
+    "id": 13,
+    "translation": {
+      "bosnian": "Noć smo dočekali u krilu islama, na principima šehadeta (riječi: la ilahe illellah), u vjeri vjerovjesnika našega, Muhammeda i u vjeri praoca našeg Ibrahima, a.s., iskrenog monoteiste, muslimana, koji nije bio idolopoklonik.",
+      "english": "We end this day upon the natural religion of Islam, the word of sincere devotion, the religion of our Prophet Muhammad (peace and blessings of Allah be upon him), and the faith of our father Ibrahim. He was upright (in worshipping Allah), and a Muslim. He was not of those who worship others besides Allah."
+    },
+    "transcription": {
+      "bosnian": "EMSEJNĀ ‘ALĀ FITRETIL-ISLĀM, VE ALA KELIMETIL-IHLĀS, VE ALA DÎNI NEBIJJINĀ MUHAMMEDIN SALLALLĀHU ‘ALEJHI VE SELLEM, VE ALA MILLETI EBÎNĀ IBRĀHÎME HANIFEN MUSLIMĀ, VE MĀ KĀNE MINEL-MUŠRIKÎN.",
+      "english": "Amsaynaa 'alaa fitratil-'Islaam wa 'alaa kalimatil-'ikhlaasi, wa 'alaa deeni Nabiyyinaa Muhammadin (sallallaahu 'alayhi wa sallama), wa 'alaa millati 'abeenaa 'Ibraaheema, haneefan Musliman wa maa kaana minal-mushrikeen."
+    },
+    "benefits": {},
+    "source": {
+      "bosnian": "Ahmed, Tirmizi",
+      "english": "Ahmad 3/406-7, 5/123, An-Nasa'i, 'Amalul- Yawm wal-Laylah (no. 34), At-Tirmithi 4/209."
+    },
+    "sentences": [
+      {
+        "arabic": "أَمْسَيْنا عَلَى فِطْرَةِ الْإِسْلَامِ،",
+        "bosnian": "Noć smo dočekali u krilu islama,",
+        "transcription": "EMSEJNĀ ‘ALĀ FITRETIL-ISLĀM,",
+        "startSecond": 0.1,
+        "endSecond": 5
+      },
+      {
+        "arabic": "وَعَلَى كَلِمَةِ الْإِخْلَاصِ",
+        "bosnian": "na principima šehadeta (riječi: la ilahe illellah)",
+        "transcription": "VE ALA KELIMETIL-IHLĀS,",
+        "startSecond": 5.1,
+        "endSecond": 9.8
+      },
+      {
+        "arabic": "وَعَلَى دِينِ نَبِيِّنَا مُحَمَّدٍ صَلَّى اللهُ عَلَيْهِ وَسَلَّمَ،",
+        "bosnian": "u vjeri vjerovjesnika našega, Muhammeda sallallahu ’alejhi ve sellem,",
+        "transcription": "VE ALA DÎNI NEBIJJINĀ MUHAMMEDIN SALLALLĀHU ‘ALEJHI VE SELLEM, ",
+        "startSecond": 9.9,
+        "endSecond": 17.8
+      },
+      {
+        "arabic": "وَعَلَى مِلَّةِ أَبِينَا إِبْرَاهِيمَ حَنِيفًا مُسْلِمًا",
+        "bosnian": "i u vjeri praoca našeg Ibrahima, a.s., iskrenog monoteiste, muslimana,",
+        "transcription": "VE ALA MILLETI EBÎNĀ IBRĀHÎME HANIFEN MUSLIMEN,",
+        "startSecond": 18,
+        "endSecond": 26.9
+      },
+      {
+        "arabic": "وَمَا كَانَ مِنَ الْمُشْرِكِينَ",
+        "bosnian": "koji nije bio idolopoklonik.",
+        "transcription": "VE MĀ KĀNE MINEL-MUŠRIKÎN.",
+        "startSecond": 27,
+        "endSecond": 33
+      }
+    ]
+  },
+
+  {
+    "arabic": "اللهم عالم الغيب والشهادة فاطر السموات والأرض ، رب كل شئ ومليكه ، أشهد أن لا إله إلا أنت ، أعوذ بك من شر نفسي ، ومن شر الشيطان وشركه ، وأن أقترف على نفسي سوءاً ، أو أجره إلى مسلم",
+    "audio": "assets/audio/alimel-gajbi.mp3",
+    "category": "MORNING&EVENING",
+    "recitate": 1,
+    "counter": 0,
+    "id": 14,
+    "translation": {
+      "bosnian": "Allahu, Poznavaoče skrivenog i pojavnog (svijeta), Sazdavatelju nebesa i Zemlje, Gospodaru svega i njegov Posjedovatelju: svjedočim da nema boga osim Tebe, Tebi se sklanjam pred zlom moje duše, i pred zlom šejtana i njegovog širka, te da me sačuvaš od činjenja zla prema sebi ili bilo kom muslimanu.",
+      "english": "O Allah, Knower of the unseen and the evident, Maker of the heavens and the earth, Lord of everything and its Possessor, I bear witness that there is none worthy of worship but You. I seek refuge in You from the evil of my soul and from the evil of Satan and his helpers. (I seek refuge in You) from bringing evil upon my soul and from harming any Muslim."
+    },
+    "transcription": {
+      "bosnian": "ALLĀHUMME ‘ĀLIME-L-GAJBI VE-Š-ŠEHĀDETI, FĀTIRE-S-SEMĀVATI VE-L-ERDI, RABBE KULLI ŠEJ-IN VE MELĪKEH: EŠHEDU EN LĀ ILĀHE ILLĀ ENTE, E‘ŪZU BIKE MIN ŠERRI NEFSĪ VE MIN ŠERRI-Š-ŠEJTĀNI VE ŠIRKIHI, VE EN AKTERIFE ‘ALĀ NEFSĪ SŪ-EN EV EDŽURREHU ILĀ MUSLIMIN.",
+      "english": "Allaahumma 'Aalimal-ghaybi wash-shahaadati faatiras-samaawaati wal'ardhi, Rabba kulli shay'in wa maleekahu, 'ash-hadu 'an laa 'ilaaha 'illaa 'Anta, 'a'oothu bika min sharri nafsee, wa min sharrish-shaytaani wa shirkihi, wa 'an 'aqtarifa 'alaa nafsee soo'an, 'aw 'ajurrahu 'ilaa Muslimin."
+    },
+    "source": {
+      "bosnian": "Tirmizi, Ebu Dawud",
+      "english": "Sahih At-Tirmithi 3/142 and Abu Dawud"
+    },
+    "benefits": {},
+    "sentences": [
+      {
+        "bosnian": "Allahu, Poznavaoče skrivenog i pojavnog (svijeta),",
+        "arabic": "اللَّهُمَّ عَالِمَ الغَيْبِ والشَّهَادَةِ",
+        "transcription": "ALLĀHUMME ‘ĀLIME-L-GAJBI VE-Š-ŠEHĀDETI,",
+        "startSecond": 0.1,
+        "endSecond": 4
+      },
+      {
+        "bosnian": "Sazdavatelju nebesa i Zemlje,",
+        "arabic": "فَاطِرَ السَّموَاتِ والأرْضِ",
+        "transcription": "FĀTIRE-S-SEMĀVATI VE-L-ERDI,",
+        "startSecond": 4.5,
+        "endSecond": 7.8
+      },
+      {
+        "bosnian": "Gospodaru svega i njegov Posjedovatelju:",
+        "arabic": "رَبَّ كُلِّ شَيءٍ ومَلِيْكَهُ،",
+        "transcription": "RABBE KULLI ŠEJ-IN VE MELĪKEH.",
+        "startSecond": 7.9,
+        "endSecond": 11.8
+      },
+      {
+        "bosnian": "svjedočim da nema boga osim Tebe,",
+        "arabic": "أشْهَدُ أنْ لا إلَهَ إلاَّ أنْتَ،",
+        "transcription": "EŠHEDU EN LĀ ILĀHE ILLĀ ENTE,",
+        "startSecond": 11.8,
+        "endSecond": 17.5
+      },
+      {
+        "bosnian": "Tebi se sklanjam pred zlom moje duše,",
+        "arabic": "أعُوذُ بِكَ مِنْ شَرِّ نَفْسِي",
+        "transcription": "E‘ŪZU BIKE MIN ŠERRI NEFSĪ",
+        "startSecond": 17.6,
+        "endSecond": 20.8
+      },
+      {
+        "bosnian": "i pred zlom šejtana i njegovog širka,",
+        "arabic": "وَمِنْ شَرِّ الشَّيْطَانِ وَشِرْكِهِ،",
+        "transcription": "VE MIN ŠERRI-Š-ŠEJTĀNI VE ŠIRKIHI,",
+        "startSecond": 21,
+        "endSecond": 24.8
+      },
+      {
+        "bosnian": "te da me sačuvaš od činjenja zla prema sebi ili bilo kom muslimanu.",
+        "arabic": "وأنْ أقْتَرِفَ عَلَى نَفْسِي سُوءاً، أوْ أجُرَّهُ إلَى مُسْلِمٍ",
+        "transcription": "VE EN AKTERIFE ‘ALĀ NEFSĪ SŪ-EN EV EDŽURREHU ILĀ MUSLIMIN.",
+        "startSecond": 24.9,
+        "endSecond": 33
+      }
+    ]
+  },
+  {
+    "arabic": "يَا حَيُّ يَا قَيُّومُ بِرَحْمَتِكَ أَسْتَغيثُ, أَصْلِحْ لِي شَأْنِيَ كُلَّهُ, وَلاَ تَكِلْنِي إِلَى نَفْسِي طَرْفَةَ عَيْنٍ",
+    "audio": "assets/audio/jaHajju.mp3",
+    "category": "MORNING&EVENING",
+    "recitate": 1,
+    "counter": 0,
+    "id": 15,
+    "translation": {
+      "bosnian": "O Ti, Živi, Postojani Održavatelju, molim Te za Tvoju obilatu milost – popravi moje stanje u svakom pogledu i ne prepusti me meni samome ni jednoga trena.",
+      "english": "O Ever Living One, O Eternal One, by Your mercy I call on You to set right all my affairs. Do not place me in charge of my soul even for the blinking of an eye (i.e. a moment)."
+    },
+    "transcription": {
+      "bosnian": "JA HAJJU JA KAJJUMU BI RAHMETIKE ESTEGISU, ASLIH LI ŠE’NI KULLEHU VE LA TEKILNI ILLA NEFSI TARFETE ’AJNIN.",
+      "english": "Yaa Hayyu yaa Qayyoomu birahmatika 'astagheethu 'aslih lee sha'nee kullahu wa laa takilnee 'ilaa nafsee tarfata 'aynin."
+    },
+    "source": {
+      "bosnian": "Hakim",
+      "english": "Its chain of transmission is sound (Sahih), Al-Hakim 1/545, see Albani, Sahihut-Targhib wat-Tarhib, 1/273."
+    },
+    "benefits": {},
+    "sentences": [
+      {
+        "bosnian": "O Ti, Živi, Postojani Održavatelju,",
+        "arabic": "يَا حَيُّ يَا قَيُّومُ، ",
+        "transcription": "JA HAJJU JA KAJJUMU,",
+        "startSecond": 0.1,
+        "endSecond": 3.3
+      },
+      {
+        "bosnian": "molim Te za Tvoju obilatu milost,",
+        "arabic": "بِرَحْمَتِكَ أَسْتَغيثُ،",
+        "transcription": "BI RAHMETIKE ESTEGIS,",
+        "startSecond": 3.38,
+        "endSecond": 7
+      },
+      {
+        "bosnian": "popravi moje stanje u svakom pogledu",
+        "arabic": "أَصْلِحْ لِي شَأْنِيَ كُلَّهُ,",
+        "transcription": "ASLIH LI ŠE’NI KULLEHU",
+        "startSecond": 7.1,
+        "endSecond": 10
+      },
+      {
+        "bosnian": "i ne prepusti me meni samome",
+        "arabic": "وَلاَ تَكِلْنِي إِلَى نَفْسِي",
+        "transcription": "VE LA TEKILNI ILLA NEFSI",
+        "startSecond": 10.1,
+        "endSecond": 15.9
+      },
+      {
+        "bosnian": "ni jednoga trena.",
+        "arabic": "طَرْفَةَ عَيْنٍ",
+        "transcription": "TARFETE ’AJN.",
+        "startSecond": 16.4,
+        "endSecond": 18.9
+      }
+    ]
+  },
+  {
+    "arabic": "اللَّهُــمَّ صَلِّ وَسَـــلِّمْ على نَبِيِّنَـــا مُحمَّد ﷺ",
+    "audio": "assets/audio/salavati.mp3",
+    "category": "MORNING&EVENING",
+    "recitate": 10,
+    "counter": 0,
+    "id": 16,
+    "translation": {
+      "bosnian": "O Allahu, blagoslovi našeg poslanika Muhammeda ﷺ"
+    },
+    "transcription": {
+      "bosnian": "ALLAHUME SALLI VE SELLIM 'ALA NEBIJJINA MUHAMMED"
+    },
+    "source": {
+      "bosnian": "Nesai i Ahmed",
+      "english": "An-Nasa'i, Ahmad"
+    },
+    "benefits": {
+      "bosnian": [
+        {
+          "title": "Allah tebe spominje",
+          "source": "Rekao je Poslanik sallallahu alejhi ve sellem: ”Onoga ko mene jednim salavatom spomene, Allah će ga deset puta spomenuti, biće mu oprošteno deset grijeha i biće podignut za deset stepeni.”"
+        }
+      ],
+      "english": []
+    },
+    "sentences": [
+      {
+        "bosnian": "O Allahu, blagoslovi našeg poslanika Muhammeda ﷺ",
+        "arabic": "اللَّهُــمَّ صَلِّ وَسَـــلِّمْ على نَبِيِّنَـــا مُحمَّد",
+        "transcription": "ALLAHUME SALLI VE SELLIM 'ALA NEBIJJINA MUHAMMED ﷺ",
+        "startSecond": 0.1,
+        "endSecond": 7
+      }
+    ]
+  },
+  {
+    "arabic": "سُبْحَانَ اللَّهِ وَبِحَمْدِه",
+    "audio": "assets/audio/subhanallahiVeBihamdih.mp3",
+    "category": "MORNING&EVENING",
+    "recitate": 100,
+    "counter": 0,
+    "id": 17,
+    "translation": {
+      "bosnian": "Slavljen neka je Allah i Njemu pripada sva hvala",
+      "english": "Glory is to Allah and praise is to Him."
+    },
+    "transcription": {
+      "bosnian": "SUBHANALLĀHI VE BI HAMDIH.",
+      "english": "Subhaanallaahi wa bihamdihi."
+    },
+    "source": {
+      "bosnian": "Muslim",
+      "english": "Muslim 4/2071"
+    },
+    "benefits": {
+      "bosnian": [
+        {
+          "title": "Oprost grijeha pa makar ih bilo kao morske pjene",
+          "source": "Rekao je Poslanik sallallahu alejhi ve sellem: ”Ko kaže u toku jednog dana sto puta: Subhanallahi ve bi hamdihi (Slavljen neka je Allah i Njemu pripada sva hvala), oprošteni su mu grijesi, pa makar ih bilo kao morske pjene.”"
+        }
+      ],
+      "english": [
+        {
+          "title": "",
+          "source": "Whoever recites this one hundred times in the morning and in the evening will not be surpassed on the Day of Resurrection by anyone having done better than this except for someone who had recited it more."
+        }
+      ]
+    },
+    "sentences": [
+      {
+        "bosnian": "Slavljen neka je Allah",
+        "arabic": "سُبْحَانَ اللَّهِ",
+        "transcription": "SUBHANALLĀHI",
+        "startSecond": 0.1,
+        "endSecond": 1.7
+      },
+      {
+        "bosnian": "i Njemu pripada sva hvala.",
+        "arabic": "وَبِحَمْدِه",
+        "transcription": "VE BI HAMDIH.",
+        "startSecond": 1.8,
+        "endSecond": 3
+      }
+    ]
+  },
+  {
+    "arabic": "لا إِلَهَ إِلاّ اللَّهُ وَحْدَهُ لا شَرِيكَ لَهُ، لَهُ الْمُلْكُ، وَلَهُ الْحَمْدُ، وَهُوَ عَلَى كُلِّ شَيْءٍ قَدِير",
+    "audio": "assets/audio/lailaheillallah.mp3",
+    "category": "MORNING&EVENING",
+    "recitate": 100,
+    "counter": 0,
+    "id": 18,
+    "translation": {
+      "bosnian": "Nema boga osim Allaha, Jedinoga, Koji druga nema. Njemu pripada vlast nad svim i sva pohvala. On sve može.",
+      "english": "None has the right to be worshipped but Allah alone, Who has no partner. His is the dominion and His is the praise and He is Able to do all things."
+    },
+    "transcription": {
+      "bosnian": "LA ILAHE ILLE-L-LAHU VAHDEHU LA ŠERIKE LEHU, LEHU-L-MULKU VE LEHU-L-HAMDU VE HUVE ‘ALA KULLI ŠEJ’IN KADIR.",
+      "english": "Laa 'ilaaha 'illallaahu wahdahu laa shareeka lahu, lahul-mulku wa lahul-hamdu, wa Huwa 'alaa kulli shay'in Qadeer."
+    },
+    "source": {
+      "bosnian": "Bukhari",
+      "english": "Al-Bukhari 4/95"
+    },
+    "benefits": {
+      "bosnian": [
+        {
+          "title": "Oprost grijeha, zastita od sejtana, nagrada oslobadjanja roba..",
+          "source": "Prenosi se od Ebu Hurejre, r.a, da je Poslanik sallallahu alejhi ve sellem rekao da onaj ko u jednom danu kaže stotinu puta ove riječi, kao da je oslobodio deset robova, upiše mu se stotinu dobrih djela i pobriše stotinu loših. Biće mu zaštita od šejtana toga dana sve dok ne omrkne. Niko neće učiniti bolje od onoga što je on uradio, osim onoga ko to više puta izgovori."
+        }
+      ],
+      "english": [
+        {
+          "title": "",
+          "source": "Whoever recites this one hundred times a day will have the reward of freeing ten slaves. One hundred Hasanaat (rewards) will be written for him, and one hundred misdeeds will be washed away. He will be shielded from Satan until the evening. No one will be able to present anything better than this except for someone who has recited more than this. (Al-Bukhari 4/95, Muslim 4/2071)"
+        }
+      ]
+    },
+    "sentences": [
+      {
+        "bosnian": "Nema boga",
+        "arabic": "لا إِلَهَ",
+        "transcription": "LA ILAHE",
+        "startSecond": 0.1,
+        "endSecond": 2.5
+      },
+      {
+        "bosnian": "osim Allaha,",
+        "arabic": "إِلاّ اللَّهُ",
+        "transcription": "ILLE-L-LAHU",
+        "startSecond": 2.6,
+        "endSecond": 3.6
+      },
+      {
+        "bosnian": "Jedinoga,",
+        "arabic": "وَحْدَهُ",
+        "transcription": "VAHDEHU",
+        "startSecond": 3.7,
+        "endSecond": 4.7
+      },
+      {
+        "bosnian": "Koji druga nema.",
+        "arabic": "لا شَرِيكَ لَهُ،",
+        "transcription": "LA ŠERIKE LEH,",
+        "startSecond": 4.8,
+        "endSecond": 6.6
+      },
+
+      {
+        "bosnian": "Njemu pripada vlast nad svim",
+        "arabic": "لَهُ الْمُلْكُ،",
+        "transcription": "LEHU-L-MULKU,",
+        "startSecond": 6.7,
+        "endSecond": 7.8
+      },
+      {
+        "bosnian": "i sva pohvala.",
+        "arabic": "وَلَهُ الْحَمْدُ،",
+        "transcription": "VE LEHU-L-HAMDU,",
+        "startSecond": 7.89,
+        "endSecond": 9.2
+      },
+      {
+        "bosnian": "On sve može.",
+        "arabic": "وَهُوَ عَلَى كُلِّ شَيْءٍ قَدِير",
+        "transcription": "VE HUVE ‘ALA KULLI ŠEJ’IN KADIR.",
+        "startSecond": 9.29,
+        "endSecond": 14
+      }
+    ]
+  },
+  {
+    "arabic": "بِاسْمِكَ رَبِّـي وَضَعْـتُ جَنْـبي ، وَبِكَ أَرْفَعُـه، فَإِن أَمْسَـكْتَ نَفْسـي فارْحَـمْها ، وَإِنْ أَرْسَلْتَـها فاحْفَظْـها بِمـا تَحْفَـظُ بِه عِبـادَكَ الصّـالِحـين.",
+    "audio": "assets/audio/bismikeRabbi.mp3",
+    "category": "BEFORE-SLEEPING",
+    "recitate": 1,
+    "counter": 0,
+    "id": 19,
+    "translation": {
+      "bosnian": "S Tvojim imenom, Gospodaru moj, legoh na bok i ako bude Tvoja volja, podići ću se. Ako uzmeš moju dušu, budi milostiv prema njoj, a ako je vratiš, zaštiti je kao što si zaštitio Svoje dobre robove.",
+      "english": ""
+    },
+    "transcription": {
+      "bosnian": "BISMIKE RABBI VEDA’TU DŽENBI VE BIKE ERFE’UHU, FE IN EMSEKTE NEFSI FERHAM-HA VE IN ERSELTEHA FA-HFAZHA BIMA TAHFEZU BIHI IBADEKE-S-SALIHINE.",
+      "english": ""
+    },
+    "source": {
+      "bosnian": "Buhari i Muslim",
+      "english": "Buhari and Muslim"
+    },
+    "benefits": {},
+    "sentences": [
+      {
+        "bosnian": "S Tvojim imenom, Gospodaru moj, legoh na bok",
+        "arabic": "بِاسْمِكَ رَبِّـي وَضَعْـتُ جَنْـبي،",
+        "transcription": "BISMIKE RABBI VEDA’TU DŽENBI",
+        "startSecond": 0.1,
+        "endSecond": 3.5
+      },
+      {
+        "bosnian": "i ako bude Tvoja volja, podići ću se.",
+        "arabic": "وَبِكَ أَرْفَعُـه،",
+        "transcription": "VE BIKE ERFE’UHU,",
+        "startSecond": 3.6,
+        "endSecond": 5.2
+      },
+      {
+        "bosnian": "Ako uzmeš moju dušu, budi milostiv prema njoj,",
+        "arabic": "فَإِن أَمْسَـكْتَ نَفْسـي فارْحَـمْها،",
+        "transcription": "FE IN EMSEKTE NEFSI FERHAM-HA,",
+        "startSecond": 5.3,
+        "endSecond": 9
+      },
+      {
+        "bosnian": "a ako je vratiš, zaštiti je",
+        "arabic": "وَإِنْ أَرْسَلْتَـها فاحْفَظْـها",
+        "transcription": "VE IN ERSELTEHA FA-HFAZHA",
+        "startSecond": 9.1,
+        "endSecond": 12
+      },
+      {
+        "bosnian": "kao što si zaštitio Svoje dobre robove.",
+        "arabic": "بِمـا تَحْفَـظُ بِه عِبـادَكَ الصّـالِحـين.",
+        "transcription": "BIMA TAHFEZU BIHI IBADEKE-S-SALIHINE.",
+        "startSecond": 12.1,
+        "endSecond": 18
+      }
+    ]
+  },
+  {
+    "arabic": "اللّهُـمَّ إِنَّـكَ خَلَـقْتَ نَفْسـي وَأَنْـتَ تَوَفّـاهـا لَكَ ممَـاتـها وَمَحْـياها ، إِنْ أَحْيَيْـتَها فاحْفَظْـها ، وَإِنْ أَمَتَّـها فَاغْفِـرْ لَـها . اللّهُـمَّ إِنَّـي أَسْـأَلُـكَ العـافِـيَة.",
+    "audio": "assets/audio/AllahumeInnekeHalakteNefsi.mp3",
+    "category": "BEFORE-SLEEPING",
+    "recitate": 1,
+    "counter": 0,
+    "id": 20,
+    "translation": {
+      "bosnian": "Allahu, Ti si, doista, stvorio moju dušu i Ti je umrtvljuješ. Tebi pripada njena smrt i njen život, pa ako je oživiš – zaštiti je, a ako je umrtviš – oprosti joj. Allahu, Tebe molim za oprost.",
+      "english": ""
+    },
+    "transcription": {
+      "bosnian": "ALLAHUMME INNEKE HALAKTE NEFSI VE ENTE TEVEFFAHA. LEKE MEMATUHA VE MAHJAHA, IN AHJEJTEHA FAHFAZHA VE IN EMETTEHA FAGFIR LEHA. ALLAHUMME INNI ES’ELUKEL-AFIJETE.",
+      "english": ""
+    },
+    "source": {
+      "bosnian": "Muslim",
+      "english": "Muslim"
+    },
+    "benefits": {},
+    "sentences": [
+      {
+        "bosnian": "Allahu, Ti si, doista, stvorio moju dušu",
+        "arabic": "للّهُـمَّ إِنَّـكَ خَلَـقْتَ نَفْسـي",
+        "transcription": "ALLAHUMME INNEKE HALAKTE NEFSI",
+        "startSecond": 0.1,
+        "endSecond": 4.25
+      },
+      {
+        "bosnian": "i Ti je umrtvljuješ.",
+        "arabic": "وَأَنْـتَ تَوَفّـاهـا",
+        "transcription": "VE ENTE TEVEFFAHA.",
+        "startSecond": 4.3,
+        "endSecond": 7.5
+      },
+      {
+        "bosnian": "Tebi pripada njena smrt i njen život,",
+        "arabic": "لَكَ ممَـاتـها وَمَحْـياها،",
+        "transcription": "LEKE MEMATUHA VE MAHJAHA,",
+        "startSecond": 7.6,
+        "endSecond": 11.9
+      },
+      {
+        "bosnian": "pa ako je oživiš – zaštiti je,",
+        "arabic": " إِنْ أَحْيَيْـتَها فاحْفَظْـها،",
+        "transcription": "IN AHJEJTEHA FAHFAZHA",
+        "startSecond": 12,
+        "endSecond": 15.3
+      },
+      {
+        "bosnian": "a ako je umrtviš – oprosti joj.",
+        "arabic": "وَإِنْ أَمَتَّـها فَاغْفِـرْ لَـها.",
+        "transcription": "VE IN EMETTEHA FAGFIR LEHA.",
+        "startSecond": 15.4,
+        "endSecond": 18.8
+      },
+      {
+        "bosnian": "Allahu, Tebe molim za oprost.",
+        "arabic": "اللّهُـمَّ إِنَّـي أَسْـأَلُـكَ العـافِـيَة.",
+        "transcription": "ALLAHUMME INNI ES’ELUKEL-AFIJETE.",
+        "startSecond": 18.9,
+        "endSecond": 23.8
+      }
+    ]
+  },
+  {
+    "arabic": "اللّهُـمَّ قِنـي عَذابَـكَ يَـوْمَ تَبْـعَثُ عِبـادَك.",
+    "audio": "assets/audio/AllahummeQiniAzabeke.mp3",
+    "category": "BEFORE-SLEEPING",
+    "recitate": 1,
+    "counter": 0,
+    "id": 21,
+    "translation": {
+      "bosnian": "Allahu, sačuvaj me od kazne Svoje na dan kada budeš oživio Svoje robove.",
+      "english": ""
+    },
+    "transcription": {
+      "bosnian": "ALLAHUMME KINI AZABEKE JEVME TEB’ASU IBADEKE.",
+      "english": ""
+    },
+    "source": {
+      "bosnian": "Ebu Davud, Tirmizi",
+      "english": null
+    },
+    "benefits": {},
+    "sentences": [
+      {
+        "bosnian": "Allahu, sačuvaj me od kazne Svoje",
+        "arabic": "اللّهُـمَّ قِنـي عَذابَـكَ",
+        "transcription": "ALLAHUMME KINI AZABEKE",
+        "startSecond": 0.1,
+        "endSecond": 3.25
+      },
+      {
+        "bosnian": "na dan kada budeš oživio Svoje robove.",
+        "arabic": "يَـوْمَ تَبْـعَثُ عِبـادَك.",
+        "transcription": "JEVME TEB’ASU IBADEKE.",
+        "startSecond": 3.3,
+        "endSecond": 6.7
+      }
+    ]
+  },
+  {
+    "arabic": "بِاسْـمِكَ اللّهُـمَّ أَمـوتُ وَأَحْـيا.",
+    "audio": "assets/audio/bismikallahummeEmutuVeAhja.mp3",
+    "category": "BEFORE-SLEEPING",
+    "recitate": 1,
+    "counter": 0,
+    "id": 22,
+    "translation": {
+      "bosnian": "S Tvojim imenom, Allahu moj, umirem i živim.",
+      "english": ""
+    },
+    "transcription": {
+      "bosnian": "BISMIKELLAHUMME EMUTU VE AHJA.",
+      "english": ""
+    },
+    "source": {
+      "bosnian": "Buhari i Muslim",
+      "english": "Buhari and Muslim"
+    },
+    "benefits": {},
+    "sentences": [
+      {
+        "bosnian": "S Tvojim imenom, Allahu moj,",
+        "arabic": "بِاسْـمِكَ اللّهُـمَّ",
+        "transcription": "BISMIKELLAHUMME",
+        "startSecond": 0.1,
+        "endSecond": 2.8
+      },
+      {
+        "bosnian": "umirem",
+        "arabic": "أَمـوتُ",
+        "transcription": "EMUTU",
+        "startSecond": 2.9,
+        "endSecond": 3.8
+      },
+      {
+        "bosnian": "i živim.",
+        "arabic": "وَأَحْـيا.",
+        "transcription": "VE AHJA.",
+        "startSecond": 3.9,
+        "endSecond": 6
+      }
+    ]
+  },
+  {
+    "arabic": "سُبْحَانَ اللَّهِ",
+    "audio": "assets/audio/subhanallah.mp3",
+    "category": "BEFORE-SLEEPING",
+    "recitate": 33,
+    "counter": 0,
+    "id": 23,
+    "translation": {
+      "bosnian": "Slavljen neka je Allah",
+      "english": ""
+    },
+    "transcription": {
+      "bosnian": "SUBHANALLAH",
+      "english": ""
+    },
+    "source": {
+      "bosnian": "Buhari i Muslim",
+      "english": "Buhari and Muslim"
+    },
+    "benefits": {
+      "bosnian": [
+        {
+          "title": "Bolje i vrijednije od toga da imamo slugu",
+          "source": "Resulullah, sallallahu alejhi ve sellem, oporučio je Aliji i Fatimi, radijallahu anhuma: “Kada legnete, ili kada odete u postelju, recite 33 puta ‘SUBHANALLAH’, 33 puta ‘ELHAMDULILLAH’ i 34 puta ‘ALLAHU EKBER’, to vam je bolje od sluge.”"
+        },
+        {
+          "title": "",
+          "source": "Šejhul-islam Ibn Tejmijje kaže: “Čuli smo da onaj ko redovno uči ovaj zikr prije spavanja neće osjetiti nemoć zbog posla i drugih obaveza.”, a Ibnul-Kajjim dodaje: “Kaže se da onaj ko redovno uči ovaj zikr prije spavanja osjeti snagu u toku dana koja mu je dovoljna da nema potrebe za slugom/pomoćnikom. (El-Vabilus-sajb, str. 97, 77)”"
+        }
+      ]
+    },
+    "sentences": [
+      {
+        "bosnian": "Slavljen neka je Allah",
+        "arabic": "سُبْحَانَ اللَّهِ",
+        "transcription": "SUBHANALLAH",
+        "startSecond": 0.1,
+        "endSecond": 2.2
+      }
+    ]
+  },
+  {
+    "arabic": "الْحَمْدُ لِلَّهِ",
+    "audio": "assets/audio/elhamdulillah.mp3",
+    "category": "BEFORE-SLEEPING",
+    "recitate": 33,
+    "counter": 0,
+    "id": 24,
+    "translation": {
+      "bosnian": "Hvala Allahu.",
+      "english": ""
+    },
+    "transcription": {
+      "bosnian": "ELHAMDULILLAH.",
+      "english": ""
+    },
+    "source": {
+      "bosnian": "Buhari i Muslim",
+      "english": "Buhari and Muslim"
+    },
+    "benefits": {
+      "bosnian": [
+        {
+          "title": "Bolje i vrijednije od toga da imamo slugu",
+          "source": "Resulullah, sallallahu alejhi ve sellem, oporučio je Aliji i Fatimi, radijallahu anhuma: “Kada legnete, ili kada odete u postelju, recite 33 puta ‘SUBHANALLAH’, 33 puta ‘ELHAMDULILLAH’ i 34 puta ‘ALLAHU EKBER’, to vam je bolje od sluge.”"
+        },
+        {
+          "title": "",
+          "source": "Šejhul-islam Ibn Tejmijje kaže: “Čuli smo da onaj ko redovno uči ovaj zikr prije spavanja neće osjetiti nemoć zbog posla i drugih obaveza.”, a Ibnul-Kajjim dodaje: “Kaže se da onaj ko redovno uči ovaj zikr prije spavanja osjeti snagu u toku dana koja mu je dovoljna da nema potrebe za slugom/pomoćnikom. (El-Vabilus-sajb, str. 97, 77)”"
+        }
+      ]
+    },
+    "sentences": [
+      {
+        "bosnian": "Hvala Allahu",
+        "arabic": "الْحَمْدُ لِلَّهِ",
+        "transcription": "ELHAMDULILLAH",
+        "startSecond": 0.1,
+        "endSecond": 2.7
+      }
+    ]
+  },
+  {
+    "arabic": "اللَّهُ أَكْبَرُ",
+    "audio": "assets/audio/tekbir.mp3",
+    "category": "BEFORE-SLEEPING",
+    "recitate": 34,
+    "counter": 0,
+    "id": 25,
+    "translation": {
+      "bosnian": "Allah je najveci",
+      "english": ""
+    },
+    "transcription": {
+      "bosnian": "ALLAHU EKBER",
+      "english": ""
+    },
+    "source": {
+      "bosnian": "Buhari i Muslim",
+      "english": "Buhari and Muslim"
+    },
+    "benefits": {
+      "bosnian": [
+        {
+          "title": "Bolje i vrijednije od toga da imamo slugu",
+          "source": "Resulullah, sallallahu alejhi ve sellem, oporučio je Aliji i Fatimi, radijallahu anhuma: “Kada legnete, ili kada odete u postelju, recite 33 puta ‘SUBHANALLAH’, 33 puta ‘ELHAMDULILLAH’ i 34 puta ‘ALLAHU EKBER’, to vam je bolje od sluge.”"
+        },
+        {
+          "title": "",
+          "source": "Šejhul-islam Ibn Tejmijje kaže: “Čuli smo da onaj ko redovno uči ovaj zikr prije spavanja neće osjetiti nemoć zbog posla i drugih obaveza.”, a Ibnul-Kajjim dodaje: “Kaže se da onaj ko redovno uči ovaj zikr prije spavanja osjeti snagu u toku dana koja mu je dovoljna da nema potrebe za slugom/pomoćnikom. (El-Vabilus-sajb, str. 97, 77)”"
+        }
+      ]
+    },
+    "sentences": [
+      {
+        "bosnian": "Allah je najveci",
+        "arabic": "اللَّهُ أَكْبَرُ",
+        "transcription": "ALLAHU EKBER",
+        "startSecond": 0.1,
+        "endSecond": 2
+      }
+    ]
+  },
+  {
+    "arabic": "اللّهُ لاَ إِلَـهَ إِلاَّ هُوَ الْحَيُّ الْقَيُّومُ لاَ تَأْخُذُهُ سِنَةٌ وَلاَ نَوْمٌ لَّهُ مَا فِي السَّمَاوَاتِ وَمَا فِي الأَرْضِ مَن ذَا الَّذِي يَشْفَعُ عِنْدَهُ إِلاَّ بِإِذْنِهِ يَعْلَمُ مَا بَيْنَ أَيْدِيهِمْ وَمَا خَلْفَهُمْ وَلاَ يُحِيطُونَ بِشَيْءٍ مِّنْ عِلْمِهِ إِلاَّ بِمَا شَاء وَسِعَ كُرْسِيُّهُ السَّمَاوَاتِ وَالأَرْضَ وَلاَ يَؤُودُهُ حِفْظُهُمَا وَهُوَ الْعَلِيُّ الْعَظِيمُ.",
+    "audio": "assets/audio/ajetul-kursij.mp3",
+    "category": "BEFORE-SLEEPING",
+    "recitate": 1,
+    "counter": 0,
+    "id": 26,
+    "title": "Ajetul-Kursija",
+    "translation": {
+      "bosnian": "Allah je – nema boga osim Njega – Živi i Vječni! Ne obuzima Ga ni drijemež ni san! Njegovo je ono što je na nebesima i ono što je na Zemlji! Ko se može pred Njim zauzimati za nekoga bez dopuštenja Njegova?! On zna šta je bilo i prije njih i šta će biti poslije njih, a od onoga što On zna – drugi znaju samo onoliko koliko On želi. Moć Njegova obuhvata i nebesa i Zemlju i Njemu ne dojadi održavanje njihovo; On je Svevišnji, Veličanstveni!",
+      "english": ""
+    },
+    "transcription": {
+      "bosnian": "ALLĀHU LĀ ILĀHE ILLĀHU VEL HAJJUL-KAJUM. LĀ TE’HUZUHŪ SINETUN VE LA NEVM. LEHŪ MĀ FIS-SEMĀVĀTI VE MĀ FIL ARD. MEN ZELLEZI JEŠFEU ‘INDEHU ILLĀ BI IZNIH. JĀ’LEMU MĀ BEJNE EJDĪHIM VE MĀ HALFEHUM VE LĀ JUHĪTŪNE BI ŠEJIN MIN ‘ILMIHĪ ILLĀ BI MĀ ŠĀ’. VESI’A KURSIJJUHUS-SEMĀVĀTI VEL ARD VE LĀ JEŪDUHŪ HIFZUHUMĀ VE HUVEL ALIJJUL-AZĪM.",
+      "english": ""
+    },
+    "source": {
+      "bosnian": "Buhari",
+      "english": "Buhari"
+    },
+    "benefits": {
+      "bosnian": [
+        {
+          "title": "Zaštita od šejtana",
+          "source": "Allahov Poslanik s.a.w.s bi govorio: “Kada legneš u postelju prouči Ajetul kursijju, tako će te štititi od Allaha (poslan) zaštitinik, i šejtan ti se neće primaći.” "
+        }
+      ]
+    },
+    "images": [
+      "assets/img/quran/ayatul-kursi.png"
+    ]
+  },
+  {
+    "arabic": "آمَنَ الرَّسُولُ بِمَا أُنْزِلَ إِلَيْهِ مِنْ رَبِّهِ وَالْمُؤْمِنُونَ ۚ كُلٌّ آمَنَ بِاللَّهِ وَمَلَائِكَتِهِ وَكُتُبِهِ وَرُسُلِهِ لَا نُفَرِّقُ بَيْنَ أَحَدٍ مِنْ رُسُلِهِ ۚ وَقَالُوا سَمِعْنَا وَأَطَعْنَا ۖ غُفْرَانَكَ رَبَّنَا وَإِلَيْكَ الْمَصِيرُ. لَا يُكَلِّفُ اللَّهُ نَفْسًا إِلَّا وُسْعَهَا لَهَا مَا كَسَبَتْ وَعَلَيْهَا مَا اكْتَسَبَتْ رَبَّنَا لَا تُؤَاخِذْنَا إِنْ نَسِينَا أَوْ أَخْطَأْنَا رَبَّنَا وَلَا تَحْمِلْ عَلَيْنَا إِصْرًا كَمَا حَمَلْتَهُ عَلَى الَّذِينَ مِنْ قَبْلِنَا رَبَّنَا وَلَا تُحَمِّلْنَا مَا لَا طَاقَةَ لَنَا بِهِ وَاعْفُ عَنَّا وَاغْفِرْ لَنَا وَارْحَمْنَا أَنْتَ مَوْلَانَا فَانْصُرْنَا عَلَى الْقَوْمِ الْكَافِرِينَ.",
+    "audio": "assets/audio/amenerrasulu.mp3",
+    "category": "BEFORE-SLEEPING",
+    "recitate": 1,
+    "counter": 0,
+    "id": 27,
+    "title": "Zadnja dva ajeta sure El-Bekare",
+    "translation": {
+      "bosnian": "Poslanik vjeruje u ono što mu se objavljuje od Gospodara Njegova, i vjernici, svaki od njih vjeruje u Allaha, i meleke Njegove, i Knjige Njegove, i poslanike Njegove, mi među poslanicima Njegovim ne pravimo podjelu! Oni govore: 'Čujemo i pokoravamo se. Molimo Te za oprost, Gospodaru naš, i Tebi se vraćamo! Allah nijednu osobu ne opterećuje preko mogućnosti njene; njoj u korist pripada ono što je stekla, a protiv nje je što je stekla (zla)! 'Gospodaru naš, ne uzmi nam u grijeh ako zaboravimo ili nehotice pogriješimo! Gospodaru naš, ne tovari na nas breme kao što si ga natovario na one prije nas! Gospodaru naš, ne opterećuj nas onim za što nemamo snage! Ti preko grijeha nam prijeđi, oprosti nam i smiluj nam se! Ti si Gospodar naš, pa pomozi nas protiv naroda koji ne vjeruje!'",
+      "english": ""
+    },
+    "transcription": {
+      "bosnian": "AMENER-RESULU BIMA UNZILE ILEJHI MIR-RABIHI VEL MU'MINUN. KULLUN AMENE BILLAHI VE MELA'IKETIHI VE KUTUBIHI VE RUSULIH. LA NUFERRIKU BEJNE EHADIN MIR-RUSULIH. VE KALU SEMI'ANA VE ETA'NA GUFRANEKE RABBENA VE ILEJKEL-MASIR. LA JUKELLIFULLAHU NEFSEN ILLA VUS'AHA. LEHA MA KESEBET VE ALEJHA MEKTESEBET. RABBENA LA TU'AHIZNA INNESINA EV AHTA'NA. RABBENA VE LA TAHMIL ALEJNA ISREN KEMA HAMELTEHU ALELLZINE MIN KABLINA. RABBENA VE LA TUHAMMILNA MA LA TAKATE LENA BIH. VE'AFU 'ANNA VAGFIRLENA VERHAMNA ENTE MEVLANA FANSURNA ALEL-KAVMIL-KAFIRIN.",
+      "english": ""
+    },
+    "source": {
+      "bosnian": "Buhari i Muslim",
+      "english": "Buhari and Muslim"
+    },
+    "benefits": {
+      "bosnian": [
+        {
+          "title": "",
+          "source": "Allahov Poslanik s.a.v.s kaže: “Ko prouči u noći dva posljednja ajeta sure Bekare ( Amene rresulu bi ma unzile ilejhi min rabih vel muminun..) dovoljni su mu.“"
+        }
+      ]
+    },
+    "images": [
+      "assets/img/quran/ameneresulu.png"
+    ]
+  },
+  {
+    "arabic": "",
+    "audio": "https://download.quranicaudio.com/quran/mishaari_raashid_al_3afaasee/114.mp3",
+    "category": "BEFORE-SLEEPING",
+    "recitate": 3,
+    "counter": 0,
+    "id": 30,
+    "title": "Sure Ihlas, Felek i Nas",
+    "translation": {
+      "bosnian": null,
+      "english": null
+    },
+    "transcription": {
+      "bosnian": null,
+      "english": null
+    },
+    "source": {
+      "bosnian": "Buhari",
+      "english": "Buhari"
+    },
+    "benefits": {
+      "bosnian": [
+        {
+          "title": "",
+          "source": "Aiša, radijallahu anhu, prenosi da je Poslanik, sallallahu alejhi ve sellem, svake noći kada bi legao u svoju postelju sastavljao ruke te u njih puhao i učio: Kul huvallahu ehad, Kul e'uuzu bi Rabbin-nas i Kul e'uuzu bi Rabbil-felek, a zatim bi rukama potirao svoje tijelo koliko može. Prvo bi potrao glavu i lice, a zatim ostalo tijelo do kud ruke dosežu. To je činio tri puta."
+        }
+      ]
+    },
+    "images": [
+      "assets/img/quran/604.png"
+    ]
+  },
+  {
+    "arabic": "",
+    "audio": "https://download.quranicaudio.com/quran/mishaari_raashid_al_3afaasee/067.mp3",
+    "category": "BEFORE-SLEEPING",
+    "recitate": 1,
+    "counter": 0,
+    "id": 31,
+    "title": "Sura Mulk",
+    "translation": {
+      "bosnian": null,
+      "english": null
+    },
+    "transcription": {
+      "bosnian": null,
+      "english": null
+    },
+    "source": {
+      "bosnian": "Buhari i Muslim",
+      "english": "Buhari and Muslim"
+    },
+    "benefits": {
+      "bosnian": [
+        {
+          "title": "Oprost grijeha",
+          "source": "Ebu Hurejre, radijallahu anhu, prenosi da je Poslanik, sallallahu alehi ve sellem, rekao: “Sura u Kur’anu, ima trideset ajeta, zauzimat će se za onoga ko je uči sve dok mu se ne oprosti: Tebarkel-lezi bi-jedihil-mulk.” (Bilježi Ahmed, br. 7962, Ebu Davud, br. 1400 i drugi, hadis je hasen po ocjeni Albanija.)"
+        },
+        {
+          "title": "Zaštita od kaburske patnje",
+          "source": "Ibn Mes‘ud, radijallahu anhu, kaže: “Ko bude svake noći učio Tebarkel-lezi bi-jedihil-mulk, Allah će ga tom surom sačuvati od kaburske patnje. U vremenu Allahovog Poslanika, sallallahu alejhi ve sellem, nazivali smo ovu suru ‘štit’ (elmania). Ona je doista u Allahovoj Knjizi, ko je bude učio svake večeri, stekao je mnogo dobrih i lijepih dijela.” (En-Nesai, Es-Sunenul-kubra, br. 10479, hadis je hasen po ocjeni Albanija.)"
+        },
+        {
+          "title": "Branit će onoga ko je bude učio",
+          "source": "Abdurrahman ibn Avf govorio je: “Sura Kul-huvallahu ehad vrijedna je poput trećine Kur’ana, a sura Tebarkel-lezi bi-jedihil-mulk branit će onoga ko je bude učio.” (Bilježi Malik u Muveta, br. 487.)"
+        },
+        {
+          "title": "Praktikujemo sunnet Allahovog Poslanika sallallahu alejhi ve sellem",
+          "source": "“Poslanik, sallallahu alejhi ve sellem, ne bi zaspao dok ne prouči sure Es-Sedžde i El-Mulk.”"
+        },
+        {
+          "title": "",
+          "source": "Imam Es-Sujuti, rahimehullah, govoreći o ovim predajama, kaže: “Ove predaje sve skupa ukazuju na to da će se sura El-Mulk zauzimati, u kaburu i na Sudnjem danu, za onog ko ju je učio, zauzimat će se da od njega odagna kaznu i uvede ga u Džennet.” (Tenvirul-havalik, 1/164) Allah najbolje zna!"
+        }
+      ]
+    },
+    "images": [
+      "assets/img/quran/562.png",
+      "assets/img/quran/563.png",
+      "assets/img/quran/564.png"
+    ]
+  },
+  {
+    "arabic": "",
+    "audio": "https://download.quranicaudio.com/quran/mishaari_raashid_al_3afaasee/032.mp3",
+    "category": "BEFORE-SLEEPING",
+    "recitate": 1,
+    "counter": 0,
+    "id": 32,
+    "title": "Sura Sedžda",
+    "translation": {
+      "bosnian": null,
+      "english": null
+    },
+    "transcription": {
+      "bosnian": null,
+      "english": null
+    },
+    "source": {
+      "bosnian": "Tirmizi i Nesai",
+      "english": ""
+    },
+    "benefits": {
+      "bosnian": [
+        {
+          "title": "Praktikujemo sunnet Allahovog Poslanika sallallahu alejhi ve sellem",
+          "source": "“Poslanik, sallallahu alejhi ve sellem, ne bi zaspao dok ne prouči sure Es-Sedžde i El-Mulk.”"
+        }
+      ]
+    },
+    "images": [
+      "assets/img/quran/415.png",
+      "assets/img/quran/416.png",
+      "assets/img/quran/417.png"
+    ]
+  }
+]

@@ -1,0 +1,12 @@
+.no-dhikrs {
+  padding: 10px;
+  text-align: center;
+}
+
+.segment {
+  display: none;
+
+  &.active {
+    display: block;
+  }
+}

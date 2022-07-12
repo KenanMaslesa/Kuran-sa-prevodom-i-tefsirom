@@ -1,0 +1,62 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>
+      Jutarnji zikr - Tracker
+    </ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <section>
+    <ion-segment value="total" #segment (ionChange)="segmentChanged(segment.value)">
+      <ion-segment-button value="total">
+        <ion-label>Ukupno</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="byDhikr">
+        <ion-label>Po zikrovima</ion-label>
+      </ion-segment-button>
+    </ion-segment>
+
+    <ion-item style="padding: 0 10px; font-size: 14px;">
+      <ion-label>Mjesec</ion-label>
+      <ion-select [value]="selectedMonth.value" interface="popover" #month (ionChange)="onMonthChanged(month.value)">
+        <ion-select-option *ngFor="let month of months" [value]="month.value">{{month.name}}</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <section class="segment" [class.active]="showTotalSegment">
+      <ion-card>
+        <ion-card-header>
+          <ion-card-subtitle>{{dhikrsByMonth.length === 0? 'Nemate proučenog jutarnjeg zikra za odabrani mjesec':'Ukupan broj proučenog jutarnjeg zikra po danima' }} </ion-card-subtitle>
+        </ion-card-header>
+        <ion-card-content>
+          <div class="graph-wrapper">
+            <div class="graph">
+              <canvas #barChart height="300px" width="0"></canvas>
+            </div>
+          </div>
+        </ion-card-content>
+      </ion-card>
+    </section>
+
+    <section class="segment" [class.active]="showByDhikrSegment">
+
+      <ion-list>
+        <ion-item-sliding *ngFor="let dhikr of morningDhikr; let i = index">
+          <ion-item (click)="getParticularDhikr(dhikr)">
+            <ion-label>
+              <h2 style="direction: rtl;">{{dhikr.arabic}}</h2>
+              <p>{{dhikr.translation.bosnian}}</p>
+            </ion-label>
+            <ion-note slot="end" style="margin-left: 10px;">
+              {{i+1}}.
+            </ion-note>
+          </ion-item>
+        </ion-item-sliding>
+      </ion-list>
+    </section>
+  </section>
+</ion-content>
