@@ -58,7 +58,7 @@ html {
   height: 100%;
   background-size: cover;
   background-position: center;
-  background-image: url("/assets/img/background.jpeg");
+  // background-image: url("/assets/img/background.jpeg");
 
   &::before {
     content: "";
@@ -6500,5 +6500,68 @@ ion-tab-bar {
     transform: translate(-50%, -50%);
     font-size: 13px;
     font-weight: 500;
+  }
+}
+
+//dhikr
+.settings-icon {
+  font-size: 25px;
+  margin-right: 10px;
+}
+
+.tracker-icon {
+  margin-right: 10px;
+  font-size: 19px;
+  margin-top: -3px;
+}
+
+.firstSlide,
+.lastSlide {
+  .content {
+    position: relative;
+
+    ul {
+      text-align: left;
+
+      li {
+        margin: 15px 0;
+      }
+    }
+  }
+}
+
+.slide {
+  &__header {
+    h2 {
+      font-size: 32px;
+      color: #111;
+      text-transform: uppercase;
+      text-align: center;
+      font-weight: 700;
+      position: relative;
+      padding-bottom: 15px;
+
+      &::before {
+        content: "";
+        position: absolute;
+        display: block;
+        width: 120px;
+        height: 1px;
+        background: #ddd;
+        bottom: 1px;
+        left: calc(50% - 60px);
+      }
+
+      &::after {
+        content: "";
+        position: absolute;
+        display: block;
+        width: 40px;
+        height: 3px;
+        background: var(--ion-color-primary);
+        bottom: 0;
+        left: calc(50% - 20px);
+      }
+    }
   }
 }

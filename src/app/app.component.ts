@@ -1,16 +1,12 @@
 import { Component } from '@angular/core';
 import { Insomnia } from '@awesome-cordova-plugins/insomnia/ngx';
 import { LocalStorageKeysSettings } from './quran/screens/settings/settings.page';
-import { TimeTrackingService } from './quran/shared/services/time-tracking.service';
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
 })
 export class AppComponent {
-  constructor(private insomnia: Insomnia, private timeTrackingService: TimeTrackingService) {
-    if(this.timeTrackingService.trackTimeSpendInApp) {
-      this.timeTrackingService.trackTime();
-    }
+  constructor(private insomnia: Insomnia) {
     //keep app awake
     this.insomnia.keepAwake().then(
       () => console.log('app is awake'),
@@ -18,10 +14,8 @@ export class AppComponent {
     );
 
     const themeColor = localStorage.getItem(LocalStorageKeysSettings.theme);
-    const fontSize = localStorage.getItem(LocalStorageKeysSettings.fontSize);
-    const fontSizeLandscape = localStorage.getItem(LocalStorageKeysSettings.fontSizeLandscape);
-    const lineHeight = localStorage.getItem(LocalStorageKeysSettings.lineHeight);
-    const lineHeightLandscape = localStorage.getItem(LocalStorageKeysSettings.lineHeightLandscape);
+    const themeBackgroundColor = localStorage.getItem('themeBackgroundColor');
+
     if (themeColor) {
       document.documentElement.style.setProperty(
         `--ion-color-primary`,
@@ -31,28 +25,10 @@ export class AppComponent {
       localStorage.setItem('theme', JSON.stringify('#536a9e'));
     }
 
-    if(fontSize) {
+    if (themeBackgroundColor) {
       document.documentElement.style.setProperty(
-        `--quran-font-size`,
-        `${fontSize}px`
-      );
-    }
-    if(lineHeight) {
-      document.documentElement.style.setProperty(
-        `--quran-line-height`,
-        `${lineHeight}px`
-      );
-    }
-    if(fontSizeLandscape) {
-      document.documentElement.style.setProperty(
-        `--quran-landscape-font-size`,
-        `${fontSizeLandscape}px`
-      );
-    }
-    if(lineHeightLandscape) {
-      document.documentElement.style.setProperty(
-        `--quran-landscape-line-height`,
-        `${lineHeightLandscape}px`
+        `--background-color`,
+        `${JSON.parse(themeBackgroundColor)}`
       );
     }
   }

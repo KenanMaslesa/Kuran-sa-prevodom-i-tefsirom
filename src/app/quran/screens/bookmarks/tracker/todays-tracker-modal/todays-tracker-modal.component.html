@@ -39,7 +39,7 @@
 
       <ion-list slot="content">
         <ion-item-sliding *ngFor="let pageObj of todaysData">
-          <ion-item>
+          <ion-item (click)="goToPage(pageObj.page)">
             <ion-label>
               <h2>{{pageObj.page}}. stranica</h2>
               <p style="font-size: 11px; margin: 0;">Broj riječi: {{pageObj.wordsNumber}} - Broj harfova:

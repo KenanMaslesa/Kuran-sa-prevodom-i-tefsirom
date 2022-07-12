@@ -74,7 +74,7 @@
 
               <!-- word - playWord-->
               <i  class="p{{quranService.currentPage}} ayah{{word.index}}" *ngIf="word.charType !== 'end'"
-                (click)="playWord(word.audio)" [innerHtml]="word.code"></i>
+                (click)="playWord(word.audio)" >{{word.code}}</i>
               <!--word - playWord-->
             </i>
             <!--ayah-words-wrapper end-->

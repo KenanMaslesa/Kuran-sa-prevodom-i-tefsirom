@@ -11,6 +11,8 @@ import { AppComponent } from './app.component';
 import { SocialSharing } from '@awesome-cordova-plugins/social-sharing/ngx';
 import { Insomnia } from '@awesome-cordova-plugins/insomnia/ngx';
 import { ScreenOrientation } from '@awesome-cordova-plugins/screen-orientation/ngx';
+import { LocalNotifications } from '@awesome-cordova-plugins/local-notifications/ngx';
+import { Vibration } from '@awesome-cordova-plugins/vibration/ngx';
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
@@ -24,7 +26,9 @@ import { ScreenOrientation } from '@awesome-cordova-plugins/screen-orientation/n
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     SocialSharing,
     Insomnia,
-    ScreenOrientation
+    ScreenOrientation,
+    LocalNotifications,
+    Vibration,
   ],
   bootstrap: [AppComponent],
 })

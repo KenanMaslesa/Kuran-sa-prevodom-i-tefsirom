@@ -24,7 +24,7 @@ export class TrackerModalComponent {
   }
 
   goToPage(page) {
-    this.router.navigate([`/tabs/holy-quran/${page}`]);
+    this.router.navigate([`quran/tabs/holy-quran/${page}`]);
     this.dismissModal();
   }
 

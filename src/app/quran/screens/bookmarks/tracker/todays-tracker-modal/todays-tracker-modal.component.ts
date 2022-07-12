@@ -7,6 +7,7 @@ import { TimeTrackingService } from 'src/app/quran/shared/services/time-tracking
 import { QuranTrackerService } from '../quran-tracker.service';
 import { ArgumentModalComponent } from './argument-modal/argument-modal.component';
 import { HowToUseTrackerComponent } from './how-to-use-tracker/how-to-use-tracker.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-todays-tracker-modal',
@@ -21,7 +22,8 @@ export class TodaysTrackerModalComponent implements OnInit {
     private quranService: QuranService,
     private modalController: ModalController,
     public timeTrackingService: TimeTrackingService,
-    public settingsService: SettingsService
+    public settingsService: SettingsService,
+    private router: Router
   ) {}
   ngOnInit() {
     this.quranTrackerService.todaysCompletedPages.forEach((page) => {
@@ -53,6 +55,10 @@ export class TodaysTrackerModalComponent implements OnInit {
 
   closeModal() {
     this.modalController.dismiss();
+  }
+
+  goToPage(page) {
+    this.router.navigate([`quran/tabs/holy-quran/${page}`]);
   }
 
   getPercentsFixed(completedPages, totalPages) {

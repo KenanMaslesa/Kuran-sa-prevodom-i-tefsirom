@@ -33,7 +33,7 @@ export class MainPopoverComponent implements OnInit {
     const randomNumber = Math.floor(Math.random() * (604 - 1)) + 1;
     this.quranService.setCurrentPage(randomNumber);
     if(this.showExternalLinks) {
-      this.router.navigate(['/tabs/holy-quran']);
+      this.router.navigate(['quran/tabs/holy-quran']);
     }
     this.popoverCtrl.dismiss();
   }
@@ -47,7 +47,7 @@ export class MainPopoverComponent implements OnInit {
 
     this.quranService.setCurrentPage(pageNumber);
     if(this.showExternalLinks) {
-      this.router.navigate(['/tabs/holy-quran']);
+      this.router.navigate(['quran/tabs/holy-quran']);
     }
     this.popoverCtrl.dismiss();
   }

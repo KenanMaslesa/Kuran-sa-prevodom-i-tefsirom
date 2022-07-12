@@ -36,7 +36,7 @@
 
       <ion-item-sliding *ngFor="let item of bookmarksService.bookmarks">
 
-        <ion-item (click)="goTo('/tabs/holy-quran', item.pageNumber);">
+        <ion-item (click)="goTo('quran/tabs/holy-quran', item.pageNumber);">
           <ion-label>
             <h2>{{item.sura}}</h2>
             <p>{{item.date | date: 'dd.MM.YYYY HH:mm'}}</p>
@@ -57,7 +57,7 @@
       <p class="description" *ngIf="bookmarksService.tafsirBookmarks.length === 0">Nemate bilješki</p>
       <ion-item-sliding *ngFor="let item of bookmarksService.tafsirBookmarks">
 
-        <ion-item (click)="goTo('/tabs/translation', item.pageNumber);">
+        <ion-item (click)="goTo('quran/tabs/translation', item.pageNumber);">
           <ion-label>
             <h2>{{item.sura}}</h2>
             <p>{{item.date | date: 'dd.MM.YYYY HH:mm'}}</p>

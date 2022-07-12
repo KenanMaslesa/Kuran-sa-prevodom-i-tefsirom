@@ -19,7 +19,7 @@ export class HowToUseTrackerComponent implements OnInit {
   }
 
   goToQuran() {
-    this.router.navigate(['/tabs/holy-quran', 2]);
+    this.router.navigate(['quran/tabs/holy-quran', 2]);
     this.modalCtr.dismiss();
   }
 
