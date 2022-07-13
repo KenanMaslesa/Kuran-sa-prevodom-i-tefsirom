@@ -3,9 +3,9 @@
   (click)="quranService.showHeaderAndTabs = true"></ion-icon>
 <!--exit fullscreen-->
 
-<ion-header class="{{quranService.showHeaderAndTabs?'show':'hide'}}">
+<ion-header class="{{ quranService.showHeaderAndTabs? 'show' : 'hide' }}">
 
-  <ion-toolbar color="primary" *ngIf="{sura: sura$ | async, juz: juz$ | async} as pageDetails">
+  <ion-toolbar color="primary" *ngIf="{ sura: sura$ | async, juz: juz$ | async } as pageDetails">
     <ion-buttons slot="start">
       <ion-back-button (click)="goToHomePage()" defaultHref=""></ion-back-button>
     </ion-buttons>
@@ -17,12 +17,17 @@
         <span style="font-size: 13px;">Stranica {{quranService.currentPage}}, Džuz {{pageDetails.juz?.id}}</span>
       </div>
     </ion-title>
+
     <!--bookmarks-->
-    <ion-icon slot="end" name="bookmark-outline" *ngIf="!checkIsInBookmark()" (click)="addBookmark(pageDetails.sura);">
-    </ion-icon>
-    <ion-icon slot="end" name="bookmark" *ngIf="checkIsInBookmark()"
-      (click)="deleteBookmark(quranService.currentPage);">
-    </ion-icon>
+    <ng-container *ngIf="checkIsInBookmark();then inBookmark else notInBookmark"></ng-container>
+    <ng-template #inBookmark>
+      <ion-icon slot="end" name="bookmark" (click)="deleteBookmark(quranService.currentPage);">
+      </ion-icon>
+    </ng-template>
+    <ng-template #notInBookmark>
+      <ion-icon slot="end" name="bookmark-outline" (click)="addBookmark(pageDetails.sura);">
+      </ion-icon>
+    </ng-template>
     <!--bookmarks-->
 
     <!--fullscreen-->
@@ -37,21 +42,25 @@
 
 
 <ion-content #content>
-  <div class="main page-{{quranService.currentPage}} {{quranService.showHeaderAndTabs?'':'without-tabs'}}" [class.nightMode]="settingsService.nightMode" *ngIf="quranWordsForCurrentPage$ | async">
-    <ion-slides #slider (ionSlideNextStart)="loadNext()" (ionSlidePrevStart)="loadPrev()" [options]="slideOpts">
-      <ion-slide class="page-orientation" [ngClass]="{'page-orientation__portrait': nativePluginsService.isPortrait(), 'page-orientation__landscape': nativePluginsService.isLandscape(), 'showTranslationModal': quranService.showTranslationModal}" [class.audioPlaying]="mediaPlayerService.player"
+  <div class="main page-{{quranService.currentPage}} {{quranService.showHeaderAndTabs?'':'without-tabs'}}"
+    [class.nightMode]="settingsService.nightMode" *ngIf="quranWordsForCurrentPage$ | async">
+
+    <ion-slides #slider (ionSlideNextStart)="loadNextPage()" (ionSlidePrevStart)="loadPrevPage()" [options]="slideOpts">
+      <ion-slide class="page-orientation"
+        [ngClass]="{'page-orientation__portrait': nativePluginsService.isPortrait(), 'page-orientation__landscape': nativePluginsService.isLandscape(), 'showTranslationModal': quranService.showTranslationModal, 'audioPlaying': mediaPlayerService.player}"
         *ngFor="let page of quranWordsForCurrentPage; let pageIndex = index">
         <div>
           <div class="ayeLine" *ngFor="let ayah of page.ayahs; let ayahNumber = index">
             <!--sura title-->
             <div *ngIf="ayah.metaData">
-              <section class="suraTitle" *ngIf="ayah.metaData.lineType === 'start_sura'">
+              <section class="suraTitle" *ngIf="ayah.metaData.lineType === ayaLineType.startSura">
                 <img src="assets/img/surah_title.gif" alt="Quran sura title">
                 <h3>{{ayah.metaData.suraName}}</h3>
               </section>
 
               <!--sura Tevbe-->
-              <section class="suraTitle" *ngIf="ayah.metaData.lineType === 'besmellah' && quranService.currentPage === 187">
+              <section class="suraTitle"
+                *ngIf="ayah.metaData.lineType === ayaLineType.bismillah && quranService.currentPage === 187">
                 <img src="assets/img/surah_title.gif" alt="Quran sura title">
                 <h3>Et-Tevbe - التوبة</h3>
               </section>
@@ -66,22 +75,27 @@
             <!--sura title end-->
 
             <!--ayah-words-wrapper-->
-            <i class="endAyah" id="{{wordIndex === 0? word.index:''}}" *ngFor="let word of ayah.words; let wordIndex = index" [class.active]="mediaPlayerService.playingCurrentAyah === word.index || quranService.markedAyah === word.index">
+            <i class="word-wrapper" id="{{wordIndex === 0? word.index:''}}"
+              *ngFor="let word of ayah.words; let wordIndex = index"
+              [class.active]="mediaPlayerService.playingCurrentAyah === word.index || quranService.markedAyah === word.index">
+
+              <ng-container *ngIf="word.charType === 'end'; then charTypeIsEnd else charTypeIsNotEnd"></ng-container>
               <!--end znak - playAyat-->
-              <i  class="p{{quranService.currentPage}} ayah{{word.index}} endAyahColor" *ngIf="word.charType === 'end'"
+              <ng-template #charTypeIsEnd>
+                <i class="p{{quranService.currentPage}} ayah{{word.index}} endAyah"
                 (click)="playAyah(word.index);" [innerHtml]="word.code"></i>
-              <!--end znak - playAyat -->
+              </ng-template>
 
               <!-- word - playWord-->
-              <i  class="p{{quranService.currentPage}} ayah{{word.index}}" *ngIf="word.charType !== 'end'"
+              <ng-template #charTypeIsNotEnd>
+                <i class="p{{quranService.currentPage}} ayah{{word.index}}"
                 (click)="playWord(word.audio)" [innerHtml]="word.code"></i>
-              <!--word - playWord-->
+              </ng-template>
             </i>
             <!--ayah-words-wrapper end-->
 
           </div>
-          <span class="currentPage"
-            [class.completed]="quranTrackerService.isCurrentPageCompleted"
+          <span class="currentPage" [class.completed]="quranTrackerService.isCurrentPageCompleted"
             (click)="trackerAddOrRemovePage()">
             {{quranService.currentPage}}
           </span>

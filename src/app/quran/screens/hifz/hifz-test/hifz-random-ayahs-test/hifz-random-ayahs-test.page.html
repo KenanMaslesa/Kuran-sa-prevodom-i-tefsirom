@@ -35,9 +35,9 @@
             <!--sura title end-->
 
             <!--ayah-words-wrapper-->
-            <i class="endAyah" id="{{wordIndex === 0? word.index:''}}" *ngFor="let word of ayah.words; let wordIndex = index">
+            <i class="word-wrapper" id="{{wordIndex === 0? word.index:''}}" *ngFor="let word of ayah.words; let wordIndex = index">
               <!--end znak - playAyat-->
-              <i  class="p{{testPage}} ayah{{word.index}} endAyahColor" *ngIf="word.charType === 'end'"
+              <i  class="p{{testPage}} ayah{{word.index}} endAyah" *ngIf="word.charType === 'end'"
                 [innerHtml]="word.code"></i>
               <!--end znak - playAyat -->
 

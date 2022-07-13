@@ -15,6 +15,10 @@ import { Juz, QuranWords, Sura } from '../../shared/quran.models';
 import { QuranService } from '../../shared/services/quran.service';
 import { SettingsService } from '../settings/settings.service';
 
+enum AyahLineType {
+  bismillah = 'besmellah',
+  startSura = 'start_sura'
+}
 @Component({
   selector: 'app-holy-quran',
   templateUrl: './holy-quran.page.html',
@@ -23,34 +27,35 @@ import { SettingsService } from '../settings/settings.service';
 export class HolyQuranPage {
   @ViewChild('slider') private slider: IonSlides;
   @ViewChild('content') private content: IonContent;
-  subs: Subscription = new Subscription();
+  public subs: Subscription = new Subscription();
   public suraList$: Observable<Sura[]>;
   public screenOrientation$: Observable<any>;
-  quranWordsForCurrentPage$: Observable<QuranWords>;
-  quranWordsForCurrentPage: QuranWords[] = [];
-  slideOpts = {
+  public quranWordsForCurrentPage$: Observable<QuranWords>;
+  public quranWordsForCurrentPage: QuranWords[] = [];
+  public quranWords$: Observable<any>;
+  public routePageId: number;
+  public routeAyahIndex: number;
+  public ayahCounter: number;
+  public sura$: Observable<Sura[]>;
+  public juz$: Observable<Juz>;
+  public showGoToPageButton = false;
+  public slideOpts = {
     loop: true,
     initialSlide: 1,
   };
-  quranWords$: Observable<any>;
-  routePageId: number;
-  routeAyahIndex: number;
-  ayahCounter: number;
-  sura$: Observable<Sura[]>;
-  juz$: Observable<Juz>;
-  showGoToPageButton = false;
+  public readonly ayaLineType = AyahLineType;
   constructor(
-    public quranService: QuranService,
     private route: ActivatedRoute,
+    private router: Router,
+    private changeDetectorRef: ChangeDetectorRef,
+    private popoverCtrl: PopoverController,
+    private alertController: AlertController,
+    public quranService: QuranService,
     public mediaPlayerService: MediaPlayerService,
     public bookmarksService: BookmarksService,
     public platformService: PlatformService,
-    private router: Router,
     public nativePluginsService: NativePluginsService,
-    private changeDetectorRef: ChangeDetectorRef,
-    private popoverCtrl: PopoverController,
     public settingsService: SettingsService,
-    private alertController: AlertController,
     public quranTrackerService: QuranTrackerService
   ) {
     this.suraList$ = this.quranService.getSuraList();
@@ -118,6 +123,25 @@ export class HolyQuranPage {
     );
   }
 
+  ionViewDidEnter() {
+    setTimeout(() => {
+      this.quranService.showLoader = false;
+    }, 1000);
+    if (
+      this.mediaPlayerService.player &&
+      this.nativePluginsService.isLandscape()
+    ) {
+      setTimeout(() => {
+        this.scroll(this.mediaPlayerService.playingCurrentAyah);
+      }, 500);
+    }
+  }
+
+  ionViewWillLeave() {
+    this.subs.unsubscribe();
+    this.quranService.showHeaderAndTabs = true;
+  }
+
   getWordsForCurrentPage() {
     this.getSuraByPageNumber(this.quranService.currentPage);
     this.getJuzByPageNumber(this.quranService.currentPage);
@@ -138,26 +162,7 @@ export class HolyQuranPage {
     this.juz$ = this.quranService.getJuzByPageNumber(page);
   }
 
-  ionViewWillLeave() {
-    this.subs.unsubscribe();
-    this.quranService.showHeaderAndTabs = true;
-  }
-
-  ionViewDidEnter() {
-    setTimeout(() => {
-      this.quranService.showLoader = false;
-    }, 1000);
-    if (
-      this.mediaPlayerService.player &&
-      this.nativePluginsService.isLandscape()
-    ) {
-      setTimeout(() => {
-        this.scroll(this.mediaPlayerService.playingCurrentAyah);
-      }, 500);
-    }
-  }
-
-  loadPrev() {
+  loadPrevPage() {
     this.scrollToTop();
     this.quranService.showLoader = true;
 
@@ -175,7 +180,7 @@ export class HolyQuranPage {
     });
   }
 
-  loadNext() {
+  loadNextPage() {
     this.scrollToTop();
 
     this.quranService.showLoader = true;
@@ -219,6 +224,61 @@ export class HolyQuranPage {
       );
     }
 
+  }
+
+  //bookmarks
+  addBookmark(sura) {
+    let bookmarkSuraName = '';
+    const names = sura.map(
+      (item) => item.name.arabic && item.name.bosnianTranscription
+    );
+    names.forEach((name, index) => {
+      if (index + 1 < names.length) {
+        bookmarkSuraName += name + ', ';
+      } else {
+        bookmarkSuraName += name;
+      }
+    });
+    this.bookmarksService.addBookmark({
+      pageNumber: this.quranService.currentPage,
+      sura: bookmarkSuraName,
+      date: new Date(),
+    });
+  }
+
+  deleteBookmark(page: number) {
+    this.bookmarksService.deleteBookmark(page);
+  }
+
+  checkIsInBookmark() {
+    return this.bookmarksService.checkIsInBookmark(
+      this.quranService.currentPage
+    );
+  }
+
+  goToHomePage() {
+    this.router.navigateByUrl('/', {
+      replaceUrl: true,
+    });
+  }
+
+  scroll(id) {
+    const ayah = document.getElementById(id);
+    if (ayah) {
+      ayah.scrollIntoView({
+        behavior: 'smooth',
+      });
+    } else {
+      console.log('Nema ajeta sa ID: ' + id);
+    }
+  }
+
+  scrollToTop() {
+    this.content.scrollToTop(1000);
+  }
+
+  trackerAddOrRemovePage() {
+    this.quranTrackerService.addOrRemovePage(this.quranTrackerService.isCurrentPageCompleted? false : true, this.quranService.currentPage);
   }
 
   async presentAlertConfirm(ayahIndex) {
@@ -274,40 +334,6 @@ export class HolyQuranPage {
     await alert.present();
   }
 
-  //bookmarks
-  addBookmark(sura) {
-    let bookmarkSuraName = '';
-    const names = sura.map(
-      (item) => item.name.arabic && item.name.bosnianTranscription
-    );
-    names.forEach((name, index) => {
-      if (index + 1 < names.length) {
-        bookmarkSuraName += name + ', ';
-      } else {
-        bookmarkSuraName += name;
-      }
-    });
-    this.bookmarksService.addBookmark({
-      pageNumber: this.quranService.currentPage,
-      sura: bookmarkSuraName,
-      date: new Date(),
-    });
-  }
-  deleteBookmark(page: number) {
-    this.bookmarksService.deleteBookmark(page);
-  }
-  checkIsInBookmark() {
-    return this.bookmarksService.checkIsInBookmark(
-      this.quranService.currentPage
-    );
-  }
-
-  goToHomePage() {
-    this.router.navigateByUrl('/', {
-      replaceUrl: true,
-    });
-  }
-
   async presentPopover(event: Event) {
     const popover = await this.popoverCtrl.create({
       component: MainPopoverComponent,
@@ -317,24 +343,5 @@ export class HolyQuranPage {
       }
     });
     await popover.present();
-  }
-
-  scroll(id) {
-    const ayah = document.getElementById(id);
-    if (ayah) {
-      ayah.scrollIntoView({
-        behavior: 'smooth',
-      });
-    } else {
-      console.log('Nema ajeta sa ID: ' + id);
-    }
-  }
-
-  scrollToTop() {
-    this.content.scrollToTop(1000);
-  }
-
-  trackerAddOrRemovePage() {
-    this.quranTrackerService.addOrRemovePage(this.quranTrackerService.isCurrentPageCompleted? false : true, this.quranService.currentPage);
   }
 }

@@ -28,7 +28,7 @@ ion-button {
   font-size: 11px;
 }
 
-.ayeLine i:hover:not(.endAyah, .endAyahColor) {
+.ayeLine i:hover:not(.word-wrapper, .endAyah) {
   background-color: white;
   color: black;
 }
